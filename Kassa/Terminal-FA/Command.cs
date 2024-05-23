@@ -1,0 +1,23 @@
+﻿
+namespace KitCashProtocol
+{
+    enum Command
+    {
+        GET_STATUS = 0x01,
+        GET_MODEL = 0x04,
+        GET_FISCAL_STORAGE_STATUS = 0x08,
+        BEGIN_OPEN_SESSION = 0x21,
+        OPEN_SESSION = 0x22,
+        BEGIN_CLOSE_SESSION = 0x29,
+        CLOSE_SESSION = 0x2A,
+        BEGIN_CHECK = 0x23,
+        CHECK_POSITION = 0x2B,
+        AGENT_DATA = 0x2C,
+        PAYMENT_DATA = 0x2D,
+        CHECK = 0x24,
+        PRINT = 0x61,
+        CUT = 0x62,
+        REGISTRATION_PARAMETERS = 0x0A,
+        CANCEL_DOCUMENT = 0x10
+    }
+}
