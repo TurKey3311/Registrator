@@ -30,6 +30,7 @@ namespace Kassa
         public string standart_ModelKKT = "Терминал-ФА";
         public string vers_config = "------";
         public string vers_FFD = "------";
+        public string abcd = "------";
 
         public string M_FN;
         public bool otherModelFN = false;
