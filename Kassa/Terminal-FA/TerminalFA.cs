@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialSkin.Controls;
+using System;
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
@@ -20,16 +21,37 @@ namespace KitCashProtocol
             DefaultTaxType = TaxType.Unknown;
             TLV = new byte[1024];
             TLVPosition = 0;
+            
+                if (Port == null)
+                {
+                    Port = new SerialPort(portName);
+                    Port.BaudRate = 115200;
+                    Port.DataBits = 8;
+                    Port.Parity = Parity.None;
+                    Port.StopBits = StopBits.One;
+                    Port.Open();
+                }
+            
+        }
 
-            //if (Port == null)
-            //{
-            //    Port = new SerialPort(portName);
-            //    Port.BaudRate = 115200;
-            //    Port.DataBits = 8;
-            //    Port.Parity = Parity.None;
-            //    Port.StopBits = StopBits.One;
-            //    Port.Open();
-            //}
+        // Метод закрытия соединения
+        public void CloseConnection()
+        {
+            if (Port != null)
+            {
+                if (Port.IsOpen)
+                {
+                    Port.Close();
+                    Port.Dispose();
+                    Port = null; // Обнуление для дальнейшего предотвращения ошибок
+                }
+            }
+        }
+
+        // Реализация IDisposable
+        public void Dispose()
+        {
+            CloseConnection(); // Закрываем соединение при освобождении ресурсов
         }
 
         public ErrorCode CancelDocument()
@@ -54,60 +76,60 @@ namespace KitCashProtocol
             }
         }
 
-        //public ErrorCode Initialize()
-        //{
-        //    try
-        //    {
-        //        byte[] command = CommandGenerator.GetCommand(Command.REGISTRATION_PARAMETERS);
-        //        Port.Write(command, 0, command.Length);
-        //        byte[] response = ReadResponse();
-        //        if (response[0] == 0x00)
-        //        {
-        //            byte taxes = response[33];
+        public ErrorCode Initialize()
+        {
+            try
+            {
+                byte[] command = CommandGenerator.GetCommand(Command.REGISTRATION_PARAMETERS);
+                Port.Write(command, 0, command.Length);
+                byte[] response = ReadResponse();
+                if (response[0] == 0x00)
+                {
+                    byte taxes = response[33];
 
-        //            if ((taxes & 1) != 0)
-        //            {
-        //                DefaultTaxType = TaxType.Common;
-        //                return ErrorCode.OK;
-        //            }
-        //            if ((taxes & 2) != 0)
-        //            {
-        //                DefaultTaxType = TaxType.Simplified;
-        //                return ErrorCode.OK;
-        //            }
-        //            if ((taxes & 4) != 0)
-        //            {
-        //                DefaultTaxType = TaxType.Simplified2;
-        //                return ErrorCode.OK;
-        //            }
-        //            if ((taxes & 8) != 0)
-        //            {
-        //                DefaultTaxType = TaxType.ENVD;
-        //                return ErrorCode.OK;
-        //            }
-        //            if ((taxes & 16) != 0)
-        //            {
-        //                DefaultTaxType = TaxType.ESN;
-        //                return ErrorCode.OK;
-        //            }
-        //            if ((taxes & 32) != 0)
-        //            {
-        //                DefaultTaxType = TaxType.Patent;
-        //                return ErrorCode.OK;
-        //            }
+                    if ((taxes & 1) != 0)
+                    {
+                        DefaultTaxType = TaxType.Common;
+                        return ErrorCode.OK;
+                    }
+                    if ((taxes & 2) != 0)
+                    {
+                        DefaultTaxType = TaxType.Simplified;
+                        return ErrorCode.OK;
+                    }
+                    if ((taxes & 4) != 0)
+                    {
+                        DefaultTaxType = TaxType.Simplified2;
+                        return ErrorCode.OK;
+                    }
+                    if ((taxes & 8) != 0)
+                    {
+                        DefaultTaxType = TaxType.ENVD;
+                        return ErrorCode.OK;
+                    }
+                    if ((taxes & 16) != 0)
+                    {
+                        DefaultTaxType = TaxType.ESN;
+                        return ErrorCode.OK;
+                    }
+                    if ((taxes & 32) != 0)
+                    {
+                        DefaultTaxType = TaxType.Patent;
+                        return ErrorCode.OK;
+                    }
 
-        //            throw new Exception();
-        //        }
-        //        else
-        //        {
-        //            return (ErrorCode)response[1];
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        return ErrorCode.UnknownError;
-        //    }
-        //}
+                    throw new Exception();
+                }
+                else
+                {
+                    return (ErrorCode)response[1];
+                }
+            }
+            catch
+            {
+                return ErrorCode.UnknownError;
+            }
+        }
 
         public TerminalFAStatus GetStatus()
         {
@@ -166,7 +188,109 @@ namespace KitCashProtocol
 
             return null;
         }
+        public string GetZN()
+        {
+            byte[] command = CommandGenerator.GetCommand(Command.GET_ZN);
+            Port.Write(command, 0, command.Length);
+            MaterialMessageBox.Show("Запрос: " + BitConverter.ToString(command));
+            byte[] response = ReadResponse();
+            if (response != null)
+            {
+                if (response[0] == 0x00)
+                {
+                    return Encoding.GetEncoding(866).GetString(response.Skip(1).ToArray());
+                }
 
+                return string.Empty;
+            }
+
+            return string.Empty;
+        }
+        public string GetFN()
+        {
+            byte[] command = CommandGenerator.GetCommand(Command.GET_FN);
+            Port.Write(command, 0, command.Length);
+            byte[] response = ReadResponse();
+            if (response != null)
+            {
+                if (response[0] == 0x00)
+                {
+                    return Encoding.GetEncoding(866).GetString(response.Skip(1).ToArray());
+                }
+
+                return string.Empty;
+            }
+
+            return string.Empty;
+        }
+        public string GetDATATIME()
+        {
+            // Определяем TAG 0x73 для команды GET_DATATIME
+            byte tag = 0x73;
+            byte length = 0;  // Нет входных параметров
+
+            // Сформируем команду TLV (1 байт для TAG + 1 байт для LEN)
+            byte[] command = new byte[1 + 1];
+            command[0] = tag;
+            command[1] = length;
+
+            // Отправляем команду
+            try
+            {
+                Port.Write(command, 0, command.Length);
+                MaterialMessageBox.Show("Запрос: " + BitConverter.ToString(command));
+            }
+            catch (Exception ex)
+            {
+                // Обработка ошибок при отправке
+                MaterialMessageBox.Show("Ошибка отправки команды: " + ex.Message);
+                return string.Empty;
+            }
+
+            // Читаем ответ
+            byte[] response = ReadResponse();
+            MaterialMessageBox.Show("Ответ: " + BitConverter.ToString(response));
+            if (response != null && response.Length >= 7) // 1 байт TAG + 1 байт LEN + 5 байт для DATETIME
+            {
+                // Проверяем первый байт (TAG) для правильности
+                int tagResponse = response[0] << 8 | response[1]; // Переводим два байта в одно целое значение
+                if (tagResponse == 30000) // Проверьте тег, который соответствует 30000
+                {
+                    // Проверяем длину
+                    byte lengthResponse = response[2];
+                    if (lengthResponse == 5)
+                    {
+                        // Извлекаем значение даты/времени (начиная с 3-го байта)
+                        byte[] dateTimeBytes = new byte[5];
+                        Array.Copy(response, 3, dateTimeBytes, 0, 5);
+
+                        // Здесь можно преобразовать byte[] в строку или в нужный вам формат
+                        // Например, преобразуем в строку, если даты/времена хранятся в определенном формате
+                        // Исходный вид преобразования зависит от того, как представлены данные.
+                        return BitConverter.ToString(dateTimeBytes); // Пример: Конвертируем в строку
+                    }
+                }
+            }
+
+            return string.Empty; // Возвращаем пустую строку, если ответ некорректен
+        }
+        public string GetVersConfig()
+        {
+            byte[] command = CommandGenerator.GetCommand(Command.GET_VERS_CONFIG);
+            Port.Write(command, 0, command.Length);
+            byte[] response = ReadResponse();
+            if (response != null)
+            {
+                if (response[0] == 0x00)
+                {
+                    return Encoding.GetEncoding(866).GetString(response.Skip(1).ToArray());
+                }
+
+                return string.Empty;
+            }
+
+            return string.Empty;
+        }
         public string GetModel()
         {
             byte[] command = CommandGenerator.GetCommand(Command.GET_MODEL);
@@ -364,10 +488,10 @@ namespace KitCashProtocol
             }
         }
 
-        public virtual void Dispose()
-        {
-            if (Port != null) Port.Dispose();
-        }
+        //public virtual void Dispose()
+        //{
+        //    if (Port != null) Port.Dispose();
+        //}
 
         private byte[] ReadResponse()
         {

@@ -1,16 +1,22 @@
 ﻿using MaterialSkin.Controls;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Kassa
 {
+    
     class Save
     {
+        public SqlConnection sqlConnection = null;
         public string D_FD;
 
         public string ID_Сlient;
@@ -46,12 +52,13 @@ namespace Kassa
         public string PrRazvozS;
         public string PrAkxizTovarS;
         public string PrMarkS;
+        public string adr_file_save;
 
         public void setValues(string _D_FD, string _ID_Client, string _RNM, string _ZN_KKT, string _N_av, string _N_FN, string _M_FN, string _NameOrganization, 
             string _Director_org, string _INN_Organization, string _KPP_Organization, string _SNO_OSN, string _SNO_USN_D, string _SNO_USN_D_R, string _SNO_PATENT, string _SNO_ESHN, 
             string _Telephone, string _Email, string _Address_ras, string _Place_ras,
             string _OFD, string _INN_OFD, string _T_FD, string _N_FD, string _FP, string _Model_KKT, string _Adr_Internet, string _PrAvtonomS, string _PrLotereyaS, string _PrAzartS, string _PrBankPlatS,
-            string _PrPlatAgentS, string _PrAvtomatUstrS, string _PrInternetS, string _PrRazvozS, string _PrAkxizTovarS, string _PrMarkS)
+            string _PrPlatAgentS, string _PrAvtomatUstrS, string _PrInternetS, string _PrRazvozS, string _PrAkxizTovarS, string _PrMarkS, string _adr_file_save)
         {
             D_FD = _D_FD;
             ID_Сlient = _ID_Client;
@@ -92,6 +99,19 @@ namespace Kassa
             PrAkxizTovarS = _PrAkxizTovarS;
             PrMarkS = _PrMarkS;
 
+            adr_file_save = _adr_file_save;
+
+            // Заполнение версии программы
+            string program_version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            
+
+            ////Основное подключение к базе данных
+            //sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["Registrator_DB"].ConnectionString);
+            //sqlConnection.Open();
+            //if (sqlConnection.State != ConnectionState.Open)
+            //{
+            //    MaterialMessageBox.Show("Ошибка подключения к базе данных");
+            //}
 
             try
             {
@@ -113,25 +133,33 @@ namespace Kassa
                         Manufacturer_FN = M_FN.Substring(0, M_FN.Length - 4);
                     }
                 }
+                
+                
 
-                //Выбор оператора
-                string Name_operator = System.IO.File.ReadAllText("Authorization.txt");
-                string adr_file = System.IO.File.ReadAllText("adr_file.txt");
-                string adr_file_save = null;
-
-
-                FolderBrowserDialog Browserdialog = new FolderBrowserDialog(); //открытие проводника и выбор папки сохраннения
-                Browserdialog.RootFolder = Environment.SpecialFolder.Desktop;
-                Browserdialog.SelectedPath = adr_file.Remove(adr_file.Length - 2);
-
-                if (Browserdialog.ShowDialog() == DialogResult.OK)
+                
+                if (NameOrganization_save == "")
                 {
-                    adr_file_save = Browserdialog.SelectedPath + "\\";
+                    NameOrganization_save = "Пустой файл";
                 }
-                //Pass the filepath and filename to the StreamWriter Constructor
-
-                StreamWriter sw = new StreamWriter(adr_file_save + ID_Сlient + "_" + NameOrganization_save + ".txt");
-                //Write a line of text
+                //Создание папки
+                string[] n = adr_file_save.Split('\\'); // Делим полный путь на участки через \
+                int local_i = n.Length - 1;
+                for (int i = 0; i < n.Length; i++)  // Если в пути файла встречается папка с названием орагнизации, то заново она не создается
+                {
+                    if (n[i] == ID_Сlient + " " + NameOrganization_save)
+                    {
+                        local_i = n.Length - 1;
+                    }
+                }
+                adr_file_save = "";
+                for (int i = 0; i < local_i+1; i++) // Собираем обратно пусть без удаленного участка
+                {
+                    adr_file_save += n[i] + "\\";
+                }
+                if (local_i == n.Length - 2) { adr_file_save += ID_Сlient + " " + NameOrganization_save; } // Если папка не встретилась, то создается
+                Directory.CreateDirectory(adr_file_save);
+                StreamWriter sw = new StreamWriter(adr_file_save + "\\" +ID_Сlient + " " + NameOrganization_save + ".txt");
+                
                 if (Model_KKT == " ")
                 {
                     sw.WriteLine("______________АКТ ВВОДА В ЭКСПЛУАТАЦИЮ______________");
@@ -177,12 +205,16 @@ namespace Kassa
                 sw.WriteLine("Признак работы с маркированными товарами# " + PrMarkS + " #");
                 sw.WriteLine();
                 sw.WriteLine("КПП организации# " + KPP_Organization + " #");
+                sw.WriteLine();
+                sw.WriteLine("Версия файла# " + program_version + " #");
                 //Close the file
                 sw.Close();
 
+               
                 MaterialMessageBox.Show(
         "Файл сохранен",
         "Сообщение");
+                return;
             }
             catch (Exception ex)
             {

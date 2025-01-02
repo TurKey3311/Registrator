@@ -32,28 +32,57 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Start));
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.textBox17 = new MaterialSkin.Controls.MaterialMaskedTextBox();
-            this.textBox11 = new MaterialSkin.Controls.MaterialMaskedTextBox();
-            this.materialTextBox212 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.buttonCopy21 = new System.Windows.Forms.Button();
+            this.buttonCopy20 = new System.Windows.Forms.Button();
+            this.buttonCopy19 = new System.Windows.Forms.Button();
+            this.buttonCopy18 = new System.Windows.Forms.Button();
+            this.buttonCopy17 = new System.Windows.Forms.Button();
+            this.buttonCopy16 = new System.Windows.Forms.Button();
+            this.buttonCopy15 = new System.Windows.Forms.Button();
+            this.buttonCopy14 = new System.Windows.Forms.Button();
+            this.buttonCopy13 = new System.Windows.Forms.Button();
+            this.buttonCopy12 = new System.Windows.Forms.Button();
+            this.buttonCopy11 = new System.Windows.Forms.Button();
+            this.buttonCopy10 = new System.Windows.Forms.Button();
+            this.buttonCopy9 = new System.Windows.Forms.Button();
+            this.buttonCopy8 = new System.Windows.Forms.Button();
+            this.buttonCopy7 = new System.Windows.Forms.Button();
+            this.buttonCopy6 = new System.Windows.Forms.Button();
+            this.buttonCopy5 = new System.Windows.Forms.Button();
+            this.buttonCopy4 = new System.Windows.Forms.Button();
+            this.buttonCopy2 = new System.Windows.Forms.Button();
+            this.buttonCopy3 = new System.Windows.Forms.Button();
+            this.buttonCopy1 = new System.Windows.Forms.Button();
+            this.label_vers_config = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel18 = new MaterialSkin.Controls.MaterialLabel();
+            this.label_vers_FFD = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel17 = new MaterialSkin.Controls.MaterialLabel();
+            this.switch_open_KKT1 = new MaterialSkin.Controls.MaterialSwitch();
+            this.cancelDocumentButton = new MaterialSkin.Controls.MaterialButton();
+            this.label_image_save_status = new MaterialSkin.Controls.MaterialLabel();
+            this.label_save_status = new MaterialSkin.Controls.MaterialLabel();
+            this.butCleare1 = new MaterialSkin.Controls.MaterialButton();
+            this.TextBox_Datetime_FD = new MaterialSkin.Controls.MaterialMaskedTextBox();
+            this.TextBox_Telephon_number = new MaterialSkin.Controls.MaterialMaskedTextBox();
             this.labelVers1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialCheckbox12 = new MaterialSkin.Controls.MaterialCheckbox();
-            this.materialCheckbox8 = new MaterialSkin.Controls.MaterialCheckbox();
-            this.materialCheckbox9 = new MaterialSkin.Controls.MaterialCheckbox();
-            this.materialCheckbox10 = new MaterialSkin.Controls.MaterialCheckbox();
-            this.materialCheckbox11 = new MaterialSkin.Controls.MaterialCheckbox();
-            this.textBox6 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.checkBox12 = new MaterialSkin.Controls.MaterialCheckbox();
-            this.checkBox10 = new MaterialSkin.Controls.MaterialCheckbox();
-            this.checkBox9 = new MaterialSkin.Controls.MaterialCheckbox();
-            this.checkBox8 = new MaterialSkin.Controls.MaterialCheckbox();
-            this.checkBox7 = new MaterialSkin.Controls.MaterialCheckbox();
-            this.checkBox6 = new MaterialSkin.Controls.MaterialCheckbox();
-            this.checkBox5 = new MaterialSkin.Controls.MaterialCheckbox();
-            this.checkBox4 = new MaterialSkin.Controls.MaterialCheckbox();
-            this.checkBox3 = new MaterialSkin.Controls.MaterialCheckbox();
-            this.checkBox2 = new MaterialSkin.Controls.MaterialCheckbox();
-            this.checkBox1 = new MaterialSkin.Controls.MaterialCheckbox();
+            this.Checkbox_ESHN = new MaterialSkin.Controls.MaterialCheckbox();
+            this.Checkbox_Patent = new MaterialSkin.Controls.MaterialCheckbox();
+            this.Checkbox_USN_Dohod_rashod = new MaterialSkin.Controls.MaterialCheckbox();
+            this.Checkbox_USN_Dohod = new MaterialSkin.Controls.MaterialCheckbox();
+            this.Checkbox_OSN = new MaterialSkin.Controls.MaterialCheckbox();
+            this.TextBox_Domen = new MaterialSkin.Controls.MaterialTextBox2();
+            this.CheckBox_Internet = new MaterialSkin.Controls.MaterialCheckbox();
+            this.CheckBox_Delivery = new MaterialSkin.Controls.MaterialCheckbox();
+            this.CheckBox_Avtonom = new MaterialSkin.Controls.MaterialCheckbox();
+            this.CheckBox_Shifr = new MaterialSkin.Controls.MaterialCheckbox();
+            this.CheckBox_Plat_agent = new MaterialSkin.Controls.MaterialCheckbox();
+            this.CheckBox_Bank_agent = new MaterialSkin.Controls.MaterialCheckbox();
+            this.CheckBox_Printer_v_avtomate = new MaterialSkin.Controls.MaterialCheckbox();
+            this.CheckBox_Lotereya = new MaterialSkin.Controls.MaterialCheckbox();
+            this.CheckBox_Azart_play = new MaterialSkin.Controls.MaterialCheckbox();
+            this.CheckBox_Mark = new MaterialSkin.Controls.MaterialCheckbox();
+            this.CheckBox_Podakziz = new MaterialSkin.Controls.MaterialCheckbox();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.butReg_Terminal_FA = new MaterialSkin.Controls.MaterialButton();
             this.buttonAkt = new MaterialSkin.Controls.MaterialButton();
@@ -62,52 +91,57 @@
             this.butReaddata = new MaterialSkin.Controls.MaterialButton();
             this.butLoading = new MaterialSkin.Controls.MaterialButton();
             this.butSave = new MaterialSkin.Controls.MaterialButton();
-            this.TextBoxNFD = new MaterialSkin.Controls.MaterialTextBox2();
-            this.textBox19 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_Number_FD = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_FP_FD = new MaterialSkin.Controls.MaterialTextBox2();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
-            this.textBox2 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.comboBox1 = new MaterialSkin.Controls.MaterialComboBox();
-            this.textBox20 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.textBox4 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_RNM1 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.ComboBox_Name_OFD1 = new MaterialSkin.Controls.MaterialComboBox();
+            this.TextBox_Email_OFD1 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_INN_OFD1 = new MaterialSkin.Controls.MaterialTextBox2();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
-            this.textBox14 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.textBox13 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_PlaceSale = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_adressSale = new MaterialSkin.Controls.MaterialTextBox2();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
-            this.textBox15 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.textBox12 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.textBox9 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.textBox8 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.textBox7 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.textBox1 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_KPP_organization = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_Email_organization = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_INN_organization = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_Director_org = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_Name_organization = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_ID_client = new MaterialSkin.Controls.MaterialTextBox2();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.comboBox2 = new MaterialSkin.Controls.MaterialComboBox();
-            this.textBox5 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.textBox21 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.textBox3 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.textBox18 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.ComboBox_Model_FN1 = new MaterialSkin.Controls.MaterialComboBox();
+            this.TextBox_ZN_FN = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_Number_automatic = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_ZN_KKT = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_Model_KKT = new MaterialSkin.Controls.MaterialTextBox2();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.materialTextBox28 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.materialTextBox23 = new MaterialSkin.Controls.MaterialMaskedTextBox();
+            this.materialButton1 = new MaterialSkin.Controls.MaterialButton();
+            this.switch_open_KKT2 = new MaterialSkin.Controls.MaterialSwitch();
+            this.butCleare2 = new MaterialSkin.Controls.MaterialButton();
+            this.TextBox_ID_client2 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_Date2 = new MaterialSkin.Controls.MaterialMaskedTextBox();
             this.materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel15 = new MaterialSkin.Controls.MaterialLabel();
             this.labelVers2 = new MaterialSkin.Controls.MaterialLabel();
             this.buttonAkt2 = new MaterialSkin.Controls.MaterialButton();
-            this.butReaddataAKT = new MaterialSkin.Controls.MaterialButton();
-            this.butLoadingAKT = new MaterialSkin.Controls.MaterialButton();
-            this.butSaveAKT = new MaterialSkin.Controls.MaterialButton();
-            this.materialTextBox21 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.materialTextBox22 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.materialTextBox24 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.materialComboBox1 = new MaterialSkin.Controls.MaterialComboBox();
-            this.materialTextBox25 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.materialTextBox26 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.materialTextBox27 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.materialTextBox29 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.materialTextBox210 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.materialTextBox211 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.butReaddata2 = new MaterialSkin.Controls.MaterialButton();
+            this.butLoading2 = new MaterialSkin.Controls.MaterialButton();
+            this.butSave2 = new MaterialSkin.Controls.MaterialButton();
+            this.TextBox_NumberFD2 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_FPDocument2 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_RNM2 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.ComboBox_Name_OFD2 = new MaterialSkin.Controls.MaterialComboBox();
+            this.TextBox_INN_OFD2 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_INNOrganization2 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_NameOrganization2 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_ZN_FN2 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_ZN_KKT2 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_Model_KKT2 = new MaterialSkin.Controls.MaterialTextBox2();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.CheckButton_AddNewOFD = new MaterialSkin.Controls.MaterialCheckbox();
+            this.TextBox_NewName_OFD3 = new MaterialSkin.Controls.MaterialTextBox2();
             this.labelVers3 = new MaterialSkin.Controls.MaterialLabel();
             this.butSaveFN = new MaterialSkin.Controls.MaterialButton();
             this.butSaveOFD = new MaterialSkin.Controls.MaterialButton();
@@ -115,26 +149,29 @@
             this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialTextBox310 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.materialTextBox39 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.materialComboBox2 = new MaterialSkin.Controls.MaterialComboBox();
-            this.materialTextBox38 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.materialTextBox37 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.materialTextBox36 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.materialTextBox35 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.materialTextBox34 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.materialTextBox33 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.materialComboBox3 = new MaterialSkin.Controls.MaterialComboBox();
-            this.materialTextBox32 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.materialTextBox31 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_port_FN3 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_adress_FN3 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.ComboBox_Name_FN3 = new MaterialSkin.Controls.MaterialComboBox();
+            this.TextBox_port_OFD3 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_adress2_OFD3 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_DNS_OFD3 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_TCP_OFD3 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_IP_OFD3 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_adress_OFD3 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.ComboBox_Name_OFD3 = new MaterialSkin.Controls.MaterialComboBox();
+            this.TextBox_Email_OFD3 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_INN_OFD3 = new MaterialSkin.Controls.MaterialTextBox2();
             this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.materialSwitch1 = new MaterialSkin.Controls.MaterialSwitch();
+            this.Switch_Print_Akt = new MaterialSkin.Controls.MaterialSwitch();
+            this.ComboBox_Model_FN4 = new MaterialSkin.Controls.MaterialComboBox();
+            this.ComboBox_Name_OFD4 = new MaterialSkin.Controls.MaterialComboBox();
+            this.Switch_Del_xml = new MaterialSkin.Controls.MaterialSwitch();
             this.labelVers4 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialTextBox2 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.materialTextBox1 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.materialButton2 = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton1 = new MaterialSkin.Controls.MaterialButton();
+            this.TextBox_name_operator = new MaterialSkin.Controls.MaterialTextBox2();
+            this.TextBox_Adr_file = new MaterialSkin.Controls.MaterialTextBox2();
+            this.Button_Open_folder = new MaterialSkin.Controls.MaterialButton();
+            this.Button_Save4 = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.materialCheckbox1 = new MaterialSkin.Controls.MaterialCheckbox();
@@ -144,6 +181,8 @@
             this.materialCheckbox5 = new MaterialSkin.Controls.MaterialCheckbox();
             this.materialCheckbox6 = new MaterialSkin.Controls.MaterialCheckbox();
             this.materialCheckbox7 = new MaterialSkin.Controls.MaterialCheckbox();
+            this.label_datatime = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel20 = new MaterialSkin.Controls.MaterialLabel();
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -172,28 +211,59 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage1.Controls.Add(this.textBox17);
-            this.tabPage1.Controls.Add(this.textBox11);
-            this.tabPage1.Controls.Add(this.materialTextBox212);
+            this.tabPage1.Controls.Add(this.label_datatime);
+            this.tabPage1.Controls.Add(this.materialLabel20);
+            this.tabPage1.Controls.Add(this.buttonCopy21);
+            this.tabPage1.Controls.Add(this.buttonCopy20);
+            this.tabPage1.Controls.Add(this.buttonCopy19);
+            this.tabPage1.Controls.Add(this.buttonCopy18);
+            this.tabPage1.Controls.Add(this.buttonCopy17);
+            this.tabPage1.Controls.Add(this.buttonCopy16);
+            this.tabPage1.Controls.Add(this.buttonCopy15);
+            this.tabPage1.Controls.Add(this.buttonCopy14);
+            this.tabPage1.Controls.Add(this.buttonCopy13);
+            this.tabPage1.Controls.Add(this.buttonCopy12);
+            this.tabPage1.Controls.Add(this.buttonCopy11);
+            this.tabPage1.Controls.Add(this.buttonCopy10);
+            this.tabPage1.Controls.Add(this.buttonCopy9);
+            this.tabPage1.Controls.Add(this.buttonCopy8);
+            this.tabPage1.Controls.Add(this.buttonCopy7);
+            this.tabPage1.Controls.Add(this.buttonCopy6);
+            this.tabPage1.Controls.Add(this.buttonCopy5);
+            this.tabPage1.Controls.Add(this.buttonCopy4);
+            this.tabPage1.Controls.Add(this.buttonCopy2);
+            this.tabPage1.Controls.Add(this.buttonCopy3);
+            this.tabPage1.Controls.Add(this.buttonCopy1);
+            this.tabPage1.Controls.Add(this.label_vers_config);
+            this.tabPage1.Controls.Add(this.materialLabel18);
+            this.tabPage1.Controls.Add(this.label_vers_FFD);
+            this.tabPage1.Controls.Add(this.materialLabel17);
+            this.tabPage1.Controls.Add(this.switch_open_KKT1);
+            this.tabPage1.Controls.Add(this.cancelDocumentButton);
+            this.tabPage1.Controls.Add(this.label_image_save_status);
+            this.tabPage1.Controls.Add(this.label_save_status);
+            this.tabPage1.Controls.Add(this.butCleare1);
+            this.tabPage1.Controls.Add(this.TextBox_Datetime_FD);
+            this.tabPage1.Controls.Add(this.TextBox_Telephon_number);
             this.tabPage1.Controls.Add(this.labelVers1);
             this.tabPage1.Controls.Add(this.materialLabel7);
-            this.tabPage1.Controls.Add(this.materialCheckbox12);
-            this.tabPage1.Controls.Add(this.materialCheckbox8);
-            this.tabPage1.Controls.Add(this.materialCheckbox9);
-            this.tabPage1.Controls.Add(this.materialCheckbox10);
-            this.tabPage1.Controls.Add(this.materialCheckbox11);
-            this.tabPage1.Controls.Add(this.textBox6);
-            this.tabPage1.Controls.Add(this.checkBox12);
-            this.tabPage1.Controls.Add(this.checkBox10);
-            this.tabPage1.Controls.Add(this.checkBox9);
-            this.tabPage1.Controls.Add(this.checkBox8);
-            this.tabPage1.Controls.Add(this.checkBox7);
-            this.tabPage1.Controls.Add(this.checkBox6);
-            this.tabPage1.Controls.Add(this.checkBox5);
-            this.tabPage1.Controls.Add(this.checkBox4);
-            this.tabPage1.Controls.Add(this.checkBox3);
-            this.tabPage1.Controls.Add(this.checkBox2);
-            this.tabPage1.Controls.Add(this.checkBox1);
+            this.tabPage1.Controls.Add(this.Checkbox_ESHN);
+            this.tabPage1.Controls.Add(this.Checkbox_Patent);
+            this.tabPage1.Controls.Add(this.Checkbox_USN_Dohod_rashod);
+            this.tabPage1.Controls.Add(this.Checkbox_USN_Dohod);
+            this.tabPage1.Controls.Add(this.Checkbox_OSN);
+            this.tabPage1.Controls.Add(this.TextBox_Domen);
+            this.tabPage1.Controls.Add(this.CheckBox_Internet);
+            this.tabPage1.Controls.Add(this.CheckBox_Delivery);
+            this.tabPage1.Controls.Add(this.CheckBox_Avtonom);
+            this.tabPage1.Controls.Add(this.CheckBox_Shifr);
+            this.tabPage1.Controls.Add(this.CheckBox_Plat_agent);
+            this.tabPage1.Controls.Add(this.CheckBox_Bank_agent);
+            this.tabPage1.Controls.Add(this.CheckBox_Printer_v_avtomate);
+            this.tabPage1.Controls.Add(this.CheckBox_Lotereya);
+            this.tabPage1.Controls.Add(this.CheckBox_Azart_play);
+            this.tabPage1.Controls.Add(this.CheckBox_Mark);
+            this.tabPage1.Controls.Add(this.CheckBox_Podakziz);
             this.tabPage1.Controls.Add(this.materialLabel6);
             this.tabPage1.Controls.Add(this.butReg_Terminal_FA);
             this.tabPage1.Controls.Add(this.buttonAkt);
@@ -202,30 +272,30 @@
             this.tabPage1.Controls.Add(this.butReaddata);
             this.tabPage1.Controls.Add(this.butLoading);
             this.tabPage1.Controls.Add(this.butSave);
-            this.tabPage1.Controls.Add(this.TextBoxNFD);
-            this.tabPage1.Controls.Add(this.textBox19);
+            this.tabPage1.Controls.Add(this.TextBox_Number_FD);
+            this.tabPage1.Controls.Add(this.TextBox_FP_FD);
             this.tabPage1.Controls.Add(this.materialLabel5);
-            this.tabPage1.Controls.Add(this.textBox2);
-            this.tabPage1.Controls.Add(this.comboBox1);
-            this.tabPage1.Controls.Add(this.textBox20);
-            this.tabPage1.Controls.Add(this.textBox4);
+            this.tabPage1.Controls.Add(this.TextBox_RNM1);
+            this.tabPage1.Controls.Add(this.ComboBox_Name_OFD1);
+            this.tabPage1.Controls.Add(this.TextBox_Email_OFD1);
+            this.tabPage1.Controls.Add(this.TextBox_INN_OFD1);
             this.tabPage1.Controls.Add(this.materialLabel4);
-            this.tabPage1.Controls.Add(this.textBox14);
-            this.tabPage1.Controls.Add(this.textBox13);
+            this.tabPage1.Controls.Add(this.TextBox_PlaceSale);
+            this.tabPage1.Controls.Add(this.TextBox_adressSale);
             this.tabPage1.Controls.Add(this.materialLabel3);
-            this.tabPage1.Controls.Add(this.textBox15);
-            this.tabPage1.Controls.Add(this.textBox12);
-            this.tabPage1.Controls.Add(this.textBox9);
-            this.tabPage1.Controls.Add(this.textBox8);
-            this.tabPage1.Controls.Add(this.textBox7);
-            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.TextBox_KPP_organization);
+            this.tabPage1.Controls.Add(this.TextBox_Email_organization);
+            this.tabPage1.Controls.Add(this.TextBox_INN_organization);
+            this.tabPage1.Controls.Add(this.TextBox_Director_org);
+            this.tabPage1.Controls.Add(this.TextBox_Name_organization);
+            this.tabPage1.Controls.Add(this.TextBox_ID_client);
             this.tabPage1.Controls.Add(this.materialLabel2);
             this.tabPage1.Controls.Add(this.materialLabel1);
-            this.tabPage1.Controls.Add(this.comboBox2);
-            this.tabPage1.Controls.Add(this.textBox5);
-            this.tabPage1.Controls.Add(this.textBox21);
-            this.tabPage1.Controls.Add(this.textBox3);
-            this.tabPage1.Controls.Add(this.textBox18);
+            this.tabPage1.Controls.Add(this.ComboBox_Model_FN1);
+            this.tabPage1.Controls.Add(this.TextBox_ZN_FN);
+            this.tabPage1.Controls.Add(this.TextBox_Number_automatic);
+            this.tabPage1.Controls.Add(this.TextBox_ZN_KKT);
+            this.tabPage1.Controls.Add(this.TextBox_Model_KKT);
             this.tabPage1.ImageKey = "icons8-квитанция-80.png";
             this.tabPage1.Location = new System.Drawing.Point(4, 39);
             this.tabPage1.Name = "tabPage1";
@@ -234,119 +304,473 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Регистрация ККТ";
             // 
-            // textBox17
+            // buttonCopy21
             // 
-            this.textBox17.AllowPromptAsInput = true;
-            this.textBox17.AnimateReadOnly = false;
-            this.textBox17.AsciiOnly = false;
-            this.textBox17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.textBox17.BeepOnError = false;
-            this.textBox17.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
-            this.textBox17.Depth = 0;
-            this.textBox17.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.textBox17.HidePromptOnLeave = false;
-            this.textBox17.HideSelection = true;
-            this.textBox17.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Default;
-            this.textBox17.LeadingIcon = null;
-            this.textBox17.Location = new System.Drawing.Point(603, 838);
-            this.textBox17.Mask = "00/00/0000 00:00";
-            this.textBox17.MaxLength = 32767;
-            this.textBox17.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox17.Name = "textBox17";
-            this.textBox17.PasswordChar = '\0';
-            this.textBox17.PrefixSuffixText = null;
-            this.textBox17.PromptChar = '_';
-            this.textBox17.ReadOnly = false;
-            this.textBox17.RejectInputOnFirstFailure = false;
-            this.textBox17.ResetOnPrompt = true;
-            this.textBox17.ResetOnSpace = true;
-            this.textBox17.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox17.SelectedText = "";
-            this.textBox17.SelectionLength = 0;
-            this.textBox17.SelectionStart = 0;
-            this.textBox17.ShortcutsEnabled = true;
-            this.textBox17.Size = new System.Drawing.Size(363, 48);
-            this.textBox17.SkipLiterals = true;
-            this.textBox17.TabIndex = 125;
-            this.textBox17.TabStop = false;
-            this.textBox17.Text = "  .  .       :";
-            this.textBox17.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBox17.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
-            this.textBox17.TrailingIcon = null;
-            this.textBox17.UseSystemPasswordChar = false;
-            this.textBox17.ValidatingType = null;
+            this.buttonCopy21.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonCopy21.Image = ((System.Drawing.Image)(resources.GetObject("buttonCopy21.Image")));
+            this.buttonCopy21.Location = new System.Drawing.Point(945, 892);
+            this.buttonCopy21.Name = "buttonCopy21";
+            this.buttonCopy21.Size = new System.Drawing.Size(21, 48);
+            this.buttonCopy21.TabIndex = 159;
+            this.buttonCopy21.UseVisualStyleBackColor = false;
+            this.buttonCopy21.Click += new System.EventHandler(this.buttonCopy21_Click);
             // 
-            // textBox11
+            // buttonCopy20
             // 
-            this.textBox11.AllowPromptAsInput = true;
-            this.textBox11.AnimateReadOnly = false;
-            this.textBox11.AsciiOnly = false;
-            this.textBox11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.textBox11.BeepOnError = false;
-            this.textBox11.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
-            this.textBox11.Depth = 0;
-            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.textBox11.HidePromptOnLeave = false;
-            this.textBox11.HideSelection = true;
-            this.textBox11.Hint = "Телефон";
-            this.textBox11.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Default;
-            this.textBox11.LeadingIcon = null;
-            this.textBox11.Location = new System.Drawing.Point(666, 368);
-            this.textBox11.Mask = "+ 0 (999) 000-00-00";
-            this.textBox11.MaxLength = 32767;
-            this.textBox11.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox11.Name = "textBox11";
-            this.textBox11.PasswordChar = '\0';
-            this.textBox11.PrefixSuffixText = null;
-            this.textBox11.PromptChar = '_';
-            this.textBox11.ReadOnly = false;
-            this.textBox11.RejectInputOnFirstFailure = false;
-            this.textBox11.ResetOnPrompt = true;
-            this.textBox11.ResetOnSpace = true;
-            this.textBox11.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox11.SelectedText = "";
-            this.textBox11.SelectionLength = 0;
-            this.textBox11.SelectionStart = 0;
-            this.textBox11.ShortcutsEnabled = true;
-            this.textBox11.Size = new System.Drawing.Size(300, 48);
-            this.textBox11.SkipLiterals = true;
-            this.textBox11.TabIndex = 124;
-            this.textBox11.TabStop = false;
-            this.textBox11.Text = "+   (   )    -  -";
-            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBox11.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
-            this.textBox11.TrailingIcon = null;
-            this.textBox11.UseSystemPasswordChar = false;
-            this.textBox11.ValidatingType = null;
+            this.buttonCopy20.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonCopy20.Image = ((System.Drawing.Image)(resources.GetObject("buttonCopy20.Image")));
+            this.buttonCopy20.Location = new System.Drawing.Point(945, 838);
+            this.buttonCopy20.Name = "buttonCopy20";
+            this.buttonCopy20.Size = new System.Drawing.Size(21, 48);
+            this.buttonCopy20.TabIndex = 158;
+            this.buttonCopy20.UseVisualStyleBackColor = false;
+            this.buttonCopy20.Click += new System.EventHandler(this.buttonCopy20_Click);
             // 
-            // materialTextBox212
+            // buttonCopy19
             // 
-            this.materialTextBox212.AnimateReadOnly = false;
-            this.materialTextBox212.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox212.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox212.Depth = 0;
-            this.materialTextBox212.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.materialTextBox212.HideSelection = true;
-            this.materialTextBox212.Hint = "ОФД";
-            this.materialTextBox212.LeadingIcon = null;
-            this.materialTextBox212.Location = new System.Drawing.Point(607, 615);
-            this.materialTextBox212.MaxLength = 32767;
-            this.materialTextBox212.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox212.Name = "materialTextBox212";
-            this.materialTextBox212.PasswordChar = '\0';
-            this.materialTextBox212.PrefixSuffixText = null;
-            this.materialTextBox212.ReadOnly = false;
-            this.materialTextBox212.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox212.SelectedText = "";
-            this.materialTextBox212.SelectionLength = 0;
-            this.materialTextBox212.SelectionStart = 0;
-            this.materialTextBox212.ShortcutsEnabled = true;
-            this.materialTextBox212.Size = new System.Drawing.Size(363, 48);
-            this.materialTextBox212.TabIndex = 123;
-            this.materialTextBox212.TabStop = false;
-            this.materialTextBox212.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox212.TrailingIcon = null;
-            this.materialTextBox212.UseSystemPasswordChar = false;
+            this.buttonCopy19.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonCopy19.Image = ((System.Drawing.Image)(resources.GetObject("buttonCopy19.Image")));
+            this.buttonCopy19.Location = new System.Drawing.Point(576, 892);
+            this.buttonCopy19.Name = "buttonCopy19";
+            this.buttonCopy19.Size = new System.Drawing.Size(21, 48);
+            this.buttonCopy19.TabIndex = 157;
+            this.buttonCopy19.UseVisualStyleBackColor = false;
+            this.buttonCopy19.Click += new System.EventHandler(this.buttonCopy19_Click);
+            // 
+            // buttonCopy18
+            // 
+            this.buttonCopy18.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonCopy18.Image = ((System.Drawing.Image)(resources.GetObject("buttonCopy18.Image")));
+            this.buttonCopy18.Location = new System.Drawing.Point(576, 838);
+            this.buttonCopy18.Name = "buttonCopy18";
+            this.buttonCopy18.Size = new System.Drawing.Size(21, 48);
+            this.buttonCopy18.TabIndex = 156;
+            this.buttonCopy18.UseVisualStyleBackColor = false;
+            this.buttonCopy18.Click += new System.EventHandler(this.buttonCopy18_Click);
+            // 
+            // buttonCopy17
+            // 
+            this.buttonCopy17.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonCopy17.Image = ((System.Drawing.Image)(resources.GetObject("buttonCopy17.Image")));
+            this.buttonCopy17.Location = new System.Drawing.Point(945, 669);
+            this.buttonCopy17.Name = "buttonCopy17";
+            this.buttonCopy17.Size = new System.Drawing.Size(21, 48);
+            this.buttonCopy17.TabIndex = 155;
+            this.buttonCopy17.UseVisualStyleBackColor = false;
+            this.buttonCopy17.Click += new System.EventHandler(this.buttonCopy17_Click);
+            // 
+            // buttonCopy16
+            // 
+            this.buttonCopy16.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonCopy16.Image = ((System.Drawing.Image)(resources.GetObject("buttonCopy16.Image")));
+            this.buttonCopy16.Location = new System.Drawing.Point(580, 669);
+            this.buttonCopy16.Name = "buttonCopy16";
+            this.buttonCopy16.Size = new System.Drawing.Size(21, 48);
+            this.buttonCopy16.TabIndex = 153;
+            this.buttonCopy16.UseVisualStyleBackColor = false;
+            this.buttonCopy16.Click += new System.EventHandler(this.buttonCopy16_Click);
+            // 
+            // buttonCopy15
+            // 
+            this.buttonCopy15.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonCopy15.Image = ((System.Drawing.Image)(resources.GetObject("buttonCopy15.Image")));
+            this.buttonCopy15.Location = new System.Drawing.Point(517, 614);
+            this.buttonCopy15.Name = "buttonCopy15";
+            this.buttonCopy15.Size = new System.Drawing.Size(21, 48);
+            this.buttonCopy15.TabIndex = 152;
+            this.buttonCopy15.UseVisualStyleBackColor = false;
+            this.buttonCopy15.Click += new System.EventHandler(this.buttonCopy15_Click);
+            // 
+            // buttonCopy14
+            // 
+            this.buttonCopy14.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonCopy14.Image = ((System.Drawing.Image)(resources.GetObject("buttonCopy14.Image")));
+            this.buttonCopy14.Location = new System.Drawing.Point(945, 515);
+            this.buttonCopy14.Name = "buttonCopy14";
+            this.buttonCopy14.Size = new System.Drawing.Size(21, 48);
+            this.buttonCopy14.TabIndex = 151;
+            this.buttonCopy14.UseVisualStyleBackColor = false;
+            this.buttonCopy14.Click += new System.EventHandler(this.buttonCopy14_Click);
+            // 
+            // buttonCopy13
+            // 
+            this.buttonCopy13.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonCopy13.Image = ((System.Drawing.Image)(resources.GetObject("buttonCopy13.Image")));
+            this.buttonCopy13.Location = new System.Drawing.Point(580, 515);
+            this.buttonCopy13.Name = "buttonCopy13";
+            this.buttonCopy13.Size = new System.Drawing.Size(21, 48);
+            this.buttonCopy13.TabIndex = 150;
+            this.buttonCopy13.UseVisualStyleBackColor = false;
+            this.buttonCopy13.Click += new System.EventHandler(this.buttonCopy13_Click);
+            // 
+            // buttonCopy12
+            // 
+            this.buttonCopy12.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonCopy12.Image = ((System.Drawing.Image)(resources.GetObject("buttonCopy12.Image")));
+            this.buttonCopy12.Location = new System.Drawing.Point(945, 422);
+            this.buttonCopy12.Name = "buttonCopy12";
+            this.buttonCopy12.Size = new System.Drawing.Size(21, 48);
+            this.buttonCopy12.TabIndex = 149;
+            this.buttonCopy12.UseVisualStyleBackColor = false;
+            this.buttonCopy12.Click += new System.EventHandler(this.buttonCopy12_Click);
+            // 
+            // buttonCopy11
+            // 
+            this.buttonCopy11.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonCopy11.Image = ((System.Drawing.Image)(resources.GetObject("buttonCopy11.Image")));
+            this.buttonCopy11.Location = new System.Drawing.Point(945, 368);
+            this.buttonCopy11.Name = "buttonCopy11";
+            this.buttonCopy11.Size = new System.Drawing.Size(21, 48);
+            this.buttonCopy11.TabIndex = 148;
+            this.buttonCopy11.UseVisualStyleBackColor = false;
+            this.buttonCopy11.Click += new System.EventHandler(this.buttonCopy11_Click);
+            // 
+            // buttonCopy10
+            // 
+            this.buttonCopy10.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonCopy10.Image = ((System.Drawing.Image)(resources.GetObject("buttonCopy10.Image")));
+            this.buttonCopy10.Location = new System.Drawing.Point(945, 298);
+            this.buttonCopy10.Name = "buttonCopy10";
+            this.buttonCopy10.Size = new System.Drawing.Size(21, 48);
+            this.buttonCopy10.TabIndex = 147;
+            this.buttonCopy10.UseVisualStyleBackColor = false;
+            this.buttonCopy10.Visible = false;
+            this.buttonCopy10.Click += new System.EventHandler(this.buttonCopy10_Click);
+            // 
+            // buttonCopy9
+            // 
+            this.buttonCopy9.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonCopy9.Image = ((System.Drawing.Image)(resources.GetObject("buttonCopy9.Image")));
+            this.buttonCopy9.Location = new System.Drawing.Point(624, 422);
+            this.buttonCopy9.Name = "buttonCopy9";
+            this.buttonCopy9.Size = new System.Drawing.Size(21, 48);
+            this.buttonCopy9.TabIndex = 146;
+            this.buttonCopy9.UseVisualStyleBackColor = false;
+            this.buttonCopy9.Click += new System.EventHandler(this.buttonCopy9_Click);
+            // 
+            // buttonCopy8
+            // 
+            this.buttonCopy8.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonCopy8.Image = ((System.Drawing.Image)(resources.GetObject("buttonCopy8.Image")));
+            this.buttonCopy8.Location = new System.Drawing.Point(624, 368);
+            this.buttonCopy8.Name = "buttonCopy8";
+            this.buttonCopy8.Size = new System.Drawing.Size(21, 48);
+            this.buttonCopy8.TabIndex = 145;
+            this.buttonCopy8.UseVisualStyleBackColor = false;
+            this.buttonCopy8.Click += new System.EventHandler(this.buttonCopy8_Click);
+            // 
+            // buttonCopy7
+            // 
+            this.buttonCopy7.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonCopy7.Image = ((System.Drawing.Image)(resources.GetObject("buttonCopy7.Image")));
+            this.buttonCopy7.Location = new System.Drawing.Point(624, 314);
+            this.buttonCopy7.Name = "buttonCopy7";
+            this.buttonCopy7.Size = new System.Drawing.Size(21, 48);
+            this.buttonCopy7.TabIndex = 144;
+            this.buttonCopy7.UseVisualStyleBackColor = false;
+            this.buttonCopy7.Click += new System.EventHandler(this.buttonCopy7_Click);
+            // 
+            // buttonCopy6
+            // 
+            this.buttonCopy6.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonCopy6.Image = ((System.Drawing.Image)(resources.GetObject("buttonCopy6.Image")));
+            this.buttonCopy6.Location = new System.Drawing.Point(460, 260);
+            this.buttonCopy6.Name = "buttonCopy6";
+            this.buttonCopy6.Size = new System.Drawing.Size(21, 48);
+            this.buttonCopy6.TabIndex = 143;
+            this.buttonCopy6.UseVisualStyleBackColor = false;
+            this.buttonCopy6.Click += new System.EventHandler(this.buttonCopy6_Click);
+            // 
+            // buttonCopy5
+            // 
+            this.buttonCopy5.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonCopy5.Image = ((System.Drawing.Image)(resources.GetObject("buttonCopy5.Image")));
+            this.buttonCopy5.Location = new System.Drawing.Point(945, 161);
+            this.buttonCopy5.Name = "buttonCopy5";
+            this.buttonCopy5.Size = new System.Drawing.Size(21, 48);
+            this.buttonCopy5.TabIndex = 142;
+            this.buttonCopy5.UseVisualStyleBackColor = false;
+            this.buttonCopy5.Click += new System.EventHandler(this.buttonCopy5_Click);
+            // 
+            // buttonCopy4
+            // 
+            this.buttonCopy4.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonCopy4.Image = ((System.Drawing.Image)(resources.GetObject("buttonCopy4.Image")));
+            this.buttonCopy4.Location = new System.Drawing.Point(945, 107);
+            this.buttonCopy4.Name = "buttonCopy4";
+            this.buttonCopy4.Size = new System.Drawing.Size(21, 48);
+            this.buttonCopy4.TabIndex = 141;
+            this.buttonCopy4.UseVisualStyleBackColor = false;
+            this.buttonCopy4.Click += new System.EventHandler(this.buttonCopy4_Click);
+            // 
+            // buttonCopy2
+            // 
+            this.buttonCopy2.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonCopy2.Image = ((System.Drawing.Image)(resources.GetObject("buttonCopy2.Image")));
+            this.buttonCopy2.Location = new System.Drawing.Point(460, 161);
+            this.buttonCopy2.Name = "buttonCopy2";
+            this.buttonCopy2.Size = new System.Drawing.Size(21, 48);
+            this.buttonCopy2.TabIndex = 140;
+            this.buttonCopy2.UseVisualStyleBackColor = false;
+            this.buttonCopy2.Click += new System.EventHandler(this.buttonCopy2_Click);
+            // 
+            // buttonCopy3
+            // 
+            this.buttonCopy3.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonCopy3.Image = ((System.Drawing.Image)(resources.GetObject("buttonCopy3.Image")));
+            this.buttonCopy3.Location = new System.Drawing.Point(639, 161);
+            this.buttonCopy3.Name = "buttonCopy3";
+            this.buttonCopy3.Size = new System.Drawing.Size(21, 48);
+            this.buttonCopy3.TabIndex = 139;
+            this.buttonCopy3.UseVisualStyleBackColor = false;
+            this.buttonCopy3.Click += new System.EventHandler(this.buttonCopy3_Click);
+            // 
+            // buttonCopy1
+            // 
+            this.buttonCopy1.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonCopy1.Image = ((System.Drawing.Image)(resources.GetObject("buttonCopy1.Image")));
+            this.buttonCopy1.Location = new System.Drawing.Point(639, 107);
+            this.buttonCopy1.Name = "buttonCopy1";
+            this.buttonCopy1.Size = new System.Drawing.Size(21, 48);
+            this.buttonCopy1.TabIndex = 138;
+            this.buttonCopy1.UseVisualStyleBackColor = false;
+            this.buttonCopy1.Click += new System.EventHandler(this.buttonCopy1_Click);
+            // 
+            // label_vers_config
+            // 
+            this.label_vers_config.AutoSize = true;
+            this.label_vers_config.Depth = 0;
+            this.label_vers_config.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.label_vers_config.FontType = MaterialSkin.MaterialSkinManager.fontType.Button;
+            this.label_vers_config.HighEmphasis = true;
+            this.label_vers_config.Location = new System.Drawing.Point(143, 493);
+            this.label_vers_config.MouseState = MaterialSkin.MouseState.HOVER;
+            this.label_vers_config.Name = "label_vers_config";
+            this.label_vers_config.Size = new System.Drawing.Size(21, 17);
+            this.label_vers_config.TabIndex = 136;
+            this.label_vers_config.Text = "----";
+            // 
+            // materialLabel18
+            // 
+            this.materialLabel18.AutoSize = true;
+            this.materialLabel18.Depth = 0;
+            this.materialLabel18.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel18.FontType = MaterialSkin.MaterialSkinManager.fontType.Button;
+            this.materialLabel18.HighEmphasis = true;
+            this.materialLabel18.Location = new System.Drawing.Point(14, 493);
+            this.materialLabel18.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel18.Name = "materialLabel18";
+            this.materialLabel18.Size = new System.Drawing.Size(123, 17);
+            this.materialLabel18.TabIndex = 135;
+            this.materialLabel18.Text = "Версия прошивки:";
+            // 
+            // label_vers_FFD
+            // 
+            this.label_vers_FFD.AutoSize = true;
+            this.label_vers_FFD.Depth = 0;
+            this.label_vers_FFD.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.label_vers_FFD.FontType = MaterialSkin.MaterialSkinManager.fontType.Button;
+            this.label_vers_FFD.HighEmphasis = true;
+            this.label_vers_FFD.Location = new System.Drawing.Point(116, 463);
+            this.label_vers_FFD.MouseState = MaterialSkin.MouseState.HOVER;
+            this.label_vers_FFD.Name = "label_vers_FFD";
+            this.label_vers_FFD.Size = new System.Drawing.Size(21, 17);
+            this.label_vers_FFD.TabIndex = 134;
+            this.label_vers_FFD.Text = "----";
+            // 
+            // materialLabel17
+            // 
+            this.materialLabel17.AutoSize = true;
+            this.materialLabel17.Depth = 0;
+            this.materialLabel17.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel17.FontType = MaterialSkin.MaterialSkinManager.fontType.Button;
+            this.materialLabel17.HighEmphasis = true;
+            this.materialLabel17.Location = new System.Drawing.Point(14, 462);
+            this.materialLabel17.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel17.Name = "materialLabel17";
+            this.materialLabel17.Size = new System.Drawing.Size(89, 17);
+            this.materialLabel17.TabIndex = 133;
+            this.materialLabel17.Text = "Версия ФФД:";
+            // 
+            // switch_open_KKT1
+            // 
+            this.switch_open_KKT1.AutoSize = true;
+            this.switch_open_KKT1.Depth = 0;
+            this.switch_open_KKT1.Location = new System.Drawing.Point(12, 83);
+            this.switch_open_KKT1.Margin = new System.Windows.Forms.Padding(0);
+            this.switch_open_KKT1.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.switch_open_KKT1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.switch_open_KKT1.Name = "switch_open_KKT1";
+            this.switch_open_KKT1.Ripple = true;
+            this.switch_open_KKT1.Size = new System.Drawing.Size(196, 37);
+            this.switch_open_KKT1.TabIndex = 132;
+            this.switch_open_KKT1.Text = "Подключение ККТ";
+            this.switch_open_KKT1.UseVisualStyleBackColor = true;
+            this.switch_open_KKT1.Click += new System.EventHandler(this.switchclick_openKKT1);
+            // 
+            // cancelDocumentButton
+            // 
+            this.cancelDocumentButton.AutoSize = false;
+            this.cancelDocumentButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.cancelDocumentButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cancelDocumentButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.cancelDocumentButton.Depth = 0;
+            this.cancelDocumentButton.HighEmphasis = true;
+            this.cancelDocumentButton.Icon = ((System.Drawing.Image)(resources.GetObject("cancelDocumentButton.Icon")));
+            this.cancelDocumentButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cancelDocumentButton.Location = new System.Drawing.Point(17, 369);
+            this.cancelDocumentButton.Margin = new System.Windows.Forms.Padding(14, 4, 4, 4);
+            this.cancelDocumentButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.cancelDocumentButton.Name = "cancelDocumentButton";
+            this.cancelDocumentButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.cancelDocumentButton.Padding = new System.Windows.Forms.Padding(2);
+            this.cancelDocumentButton.Size = new System.Drawing.Size(168, 47);
+            this.cancelDocumentButton.TabIndex = 131;
+            this.cancelDocumentButton.Text = "Отменить документ";
+            this.cancelDocumentButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
+            this.cancelDocumentButton.UseAccentColor = false;
+            this.cancelDocumentButton.UseVisualStyleBackColor = true;
+            this.cancelDocumentButton.Visible = false;
+            // 
+            // label_image_save_status
+            // 
+            this.label_image_save_status.AutoSize = true;
+            this.label_image_save_status.Depth = 0;
+            this.label_image_save_status.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.label_image_save_status.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
+            this.label_image_save_status.HighEmphasis = true;
+            this.label_image_save_status.Location = new System.Drawing.Point(687, 25);
+            this.label_image_save_status.MouseState = MaterialSkin.MouseState.HOVER;
+            this.label_image_save_status.Name = "label_image_save_status";
+            this.label_image_save_status.Size = new System.Drawing.Size(14, 29);
+            this.label_image_save_status.TabIndex = 130;
+            this.label_image_save_status.Text = "×";
+            // 
+            // label_save_status
+            // 
+            this.label_save_status.AutoSize = true;
+            this.label_save_status.Depth = 0;
+            this.label_save_status.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.label_save_status.FontType = MaterialSkin.MaterialSkinManager.fontType.Button;
+            this.label_save_status.HighEmphasis = true;
+            this.label_save_status.Location = new System.Drawing.Point(707, 32);
+            this.label_save_status.MouseState = MaterialSkin.MouseState.HOVER;
+            this.label_save_status.Name = "label_save_status";
+            this.label_save_status.Size = new System.Drawing.Size(152, 17);
+            this.label_save_status.TabIndex = 129;
+            this.label_save_status.Text = "Требуется сохранение";
+            // 
+            // butCleare1
+            // 
+            this.butCleare1.AutoSize = false;
+            this.butCleare1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.butCleare1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.butCleare1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.butCleare1.Depth = 0;
+            this.butCleare1.HighEmphasis = true;
+            this.butCleare1.Icon = ((System.Drawing.Image)(resources.GetObject("butCleare1.Icon")));
+            this.butCleare1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.butCleare1.Location = new System.Drawing.Point(501, 17);
+            this.butCleare1.Margin = new System.Windows.Forms.Padding(14, 4, 4, 4);
+            this.butCleare1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.butCleare1.Name = "butCleare1";
+            this.butCleare1.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.butCleare1.Padding = new System.Windows.Forms.Padding(2);
+            this.butCleare1.Size = new System.Drawing.Size(144, 47);
+            this.butCleare1.TabIndex = 126;
+            this.butCleare1.Text = "Очистить поля";
+            this.butCleare1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.butCleare1.UseAccentColor = false;
+            this.butCleare1.UseVisualStyleBackColor = true;
+            this.butCleare1.Click += new System.EventHandler(this.Clean_Click);
+            // 
+            // TextBox_Datetime_FD
+            // 
+            this.TextBox_Datetime_FD.AllowPromptAsInput = true;
+            this.TextBox_Datetime_FD.AnimateReadOnly = false;
+            this.TextBox_Datetime_FD.AsciiOnly = false;
+            this.TextBox_Datetime_FD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_Datetime_FD.BeepOnError = false;
+            this.TextBox_Datetime_FD.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
+            this.TextBox_Datetime_FD.Depth = 0;
+            this.TextBox_Datetime_FD.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TextBox_Datetime_FD.HidePromptOnLeave = false;
+            this.TextBox_Datetime_FD.HideSelection = true;
+            this.TextBox_Datetime_FD.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Default;
+            this.TextBox_Datetime_FD.LeadingIcon = null;
+            this.TextBox_Datetime_FD.Location = new System.Drawing.Point(603, 838);
+            this.TextBox_Datetime_FD.Mask = "00/00/0000 00:00";
+            this.TextBox_Datetime_FD.MaxLength = 32767;
+            this.TextBox_Datetime_FD.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_Datetime_FD.Name = "TextBox_Datetime_FD";
+            this.TextBox_Datetime_FD.PasswordChar = '\0';
+            this.TextBox_Datetime_FD.PrefixSuffixText = null;
+            this.TextBox_Datetime_FD.PromptChar = '_';
+            this.TextBox_Datetime_FD.ReadOnly = false;
+            this.TextBox_Datetime_FD.RejectInputOnFirstFailure = false;
+            this.TextBox_Datetime_FD.ResetOnPrompt = true;
+            this.TextBox_Datetime_FD.ResetOnSpace = true;
+            this.TextBox_Datetime_FD.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_Datetime_FD.SelectedText = "";
+            this.TextBox_Datetime_FD.SelectionLength = 0;
+            this.TextBox_Datetime_FD.SelectionStart = 0;
+            this.TextBox_Datetime_FD.ShortcutsEnabled = true;
+            this.TextBox_Datetime_FD.Size = new System.Drawing.Size(363, 48);
+            this.TextBox_Datetime_FD.SkipLiterals = true;
+            this.TextBox_Datetime_FD.TabIndex = 125;
+            this.TextBox_Datetime_FD.TabStop = false;
+            this.TextBox_Datetime_FD.Text = "  .  .       :";
+            this.TextBox_Datetime_FD.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_Datetime_FD.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
+            this.TextBox_Datetime_FD.TrailingIcon = null;
+            this.TextBox_Datetime_FD.UseSystemPasswordChar = false;
+            this.TextBox_Datetime_FD.ValidatingType = null;
+            this.TextBox_Datetime_FD.Leave += new System.EventHandler(this.Datetime_Leave);
+            this.TextBox_Datetime_FD.TextChanged += new System.EventHandler(this.Datetime_Changed);
+            // 
+            // TextBox_Telephon_number
+            // 
+            this.TextBox_Telephon_number.AllowPromptAsInput = true;
+            this.TextBox_Telephon_number.AnimateReadOnly = false;
+            this.TextBox_Telephon_number.AsciiOnly = false;
+            this.TextBox_Telephon_number.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_Telephon_number.BeepOnError = false;
+            this.TextBox_Telephon_number.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
+            this.TextBox_Telephon_number.Depth = 0;
+            this.TextBox_Telephon_number.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TextBox_Telephon_number.HidePromptOnLeave = false;
+            this.TextBox_Telephon_number.HideSelection = true;
+            this.TextBox_Telephon_number.Hint = "Телефон";
+            this.TextBox_Telephon_number.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Default;
+            this.TextBox_Telephon_number.LeadingIcon = null;
+            this.TextBox_Telephon_number.Location = new System.Drawing.Point(666, 368);
+            this.TextBox_Telephon_number.Mask = "+7 (000) 000-00-00    ";
+            this.TextBox_Telephon_number.MaxLength = 32767;
+            this.TextBox_Telephon_number.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_Telephon_number.Name = "TextBox_Telephon_number";
+            this.TextBox_Telephon_number.PasswordChar = '\0';
+            this.TextBox_Telephon_number.PrefixSuffixText = null;
+            this.TextBox_Telephon_number.PromptChar = '_';
+            this.TextBox_Telephon_number.ReadOnly = false;
+            this.TextBox_Telephon_number.RejectInputOnFirstFailure = false;
+            this.TextBox_Telephon_number.ResetOnPrompt = true;
+            this.TextBox_Telephon_number.ResetOnSpace = true;
+            this.TextBox_Telephon_number.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_Telephon_number.SelectedText = "";
+            this.TextBox_Telephon_number.SelectionLength = 0;
+            this.TextBox_Telephon_number.SelectionStart = 0;
+            this.TextBox_Telephon_number.ShortcutsEnabled = true;
+            this.TextBox_Telephon_number.Size = new System.Drawing.Size(300, 48);
+            this.TextBox_Telephon_number.SkipLiterals = true;
+            this.TextBox_Telephon_number.TabIndex = 124;
+            this.TextBox_Telephon_number.TabStop = false;
+            this.TextBox_Telephon_number.Text = "+7 (   )    -  -      ";
+            this.TextBox_Telephon_number.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_Telephon_number.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
+            this.TextBox_Telephon_number.TrailingIcon = null;
+            this.TextBox_Telephon_number.UseSystemPasswordChar = false;
+            this.TextBox_Telephon_number.ValidatingType = null;
+            this.TextBox_Telephon_number.TextChanged += new System.EventHandler(this.Telephone_Changet);
             // 
             // labelVers1
             // 
@@ -377,295 +801,309 @@
             this.materialLabel7.TabIndex = 57;
             this.materialLabel7.Text = "Система налогообложения";
             // 
-            // materialCheckbox12
+            // Checkbox_ESHN
             // 
-            this.materialCheckbox12.AutoSize = true;
-            this.materialCheckbox12.Depth = 0;
-            this.materialCheckbox12.Location = new System.Drawing.Point(1046, 332);
-            this.materialCheckbox12.Margin = new System.Windows.Forms.Padding(0);
-            this.materialCheckbox12.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialCheckbox12.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCheckbox12.Name = "materialCheckbox12";
-            this.materialCheckbox12.ReadOnly = false;
-            this.materialCheckbox12.Ripple = true;
-            this.materialCheckbox12.Size = new System.Drawing.Size(75, 37);
-            this.materialCheckbox12.TabIndex = 56;
-            this.materialCheckbox12.Text = "ЕСХН";
-            this.materialCheckbox12.UseVisualStyleBackColor = true;
+            this.Checkbox_ESHN.AutoSize = true;
+            this.Checkbox_ESHN.Depth = 0;
+            this.Checkbox_ESHN.Location = new System.Drawing.Point(1046, 332);
+            this.Checkbox_ESHN.Margin = new System.Windows.Forms.Padding(0);
+            this.Checkbox_ESHN.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.Checkbox_ESHN.MouseState = MaterialSkin.MouseState.HOVER;
+            this.Checkbox_ESHN.Name = "Checkbox_ESHN";
+            this.Checkbox_ESHN.ReadOnly = false;
+            this.Checkbox_ESHN.Ripple = true;
+            this.Checkbox_ESHN.Size = new System.Drawing.Size(75, 37);
+            this.Checkbox_ESHN.TabIndex = 56;
+            this.Checkbox_ESHN.Text = "ЕСХН";
+            this.Checkbox_ESHN.UseVisualStyleBackColor = true;
+            this.Checkbox_ESHN.CheckedChanged += new System.EventHandler(this.SNO_ESHN_Checked);
             // 
-            // materialCheckbox8
+            // Checkbox_Patent
             // 
-            this.materialCheckbox8.AutoSize = true;
-            this.materialCheckbox8.Depth = 0;
-            this.materialCheckbox8.Location = new System.Drawing.Point(1046, 282);
-            this.materialCheckbox8.Margin = new System.Windows.Forms.Padding(0);
-            this.materialCheckbox8.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialCheckbox8.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCheckbox8.Name = "materialCheckbox8";
-            this.materialCheckbox8.ReadOnly = false;
-            this.materialCheckbox8.Ripple = true;
-            this.materialCheckbox8.Size = new System.Drawing.Size(88, 37);
-            this.materialCheckbox8.TabIndex = 55;
-            this.materialCheckbox8.Text = "Патент";
-            this.materialCheckbox8.UseVisualStyleBackColor = true;
+            this.Checkbox_Patent.AutoSize = true;
+            this.Checkbox_Patent.Depth = 0;
+            this.Checkbox_Patent.Location = new System.Drawing.Point(1046, 282);
+            this.Checkbox_Patent.Margin = new System.Windows.Forms.Padding(0);
+            this.Checkbox_Patent.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.Checkbox_Patent.MouseState = MaterialSkin.MouseState.HOVER;
+            this.Checkbox_Patent.Name = "Checkbox_Patent";
+            this.Checkbox_Patent.ReadOnly = false;
+            this.Checkbox_Patent.Ripple = true;
+            this.Checkbox_Patent.Size = new System.Drawing.Size(88, 37);
+            this.Checkbox_Patent.TabIndex = 55;
+            this.Checkbox_Patent.Text = "Патент";
+            this.Checkbox_Patent.UseVisualStyleBackColor = true;
+            this.Checkbox_Patent.CheckedChanged += new System.EventHandler(this.SNO_Patent_Checked);
             // 
-            // materialCheckbox9
+            // Checkbox_USN_Dohod_rashod
             // 
-            this.materialCheckbox9.AutoSize = true;
-            this.materialCheckbox9.Depth = 0;
-            this.materialCheckbox9.Location = new System.Drawing.Point(1046, 228);
-            this.materialCheckbox9.Margin = new System.Windows.Forms.Padding(0);
-            this.materialCheckbox9.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialCheckbox9.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCheckbox9.Name = "materialCheckbox9";
-            this.materialCheckbox9.ReadOnly = false;
-            this.materialCheckbox9.Ripple = true;
-            this.materialCheckbox9.Size = new System.Drawing.Size(183, 37);
-            this.materialCheckbox9.TabIndex = 54;
-            this.materialCheckbox9.Text = "УСН Доход - расход";
-            this.materialCheckbox9.UseVisualStyleBackColor = true;
+            this.Checkbox_USN_Dohod_rashod.AutoSize = true;
+            this.Checkbox_USN_Dohod_rashod.Depth = 0;
+            this.Checkbox_USN_Dohod_rashod.Location = new System.Drawing.Point(1046, 228);
+            this.Checkbox_USN_Dohod_rashod.Margin = new System.Windows.Forms.Padding(0);
+            this.Checkbox_USN_Dohod_rashod.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.Checkbox_USN_Dohod_rashod.MouseState = MaterialSkin.MouseState.HOVER;
+            this.Checkbox_USN_Dohod_rashod.Name = "Checkbox_USN_Dohod_rashod";
+            this.Checkbox_USN_Dohod_rashod.ReadOnly = false;
+            this.Checkbox_USN_Dohod_rashod.Ripple = true;
+            this.Checkbox_USN_Dohod_rashod.Size = new System.Drawing.Size(183, 37);
+            this.Checkbox_USN_Dohod_rashod.TabIndex = 54;
+            this.Checkbox_USN_Dohod_rashod.Text = "УСН Доход - расход";
+            this.Checkbox_USN_Dohod_rashod.UseVisualStyleBackColor = true;
+            this.Checkbox_USN_Dohod_rashod.CheckedChanged += new System.EventHandler(this.SNO_USN_Dohod_rashod_Checked);
             // 
-            // materialCheckbox10
+            // Checkbox_USN_Dohod
             // 
-            this.materialCheckbox10.AutoSize = true;
-            this.materialCheckbox10.Depth = 0;
-            this.materialCheckbox10.Location = new System.Drawing.Point(1046, 176);
-            this.materialCheckbox10.Margin = new System.Windows.Forms.Padding(0);
-            this.materialCheckbox10.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialCheckbox10.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCheckbox10.Name = "materialCheckbox10";
-            this.materialCheckbox10.ReadOnly = false;
-            this.materialCheckbox10.Ripple = true;
-            this.materialCheckbox10.Size = new System.Drawing.Size(118, 37);
-            this.materialCheckbox10.TabIndex = 53;
-            this.materialCheckbox10.Text = "УСН Доход";
-            this.materialCheckbox10.UseVisualStyleBackColor = true;
+            this.Checkbox_USN_Dohod.AutoSize = true;
+            this.Checkbox_USN_Dohod.Depth = 0;
+            this.Checkbox_USN_Dohod.Location = new System.Drawing.Point(1046, 176);
+            this.Checkbox_USN_Dohod.Margin = new System.Windows.Forms.Padding(0);
+            this.Checkbox_USN_Dohod.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.Checkbox_USN_Dohod.MouseState = MaterialSkin.MouseState.HOVER;
+            this.Checkbox_USN_Dohod.Name = "Checkbox_USN_Dohod";
+            this.Checkbox_USN_Dohod.ReadOnly = false;
+            this.Checkbox_USN_Dohod.Ripple = true;
+            this.Checkbox_USN_Dohod.Size = new System.Drawing.Size(118, 37);
+            this.Checkbox_USN_Dohod.TabIndex = 53;
+            this.Checkbox_USN_Dohod.Text = "УСН Доход";
+            this.Checkbox_USN_Dohod.UseVisualStyleBackColor = true;
+            this.Checkbox_USN_Dohod.CheckedChanged += new System.EventHandler(this.SNO_USN_Dohod_Checked);
             // 
-            // materialCheckbox11
+            // Checkbox_OSN
             // 
-            this.materialCheckbox11.AutoSize = true;
-            this.materialCheckbox11.Depth = 0;
-            this.materialCheckbox11.Location = new System.Drawing.Point(1047, 128);
-            this.materialCheckbox11.Margin = new System.Windows.Forms.Padding(0);
-            this.materialCheckbox11.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialCheckbox11.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCheckbox11.Name = "materialCheckbox11";
-            this.materialCheckbox11.ReadOnly = false;
-            this.materialCheckbox11.Ripple = true;
-            this.materialCheckbox11.Size = new System.Drawing.Size(67, 37);
-            this.materialCheckbox11.TabIndex = 52;
-            this.materialCheckbox11.Text = "ОСН";
-            this.materialCheckbox11.UseVisualStyleBackColor = true;
+            this.Checkbox_OSN.AutoSize = true;
+            this.Checkbox_OSN.Depth = 0;
+            this.Checkbox_OSN.Location = new System.Drawing.Point(1047, 128);
+            this.Checkbox_OSN.Margin = new System.Windows.Forms.Padding(0);
+            this.Checkbox_OSN.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.Checkbox_OSN.MouseState = MaterialSkin.MouseState.HOVER;
+            this.Checkbox_OSN.Name = "Checkbox_OSN";
+            this.Checkbox_OSN.ReadOnly = false;
+            this.Checkbox_OSN.Ripple = true;
+            this.Checkbox_OSN.Size = new System.Drawing.Size(67, 37);
+            this.Checkbox_OSN.TabIndex = 52;
+            this.Checkbox_OSN.Text = "ОСН";
+            this.Checkbox_OSN.UseVisualStyleBackColor = true;
+            this.Checkbox_OSN.CheckedChanged += new System.EventHandler(this.SNO_OSN_Checked);
             // 
-            // textBox6
+            // TextBox_Domen
             // 
-            this.textBox6.AnimateReadOnly = false;
-            this.textBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.textBox6.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.textBox6.Depth = 0;
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox6.HideSelection = true;
-            this.textBox6.Hint = "Место применения в Интернет";
-            this.textBox6.LeadingIcon = null;
-            this.textBox6.Location = new System.Drawing.Point(1352, 735);
-            this.textBox6.MaxLength = 32767;
-            this.textBox6.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.PasswordChar = '\0';
-            this.textBox6.PrefixSuffixText = null;
-            this.textBox6.ReadOnly = false;
-            this.textBox6.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox6.SelectedText = "";
-            this.textBox6.SelectionLength = 0;
-            this.textBox6.SelectionStart = 0;
-            this.textBox6.ShortcutsEnabled = true;
-            this.textBox6.Size = new System.Drawing.Size(363, 48);
-            this.textBox6.TabIndex = 50;
-            this.textBox6.TabStop = false;
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBox6.TrailingIcon = null;
-            this.textBox6.UseSystemPasswordChar = false;
+            this.TextBox_Domen.AnimateReadOnly = false;
+            this.TextBox_Domen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_Domen.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_Domen.Depth = 0;
+            this.TextBox_Domen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_Domen.HideSelection = true;
+            this.TextBox_Domen.Hint = "Место применения в Интернет";
+            this.TextBox_Domen.LeadingIcon = null;
+            this.TextBox_Domen.Location = new System.Drawing.Point(1352, 735);
+            this.TextBox_Domen.MaxLength = 32767;
+            this.TextBox_Domen.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_Domen.Name = "TextBox_Domen";
+            this.TextBox_Domen.PasswordChar = '\0';
+            this.TextBox_Domen.PrefixSuffixText = null;
+            this.TextBox_Domen.ReadOnly = false;
+            this.TextBox_Domen.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_Domen.SelectedText = "";
+            this.TextBox_Domen.SelectionLength = 0;
+            this.TextBox_Domen.SelectionStart = 0;
+            this.TextBox_Domen.ShortcutsEnabled = true;
+            this.TextBox_Domen.Size = new System.Drawing.Size(363, 48);
+            this.TextBox_Domen.TabIndex = 50;
+            this.TextBox_Domen.TabStop = false;
+            this.TextBox_Domen.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_Domen.TrailingIcon = null;
+            this.TextBox_Domen.UseSystemPasswordChar = false;
+            this.TextBox_Domen.TextChanged += new System.EventHandler(this.Domen_Changed);
             // 
-            // checkBox12
+            // CheckBox_Internet
             // 
-            this.checkBox12.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox12.AutoSize = true;
-            this.checkBox12.Depth = 0;
-            this.checkBox12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.checkBox12.Location = new System.Drawing.Point(1351, 680);
-            this.checkBox12.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBox12.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.checkBox12.MouseState = MaterialSkin.MouseState.HOVER;
-            this.checkBox12.Name = "checkBox12";
-            this.checkBox12.ReadOnly = false;
-            this.checkBox12.Ripple = true;
-            this.checkBox12.Size = new System.Drawing.Size(271, 37);
-            this.checkBox12.TabIndex = 49;
-            this.checkBox12.Text = "Применение только в Интернет";
-            this.checkBox12.UseVisualStyleBackColor = true;
-            this.checkBox12.CheckedChanged += new System.EventHandler(this.Internet_Checked);
-            this.checkBox12.Enter += new System.EventHandler(this.Internet_Click);
+            this.CheckBox_Internet.Appearance = System.Windows.Forms.Appearance.Button;
+            this.CheckBox_Internet.AutoSize = true;
+            this.CheckBox_Internet.Depth = 0;
+            this.CheckBox_Internet.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.CheckBox_Internet.Location = new System.Drawing.Point(1351, 680);
+            this.CheckBox_Internet.Margin = new System.Windows.Forms.Padding(0);
+            this.CheckBox_Internet.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.CheckBox_Internet.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CheckBox_Internet.Name = "CheckBox_Internet";
+            this.CheckBox_Internet.ReadOnly = false;
+            this.CheckBox_Internet.Ripple = true;
+            this.CheckBox_Internet.Size = new System.Drawing.Size(271, 37);
+            this.CheckBox_Internet.TabIndex = 49;
+            this.CheckBox_Internet.Text = "Применение только в Интернет";
+            this.CheckBox_Internet.UseVisualStyleBackColor = true;
+            this.CheckBox_Internet.CheckedChanged += new System.EventHandler(this.Internet_Checked);
             // 
-            // checkBox10
+            // CheckBox_Delivery
             // 
-            this.checkBox10.AutoSize = true;
-            this.checkBox10.Depth = 0;
-            this.checkBox10.Location = new System.Drawing.Point(1351, 626);
-            this.checkBox10.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBox10.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.checkBox10.MouseState = MaterialSkin.MouseState.HOVER;
-            this.checkBox10.Name = "checkBox10";
-            this.checkBox10.ReadOnly = false;
-            this.checkBox10.Ripple = true;
-            this.checkBox10.Size = new System.Drawing.Size(233, 37);
-            this.checkBox10.TabIndex = 48;
-            this.checkBox10.Text = "Применение в сфере услуг";
-            this.checkBox10.UseVisualStyleBackColor = true;
-            this.checkBox10.CheckedChanged += new System.EventHandler(this.Razvoz_Checked);
+            this.CheckBox_Delivery.AutoSize = true;
+            this.CheckBox_Delivery.Depth = 0;
+            this.CheckBox_Delivery.Location = new System.Drawing.Point(1351, 626);
+            this.CheckBox_Delivery.Margin = new System.Windows.Forms.Padding(0);
+            this.CheckBox_Delivery.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.CheckBox_Delivery.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CheckBox_Delivery.Name = "CheckBox_Delivery";
+            this.CheckBox_Delivery.ReadOnly = false;
+            this.CheckBox_Delivery.Ripple = true;
+            this.CheckBox_Delivery.Size = new System.Drawing.Size(188, 37);
+            this.CheckBox_Delivery.TabIndex = 48;
+            this.CheckBox_Delivery.Text = "Развозная торговля";
+            this.CheckBox_Delivery.UseVisualStyleBackColor = true;
+            this.CheckBox_Delivery.CheckedChanged += new System.EventHandler(this.Delivery_Checked);
             // 
-            // checkBox9
+            // CheckBox_Avtonom
             // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Depth = 0;
-            this.checkBox9.Location = new System.Drawing.Point(1351, 574);
-            this.checkBox9.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBox9.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.checkBox9.MouseState = MaterialSkin.MouseState.HOVER;
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.ReadOnly = false;
-            this.checkBox9.Ripple = true;
-            this.checkBox9.Size = new System.Drawing.Size(185, 37);
-            this.checkBox9.TabIndex = 47;
-            this.checkBox9.Text = "Автономный режим";
-            this.checkBox9.UseVisualStyleBackColor = true;
+            this.CheckBox_Avtonom.AutoSize = true;
+            this.CheckBox_Avtonom.Depth = 0;
+            this.CheckBox_Avtonom.Location = new System.Drawing.Point(1351, 574);
+            this.CheckBox_Avtonom.Margin = new System.Windows.Forms.Padding(0);
+            this.CheckBox_Avtonom.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.CheckBox_Avtonom.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CheckBox_Avtonom.Name = "CheckBox_Avtonom";
+            this.CheckBox_Avtonom.ReadOnly = false;
+            this.CheckBox_Avtonom.Ripple = true;
+            this.CheckBox_Avtonom.Size = new System.Drawing.Size(185, 37);
+            this.CheckBox_Avtonom.TabIndex = 47;
+            this.CheckBox_Avtonom.Text = "Автономный режим";
+            this.CheckBox_Avtonom.UseVisualStyleBackColor = true;
+            this.CheckBox_Avtonom.CheckedChanged += new System.EventHandler(this.Avtonom_Checked);
             // 
-            // checkBox8
+            // CheckBox_Shifr
             // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Depth = 0;
-            this.checkBox8.Location = new System.Drawing.Point(1352, 526);
-            this.checkBox8.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBox8.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.checkBox8.MouseState = MaterialSkin.MouseState.HOVER;
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.ReadOnly = false;
-            this.checkBox8.Ripple = true;
-            this.checkBox8.Size = new System.Drawing.Size(133, 37);
-            this.checkBox8.TabIndex = 46;
-            this.checkBox8.Text = "Шифрование";
-            this.checkBox8.UseVisualStyleBackColor = true;
+            this.CheckBox_Shifr.AutoSize = true;
+            this.CheckBox_Shifr.Depth = 0;
+            this.CheckBox_Shifr.Location = new System.Drawing.Point(1352, 526);
+            this.CheckBox_Shifr.Margin = new System.Windows.Forms.Padding(0);
+            this.CheckBox_Shifr.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.CheckBox_Shifr.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CheckBox_Shifr.Name = "CheckBox_Shifr";
+            this.CheckBox_Shifr.ReadOnly = false;
+            this.CheckBox_Shifr.Ripple = true;
+            this.CheckBox_Shifr.Size = new System.Drawing.Size(133, 37);
+            this.CheckBox_Shifr.TabIndex = 46;
+            this.CheckBox_Shifr.Text = "Шифрование";
+            this.CheckBox_Shifr.UseVisualStyleBackColor = true;
+            this.CheckBox_Shifr.CheckedChanged += new System.EventHandler(this.Shifr_Checked);
             // 
-            // checkBox7
+            // CheckBox_Plat_agent
             // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Depth = 0;
-            this.checkBox7.Location = new System.Drawing.Point(1351, 443);
-            this.checkBox7.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBox7.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.checkBox7.MouseState = MaterialSkin.MouseState.HOVER;
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.ReadOnly = false;
-            this.checkBox7.Ripple = true;
-            this.checkBox7.Size = new System.Drawing.Size(345, 37);
-            this.checkBox7.TabIndex = 45;
-            this.checkBox7.Text = "Признак деятельности плетжного агента";
-            this.checkBox7.UseVisualStyleBackColor = true;
+            this.CheckBox_Plat_agent.AutoSize = true;
+            this.CheckBox_Plat_agent.Depth = 0;
+            this.CheckBox_Plat_agent.Location = new System.Drawing.Point(1351, 443);
+            this.CheckBox_Plat_agent.Margin = new System.Windows.Forms.Padding(0);
+            this.CheckBox_Plat_agent.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.CheckBox_Plat_agent.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CheckBox_Plat_agent.Name = "CheckBox_Plat_agent";
+            this.CheckBox_Plat_agent.ReadOnly = false;
+            this.CheckBox_Plat_agent.Ripple = true;
+            this.CheckBox_Plat_agent.Size = new System.Drawing.Size(354, 37);
+            this.CheckBox_Plat_agent.TabIndex = 45;
+            this.CheckBox_Plat_agent.Text = "Признак деятельности платежного агента";
+            this.CheckBox_Plat_agent.UseVisualStyleBackColor = true;
+            this.CheckBox_Plat_agent.CheckedChanged += new System.EventHandler(this.Plat_agent_Checked);
             // 
-            // checkBox6
+            // CheckBox_Bank_agent
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Depth = 0;
-            this.checkBox6.Location = new System.Drawing.Point(1351, 389);
-            this.checkBox6.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBox6.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.checkBox6.MouseState = MaterialSkin.MouseState.HOVER;
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.ReadOnly = false;
-            this.checkBox6.Ripple = true;
-            this.checkBox6.Size = new System.Drawing.Size(361, 37);
-            this.checkBox6.TabIndex = 44;
-            this.checkBox6.Text = "Признак деятельности банковского агента";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.CheckBox_Bank_agent.AutoSize = true;
+            this.CheckBox_Bank_agent.Depth = 0;
+            this.CheckBox_Bank_agent.Location = new System.Drawing.Point(1351, 389);
+            this.CheckBox_Bank_agent.Margin = new System.Windows.Forms.Padding(0);
+            this.CheckBox_Bank_agent.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.CheckBox_Bank_agent.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CheckBox_Bank_agent.Name = "CheckBox_Bank_agent";
+            this.CheckBox_Bank_agent.ReadOnly = false;
+            this.CheckBox_Bank_agent.Ripple = true;
+            this.CheckBox_Bank_agent.Size = new System.Drawing.Size(361, 37);
+            this.CheckBox_Bank_agent.TabIndex = 44;
+            this.CheckBox_Bank_agent.Text = "Признак деятельности банковского агента";
+            this.CheckBox_Bank_agent.UseVisualStyleBackColor = true;
+            this.CheckBox_Bank_agent.CheckedChanged += new System.EventHandler(this.Bank_agent_Checked);
             // 
-            // checkBox5
+            // CheckBox_Printer_v_avtomate
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Depth = 0;
-            this.checkBox5.Location = new System.Drawing.Point(1351, 335);
-            this.checkBox5.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBox5.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.checkBox5.MouseState = MaterialSkin.MouseState.HOVER;
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.ReadOnly = false;
-            this.checkBox5.Ripple = true;
-            this.checkBox5.Size = new System.Drawing.Size(344, 37);
-            this.checkBox5.TabIndex = 43;
-            this.checkBox5.Text = "Признак установки принтера в автомате";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.CheckBox_Printer_v_avtomate.AutoSize = true;
+            this.CheckBox_Printer_v_avtomate.Depth = 0;
+            this.CheckBox_Printer_v_avtomate.Location = new System.Drawing.Point(1351, 335);
+            this.CheckBox_Printer_v_avtomate.Margin = new System.Windows.Forms.Padding(0);
+            this.CheckBox_Printer_v_avtomate.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.CheckBox_Printer_v_avtomate.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CheckBox_Printer_v_avtomate.Name = "CheckBox_Printer_v_avtomate";
+            this.CheckBox_Printer_v_avtomate.ReadOnly = false;
+            this.CheckBox_Printer_v_avtomate.Ripple = true;
+            this.CheckBox_Printer_v_avtomate.Size = new System.Drawing.Size(344, 37);
+            this.CheckBox_Printer_v_avtomate.TabIndex = 43;
+            this.CheckBox_Printer_v_avtomate.Text = "Признак установки принтера в автомате";
+            this.CheckBox_Printer_v_avtomate.UseVisualStyleBackColor = true;
+            this.CheckBox_Printer_v_avtomate.CheckedChanged += new System.EventHandler(this.Printer_v_avtomate_Checked);
             // 
-            // checkBox4
+            // CheckBox_Lotereya
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Depth = 0;
-            this.checkBox4.Location = new System.Drawing.Point(1351, 281);
-            this.checkBox4.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBox4.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.checkBox4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.ReadOnly = false;
-            this.checkBox4.Ripple = true;
-            this.checkBox4.Size = new System.Drawing.Size(256, 37);
-            this.checkBox4.TabIndex = 42;
-            this.checkBox4.Text = "Признак проведения лотереи";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.CheckBox_Lotereya.AutoSize = true;
+            this.CheckBox_Lotereya.Depth = 0;
+            this.CheckBox_Lotereya.Location = new System.Drawing.Point(1351, 281);
+            this.CheckBox_Lotereya.Margin = new System.Windows.Forms.Padding(0);
+            this.CheckBox_Lotereya.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.CheckBox_Lotereya.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CheckBox_Lotereya.Name = "CheckBox_Lotereya";
+            this.CheckBox_Lotereya.ReadOnly = false;
+            this.CheckBox_Lotereya.Ripple = true;
+            this.CheckBox_Lotereya.Size = new System.Drawing.Size(256, 37);
+            this.CheckBox_Lotereya.TabIndex = 42;
+            this.CheckBox_Lotereya.Text = "Признак проведения лотереи";
+            this.CheckBox_Lotereya.UseVisualStyleBackColor = true;
+            this.CheckBox_Lotereya.CheckedChanged += new System.EventHandler(this.Lotereya_Checked);
             // 
-            // checkBox3
+            // CheckBox_Azart_play
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Depth = 0;
-            this.checkBox3.Location = new System.Drawing.Point(1351, 231);
-            this.checkBox3.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBox3.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.checkBox3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.ReadOnly = false;
-            this.checkBox3.Ripple = true;
-            this.checkBox3.Size = new System.Drawing.Size(297, 37);
-            this.checkBox3.TabIndex = 41;
-            this.checkBox3.Text = "Признак проведения азартных игр";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.CheckBox_Azart_play.AutoSize = true;
+            this.CheckBox_Azart_play.Depth = 0;
+            this.CheckBox_Azart_play.Location = new System.Drawing.Point(1351, 231);
+            this.CheckBox_Azart_play.Margin = new System.Windows.Forms.Padding(0);
+            this.CheckBox_Azart_play.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.CheckBox_Azart_play.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CheckBox_Azart_play.Name = "CheckBox_Azart_play";
+            this.CheckBox_Azart_play.ReadOnly = false;
+            this.CheckBox_Azart_play.Ripple = true;
+            this.CheckBox_Azart_play.Size = new System.Drawing.Size(297, 37);
+            this.CheckBox_Azart_play.TabIndex = 41;
+            this.CheckBox_Azart_play.Text = "Признак проведения азартных игр";
+            this.CheckBox_Azart_play.UseVisualStyleBackColor = true;
+            this.CheckBox_Azart_play.CheckedChanged += new System.EventHandler(this.Azart_play_Checked);
             // 
-            // checkBox2
+            // CheckBox_Mark
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Depth = 0;
-            this.checkBox2.Location = new System.Drawing.Point(1351, 179);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBox2.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.checkBox2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.ReadOnly = false;
-            this.checkBox2.Ripple = true;
-            this.checkBox2.Size = new System.Drawing.Size(318, 37);
-            this.checkBox2.TabIndex = 40;
-            this.checkBox2.Text = "Работа с маркированными товарами";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.CheckBox_Mark.AutoSize = true;
+            this.CheckBox_Mark.Depth = 0;
+            this.CheckBox_Mark.Location = new System.Drawing.Point(1351, 179);
+            this.CheckBox_Mark.Margin = new System.Windows.Forms.Padding(0);
+            this.CheckBox_Mark.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.CheckBox_Mark.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CheckBox_Mark.Name = "CheckBox_Mark";
+            this.CheckBox_Mark.ReadOnly = false;
+            this.CheckBox_Mark.Ripple = true;
+            this.CheckBox_Mark.Size = new System.Drawing.Size(318, 37);
+            this.CheckBox_Mark.TabIndex = 40;
+            this.CheckBox_Mark.Text = "Работа с маркированными товарами";
+            this.CheckBox_Mark.UseVisualStyleBackColor = true;
+            this.CheckBox_Mark.CheckedChanged += new System.EventHandler(this.Mark_Checked);
             // 
-            // checkBox1
+            // CheckBox_Podakziz
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Depth = 0;
-            this.checkBox1.Location = new System.Drawing.Point(1351, 128);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBox1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.checkBox1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.ReadOnly = false;
-            this.checkBox1.Ripple = true;
-            this.checkBox1.Size = new System.Drawing.Size(271, 37);
-            this.checkBox1.TabIndex = 39;
-            this.checkBox1.Text = "Продажа подакцизного товара";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.CheckBox_Podakziz.AutoSize = true;
+            this.CheckBox_Podakziz.Depth = 0;
+            this.CheckBox_Podakziz.Location = new System.Drawing.Point(1351, 128);
+            this.CheckBox_Podakziz.Margin = new System.Windows.Forms.Padding(0);
+            this.CheckBox_Podakziz.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.CheckBox_Podakziz.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CheckBox_Podakziz.Name = "CheckBox_Podakziz";
+            this.CheckBox_Podakziz.ReadOnly = false;
+            this.CheckBox_Podakziz.Ripple = true;
+            this.CheckBox_Podakziz.Size = new System.Drawing.Size(271, 37);
+            this.CheckBox_Podakziz.TabIndex = 39;
+            this.CheckBox_Podakziz.Text = "Продажа подакцизного товара";
+            this.CheckBox_Podakziz.UseVisualStyleBackColor = true;
+            this.CheckBox_Podakziz.CheckedChanged += new System.EventHandler(this.Podakziz_Checked);
             // 
             // materialLabel6
             // 
@@ -851,64 +1289,67 @@
             this.butSave.UseVisualStyleBackColor = true;
             this.butSave.Click += new System.EventHandler(this.butSave_Click);
             // 
-            // TextBoxNFD
+            // TextBox_Number_FD
             // 
-            this.TextBoxNFD.AnimateReadOnly = false;
-            this.TextBoxNFD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.TextBoxNFD.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.TextBoxNFD.Depth = 0;
-            this.TextBoxNFD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TextBoxNFD.HideSelection = true;
-            this.TextBoxNFD.Hint = "Номер документа";
-            this.TextBoxNFD.LeadingIcon = null;
-            this.TextBoxNFD.Location = new System.Drawing.Point(234, 908);
-            this.TextBoxNFD.MaxLength = 32767;
-            this.TextBoxNFD.MouseState = MaterialSkin.MouseState.OUT;
-            this.TextBoxNFD.Name = "TextBoxNFD";
-            this.TextBoxNFD.PasswordChar = '\0';
-            this.TextBoxNFD.PrefixSuffixText = null;
-            this.TextBoxNFD.ReadOnly = false;
-            this.TextBoxNFD.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TextBoxNFD.SelectedText = "";
-            this.TextBoxNFD.SelectionLength = 0;
-            this.TextBoxNFD.SelectionStart = 0;
-            this.TextBoxNFD.ShortcutsEnabled = true;
-            this.TextBoxNFD.Size = new System.Drawing.Size(363, 48);
-            this.TextBoxNFD.TabIndex = 30;
-            this.TextBoxNFD.TabStop = false;
-            this.TextBoxNFD.Text = "1";
-            this.TextBoxNFD.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.TextBoxNFD.TrailingIcon = null;
-            this.TextBoxNFD.UseSystemPasswordChar = false;
+            this.TextBox_Number_FD.AnimateReadOnly = false;
+            this.TextBox_Number_FD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_Number_FD.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_Number_FD.Depth = 0;
+            this.TextBox_Number_FD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_Number_FD.HideSelection = true;
+            this.TextBox_Number_FD.Hint = "Номер документа";
+            this.TextBox_Number_FD.LeadingIcon = null;
+            this.TextBox_Number_FD.Location = new System.Drawing.Point(234, 892);
+            this.TextBox_Number_FD.MaxLength = 32767;
+            this.TextBox_Number_FD.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_Number_FD.Name = "TextBox_Number_FD";
+            this.TextBox_Number_FD.PasswordChar = '\0';
+            this.TextBox_Number_FD.PrefixSuffixText = null;
+            this.TextBox_Number_FD.ReadOnly = false;
+            this.TextBox_Number_FD.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_Number_FD.SelectedText = "";
+            this.TextBox_Number_FD.SelectionLength = 0;
+            this.TextBox_Number_FD.SelectionStart = 0;
+            this.TextBox_Number_FD.ShortcutsEnabled = true;
+            this.TextBox_Number_FD.Size = new System.Drawing.Size(363, 48);
+            this.TextBox_Number_FD.TabIndex = 30;
+            this.TextBox_Number_FD.TabStop = false;
+            this.TextBox_Number_FD.Text = "1";
+            this.TextBox_Number_FD.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_Number_FD.TrailingIcon = null;
+            this.TextBox_Number_FD.UseSystemPasswordChar = false;
+            this.TextBox_Number_FD.TextChanged += new System.EventHandler(this.Number_FD_Changed);
             // 
-            // textBox19
+            // TextBox_FP_FD
             // 
-            this.textBox19.AnimateReadOnly = false;
-            this.textBox19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.textBox19.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.textBox19.Depth = 0;
-            this.textBox19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox19.HideSelection = true;
-            this.textBox19.Hint = "Фискальный признак документа";
-            this.textBox19.LeadingIcon = null;
-            this.textBox19.Location = new System.Drawing.Point(603, 908);
-            this.textBox19.MaxLength = 32767;
-            this.textBox19.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox19.Name = "textBox19";
-            this.textBox19.PasswordChar = '\0';
-            this.textBox19.PrefixSuffixText = null;
-            this.textBox19.ReadOnly = false;
-            this.textBox19.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox19.SelectedText = "";
-            this.textBox19.SelectionLength = 0;
-            this.textBox19.SelectionStart = 0;
-            this.textBox19.ShortcutsEnabled = true;
-            this.textBox19.Size = new System.Drawing.Size(363, 48);
-            this.textBox19.TabIndex = 29;
-            this.textBox19.TabStop = false;
-            this.textBox19.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBox19.TrailingIcon = null;
-            this.textBox19.UseSystemPasswordChar = false;
+            this.TextBox_FP_FD.AnimateReadOnly = false;
+            this.TextBox_FP_FD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_FP_FD.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_FP_FD.Depth = 0;
+            this.TextBox_FP_FD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_FP_FD.HideSelection = true;
+            this.TextBox_FP_FD.Hint = "Фискальный признак документа";
+            this.TextBox_FP_FD.LeadingIcon = null;
+            this.TextBox_FP_FD.Location = new System.Drawing.Point(603, 892);
+            this.TextBox_FP_FD.MaxLength = 32767;
+            this.TextBox_FP_FD.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_FP_FD.Name = "TextBox_FP_FD";
+            this.TextBox_FP_FD.PasswordChar = '\0';
+            this.TextBox_FP_FD.PrefixSuffixText = null;
+            this.TextBox_FP_FD.ReadOnly = false;
+            this.TextBox_FP_FD.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_FP_FD.SelectedText = "";
+            this.TextBox_FP_FD.SelectionLength = 0;
+            this.TextBox_FP_FD.SelectionStart = 0;
+            this.TextBox_FP_FD.ShortcutsEnabled = true;
+            this.TextBox_FP_FD.Size = new System.Drawing.Size(363, 48);
+            this.TextBox_FP_FD.TabIndex = 29;
+            this.TextBox_FP_FD.TabStop = false;
+            this.TextBox_FP_FD.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_FP_FD.TrailingIcon = null;
+            this.TextBox_FP_FD.UseSystemPasswordChar = false;
+            this.TextBox_FP_FD.Leave += new System.EventHandler(this.FP_FD_Leave);
+            this.TextBox_FP_FD.TextChanged += new System.EventHandler(this.FP_FD_Changed);
             // 
             // materialLabel5
             // 
@@ -924,123 +1365,129 @@
             this.materialLabel5.TabIndex = 28;
             this.materialLabel5.Text = "Данные регистрации ККТ";
             // 
-            // textBox2
+            // TextBox_RNM1
             // 
-            this.textBox2.AnimateReadOnly = false;
-            this.textBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.textBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.textBox2.Depth = 0;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.HideSelection = true;
-            this.textBox2.Hint = "Регистрационный номер ККТ";
-            this.textBox2.LeadingIcon = null;
-            this.textBox2.Location = new System.Drawing.Point(234, 838);
-            this.textBox2.MaxLength = 32767;
-            this.textBox2.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '\0';
-            this.textBox2.PrefixSuffixText = null;
-            this.textBox2.ReadOnly = false;
-            this.textBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox2.SelectedText = "";
-            this.textBox2.SelectionLength = 0;
-            this.textBox2.SelectionStart = 0;
-            this.textBox2.ShortcutsEnabled = true;
-            this.textBox2.Size = new System.Drawing.Size(363, 48);
-            this.textBox2.TabIndex = 26;
-            this.textBox2.TabStop = false;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBox2.TrailingIcon = null;
-            this.textBox2.UseSystemPasswordChar = false;
-            this.textBox2.TextChanged += new System.EventHandler(this.RNM_Changed);
+            this.TextBox_RNM1.AnimateReadOnly = false;
+            this.TextBox_RNM1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_RNM1.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_RNM1.Depth = 0;
+            this.TextBox_RNM1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_RNM1.HideSelection = true;
+            this.TextBox_RNM1.Hint = "Регистрационный номер ККТ";
+            this.TextBox_RNM1.LeadingIcon = null;
+            this.TextBox_RNM1.Location = new System.Drawing.Point(234, 838);
+            this.TextBox_RNM1.MaxLength = 32767;
+            this.TextBox_RNM1.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_RNM1.Name = "TextBox_RNM1";
+            this.TextBox_RNM1.PasswordChar = '\0';
+            this.TextBox_RNM1.PrefixSuffixText = null;
+            this.TextBox_RNM1.ReadOnly = false;
+            this.TextBox_RNM1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_RNM1.SelectedText = "";
+            this.TextBox_RNM1.SelectionLength = 0;
+            this.TextBox_RNM1.SelectionStart = 0;
+            this.TextBox_RNM1.ShortcutsEnabled = true;
+            this.TextBox_RNM1.Size = new System.Drawing.Size(363, 48);
+            this.TextBox_RNM1.TabIndex = 26;
+            this.TextBox_RNM1.TabStop = false;
+            this.TextBox_RNM1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_RNM1.TrailingIcon = null;
+            this.TextBox_RNM1.UseSystemPasswordChar = false;
+            this.TextBox_RNM1.Leave += new System.EventHandler(this.RNM_Leave);
+            this.TextBox_RNM1.TextChanged += new System.EventHandler(this.RNM_Changed);
             // 
-            // comboBox1
+            // ComboBox_Name_OFD1
             // 
-            this.comboBox1.AutoResize = false;
-            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.comboBox1.Depth = 0;
-            this.comboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.comboBox1.DropDownHeight = 174;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.DropDownWidth = 121;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.comboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Hint = "ОФД";
-            this.comboBox1.IntegralHeight = false;
-            this.comboBox1.ItemHeight = 43;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.ComboBox_Name_OFD1.AutoResize = false;
+            this.ComboBox_Name_OFD1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ComboBox_Name_OFD1.Depth = 0;
+            this.ComboBox_Name_OFD1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.ComboBox_Name_OFD1.DropDownHeight = 174;
+            this.ComboBox_Name_OFD1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_Name_OFD1.DropDownWidth = 121;
+            this.ComboBox_Name_OFD1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.ComboBox_Name_OFD1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ComboBox_Name_OFD1.FormattingEnabled = true;
+            this.ComboBox_Name_OFD1.Hint = "ОФД";
+            this.ComboBox_Name_OFD1.IntegralHeight = false;
+            this.ComboBox_Name_OFD1.ItemHeight = 43;
+            this.ComboBox_Name_OFD1.Items.AddRange(new object[] {
             "ООО «Эвотор ОФД»",
             "АО «ЭСК»",
             "АО Контур НТТ",
             "ООО «Такском»",
-            "АО «Калуга Астрал»"});
-            this.comboBox1.Location = new System.Drawing.Point(238, 614);
-            this.comboBox1.MaxDropDownItems = 4;
-            this.comboBox1.MouseState = MaterialSkin.MouseState.OUT;
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(300, 49);
-            this.comboBox1.StartIndex = 0;
-            this.comboBox1.TabIndex = 25;
-            this.comboBox1.TextChanged += new System.EventHandler(this.OFD_TextChanged);
+            "АО «Калуга Астрал»",
+            "ООО «Компания «Тензор»",
+            "ООО «ПЕТЕР-СЕРВИС Спецтехнологии»"});
+            this.ComboBox_Name_OFD1.Location = new System.Drawing.Point(238, 614);
+            this.ComboBox_Name_OFD1.MaxDropDownItems = 4;
+            this.ComboBox_Name_OFD1.MouseState = MaterialSkin.MouseState.OUT;
+            this.ComboBox_Name_OFD1.Name = "ComboBox_Name_OFD1";
+            this.ComboBox_Name_OFD1.Size = new System.Drawing.Size(300, 49);
+            this.ComboBox_Name_OFD1.StartIndex = 0;
+            this.ComboBox_Name_OFD1.TabIndex = 25;
+            this.ComboBox_Name_OFD1.TextChanged += new System.EventHandler(this.OFD_TextChanged);
             // 
-            // textBox20
+            // TextBox_Email_OFD1
             // 
-            this.textBox20.AnimateReadOnly = false;
-            this.textBox20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.textBox20.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.textBox20.Depth = 0;
-            this.textBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox20.HideSelection = true;
-            this.textBox20.Hint = "Адрес отправителя чека";
-            this.textBox20.LeadingIcon = null;
-            this.textBox20.Location = new System.Drawing.Point(607, 669);
-            this.textBox20.MaxLength = 32767;
-            this.textBox20.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox20.Name = "textBox20";
-            this.textBox20.PasswordChar = '\0';
-            this.textBox20.PrefixSuffixText = null;
-            this.textBox20.ReadOnly = false;
-            this.textBox20.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox20.SelectedText = "";
-            this.textBox20.SelectionLength = 0;
-            this.textBox20.SelectionStart = 0;
-            this.textBox20.ShortcutsEnabled = true;
-            this.textBox20.Size = new System.Drawing.Size(363, 48);
-            this.textBox20.TabIndex = 24;
-            this.textBox20.TabStop = false;
-            this.textBox20.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBox20.TrailingIcon = null;
-            this.textBox20.UseSystemPasswordChar = false;
+            this.TextBox_Email_OFD1.AnimateReadOnly = false;
+            this.TextBox_Email_OFD1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_Email_OFD1.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_Email_OFD1.Depth = 0;
+            this.TextBox_Email_OFD1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_Email_OFD1.HideSelection = true;
+            this.TextBox_Email_OFD1.Hint = "Адрес отправителя чека";
+            this.TextBox_Email_OFD1.LeadingIcon = null;
+            this.TextBox_Email_OFD1.Location = new System.Drawing.Point(607, 669);
+            this.TextBox_Email_OFD1.MaxLength = 32767;
+            this.TextBox_Email_OFD1.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_Email_OFD1.Name = "TextBox_Email_OFD1";
+            this.TextBox_Email_OFD1.PasswordChar = '\0';
+            this.TextBox_Email_OFD1.PrefixSuffixText = null;
+            this.TextBox_Email_OFD1.ReadOnly = false;
+            this.TextBox_Email_OFD1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_Email_OFD1.SelectedText = "";
+            this.TextBox_Email_OFD1.SelectionLength = 0;
+            this.TextBox_Email_OFD1.SelectionStart = 0;
+            this.TextBox_Email_OFD1.ShortcutsEnabled = true;
+            this.TextBox_Email_OFD1.Size = new System.Drawing.Size(359, 48);
+            this.TextBox_Email_OFD1.TabIndex = 24;
+            this.TextBox_Email_OFD1.TabStop = false;
+            this.TextBox_Email_OFD1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_Email_OFD1.TrailingIcon = null;
+            this.TextBox_Email_OFD1.UseSystemPasswordChar = false;
+            this.TextBox_Email_OFD1.TextChanged += new System.EventHandler(this.Email_OFD_Changet);
             // 
-            // textBox4
+            // TextBox_INN_OFD1
             // 
-            this.textBox4.AnimateReadOnly = false;
-            this.textBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.textBox4.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.textBox4.Depth = 0;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox4.HideSelection = true;
-            this.textBox4.Hint = "ИНН ОФД";
-            this.textBox4.LeadingIcon = null;
-            this.textBox4.Location = new System.Drawing.Point(238, 669);
-            this.textBox4.MaxLength = 32767;
-            this.textBox4.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.PasswordChar = '\0';
-            this.textBox4.PrefixSuffixText = null;
-            this.textBox4.ReadOnly = false;
-            this.textBox4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox4.SelectedText = "";
-            this.textBox4.SelectionLength = 0;
-            this.textBox4.SelectionStart = 0;
-            this.textBox4.ShortcutsEnabled = true;
-            this.textBox4.Size = new System.Drawing.Size(363, 48);
-            this.textBox4.TabIndex = 23;
-            this.textBox4.TabStop = false;
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBox4.TrailingIcon = null;
-            this.textBox4.UseSystemPasswordChar = false;
+            this.TextBox_INN_OFD1.AnimateReadOnly = false;
+            this.TextBox_INN_OFD1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_INN_OFD1.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_INN_OFD1.Depth = 0;
+            this.TextBox_INN_OFD1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_INN_OFD1.HideSelection = true;
+            this.TextBox_INN_OFD1.Hint = "ИНН ОФД";
+            this.TextBox_INN_OFD1.LeadingIcon = null;
+            this.TextBox_INN_OFD1.Location = new System.Drawing.Point(238, 669);
+            this.TextBox_INN_OFD1.MaxLength = 32767;
+            this.TextBox_INN_OFD1.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_INN_OFD1.Name = "TextBox_INN_OFD1";
+            this.TextBox_INN_OFD1.PasswordChar = '\0';
+            this.TextBox_INN_OFD1.PrefixSuffixText = null;
+            this.TextBox_INN_OFD1.ReadOnly = false;
+            this.TextBox_INN_OFD1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_INN_OFD1.SelectedText = "";
+            this.TextBox_INN_OFD1.SelectionLength = 0;
+            this.TextBox_INN_OFD1.SelectionStart = 0;
+            this.TextBox_INN_OFD1.ShortcutsEnabled = true;
+            this.TextBox_INN_OFD1.Size = new System.Drawing.Size(363, 48);
+            this.TextBox_INN_OFD1.TabIndex = 23;
+            this.TextBox_INN_OFD1.TabStop = false;
+            this.TextBox_INN_OFD1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_INN_OFD1.TrailingIcon = null;
+            this.TextBox_INN_OFD1.UseSystemPasswordChar = false;
+            this.TextBox_INN_OFD1.Leave += new System.EventHandler(this.INN_OFD_Leave);
+            this.TextBox_INN_OFD1.TextChanged += new System.EventHandler(this.INN_OFD_Changet);
             // 
             // materialLabel4
             // 
@@ -1056,65 +1503,67 @@
             this.materialLabel4.TabIndex = 22;
             this.materialLabel4.Text = "ОФД";
             // 
-            // textBox14
+            // TextBox_PlaceSale
             // 
-            this.textBox14.AnimateReadOnly = false;
-            this.textBox14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.textBox14.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.textBox14.Depth = 0;
-            this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox14.HelperText = "Сервис аренды кассовой техники";
-            this.textBox14.HideSelection = true;
-            this.textBox14.Hint = "Место установки (расчетов)";
-            this.textBox14.LeadingIcon = null;
-            this.textBox14.Location = new System.Drawing.Point(607, 515);
-            this.textBox14.MaxLength = 32767;
-            this.textBox14.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox14.Name = "textBox14";
-            this.textBox14.PasswordChar = '\0';
-            this.textBox14.PrefixSuffixText = null;
-            this.textBox14.ReadOnly = false;
-            this.textBox14.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox14.SelectedText = "";
-            this.textBox14.SelectionLength = 0;
-            this.textBox14.SelectionStart = 0;
-            this.textBox14.ShortcutsEnabled = true;
-            this.textBox14.Size = new System.Drawing.Size(359, 48);
-            this.textBox14.TabIndex = 21;
-            this.textBox14.TabStop = false;
-            this.textBox14.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBox14.TrailingIcon = null;
-            this.textBox14.UseSystemPasswordChar = false;
+            this.TextBox_PlaceSale.AnimateReadOnly = false;
+            this.TextBox_PlaceSale.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_PlaceSale.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_PlaceSale.Depth = 0;
+            this.TextBox_PlaceSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_PlaceSale.HelperText = "Сервис аренды кассовой техники";
+            this.TextBox_PlaceSale.HideSelection = true;
+            this.TextBox_PlaceSale.Hint = "Место установки (расчетов)";
+            this.TextBox_PlaceSale.LeadingIcon = null;
+            this.TextBox_PlaceSale.Location = new System.Drawing.Point(607, 515);
+            this.TextBox_PlaceSale.MaxLength = 32767;
+            this.TextBox_PlaceSale.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_PlaceSale.Name = "TextBox_PlaceSale";
+            this.TextBox_PlaceSale.PasswordChar = '\0';
+            this.TextBox_PlaceSale.PrefixSuffixText = null;
+            this.TextBox_PlaceSale.ReadOnly = false;
+            this.TextBox_PlaceSale.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_PlaceSale.SelectedText = "";
+            this.TextBox_PlaceSale.SelectionLength = 0;
+            this.TextBox_PlaceSale.SelectionStart = 0;
+            this.TextBox_PlaceSale.ShortcutsEnabled = true;
+            this.TextBox_PlaceSale.Size = new System.Drawing.Size(359, 48);
+            this.TextBox_PlaceSale.TabIndex = 21;
+            this.TextBox_PlaceSale.TabStop = false;
+            this.TextBox_PlaceSale.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_PlaceSale.TrailingIcon = null;
+            this.TextBox_PlaceSale.UseSystemPasswordChar = false;
+            this.TextBox_PlaceSale.TextChanged += new System.EventHandler(this.Place_Changet);
             // 
-            // textBox13
+            // TextBox_adressSale
             // 
-            this.textBox13.AnimateReadOnly = false;
-            this.textBox13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.textBox13.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.textBox13.Depth = 0;
-            this.textBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox13.HideSelection = true;
-            this.textBox13.Hint = "Адрес установки (расчетов)";
-            this.textBox13.LeadingIcon = null;
-            this.textBox13.Location = new System.Drawing.Point(238, 515);
-            this.textBox13.MaxLength = 32767;
-            this.textBox13.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox13.Name = "textBox13";
-            this.textBox13.PasswordChar = '\0';
-            this.textBox13.PrefixSuffixText = null;
-            this.textBox13.ReadOnly = false;
-            this.textBox13.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox13.SelectedText = "";
-            this.textBox13.SelectionLength = 0;
-            this.textBox13.SelectionStart = 0;
-            this.textBox13.ShortcutsEnabled = true;
-            this.textBox13.Size = new System.Drawing.Size(363, 48);
-            this.textBox13.TabIndex = 20;
-            this.textBox13.TabStop = false;
-            this.textBox13.Text = "440000, г.Пенза, ул. Суворова, стр 92";
-            this.textBox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBox13.TrailingIcon = null;
-            this.textBox13.UseSystemPasswordChar = false;
+            this.TextBox_adressSale.AnimateReadOnly = false;
+            this.TextBox_adressSale.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_adressSale.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_adressSale.Depth = 0;
+            this.TextBox_adressSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_adressSale.HideSelection = true;
+            this.TextBox_adressSale.Hint = "Адрес установки (расчетов)";
+            this.TextBox_adressSale.LeadingIcon = null;
+            this.TextBox_adressSale.Location = new System.Drawing.Point(238, 515);
+            this.TextBox_adressSale.MaxLength = 32767;
+            this.TextBox_adressSale.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_adressSale.Name = "TextBox_adressSale";
+            this.TextBox_adressSale.PasswordChar = '\0';
+            this.TextBox_adressSale.PrefixSuffixText = null;
+            this.TextBox_adressSale.ReadOnly = false;
+            this.TextBox_adressSale.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_adressSale.SelectedText = "";
+            this.TextBox_adressSale.SelectionLength = 0;
+            this.TextBox_adressSale.SelectionStart = 0;
+            this.TextBox_adressSale.ShortcutsEnabled = true;
+            this.TextBox_adressSale.Size = new System.Drawing.Size(363, 48);
+            this.TextBox_adressSale.TabIndex = 20;
+            this.TextBox_adressSale.TabStop = false;
+            this.TextBox_adressSale.Text = "440000, г.Пенза, ул. Суворова, стр 92";
+            this.TextBox_adressSale.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_adressSale.TrailingIcon = null;
+            this.TextBox_adressSale.UseSystemPasswordChar = false;
+            this.TextBox_adressSale.TextChanged += new System.EventHandler(this.Adress_Changet);
             // 
             // materialLabel3
             // 
@@ -1130,184 +1579,191 @@
             this.materialLabel3.TabIndex = 19;
             this.materialLabel3.Text = "Адрес и место расчетов";
             // 
-            // textBox15
+            // TextBox_KPP_organization
             // 
-            this.textBox15.AnimateReadOnly = false;
-            this.textBox15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.textBox15.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.textBox15.Depth = 0;
-            this.textBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.textBox15.HelperText = "Заполняется только для ЮЛ";
-            this.textBox15.HideSelection = true;
-            this.textBox15.Hint = "КПП";
-            this.textBox15.LeadingIcon = null;
-            this.textBox15.Location = new System.Drawing.Point(666, 298);
-            this.textBox15.MaxLength = 32767;
-            this.textBox15.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox15.Name = "textBox15";
-            this.textBox15.PasswordChar = '\0';
-            this.textBox15.PrefixSuffixText = null;
-            this.textBox15.ReadOnly = false;
-            this.textBox15.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox15.SelectedText = "";
-            this.textBox15.SelectionLength = 0;
-            this.textBox15.SelectionStart = 0;
-            this.textBox15.ShortcutsEnabled = true;
-            this.textBox15.ShowAssistiveText = true;
-            this.textBox15.Size = new System.Drawing.Size(300, 64);
-            this.textBox15.TabIndex = 18;
-            this.textBox15.TabStop = false;
-            this.textBox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBox15.TrailingIcon = null;
-            this.textBox15.UseSystemPasswordChar = false;
-            this.textBox15.Visible = false;
+            this.TextBox_KPP_organization.AnimateReadOnly = false;
+            this.TextBox_KPP_organization.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_KPP_organization.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_KPP_organization.Depth = 0;
+            this.TextBox_KPP_organization.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TextBox_KPP_organization.HelperText = "Заполняется только для ЮЛ";
+            this.TextBox_KPP_organization.HideSelection = true;
+            this.TextBox_KPP_organization.Hint = "КПП";
+            this.TextBox_KPP_organization.LeadingIcon = null;
+            this.TextBox_KPP_organization.Location = new System.Drawing.Point(666, 298);
+            this.TextBox_KPP_organization.MaxLength = 32767;
+            this.TextBox_KPP_organization.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_KPP_organization.Name = "TextBox_KPP_organization";
+            this.TextBox_KPP_organization.PasswordChar = '\0';
+            this.TextBox_KPP_organization.PrefixSuffixText = null;
+            this.TextBox_KPP_organization.ReadOnly = false;
+            this.TextBox_KPP_organization.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_KPP_organization.SelectedText = "";
+            this.TextBox_KPP_organization.SelectionLength = 0;
+            this.TextBox_KPP_organization.SelectionStart = 0;
+            this.TextBox_KPP_organization.ShortcutsEnabled = true;
+            this.TextBox_KPP_organization.ShowAssistiveText = true;
+            this.TextBox_KPP_organization.Size = new System.Drawing.Size(300, 64);
+            this.TextBox_KPP_organization.TabIndex = 18;
+            this.TextBox_KPP_organization.TabStop = false;
+            this.TextBox_KPP_organization.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_KPP_organization.TrailingIcon = null;
+            this.TextBox_KPP_organization.UseSystemPasswordChar = false;
+            this.TextBox_KPP_organization.Visible = false;
+            this.TextBox_KPP_organization.Leave += new System.EventHandler(this.KPP_organization_Leave);
+            this.TextBox_KPP_organization.TextChanged += new System.EventHandler(this.KPP_organization_Chenged);
             // 
-            // textBox12
+            // TextBox_Email_organization
             // 
-            this.textBox12.AnimateReadOnly = false;
-            this.textBox12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.textBox12.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.textBox12.Depth = 0;
-            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.textBox12.HideSelection = true;
-            this.textBox12.Hint = "Эл. почта";
-            this.textBox12.LeadingIcon = null;
-            this.textBox12.Location = new System.Drawing.Point(666, 422);
-            this.textBox12.MaxLength = 32767;
-            this.textBox12.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox12.Name = "textBox12";
-            this.textBox12.PasswordChar = '\0';
-            this.textBox12.PrefixSuffixText = null;
-            this.textBox12.ReadOnly = false;
-            this.textBox12.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox12.SelectedText = "";
-            this.textBox12.SelectionLength = 0;
-            this.textBox12.SelectionStart = 0;
-            this.textBox12.ShortcutsEnabled = true;
-            this.textBox12.Size = new System.Drawing.Size(300, 48);
-            this.textBox12.TabIndex = 17;
-            this.textBox12.TabStop = false;
-            this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBox12.TrailingIcon = null;
-            this.textBox12.UseSystemPasswordChar = false;
+            this.TextBox_Email_organization.AnimateReadOnly = false;
+            this.TextBox_Email_organization.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_Email_organization.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_Email_organization.Depth = 0;
+            this.TextBox_Email_organization.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TextBox_Email_organization.HideSelection = true;
+            this.TextBox_Email_organization.Hint = "Эл. почта";
+            this.TextBox_Email_organization.LeadingIcon = null;
+            this.TextBox_Email_organization.Location = new System.Drawing.Point(666, 422);
+            this.TextBox_Email_organization.MaxLength = 32767;
+            this.TextBox_Email_organization.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_Email_organization.Name = "TextBox_Email_organization";
+            this.TextBox_Email_organization.PasswordChar = '\0';
+            this.TextBox_Email_organization.PrefixSuffixText = null;
+            this.TextBox_Email_organization.ReadOnly = false;
+            this.TextBox_Email_organization.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_Email_organization.SelectedText = "";
+            this.TextBox_Email_organization.SelectionLength = 0;
+            this.TextBox_Email_organization.SelectionStart = 0;
+            this.TextBox_Email_organization.ShortcutsEnabled = true;
+            this.TextBox_Email_organization.Size = new System.Drawing.Size(300, 48);
+            this.TextBox_Email_organization.TabIndex = 17;
+            this.TextBox_Email_organization.TabStop = false;
+            this.TextBox_Email_organization.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_Email_organization.TrailingIcon = null;
+            this.TextBox_Email_organization.UseSystemPasswordChar = false;
+            this.TextBox_Email_organization.TextChanged += new System.EventHandler(this.Email_Changet);
             // 
-            // textBox9
+            // TextBox_INN_organization
             // 
-            this.textBox9.AnimateReadOnly = false;
-            this.textBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.textBox9.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.textBox9.Depth = 0;
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox9.HideSelection = true;
-            this.textBox9.Hint = "ИНН организации";
-            this.textBox9.LeadingIcon = null;
-            this.textBox9.Location = new System.Drawing.Point(238, 422);
-            this.textBox9.MaxLength = 32767;
-            this.textBox9.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.PasswordChar = '\0';
-            this.textBox9.PrefixSuffixText = null;
-            this.textBox9.ReadOnly = false;
-            this.textBox9.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox9.SelectedText = "";
-            this.textBox9.SelectionLength = 0;
-            this.textBox9.SelectionStart = 0;
-            this.textBox9.ShortcutsEnabled = true;
-            this.textBox9.Size = new System.Drawing.Size(407, 48);
-            this.textBox9.TabIndex = 14;
-            this.textBox9.TabStop = false;
-            this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBox9.TrailingIcon = null;
-            this.textBox9.UseSystemPasswordChar = false;
+            this.TextBox_INN_organization.AnimateReadOnly = false;
+            this.TextBox_INN_organization.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_INN_organization.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_INN_organization.Depth = 0;
+            this.TextBox_INN_organization.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_INN_organization.HideSelection = true;
+            this.TextBox_INN_organization.Hint = "ИНН организации";
+            this.TextBox_INN_organization.LeadingIcon = null;
+            this.TextBox_INN_organization.Location = new System.Drawing.Point(238, 422);
+            this.TextBox_INN_organization.MaxLength = 32767;
+            this.TextBox_INN_organization.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_INN_organization.Name = "TextBox_INN_organization";
+            this.TextBox_INN_organization.PasswordChar = '\0';
+            this.TextBox_INN_organization.PrefixSuffixText = null;
+            this.TextBox_INN_organization.ReadOnly = false;
+            this.TextBox_INN_organization.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_INN_organization.SelectedText = "";
+            this.TextBox_INN_organization.SelectionLength = 0;
+            this.TextBox_INN_organization.SelectionStart = 0;
+            this.TextBox_INN_organization.ShortcutsEnabled = true;
+            this.TextBox_INN_organization.Size = new System.Drawing.Size(407, 48);
+            this.TextBox_INN_organization.TabIndex = 14;
+            this.TextBox_INN_organization.TabStop = false;
+            this.TextBox_INN_organization.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_INN_organization.TrailingIcon = null;
+            this.TextBox_INN_organization.UseSystemPasswordChar = false;
+            this.TextBox_INN_organization.Leave += new System.EventHandler(this.INNOr_Leave);
+            this.TextBox_INN_organization.TextChanged += new System.EventHandler(this.INNOr_TextChanged);
             // 
-            // textBox8
+            // TextBox_Director_org
             // 
-            this.textBox8.AnimateReadOnly = false;
-            this.textBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.textBox8.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.textBox8.Depth = 0;
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox8.HideSelection = true;
-            this.textBox8.Hint = "Руководитель организации";
-            this.textBox8.LeadingIcon = null;
-            this.textBox8.Location = new System.Drawing.Point(238, 368);
-            this.textBox8.MaxLength = 32767;
-            this.textBox8.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.PasswordChar = '\0';
-            this.textBox8.PrefixSuffixText = null;
-            this.textBox8.ReadOnly = false;
-            this.textBox8.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox8.SelectedText = "";
-            this.textBox8.SelectionLength = 0;
-            this.textBox8.SelectionStart = 0;
-            this.textBox8.ShortcutsEnabled = true;
-            this.textBox8.Size = new System.Drawing.Size(407, 48);
-            this.textBox8.TabIndex = 13;
-            this.textBox8.TabStop = false;
-            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBox8.TrailingIcon = null;
-            this.textBox8.UseSystemPasswordChar = false;
+            this.TextBox_Director_org.AnimateReadOnly = false;
+            this.TextBox_Director_org.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_Director_org.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_Director_org.Depth = 0;
+            this.TextBox_Director_org.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_Director_org.HideSelection = true;
+            this.TextBox_Director_org.Hint = "Руководитель организации";
+            this.TextBox_Director_org.LeadingIcon = null;
+            this.TextBox_Director_org.Location = new System.Drawing.Point(238, 368);
+            this.TextBox_Director_org.MaxLength = 32767;
+            this.TextBox_Director_org.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_Director_org.Name = "TextBox_Director_org";
+            this.TextBox_Director_org.PasswordChar = '\0';
+            this.TextBox_Director_org.PrefixSuffixText = null;
+            this.TextBox_Director_org.ReadOnly = false;
+            this.TextBox_Director_org.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_Director_org.SelectedText = "";
+            this.TextBox_Director_org.SelectionLength = 0;
+            this.TextBox_Director_org.SelectionStart = 0;
+            this.TextBox_Director_org.ShortcutsEnabled = true;
+            this.TextBox_Director_org.Size = new System.Drawing.Size(407, 48);
+            this.TextBox_Director_org.TabIndex = 13;
+            this.TextBox_Director_org.TabStop = false;
+            this.TextBox_Director_org.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_Director_org.TrailingIcon = null;
+            this.TextBox_Director_org.UseSystemPasswordChar = false;
             // 
-            // textBox7
+            // TextBox_Name_organization
             // 
-            this.textBox7.AnimateReadOnly = false;
-            this.textBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.textBox7.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.textBox7.Depth = 0;
-            this.textBox7.ErrorMessage = "Проблема";
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox7.HideSelection = true;
-            this.textBox7.Hint = "Наименование организации";
-            this.textBox7.LeadingIcon = null;
-            this.textBox7.Location = new System.Drawing.Point(238, 314);
-            this.textBox7.MaxLength = 32767;
-            this.textBox7.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.PasswordChar = '\0';
-            this.textBox7.PrefixSuffixText = null;
-            this.textBox7.ReadOnly = false;
-            this.textBox7.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox7.SelectedText = "";
-            this.textBox7.SelectionLength = 0;
-            this.textBox7.SelectionStart = 0;
-            this.textBox7.ShortcutsEnabled = true;
-            this.textBox7.Size = new System.Drawing.Size(407, 48);
-            this.textBox7.TabIndex = 12;
-            this.textBox7.TabStop = false;
-            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBox7.TrailingIcon = null;
-            this.textBox7.UseSystemPasswordChar = false;
-            this.textBox7.TextChanged += new System.EventHandler(this.NameOr_TextChanged);
+            this.TextBox_Name_organization.AnimateReadOnly = false;
+            this.TextBox_Name_organization.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_Name_organization.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_Name_organization.Depth = 0;
+            this.TextBox_Name_organization.ErrorMessage = "Проблема";
+            this.TextBox_Name_organization.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_Name_organization.HideSelection = true;
+            this.TextBox_Name_organization.Hint = "Наименование организации";
+            this.TextBox_Name_organization.LeadingIcon = null;
+            this.TextBox_Name_organization.Location = new System.Drawing.Point(238, 314);
+            this.TextBox_Name_organization.MaxLength = 32767;
+            this.TextBox_Name_organization.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_Name_organization.Name = "TextBox_Name_organization";
+            this.TextBox_Name_organization.PasswordChar = '\0';
+            this.TextBox_Name_organization.PrefixSuffixText = null;
+            this.TextBox_Name_organization.ReadOnly = false;
+            this.TextBox_Name_organization.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_Name_organization.SelectedText = "";
+            this.TextBox_Name_organization.SelectionLength = 0;
+            this.TextBox_Name_organization.SelectionStart = 0;
+            this.TextBox_Name_organization.ShortcutsEnabled = true;
+            this.TextBox_Name_organization.Size = new System.Drawing.Size(407, 48);
+            this.TextBox_Name_organization.TabIndex = 12;
+            this.TextBox_Name_organization.TabStop = false;
+            this.TextBox_Name_organization.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_Name_organization.TrailingIcon = null;
+            this.TextBox_Name_organization.UseSystemPasswordChar = false;
+            this.TextBox_Name_organization.TextChanged += new System.EventHandler(this.NameOr_TextChanged);
             // 
-            // textBox1
+            // TextBox_ID_client
             // 
-            this.textBox1.AnimateReadOnly = false;
-            this.textBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.textBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.textBox1.Depth = 0;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.textBox1.HideSelection = true;
-            this.textBox1.Hint = "ID клиента";
-            this.textBox1.LeadingIcon = null;
-            this.textBox1.Location = new System.Drawing.Point(238, 260);
-            this.textBox1.MaxLength = 32767;
-            this.textBox1.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '\0';
-            this.textBox1.PrefixSuffixText = null;
-            this.textBox1.ReadOnly = false;
-            this.textBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox1.SelectedText = "";
-            this.textBox1.SelectionLength = 0;
-            this.textBox1.SelectionStart = 0;
-            this.textBox1.ShortcutsEnabled = true;
-            this.textBox1.Size = new System.Drawing.Size(243, 48);
-            this.textBox1.TabIndex = 11;
-            this.textBox1.TabStop = false;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBox1.TrailingIcon = null;
-            this.textBox1.UseSystemPasswordChar = false;
+            this.TextBox_ID_client.AnimateReadOnly = false;
+            this.TextBox_ID_client.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_ID_client.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_ID_client.Depth = 0;
+            this.TextBox_ID_client.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TextBox_ID_client.HideSelection = true;
+            this.TextBox_ID_client.Hint = "ID клиента";
+            this.TextBox_ID_client.LeadingIcon = null;
+            this.TextBox_ID_client.Location = new System.Drawing.Point(238, 260);
+            this.TextBox_ID_client.MaxLength = 32767;
+            this.TextBox_ID_client.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_ID_client.Name = "TextBox_ID_client";
+            this.TextBox_ID_client.PasswordChar = '\0';
+            this.TextBox_ID_client.PrefixSuffixText = null;
+            this.TextBox_ID_client.ReadOnly = false;
+            this.TextBox_ID_client.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_ID_client.SelectedText = "";
+            this.TextBox_ID_client.SelectionLength = 0;
+            this.TextBox_ID_client.SelectionStart = 0;
+            this.TextBox_ID_client.ShortcutsEnabled = true;
+            this.TextBox_ID_client.Size = new System.Drawing.Size(243, 48);
+            this.TextBox_ID_client.TabIndex = 11;
+            this.TextBox_ID_client.TabStop = false;
+            this.TextBox_ID_client.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_ID_client.TrailingIcon = null;
+            this.TextBox_ID_client.UseSystemPasswordChar = false;
+            this.TextBox_ID_client.Leave += new System.EventHandler(this.ID_Leave);
+            this.TextBox_ID_client.TextChanged += new System.EventHandler(this.ID_Changet);
             // 
             // materialLabel2
             // 
@@ -1337,175 +1793,189 @@
             this.materialLabel1.TabIndex = 9;
             this.materialLabel1.Text = "Данные ККТ";
             // 
-            // comboBox2
+            // ComboBox_Model_FN1
             // 
-            this.comboBox2.AutoResize = false;
-            this.comboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.comboBox2.Depth = 0;
-            this.comboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.comboBox2.DropDownHeight = 174;
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.DropDownWidth = 121;
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.comboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Hint = "Модель ФН";
-            this.comboBox2.IntegralHeight = false;
-            this.comboBox2.ItemHeight = 43;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Ав36-3",
-            "Ав15-3",
-            "Ин36-3",
+            this.ComboBox_Model_FN1.AutoResize = false;
+            this.ComboBox_Model_FN1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ComboBox_Model_FN1.Depth = 0;
+            this.ComboBox_Model_FN1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.ComboBox_Model_FN1.DropDownHeight = 174;
+            this.ComboBox_Model_FN1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_Model_FN1.DropDownWidth = 121;
+            this.ComboBox_Model_FN1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.ComboBox_Model_FN1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ComboBox_Model_FN1.FormattingEnabled = true;
+            this.ComboBox_Model_FN1.Hint = "Модель ФН";
+            this.ComboBox_Model_FN1.IntegralHeight = false;
+            this.ComboBox_Model_FN1.ItemHeight = 43;
+            this.ComboBox_Model_FN1.Items.AddRange(new object[] {
             "Ин36-4",
-            "Ин15-3"});
-            this.comboBox2.Location = new System.Drawing.Point(666, 106);
-            this.comboBox2.MaxDropDownItems = 4;
-            this.comboBox2.MouseState = MaterialSkin.MouseState.OUT;
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(300, 49);
-            this.comboBox2.StartIndex = 0;
-            this.comboBox2.TabIndex = 8;
+            "Ин36-3",
+            "Ин15-3М",
+            "Ав15-3",
+            "Ав36-3",
+            "Эв15-3",
+            "Эв36-3",
+            "Ин15-4",
+            "Эв15-4",
+            "Эв36-4",
+            "Ин15-1"});
+            this.ComboBox_Model_FN1.Location = new System.Drawing.Point(666, 106);
+            this.ComboBox_Model_FN1.MaxDropDownItems = 4;
+            this.ComboBox_Model_FN1.MouseState = MaterialSkin.MouseState.OUT;
+            this.ComboBox_Model_FN1.Name = "ComboBox_Model_FN1";
+            this.ComboBox_Model_FN1.Size = new System.Drawing.Size(300, 49);
+            this.ComboBox_Model_FN1.StartIndex = 0;
+            this.ComboBox_Model_FN1.TabIndex = 8;
+            this.ComboBox_Model_FN1.TextChanged += new System.EventHandler(this.Model_FN1_Changet);
             // 
-            // textBox5
+            // TextBox_ZN_FN
             // 
-            this.textBox5.AnimateReadOnly = false;
-            this.textBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.textBox5.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.textBox5.Depth = 0;
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.textBox5.HideSelection = true;
-            this.textBox5.Hint = "Заводской номер ФН";
-            this.textBox5.LeadingIcon = null;
-            this.textBox5.Location = new System.Drawing.Point(666, 160);
-            this.textBox5.MaxLength = 32767;
-            this.textBox5.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.PasswordChar = '\0';
-            this.textBox5.PrefixSuffixText = null;
-            this.textBox5.ReadOnly = false;
-            this.textBox5.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox5.SelectedText = "";
-            this.textBox5.SelectionLength = 0;
-            this.textBox5.SelectionStart = 0;
-            this.textBox5.ShortcutsEnabled = true;
-            this.textBox5.Size = new System.Drawing.Size(300, 48);
-            this.textBox5.TabIndex = 7;
-            this.textBox5.TabStop = false;
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBox5.TrailingIcon = null;
-            this.textBox5.UseSystemPasswordChar = false;
+            this.TextBox_ZN_FN.AnimateReadOnly = false;
+            this.TextBox_ZN_FN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_ZN_FN.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_ZN_FN.Depth = 0;
+            this.TextBox_ZN_FN.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TextBox_ZN_FN.HideSelection = true;
+            this.TextBox_ZN_FN.Hint = "Заводской номер ФН";
+            this.TextBox_ZN_FN.LeadingIcon = null;
+            this.TextBox_ZN_FN.Location = new System.Drawing.Point(666, 160);
+            this.TextBox_ZN_FN.MaxLength = 32767;
+            this.TextBox_ZN_FN.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_ZN_FN.Name = "TextBox_ZN_FN";
+            this.TextBox_ZN_FN.PasswordChar = '\0';
+            this.TextBox_ZN_FN.PrefixSuffixText = null;
+            this.TextBox_ZN_FN.ReadOnly = false;
+            this.TextBox_ZN_FN.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_ZN_FN.SelectedText = "";
+            this.TextBox_ZN_FN.SelectionLength = 0;
+            this.TextBox_ZN_FN.SelectionStart = 0;
+            this.TextBox_ZN_FN.ShortcutsEnabled = true;
+            this.TextBox_ZN_FN.Size = new System.Drawing.Size(300, 48);
+            this.TextBox_ZN_FN.TabIndex = 7;
+            this.TextBox_ZN_FN.TabStop = false;
+            this.TextBox_ZN_FN.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_ZN_FN.TrailingIcon = null;
+            this.TextBox_ZN_FN.UseSystemPasswordChar = false;
+            this.TextBox_ZN_FN.Leave += new System.EventHandler(this.ZN_FN_Leave);
+            this.TextBox_ZN_FN.TextChanged += new System.EventHandler(this.ZN_FN_Changet);
             // 
-            // textBox21
+            // TextBox_Number_automatic
             // 
-            this.textBox21.AnimateReadOnly = false;
-            this.textBox21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.textBox21.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.textBox21.Depth = 0;
-            this.textBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox21.HideSelection = true;
-            this.textBox21.Hint = "Номер автомата";
-            this.textBox21.LeadingIcon = null;
-            this.textBox21.Location = new System.Drawing.Point(487, 161);
-            this.textBox21.MaxLength = 32767;
-            this.textBox21.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox21.Name = "textBox21";
-            this.textBox21.PasswordChar = '\0';
-            this.textBox21.PrefixSuffixText = null;
-            this.textBox21.ReadOnly = false;
-            this.textBox21.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox21.SelectedText = "";
-            this.textBox21.SelectionLength = 0;
-            this.textBox21.SelectionStart = 0;
-            this.textBox21.ShortcutsEnabled = true;
-            this.textBox21.Size = new System.Drawing.Size(158, 48);
-            this.textBox21.TabIndex = 5;
-            this.textBox21.TabStop = false;
-            this.textBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBox21.TrailingIcon = null;
-            this.textBox21.UseSystemPasswordChar = false;
+            this.TextBox_Number_automatic.AnimateReadOnly = false;
+            this.TextBox_Number_automatic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_Number_automatic.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_Number_automatic.Depth = 0;
+            this.TextBox_Number_automatic.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_Number_automatic.HideSelection = true;
+            this.TextBox_Number_automatic.Hint = "Номер автомата";
+            this.TextBox_Number_automatic.LeadingIcon = null;
+            this.TextBox_Number_automatic.Location = new System.Drawing.Point(487, 161);
+            this.TextBox_Number_automatic.MaxLength = 32767;
+            this.TextBox_Number_automatic.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_Number_automatic.Name = "TextBox_Number_automatic";
+            this.TextBox_Number_automatic.PasswordChar = '\0';
+            this.TextBox_Number_automatic.PrefixSuffixText = null;
+            this.TextBox_Number_automatic.ReadOnly = false;
+            this.TextBox_Number_automatic.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_Number_automatic.SelectedText = "";
+            this.TextBox_Number_automatic.SelectionLength = 0;
+            this.TextBox_Number_automatic.SelectionStart = 0;
+            this.TextBox_Number_automatic.ShortcutsEnabled = true;
+            this.TextBox_Number_automatic.Size = new System.Drawing.Size(173, 48);
+            this.TextBox_Number_automatic.TabIndex = 5;
+            this.TextBox_Number_automatic.TabStop = false;
+            this.TextBox_Number_automatic.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_Number_automatic.TrailingIcon = null;
+            this.TextBox_Number_automatic.UseSystemPasswordChar = false;
             // 
-            // textBox3
+            // TextBox_ZN_KKT
             // 
-            this.textBox3.AnimateReadOnly = false;
-            this.textBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.textBox3.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.textBox3.Depth = 0;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.textBox3.HideSelection = true;
-            this.textBox3.Hint = "Заводской номер ККТ";
-            this.textBox3.LeadingIcon = null;
-            this.textBox3.Location = new System.Drawing.Point(238, 161);
-            this.textBox3.MaxLength = 32767;
-            this.textBox3.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.PasswordChar = '\0';
-            this.textBox3.PrefixSuffixText = null;
-            this.textBox3.ReadOnly = false;
-            this.textBox3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox3.SelectedText = "";
-            this.textBox3.SelectionLength = 0;
-            this.textBox3.SelectionStart = 0;
-            this.textBox3.ShortcutsEnabled = true;
-            this.textBox3.Size = new System.Drawing.Size(243, 48);
-            this.textBox3.TabIndex = 4;
-            this.textBox3.TabStop = false;
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBox3.TrailingIcon = null;
-            this.textBox3.UseSystemPasswordChar = false;
-            this.textBox3.TextChanged += new System.EventHandler(this.NAvtomat_TextChanged);
+            this.TextBox_ZN_KKT.AnimateReadOnly = false;
+            this.TextBox_ZN_KKT.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_ZN_KKT.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_ZN_KKT.Depth = 0;
+            this.TextBox_ZN_KKT.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TextBox_ZN_KKT.HideSelection = true;
+            this.TextBox_ZN_KKT.Hint = "Заводской номер ККТ";
+            this.TextBox_ZN_KKT.LeadingIcon = null;
+            this.TextBox_ZN_KKT.Location = new System.Drawing.Point(238, 161);
+            this.TextBox_ZN_KKT.MaxLength = 32767;
+            this.TextBox_ZN_KKT.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_ZN_KKT.Name = "TextBox_ZN_KKT";
+            this.TextBox_ZN_KKT.PasswordChar = '\0';
+            this.TextBox_ZN_KKT.PrefixSuffixText = null;
+            this.TextBox_ZN_KKT.ReadOnly = false;
+            this.TextBox_ZN_KKT.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_ZN_KKT.SelectedText = "";
+            this.TextBox_ZN_KKT.SelectionLength = 0;
+            this.TextBox_ZN_KKT.SelectionStart = 0;
+            this.TextBox_ZN_KKT.ShortcutsEnabled = true;
+            this.TextBox_ZN_KKT.Size = new System.Drawing.Size(243, 48);
+            this.TextBox_ZN_KKT.TabIndex = 4;
+            this.TextBox_ZN_KKT.TabStop = false;
+            this.TextBox_ZN_KKT.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_ZN_KKT.TrailingIcon = null;
+            this.TextBox_ZN_KKT.UseSystemPasswordChar = false;
+            this.TextBox_ZN_KKT.Leave += new System.EventHandler(this.ZN_KKT_Leave);
+            this.TextBox_ZN_KKT.TextChanged += new System.EventHandler(this.ZN_KKT_TextChanged);
             // 
-            // textBox18
+            // TextBox_Model_KKT
             // 
-            this.textBox18.AnimateReadOnly = false;
-            this.textBox18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.textBox18.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.textBox18.Depth = 0;
-            this.textBox18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox18.HideSelection = true;
-            this.textBox18.Hint = "Модель ККТ";
-            this.textBox18.LeadingIcon = null;
-            this.textBox18.Location = new System.Drawing.Point(238, 107);
-            this.textBox18.MaxLength = 32767;
-            this.textBox18.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox18.Name = "textBox18";
-            this.textBox18.PasswordChar = '\0';
-            this.textBox18.PrefixSuffixText = null;
-            this.textBox18.ReadOnly = false;
-            this.textBox18.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox18.SelectedText = "";
-            this.textBox18.SelectionLength = 0;
-            this.textBox18.SelectionStart = 0;
-            this.textBox18.ShortcutsEnabled = true;
-            this.textBox18.Size = new System.Drawing.Size(407, 48);
-            this.textBox18.TabIndex = 3;
-            this.textBox18.TabStop = false;
-            this.textBox18.Text = "Терминал-ФА";
-            this.textBox18.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBox18.TrailingIcon = null;
-            this.textBox18.UseSystemPasswordChar = false;
+            this.TextBox_Model_KKT.AnimateReadOnly = false;
+            this.TextBox_Model_KKT.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_Model_KKT.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_Model_KKT.Depth = 0;
+            this.TextBox_Model_KKT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_Model_KKT.HideSelection = true;
+            this.TextBox_Model_KKT.Hint = "Модель ККТ";
+            this.TextBox_Model_KKT.LeadingIcon = null;
+            this.TextBox_Model_KKT.Location = new System.Drawing.Point(238, 107);
+            this.TextBox_Model_KKT.MaxLength = 32767;
+            this.TextBox_Model_KKT.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_Model_KKT.Name = "TextBox_Model_KKT";
+            this.TextBox_Model_KKT.PasswordChar = '\0';
+            this.TextBox_Model_KKT.PrefixSuffixText = null;
+            this.TextBox_Model_KKT.ReadOnly = false;
+            this.TextBox_Model_KKT.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_Model_KKT.SelectedText = "";
+            this.TextBox_Model_KKT.SelectionLength = 0;
+            this.TextBox_Model_KKT.SelectionStart = 0;
+            this.TextBox_Model_KKT.ShortcutsEnabled = true;
+            this.TextBox_Model_KKT.Size = new System.Drawing.Size(422, 48);
+            this.TextBox_Model_KKT.TabIndex = 3;
+            this.TextBox_Model_KKT.TabStop = false;
+            this.TextBox_Model_KKT.Text = "Терминал-ФА";
+            this.TextBox_Model_KKT.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_Model_KKT.TrailingIcon = null;
+            this.TextBox_Model_KKT.UseSystemPasswordChar = false;
+            this.TextBox_Model_KKT.TextChanged += new System.EventHandler(this.Model_KKT_Changet);
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.materialTextBox28);
-            this.tabPage2.Controls.Add(this.materialTextBox23);
+            this.tabPage2.Controls.Add(this.materialButton1);
+            this.tabPage2.Controls.Add(this.switch_open_KKT2);
+            this.tabPage2.Controls.Add(this.butCleare2);
+            this.tabPage2.Controls.Add(this.TextBox_ID_client2);
+            this.tabPage2.Controls.Add(this.TextBox_Date2);
             this.tabPage2.Controls.Add(this.materialLabel16);
             this.tabPage2.Controls.Add(this.materialLabel14);
             this.tabPage2.Controls.Add(this.materialLabel15);
             this.tabPage2.Controls.Add(this.labelVers2);
             this.tabPage2.Controls.Add(this.buttonAkt2);
-            this.tabPage2.Controls.Add(this.butReaddataAKT);
-            this.tabPage2.Controls.Add(this.butLoadingAKT);
-            this.tabPage2.Controls.Add(this.butSaveAKT);
-            this.tabPage2.Controls.Add(this.materialTextBox21);
-            this.tabPage2.Controls.Add(this.materialTextBox22);
-            this.tabPage2.Controls.Add(this.materialTextBox24);
-            this.tabPage2.Controls.Add(this.materialComboBox1);
-            this.tabPage2.Controls.Add(this.materialTextBox25);
-            this.tabPage2.Controls.Add(this.materialTextBox26);
-            this.tabPage2.Controls.Add(this.materialTextBox27);
-            this.tabPage2.Controls.Add(this.materialTextBox29);
-            this.tabPage2.Controls.Add(this.materialTextBox210);
-            this.tabPage2.Controls.Add(this.materialTextBox211);
+            this.tabPage2.Controls.Add(this.butReaddata2);
+            this.tabPage2.Controls.Add(this.butLoading2);
+            this.tabPage2.Controls.Add(this.butSave2);
+            this.tabPage2.Controls.Add(this.TextBox_NumberFD2);
+            this.tabPage2.Controls.Add(this.TextBox_FPDocument2);
+            this.tabPage2.Controls.Add(this.TextBox_RNM2);
+            this.tabPage2.Controls.Add(this.ComboBox_Name_OFD2);
+            this.tabPage2.Controls.Add(this.TextBox_INN_OFD2);
+            this.tabPage2.Controls.Add(this.TextBox_INNOrganization2);
+            this.tabPage2.Controls.Add(this.TextBox_NameOrganization2);
+            this.tabPage2.Controls.Add(this.TextBox_ZN_FN2);
+            this.tabPage2.Controls.Add(this.TextBox_ZN_KKT2);
+            this.tabPage2.Controls.Add(this.TextBox_Model_KKT2);
             this.tabPage2.ImageKey = "icons8-принтер-50.png";
             this.tabPage2.Location = new System.Drawing.Point(4, 39);
             this.tabPage2.Name = "tabPage2";
@@ -1515,79 +1985,138 @@
             this.tabPage2.Text = "Акт ввода";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // materialTextBox28
+            // materialButton1
             // 
-            this.materialTextBox28.AnimateReadOnly = false;
-            this.materialTextBox28.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox28.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox28.Depth = 0;
-            this.materialTextBox28.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialTextBox28.HelperText = "Поле не обязательно для старых клиентов";
-            this.materialTextBox28.HideSelection = true;
-            this.materialTextBox28.Hint = "ID клиента";
-            this.materialTextBox28.LeadingIcon = null;
-            this.materialTextBox28.Location = new System.Drawing.Point(238, 255);
-            this.materialTextBox28.MaxLength = 32767;
-            this.materialTextBox28.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox28.Name = "materialTextBox28";
-            this.materialTextBox28.PasswordChar = '\0';
-            this.materialTextBox28.PrefixSuffixText = null;
-            this.materialTextBox28.ReadOnly = false;
-            this.materialTextBox28.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox28.SelectedText = "";
-            this.materialTextBox28.SelectionLength = 0;
-            this.materialTextBox28.SelectionStart = 0;
-            this.materialTextBox28.ShortcutsEnabled = true;
-            this.materialTextBox28.ShowAssistiveText = true;
-            this.materialTextBox28.Size = new System.Drawing.Size(300, 64);
-            this.materialTextBox28.TabIndex = 129;
-            this.materialTextBox28.TabStop = false;
-            this.materialTextBox28.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox28.TrailingIcon = null;
-            this.materialTextBox28.UseSystemPasswordChar = false;
+            this.materialButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton1.Depth = 0;
+            this.materialButton1.HighEmphasis = true;
+            this.materialButton1.Icon = null;
+            this.materialButton1.Location = new System.Drawing.Point(434, 119);
+            this.materialButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton1.Name = "materialButton1";
+            this.materialButton1.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton1.Size = new System.Drawing.Size(64, 36);
+            this.materialButton1.TabIndex = 134;
+            this.materialButton1.Text = "...";
+            this.materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton1.UseAccentColor = false;
+            this.materialButton1.UseVisualStyleBackColor = true;
             // 
-            // materialTextBox23
+            // switch_open_KKT2
             // 
-            this.materialTextBox23.AllowPromptAsInput = true;
-            this.materialTextBox23.AnimateReadOnly = false;
-            this.materialTextBox23.AsciiOnly = false;
-            this.materialTextBox23.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox23.BeepOnError = false;
-            this.materialTextBox23.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
-            this.materialTextBox23.Depth = 0;
-            this.materialTextBox23.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialTextBox23.HidePromptOnLeave = false;
-            this.materialTextBox23.HideSelection = true;
-            this.materialTextBox23.Hint = "Дата и время";
-            this.materialTextBox23.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Default;
-            this.materialTextBox23.LeadingIcon = null;
-            this.materialTextBox23.Location = new System.Drawing.Point(851, 161);
-            this.materialTextBox23.Mask = "00/00/0000 00:00";
-            this.materialTextBox23.MaxLength = 32767;
-            this.materialTextBox23.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox23.Name = "materialTextBox23";
-            this.materialTextBox23.PasswordChar = '\0';
-            this.materialTextBox23.PrefixSuffixText = null;
-            this.materialTextBox23.PromptChar = '_';
-            this.materialTextBox23.ReadOnly = false;
-            this.materialTextBox23.RejectInputOnFirstFailure = false;
-            this.materialTextBox23.ResetOnPrompt = true;
-            this.materialTextBox23.ResetOnSpace = true;
-            this.materialTextBox23.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox23.SelectedText = "";
-            this.materialTextBox23.SelectionLength = 0;
-            this.materialTextBox23.SelectionStart = 0;
-            this.materialTextBox23.ShortcutsEnabled = true;
-            this.materialTextBox23.Size = new System.Drawing.Size(363, 48);
-            this.materialTextBox23.SkipLiterals = true;
-            this.materialTextBox23.TabIndex = 128;
-            this.materialTextBox23.TabStop = false;
-            this.materialTextBox23.Text = "  .  .       :";
-            this.materialTextBox23.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox23.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
-            this.materialTextBox23.TrailingIcon = null;
-            this.materialTextBox23.UseSystemPasswordChar = false;
-            this.materialTextBox23.ValidatingType = null;
+            this.switch_open_KKT2.AutoSize = true;
+            this.switch_open_KKT2.Depth = 0;
+            this.switch_open_KKT2.Location = new System.Drawing.Point(12, 83);
+            this.switch_open_KKT2.Margin = new System.Windows.Forms.Padding(0);
+            this.switch_open_KKT2.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.switch_open_KKT2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.switch_open_KKT2.Name = "switch_open_KKT2";
+            this.switch_open_KKT2.Ripple = true;
+            this.switch_open_KKT2.Size = new System.Drawing.Size(196, 37);
+            this.switch_open_KKT2.TabIndex = 133;
+            this.switch_open_KKT2.Text = "Подключение ККТ";
+            this.switch_open_KKT2.UseVisualStyleBackColor = true;
+            this.switch_open_KKT2.Click += new System.EventHandler(this.switchclick_openKKT2);
+            // 
+            // butCleare2
+            // 
+            this.butCleare2.AutoSize = false;
+            this.butCleare2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.butCleare2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.butCleare2.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.butCleare2.Depth = 0;
+            this.butCleare2.HighEmphasis = true;
+            this.butCleare2.Icon = ((System.Drawing.Image)(resources.GetObject("butCleare2.Icon")));
+            this.butCleare2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.butCleare2.Location = new System.Drawing.Point(501, 17);
+            this.butCleare2.Margin = new System.Windows.Forms.Padding(14, 4, 4, 4);
+            this.butCleare2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.butCleare2.Name = "butCleare2";
+            this.butCleare2.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.butCleare2.Padding = new System.Windows.Forms.Padding(2);
+            this.butCleare2.Size = new System.Drawing.Size(144, 47);
+            this.butCleare2.TabIndex = 130;
+            this.butCleare2.Text = "Очистить поля";
+            this.butCleare2.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.butCleare2.UseAccentColor = false;
+            this.butCleare2.UseVisualStyleBackColor = true;
+            this.butCleare2.Click += new System.EventHandler(this.butCleare2_Click);
+            // 
+            // TextBox_ID_client2
+            // 
+            this.TextBox_ID_client2.AnimateReadOnly = false;
+            this.TextBox_ID_client2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_ID_client2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_ID_client2.Depth = 0;
+            this.TextBox_ID_client2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TextBox_ID_client2.HelperText = "Поле не обязательно для старых клиентов";
+            this.TextBox_ID_client2.HideSelection = true;
+            this.TextBox_ID_client2.Hint = "ID клиента";
+            this.TextBox_ID_client2.LeadingIcon = null;
+            this.TextBox_ID_client2.Location = new System.Drawing.Point(238, 255);
+            this.TextBox_ID_client2.MaxLength = 32767;
+            this.TextBox_ID_client2.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_ID_client2.Name = "TextBox_ID_client2";
+            this.TextBox_ID_client2.PasswordChar = '\0';
+            this.TextBox_ID_client2.PrefixSuffixText = null;
+            this.TextBox_ID_client2.ReadOnly = false;
+            this.TextBox_ID_client2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_ID_client2.SelectedText = "";
+            this.TextBox_ID_client2.SelectionLength = 0;
+            this.TextBox_ID_client2.SelectionStart = 0;
+            this.TextBox_ID_client2.ShortcutsEnabled = true;
+            this.TextBox_ID_client2.ShowAssistiveText = true;
+            this.TextBox_ID_client2.Size = new System.Drawing.Size(300, 64);
+            this.TextBox_ID_client2.TabIndex = 129;
+            this.TextBox_ID_client2.TabStop = false;
+            this.TextBox_ID_client2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_ID_client2.TrailingIcon = null;
+            this.TextBox_ID_client2.UseSystemPasswordChar = false;
+            // 
+            // TextBox_Date2
+            // 
+            this.TextBox_Date2.AllowPromptAsInput = true;
+            this.TextBox_Date2.AnimateReadOnly = false;
+            this.TextBox_Date2.AsciiOnly = false;
+            this.TextBox_Date2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_Date2.BeepOnError = false;
+            this.TextBox_Date2.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
+            this.TextBox_Date2.Depth = 0;
+            this.TextBox_Date2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TextBox_Date2.HidePromptOnLeave = false;
+            this.TextBox_Date2.HideSelection = true;
+            this.TextBox_Date2.Hint = "Дата и время";
+            this.TextBox_Date2.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Default;
+            this.TextBox_Date2.LeadingIcon = null;
+            this.TextBox_Date2.Location = new System.Drawing.Point(851, 161);
+            this.TextBox_Date2.Mask = "00/00/0000 00:00";
+            this.TextBox_Date2.MaxLength = 32767;
+            this.TextBox_Date2.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_Date2.Name = "TextBox_Date2";
+            this.TextBox_Date2.PasswordChar = '\0';
+            this.TextBox_Date2.PrefixSuffixText = null;
+            this.TextBox_Date2.PromptChar = '_';
+            this.TextBox_Date2.ReadOnly = false;
+            this.TextBox_Date2.RejectInputOnFirstFailure = false;
+            this.TextBox_Date2.ResetOnPrompt = true;
+            this.TextBox_Date2.ResetOnSpace = true;
+            this.TextBox_Date2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_Date2.SelectedText = "";
+            this.TextBox_Date2.SelectionLength = 0;
+            this.TextBox_Date2.SelectionStart = 0;
+            this.TextBox_Date2.ShortcutsEnabled = true;
+            this.TextBox_Date2.Size = new System.Drawing.Size(363, 48);
+            this.TextBox_Date2.SkipLiterals = true;
+            this.TextBox_Date2.TabIndex = 128;
+            this.TextBox_Date2.TabStop = false;
+            this.TextBox_Date2.Text = "  .  .       :";
+            this.TextBox_Date2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_Date2.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
+            this.TextBox_Date2.TrailingIcon = null;
+            this.TextBox_Date2.UseSystemPasswordChar = false;
+            this.TextBox_Date2.ValidatingType = null;
             // 
             // materialLabel16
             // 
@@ -1656,7 +2185,7 @@
             this.buttonAkt2.HighEmphasis = true;
             this.buttonAkt2.Icon = ((System.Drawing.Image)(resources.GetObject("buttonAkt2.Icon")));
             this.buttonAkt2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonAkt2.Location = new System.Drawing.Point(14, 108);
+            this.buttonAkt2.Location = new System.Drawing.Point(17, 162);
             this.buttonAkt2.Margin = new System.Windows.Forms.Padding(14, 4, 4, 4);
             this.buttonAkt2.MouseState = MaterialSkin.MouseState.HOVER;
             this.buttonAkt2.Name = "buttonAkt2";
@@ -1670,374 +2199,377 @@
             this.buttonAkt2.UseVisualStyleBackColor = true;
             this.buttonAkt2.Click += new System.EventHandler(this.buttonAkt2_Click);
             // 
-            // butReaddataAKT
+            // butReaddata2
             // 
-            this.butReaddataAKT.AutoSize = false;
-            this.butReaddataAKT.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.butReaddataAKT.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.butReaddataAKT.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.butReaddataAKT.Depth = 0;
-            this.butReaddataAKT.HighEmphasis = true;
-            this.butReaddataAKT.Icon = ((System.Drawing.Image)(resources.GetObject("butReaddataAKT.Icon")));
-            this.butReaddataAKT.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.butReaddataAKT.Location = new System.Drawing.Point(338, 17);
-            this.butReaddataAKT.Margin = new System.Windows.Forms.Padding(14, 4, 4, 4);
-            this.butReaddataAKT.MouseState = MaterialSkin.MouseState.HOVER;
-            this.butReaddataAKT.Name = "butReaddataAKT";
-            this.butReaddataAKT.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.butReaddataAKT.Padding = new System.Windows.Forms.Padding(2);
-            this.butReaddataAKT.Size = new System.Drawing.Size(144, 47);
-            this.butReaddataAKT.TabIndex = 51;
-            this.butReaddataAKT.Text = "Считать данные";
-            this.butReaddataAKT.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.butReaddataAKT.UseAccentColor = false;
-            this.butReaddataAKT.UseVisualStyleBackColor = true;
+            this.butReaddata2.AutoSize = false;
+            this.butReaddata2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.butReaddata2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.butReaddata2.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.butReaddata2.Depth = 0;
+            this.butReaddata2.HighEmphasis = true;
+            this.butReaddata2.Icon = ((System.Drawing.Image)(resources.GetObject("butReaddata2.Icon")));
+            this.butReaddata2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.butReaddata2.Location = new System.Drawing.Point(338, 17);
+            this.butReaddata2.Margin = new System.Windows.Forms.Padding(14, 4, 4, 4);
+            this.butReaddata2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.butReaddata2.Name = "butReaddata2";
+            this.butReaddata2.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.butReaddata2.Padding = new System.Windows.Forms.Padding(2);
+            this.butReaddata2.Size = new System.Drawing.Size(144, 47);
+            this.butReaddata2.TabIndex = 51;
+            this.butReaddata2.Text = "Считать данные";
+            this.butReaddata2.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.butReaddata2.UseAccentColor = false;
+            this.butReaddata2.UseVisualStyleBackColor = true;
+            this.butReaddata2.Click += new System.EventHandler(this.butReaddata2_Click);
             // 
-            // butLoadingAKT
+            // butLoading2
             // 
-            this.butLoadingAKT.AutoSize = false;
-            this.butLoadingAKT.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.butLoadingAKT.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.butLoadingAKT.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.butLoadingAKT.Depth = 0;
-            this.butLoadingAKT.HighEmphasis = true;
-            this.butLoadingAKT.Icon = ((System.Drawing.Image)(resources.GetObject("butLoadingAKT.Icon")));
-            this.butLoadingAKT.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.butLoadingAKT.Location = new System.Drawing.Point(176, 17);
-            this.butLoadingAKT.Margin = new System.Windows.Forms.Padding(14, 4, 4, 4);
-            this.butLoadingAKT.MouseState = MaterialSkin.MouseState.HOVER;
-            this.butLoadingAKT.Name = "butLoadingAKT";
-            this.butLoadingAKT.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.butLoadingAKT.Padding = new System.Windows.Forms.Padding(2);
-            this.butLoadingAKT.Size = new System.Drawing.Size(144, 47);
-            this.butLoadingAKT.TabIndex = 50;
-            this.butLoadingAKT.Text = "Открыть";
-            this.butLoadingAKT.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.butLoadingAKT.UseAccentColor = false;
-            this.butLoadingAKT.UseVisualStyleBackColor = true;
-            this.butLoadingAKT.Click += new System.EventHandler(this.butLoadingAKT_Click);
+            this.butLoading2.AutoSize = false;
+            this.butLoading2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.butLoading2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.butLoading2.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.butLoading2.Depth = 0;
+            this.butLoading2.HighEmphasis = true;
+            this.butLoading2.Icon = ((System.Drawing.Image)(resources.GetObject("butLoading2.Icon")));
+            this.butLoading2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.butLoading2.Location = new System.Drawing.Point(176, 17);
+            this.butLoading2.Margin = new System.Windows.Forms.Padding(14, 4, 4, 4);
+            this.butLoading2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.butLoading2.Name = "butLoading2";
+            this.butLoading2.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.butLoading2.Padding = new System.Windows.Forms.Padding(2);
+            this.butLoading2.Size = new System.Drawing.Size(144, 47);
+            this.butLoading2.TabIndex = 50;
+            this.butLoading2.Text = "Открыть";
+            this.butLoading2.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.butLoading2.UseAccentColor = false;
+            this.butLoading2.UseVisualStyleBackColor = true;
+            this.butLoading2.Click += new System.EventHandler(this.butLoadingAKT_Click);
             // 
-            // butSaveAKT
+            // butSave2
             // 
-            this.butSaveAKT.AutoSize = false;
-            this.butSaveAKT.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.butSaveAKT.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.butSaveAKT.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.butSaveAKT.Depth = 0;
-            this.butSaveAKT.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.butSaveAKT.HighEmphasis = true;
-            this.butSaveAKT.Icon = ((System.Drawing.Image)(resources.GetObject("butSaveAKT.Icon")));
-            this.butSaveAKT.Image = ((System.Drawing.Image)(resources.GetObject("butSaveAKT.Image")));
-            this.butSaveAKT.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.butSaveAKT.Location = new System.Drawing.Point(14, 17);
-            this.butSaveAKT.Margin = new System.Windows.Forms.Padding(14, 4, 4, 4);
-            this.butSaveAKT.MouseState = MaterialSkin.MouseState.HOVER;
-            this.butSaveAKT.Name = "butSaveAKT";
-            this.butSaveAKT.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.butSaveAKT.Padding = new System.Windows.Forms.Padding(2);
-            this.butSaveAKT.Size = new System.Drawing.Size(144, 47);
-            this.butSaveAKT.TabIndex = 49;
-            this.butSaveAKT.Text = " Сохранить";
-            this.butSaveAKT.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.butSaveAKT.UseAccentColor = false;
-            this.butSaveAKT.UseVisualStyleBackColor = true;
-            this.butSaveAKT.Click += new System.EventHandler(this.butSaveAKT_Click);
+            this.butSave2.AutoSize = false;
+            this.butSave2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.butSave2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.butSave2.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.butSave2.Depth = 0;
+            this.butSave2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.butSave2.HighEmphasis = true;
+            this.butSave2.Icon = ((System.Drawing.Image)(resources.GetObject("butSave2.Icon")));
+            this.butSave2.Image = ((System.Drawing.Image)(resources.GetObject("butSave2.Image")));
+            this.butSave2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.butSave2.Location = new System.Drawing.Point(14, 17);
+            this.butSave2.Margin = new System.Windows.Forms.Padding(14, 4, 4, 4);
+            this.butSave2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.butSave2.Name = "butSave2";
+            this.butSave2.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.butSave2.Padding = new System.Windows.Forms.Padding(2);
+            this.butSave2.Size = new System.Drawing.Size(144, 47);
+            this.butSave2.TabIndex = 49;
+            this.butSave2.Text = " Сохранить";
+            this.butSave2.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.butSave2.UseAccentColor = false;
+            this.butSave2.UseVisualStyleBackColor = true;
+            this.butSave2.Click += new System.EventHandler(this.butSaveAKT_Click);
             // 
-            // materialTextBox21
+            // TextBox_NumberFD2
             // 
-            this.materialTextBox21.AnimateReadOnly = false;
-            this.materialTextBox21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox21.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox21.Depth = 0;
-            this.materialTextBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.materialTextBox21.HideSelection = true;
-            this.materialTextBox21.Hint = "Номер документа";
-            this.materialTextBox21.LeadingIcon = null;
-            this.materialTextBox21.Location = new System.Drawing.Point(851, 217);
-            this.materialTextBox21.MaxLength = 32767;
-            this.materialTextBox21.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox21.Name = "materialTextBox21";
-            this.materialTextBox21.PasswordChar = '\0';
-            this.materialTextBox21.PrefixSuffixText = null;
-            this.materialTextBox21.ReadOnly = false;
-            this.materialTextBox21.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox21.SelectedText = "";
-            this.materialTextBox21.SelectionLength = 0;
-            this.materialTextBox21.SelectionStart = 0;
-            this.materialTextBox21.ShortcutsEnabled = true;
-            this.materialTextBox21.Size = new System.Drawing.Size(363, 48);
-            this.materialTextBox21.TabIndex = 48;
-            this.materialTextBox21.TabStop = false;
-            this.materialTextBox21.Text = "1";
-            this.materialTextBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox21.TrailingIcon = null;
-            this.materialTextBox21.UseSystemPasswordChar = false;
+            this.TextBox_NumberFD2.AnimateReadOnly = false;
+            this.TextBox_NumberFD2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_NumberFD2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_NumberFD2.Depth = 0;
+            this.TextBox_NumberFD2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_NumberFD2.HideSelection = true;
+            this.TextBox_NumberFD2.Hint = "Номер документа";
+            this.TextBox_NumberFD2.LeadingIcon = null;
+            this.TextBox_NumberFD2.Location = new System.Drawing.Point(851, 217);
+            this.TextBox_NumberFD2.MaxLength = 32767;
+            this.TextBox_NumberFD2.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_NumberFD2.Name = "TextBox_NumberFD2";
+            this.TextBox_NumberFD2.PasswordChar = '\0';
+            this.TextBox_NumberFD2.PrefixSuffixText = null;
+            this.TextBox_NumberFD2.ReadOnly = false;
+            this.TextBox_NumberFD2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_NumberFD2.SelectedText = "";
+            this.TextBox_NumberFD2.SelectionLength = 0;
+            this.TextBox_NumberFD2.SelectionStart = 0;
+            this.TextBox_NumberFD2.ShortcutsEnabled = true;
+            this.TextBox_NumberFD2.Size = new System.Drawing.Size(363, 48);
+            this.TextBox_NumberFD2.TabIndex = 48;
+            this.TextBox_NumberFD2.TabStop = false;
+            this.TextBox_NumberFD2.Text = "1";
+            this.TextBox_NumberFD2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_NumberFD2.TrailingIcon = null;
+            this.TextBox_NumberFD2.UseSystemPasswordChar = false;
             // 
-            // materialTextBox22
+            // TextBox_FPDocument2
             // 
-            this.materialTextBox22.AnimateReadOnly = false;
-            this.materialTextBox22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox22.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox22.Depth = 0;
-            this.materialTextBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.materialTextBox22.HideSelection = true;
-            this.materialTextBox22.Hint = "Фискальный признак документа";
-            this.materialTextBox22.LeadingIcon = null;
-            this.materialTextBox22.Location = new System.Drawing.Point(851, 271);
-            this.materialTextBox22.MaxLength = 32767;
-            this.materialTextBox22.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox22.Name = "materialTextBox22";
-            this.materialTextBox22.PasswordChar = '\0';
-            this.materialTextBox22.PrefixSuffixText = null;
-            this.materialTextBox22.ReadOnly = false;
-            this.materialTextBox22.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox22.SelectedText = "";
-            this.materialTextBox22.SelectionLength = 0;
-            this.materialTextBox22.SelectionStart = 0;
-            this.materialTextBox22.ShortcutsEnabled = true;
-            this.materialTextBox22.Size = new System.Drawing.Size(363, 48);
-            this.materialTextBox22.TabIndex = 47;
-            this.materialTextBox22.TabStop = false;
-            this.materialTextBox22.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox22.TrailingIcon = null;
-            this.materialTextBox22.UseSystemPasswordChar = false;
+            this.TextBox_FPDocument2.AnimateReadOnly = false;
+            this.TextBox_FPDocument2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_FPDocument2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_FPDocument2.Depth = 0;
+            this.TextBox_FPDocument2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_FPDocument2.HideSelection = true;
+            this.TextBox_FPDocument2.Hint = "Фискальный признак документа";
+            this.TextBox_FPDocument2.LeadingIcon = null;
+            this.TextBox_FPDocument2.Location = new System.Drawing.Point(851, 271);
+            this.TextBox_FPDocument2.MaxLength = 32767;
+            this.TextBox_FPDocument2.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_FPDocument2.Name = "TextBox_FPDocument2";
+            this.TextBox_FPDocument2.PasswordChar = '\0';
+            this.TextBox_FPDocument2.PrefixSuffixText = null;
+            this.TextBox_FPDocument2.ReadOnly = false;
+            this.TextBox_FPDocument2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_FPDocument2.SelectedText = "";
+            this.TextBox_FPDocument2.SelectionLength = 0;
+            this.TextBox_FPDocument2.SelectionStart = 0;
+            this.TextBox_FPDocument2.ShortcutsEnabled = true;
+            this.TextBox_FPDocument2.Size = new System.Drawing.Size(363, 48);
+            this.TextBox_FPDocument2.TabIndex = 47;
+            this.TextBox_FPDocument2.TabStop = false;
+            this.TextBox_FPDocument2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_FPDocument2.TrailingIcon = null;
+            this.TextBox_FPDocument2.UseSystemPasswordChar = false;
             // 
-            // materialTextBox24
+            // TextBox_RNM2
             // 
-            this.materialTextBox24.AnimateReadOnly = false;
-            this.materialTextBox24.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox24.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox24.Depth = 0;
-            this.materialTextBox24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.materialTextBox24.HideSelection = true;
-            this.materialTextBox24.Hint = "Регистрационный номер ККТ";
-            this.materialTextBox24.LeadingIcon = null;
-            this.materialTextBox24.Location = new System.Drawing.Point(851, 107);
-            this.materialTextBox24.MaxLength = 32767;
-            this.materialTextBox24.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox24.Name = "materialTextBox24";
-            this.materialTextBox24.PasswordChar = '\0';
-            this.materialTextBox24.PrefixSuffixText = null;
-            this.materialTextBox24.ReadOnly = false;
-            this.materialTextBox24.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox24.SelectedText = "";
-            this.materialTextBox24.SelectionLength = 0;
-            this.materialTextBox24.SelectionStart = 0;
-            this.materialTextBox24.ShortcutsEnabled = true;
-            this.materialTextBox24.Size = new System.Drawing.Size(363, 48);
-            this.materialTextBox24.TabIndex = 45;
-            this.materialTextBox24.TabStop = false;
-            this.materialTextBox24.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox24.TrailingIcon = null;
-            this.materialTextBox24.UseSystemPasswordChar = false;
+            this.TextBox_RNM2.AnimateReadOnly = false;
+            this.TextBox_RNM2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_RNM2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_RNM2.Depth = 0;
+            this.TextBox_RNM2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_RNM2.HideSelection = true;
+            this.TextBox_RNM2.Hint = "Регистрационный номер ККТ";
+            this.TextBox_RNM2.LeadingIcon = null;
+            this.TextBox_RNM2.Location = new System.Drawing.Point(851, 107);
+            this.TextBox_RNM2.MaxLength = 32767;
+            this.TextBox_RNM2.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_RNM2.Name = "TextBox_RNM2";
+            this.TextBox_RNM2.PasswordChar = '\0';
+            this.TextBox_RNM2.PrefixSuffixText = null;
+            this.TextBox_RNM2.ReadOnly = false;
+            this.TextBox_RNM2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_RNM2.SelectedText = "";
+            this.TextBox_RNM2.SelectionLength = 0;
+            this.TextBox_RNM2.SelectionStart = 0;
+            this.TextBox_RNM2.ShortcutsEnabled = true;
+            this.TextBox_RNM2.Size = new System.Drawing.Size(363, 48);
+            this.TextBox_RNM2.TabIndex = 45;
+            this.TextBox_RNM2.TabStop = false;
+            this.TextBox_RNM2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_RNM2.TrailingIcon = null;
+            this.TextBox_RNM2.UseSystemPasswordChar = false;
             // 
-            // materialComboBox1
+            // ComboBox_Name_OFD2
             // 
-            this.materialComboBox1.AutoResize = false;
-            this.materialComboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialComboBox1.Depth = 0;
-            this.materialComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.materialComboBox1.DropDownHeight = 174;
-            this.materialComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.materialComboBox1.DropDownWidth = 121;
-            this.materialComboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.materialComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialComboBox1.FormattingEnabled = true;
-            this.materialComboBox1.Hint = "ОФД";
-            this.materialComboBox1.IntegralHeight = false;
-            this.materialComboBox1.ItemHeight = 43;
-            this.materialComboBox1.Items.AddRange(new object[] {
+            this.ComboBox_Name_OFD2.AutoResize = false;
+            this.ComboBox_Name_OFD2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ComboBox_Name_OFD2.Depth = 0;
+            this.ComboBox_Name_OFD2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.ComboBox_Name_OFD2.DropDownHeight = 174;
+            this.ComboBox_Name_OFD2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_Name_OFD2.DropDownWidth = 121;
+            this.ComboBox_Name_OFD2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.ComboBox_Name_OFD2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ComboBox_Name_OFD2.FormattingEnabled = true;
+            this.ComboBox_Name_OFD2.Hint = "ОФД";
+            this.ComboBox_Name_OFD2.IntegralHeight = false;
+            this.ComboBox_Name_OFD2.ItemHeight = 43;
+            this.ComboBox_Name_OFD2.Items.AddRange(new object[] {
             "ООО «Эвотор ОФД»",
             "АО «ЭСК»",
             "АО Контур НТТ",
             "ООО «Такском»",
             "АО «Калуга Астрал»"});
-            this.materialComboBox1.Location = new System.Drawing.Point(238, 435);
-            this.materialComboBox1.MaxDropDownItems = 4;
-            this.materialComboBox1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialComboBox1.Name = "materialComboBox1";
-            this.materialComboBox1.Size = new System.Drawing.Size(300, 49);
-            this.materialComboBox1.StartIndex = 0;
-            this.materialComboBox1.TabIndex = 44;
-            this.materialComboBox1.TextChanged += new System.EventHandler(this.OFD2_TextChanged);
+            this.ComboBox_Name_OFD2.Location = new System.Drawing.Point(238, 435);
+            this.ComboBox_Name_OFD2.MaxDropDownItems = 4;
+            this.ComboBox_Name_OFD2.MouseState = MaterialSkin.MouseState.OUT;
+            this.ComboBox_Name_OFD2.Name = "ComboBox_Name_OFD2";
+            this.ComboBox_Name_OFD2.Size = new System.Drawing.Size(300, 49);
+            this.ComboBox_Name_OFD2.StartIndex = 0;
+            this.ComboBox_Name_OFD2.TabIndex = 44;
+            this.ComboBox_Name_OFD2.TextChanged += new System.EventHandler(this.OFD2_TextChanged);
             // 
-            // materialTextBox25
+            // TextBox_INN_OFD2
             // 
-            this.materialTextBox25.AnimateReadOnly = false;
-            this.materialTextBox25.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox25.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox25.Depth = 0;
-            this.materialTextBox25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.materialTextBox25.HideSelection = true;
-            this.materialTextBox25.Hint = "ИНН ОФД";
-            this.materialTextBox25.LeadingIcon = null;
-            this.materialTextBox25.Location = new System.Drawing.Point(238, 503);
-            this.materialTextBox25.MaxLength = 32767;
-            this.materialTextBox25.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox25.Name = "materialTextBox25";
-            this.materialTextBox25.PasswordChar = '\0';
-            this.materialTextBox25.PrefixSuffixText = null;
-            this.materialTextBox25.ReadOnly = false;
-            this.materialTextBox25.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox25.SelectedText = "";
-            this.materialTextBox25.SelectionLength = 0;
-            this.materialTextBox25.SelectionStart = 0;
-            this.materialTextBox25.ShortcutsEnabled = true;
-            this.materialTextBox25.Size = new System.Drawing.Size(363, 48);
-            this.materialTextBox25.TabIndex = 43;
-            this.materialTextBox25.TabStop = false;
-            this.materialTextBox25.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox25.TrailingIcon = null;
-            this.materialTextBox25.UseSystemPasswordChar = false;
+            this.TextBox_INN_OFD2.AnimateReadOnly = false;
+            this.TextBox_INN_OFD2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_INN_OFD2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_INN_OFD2.Depth = 0;
+            this.TextBox_INN_OFD2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_INN_OFD2.HideSelection = true;
+            this.TextBox_INN_OFD2.Hint = "ИНН ОФД";
+            this.TextBox_INN_OFD2.LeadingIcon = null;
+            this.TextBox_INN_OFD2.Location = new System.Drawing.Point(238, 503);
+            this.TextBox_INN_OFD2.MaxLength = 32767;
+            this.TextBox_INN_OFD2.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_INN_OFD2.Name = "TextBox_INN_OFD2";
+            this.TextBox_INN_OFD2.PasswordChar = '\0';
+            this.TextBox_INN_OFD2.PrefixSuffixText = null;
+            this.TextBox_INN_OFD2.ReadOnly = false;
+            this.TextBox_INN_OFD2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_INN_OFD2.SelectedText = "";
+            this.TextBox_INN_OFD2.SelectionLength = 0;
+            this.TextBox_INN_OFD2.SelectionStart = 0;
+            this.TextBox_INN_OFD2.ShortcutsEnabled = true;
+            this.TextBox_INN_OFD2.Size = new System.Drawing.Size(363, 48);
+            this.TextBox_INN_OFD2.TabIndex = 43;
+            this.TextBox_INN_OFD2.TabStop = false;
+            this.TextBox_INN_OFD2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_INN_OFD2.TrailingIcon = null;
+            this.TextBox_INN_OFD2.UseSystemPasswordChar = false;
             // 
-            // materialTextBox26
+            // TextBox_INNOrganization2
             // 
-            this.materialTextBox26.AnimateReadOnly = false;
-            this.materialTextBox26.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox26.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox26.Depth = 0;
-            this.materialTextBox26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.materialTextBox26.HideSelection = true;
-            this.materialTextBox26.Hint = "ИНН организации";
-            this.materialTextBox26.LeadingIcon = null;
-            this.materialTextBox26.Location = new System.Drawing.Point(238, 379);
-            this.materialTextBox26.MaxLength = 32767;
-            this.materialTextBox26.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox26.Name = "materialTextBox26";
-            this.materialTextBox26.PasswordChar = '\0';
-            this.materialTextBox26.PrefixSuffixText = null;
-            this.materialTextBox26.ReadOnly = false;
-            this.materialTextBox26.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox26.SelectedText = "";
-            this.materialTextBox26.SelectionLength = 0;
-            this.materialTextBox26.SelectionStart = 0;
-            this.materialTextBox26.ShortcutsEnabled = true;
-            this.materialTextBox26.Size = new System.Drawing.Size(407, 48);
-            this.materialTextBox26.TabIndex = 42;
-            this.materialTextBox26.TabStop = false;
-            this.materialTextBox26.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox26.TrailingIcon = null;
-            this.materialTextBox26.UseSystemPasswordChar = false;
+            this.TextBox_INNOrganization2.AnimateReadOnly = false;
+            this.TextBox_INNOrganization2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_INNOrganization2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_INNOrganization2.Depth = 0;
+            this.TextBox_INNOrganization2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_INNOrganization2.HideSelection = true;
+            this.TextBox_INNOrganization2.Hint = "ИНН организации";
+            this.TextBox_INNOrganization2.LeadingIcon = null;
+            this.TextBox_INNOrganization2.Location = new System.Drawing.Point(238, 379);
+            this.TextBox_INNOrganization2.MaxLength = 32767;
+            this.TextBox_INNOrganization2.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_INNOrganization2.Name = "TextBox_INNOrganization2";
+            this.TextBox_INNOrganization2.PasswordChar = '\0';
+            this.TextBox_INNOrganization2.PrefixSuffixText = null;
+            this.TextBox_INNOrganization2.ReadOnly = false;
+            this.TextBox_INNOrganization2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_INNOrganization2.SelectedText = "";
+            this.TextBox_INNOrganization2.SelectionLength = 0;
+            this.TextBox_INNOrganization2.SelectionStart = 0;
+            this.TextBox_INNOrganization2.ShortcutsEnabled = true;
+            this.TextBox_INNOrganization2.Size = new System.Drawing.Size(407, 48);
+            this.TextBox_INNOrganization2.TabIndex = 42;
+            this.TextBox_INNOrganization2.TabStop = false;
+            this.TextBox_INNOrganization2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_INNOrganization2.TrailingIcon = null;
+            this.TextBox_INNOrganization2.UseSystemPasswordChar = false;
             // 
-            // materialTextBox27
+            // TextBox_NameOrganization2
             // 
-            this.materialTextBox27.AnimateReadOnly = false;
-            this.materialTextBox27.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox27.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox27.Depth = 0;
-            this.materialTextBox27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.materialTextBox27.HideSelection = true;
-            this.materialTextBox27.Hint = "Наименование организации";
-            this.materialTextBox27.LeadingIcon = null;
-            this.materialTextBox27.Location = new System.Drawing.Point(238, 325);
-            this.materialTextBox27.MaxLength = 32767;
-            this.materialTextBox27.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox27.Name = "materialTextBox27";
-            this.materialTextBox27.PasswordChar = '\0';
-            this.materialTextBox27.PrefixSuffixText = null;
-            this.materialTextBox27.ReadOnly = false;
-            this.materialTextBox27.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox27.SelectedText = "";
-            this.materialTextBox27.SelectionLength = 0;
-            this.materialTextBox27.SelectionStart = 0;
-            this.materialTextBox27.ShortcutsEnabled = true;
-            this.materialTextBox27.Size = new System.Drawing.Size(407, 48);
-            this.materialTextBox27.TabIndex = 41;
-            this.materialTextBox27.TabStop = false;
-            this.materialTextBox27.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox27.TrailingIcon = null;
-            this.materialTextBox27.UseSystemPasswordChar = false;
+            this.TextBox_NameOrganization2.AnimateReadOnly = false;
+            this.TextBox_NameOrganization2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_NameOrganization2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_NameOrganization2.Depth = 0;
+            this.TextBox_NameOrganization2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_NameOrganization2.HideSelection = true;
+            this.TextBox_NameOrganization2.Hint = "Наименование организации";
+            this.TextBox_NameOrganization2.LeadingIcon = null;
+            this.TextBox_NameOrganization2.Location = new System.Drawing.Point(238, 325);
+            this.TextBox_NameOrganization2.MaxLength = 32767;
+            this.TextBox_NameOrganization2.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_NameOrganization2.Name = "TextBox_NameOrganization2";
+            this.TextBox_NameOrganization2.PasswordChar = '\0';
+            this.TextBox_NameOrganization2.PrefixSuffixText = null;
+            this.TextBox_NameOrganization2.ReadOnly = false;
+            this.TextBox_NameOrganization2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_NameOrganization2.SelectedText = "";
+            this.TextBox_NameOrganization2.SelectionLength = 0;
+            this.TextBox_NameOrganization2.SelectionStart = 0;
+            this.TextBox_NameOrganization2.ShortcutsEnabled = true;
+            this.TextBox_NameOrganization2.Size = new System.Drawing.Size(407, 48);
+            this.TextBox_NameOrganization2.TabIndex = 41;
+            this.TextBox_NameOrganization2.TabStop = false;
+            this.TextBox_NameOrganization2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_NameOrganization2.TrailingIcon = null;
+            this.TextBox_NameOrganization2.UseSystemPasswordChar = false;
             // 
-            // materialTextBox29
+            // TextBox_ZN_FN2
             // 
-            this.materialTextBox29.AnimateReadOnly = false;
-            this.materialTextBox29.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox29.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox29.Depth = 0;
-            this.materialTextBox29.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialTextBox29.HideSelection = true;
-            this.materialTextBox29.Hint = "Заводской номер ФН";
-            this.materialTextBox29.LeadingIcon = null;
-            this.materialTextBox29.Location = new System.Drawing.Point(487, 161);
-            this.materialTextBox29.MaxLength = 32767;
-            this.materialTextBox29.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox29.Name = "materialTextBox29";
-            this.materialTextBox29.PasswordChar = '\0';
-            this.materialTextBox29.PrefixSuffixText = null;
-            this.materialTextBox29.ReadOnly = false;
-            this.materialTextBox29.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox29.SelectedText = "";
-            this.materialTextBox29.SelectionLength = 0;
-            this.materialTextBox29.SelectionStart = 0;
-            this.materialTextBox29.ShortcutsEnabled = true;
-            this.materialTextBox29.Size = new System.Drawing.Size(300, 48);
-            this.materialTextBox29.TabIndex = 39;
-            this.materialTextBox29.TabStop = false;
-            this.materialTextBox29.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox29.TrailingIcon = null;
-            this.materialTextBox29.UseSystemPasswordChar = false;
+            this.TextBox_ZN_FN2.AnimateReadOnly = false;
+            this.TextBox_ZN_FN2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_ZN_FN2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_ZN_FN2.Depth = 0;
+            this.TextBox_ZN_FN2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TextBox_ZN_FN2.HideSelection = true;
+            this.TextBox_ZN_FN2.Hint = "Заводской номер ФН";
+            this.TextBox_ZN_FN2.LeadingIcon = null;
+            this.TextBox_ZN_FN2.Location = new System.Drawing.Point(487, 161);
+            this.TextBox_ZN_FN2.MaxLength = 32767;
+            this.TextBox_ZN_FN2.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_ZN_FN2.Name = "TextBox_ZN_FN2";
+            this.TextBox_ZN_FN2.PasswordChar = '\0';
+            this.TextBox_ZN_FN2.PrefixSuffixText = null;
+            this.TextBox_ZN_FN2.ReadOnly = false;
+            this.TextBox_ZN_FN2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_ZN_FN2.SelectedText = "";
+            this.TextBox_ZN_FN2.SelectionLength = 0;
+            this.TextBox_ZN_FN2.SelectionStart = 0;
+            this.TextBox_ZN_FN2.ShortcutsEnabled = true;
+            this.TextBox_ZN_FN2.Size = new System.Drawing.Size(300, 48);
+            this.TextBox_ZN_FN2.TabIndex = 39;
+            this.TextBox_ZN_FN2.TabStop = false;
+            this.TextBox_ZN_FN2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_ZN_FN2.TrailingIcon = null;
+            this.TextBox_ZN_FN2.UseSystemPasswordChar = false;
             // 
-            // materialTextBox210
+            // TextBox_ZN_KKT2
             // 
-            this.materialTextBox210.AnimateReadOnly = false;
-            this.materialTextBox210.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox210.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox210.Depth = 0;
-            this.materialTextBox210.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialTextBox210.HideSelection = true;
-            this.materialTextBox210.Hint = "Заводской номер ККТ";
-            this.materialTextBox210.LeadingIcon = null;
-            this.materialTextBox210.Location = new System.Drawing.Point(238, 161);
-            this.materialTextBox210.MaxLength = 32767;
-            this.materialTextBox210.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox210.Name = "materialTextBox210";
-            this.materialTextBox210.PasswordChar = '\0';
-            this.materialTextBox210.PrefixSuffixText = null;
-            this.materialTextBox210.ReadOnly = false;
-            this.materialTextBox210.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox210.SelectedText = "";
-            this.materialTextBox210.SelectionLength = 0;
-            this.materialTextBox210.SelectionStart = 0;
-            this.materialTextBox210.ShortcutsEnabled = true;
-            this.materialTextBox210.Size = new System.Drawing.Size(243, 48);
-            this.materialTextBox210.TabIndex = 38;
-            this.materialTextBox210.TabStop = false;
-            this.materialTextBox210.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox210.TrailingIcon = null;
-            this.materialTextBox210.UseSystemPasswordChar = false;
+            this.TextBox_ZN_KKT2.AnimateReadOnly = false;
+            this.TextBox_ZN_KKT2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_ZN_KKT2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_ZN_KKT2.Depth = 0;
+            this.TextBox_ZN_KKT2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TextBox_ZN_KKT2.HideSelection = true;
+            this.TextBox_ZN_KKT2.Hint = "Заводской номер ККТ";
+            this.TextBox_ZN_KKT2.LeadingIcon = null;
+            this.TextBox_ZN_KKT2.Location = new System.Drawing.Point(238, 161);
+            this.TextBox_ZN_KKT2.MaxLength = 32767;
+            this.TextBox_ZN_KKT2.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_ZN_KKT2.Name = "TextBox_ZN_KKT2";
+            this.TextBox_ZN_KKT2.PasswordChar = '\0';
+            this.TextBox_ZN_KKT2.PrefixSuffixText = null;
+            this.TextBox_ZN_KKT2.ReadOnly = false;
+            this.TextBox_ZN_KKT2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_ZN_KKT2.SelectedText = "";
+            this.TextBox_ZN_KKT2.SelectionLength = 0;
+            this.TextBox_ZN_KKT2.SelectionStart = 0;
+            this.TextBox_ZN_KKT2.ShortcutsEnabled = true;
+            this.TextBox_ZN_KKT2.Size = new System.Drawing.Size(243, 48);
+            this.TextBox_ZN_KKT2.TabIndex = 38;
+            this.TextBox_ZN_KKT2.TabStop = false;
+            this.TextBox_ZN_KKT2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_ZN_KKT2.TrailingIcon = null;
+            this.TextBox_ZN_KKT2.UseSystemPasswordChar = false;
             // 
-            // materialTextBox211
+            // TextBox_Model_KKT2
             // 
-            this.materialTextBox211.AnimateReadOnly = false;
-            this.materialTextBox211.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox211.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox211.Depth = 0;
-            this.materialTextBox211.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.materialTextBox211.HideSelection = true;
-            this.materialTextBox211.Hint = "Модель ККТ";
-            this.materialTextBox211.LeadingIcon = null;
-            this.materialTextBox211.Location = new System.Drawing.Point(238, 107);
-            this.materialTextBox211.MaxLength = 32767;
-            this.materialTextBox211.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox211.Name = "materialTextBox211";
-            this.materialTextBox211.PasswordChar = '\0';
-            this.materialTextBox211.PrefixSuffixText = null;
-            this.materialTextBox211.ReadOnly = false;
-            this.materialTextBox211.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox211.SelectedText = "";
-            this.materialTextBox211.SelectionLength = 0;
-            this.materialTextBox211.SelectionStart = 0;
-            this.materialTextBox211.ShortcutsEnabled = true;
-            this.materialTextBox211.Size = new System.Drawing.Size(549, 48);
-            this.materialTextBox211.TabIndex = 37;
-            this.materialTextBox211.TabStop = false;
-            this.materialTextBox211.Text = "Терминал-ФА";
-            this.materialTextBox211.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox211.TrailingIcon = null;
-            this.materialTextBox211.UseSystemPasswordChar = false;
+            this.TextBox_Model_KKT2.AnimateReadOnly = false;
+            this.TextBox_Model_KKT2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_Model_KKT2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_Model_KKT2.Depth = 0;
+            this.TextBox_Model_KKT2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_Model_KKT2.HideSelection = true;
+            this.TextBox_Model_KKT2.Hint = "Модель ККТ";
+            this.TextBox_Model_KKT2.LeadingIcon = null;
+            this.TextBox_Model_KKT2.Location = new System.Drawing.Point(238, 107);
+            this.TextBox_Model_KKT2.MaxLength = 32767;
+            this.TextBox_Model_KKT2.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_Model_KKT2.Name = "TextBox_Model_KKT2";
+            this.TextBox_Model_KKT2.PasswordChar = '\0';
+            this.TextBox_Model_KKT2.PrefixSuffixText = null;
+            this.TextBox_Model_KKT2.ReadOnly = false;
+            this.TextBox_Model_KKT2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_Model_KKT2.SelectedText = "";
+            this.TextBox_Model_KKT2.SelectionLength = 0;
+            this.TextBox_Model_KKT2.SelectionStart = 0;
+            this.TextBox_Model_KKT2.ShortcutsEnabled = true;
+            this.TextBox_Model_KKT2.Size = new System.Drawing.Size(549, 48);
+            this.TextBox_Model_KKT2.TabIndex = 37;
+            this.TextBox_Model_KKT2.TabStop = false;
+            this.TextBox_Model_KKT2.Text = "Терминал-ФА";
+            this.TextBox_Model_KKT2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_Model_KKT2.TrailingIcon = null;
+            this.TextBox_Model_KKT2.UseSystemPasswordChar = false;
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.CheckButton_AddNewOFD);
+            this.tabPage3.Controls.Add(this.TextBox_NewName_OFD3);
             this.tabPage3.Controls.Add(this.labelVers3);
             this.tabPage3.Controls.Add(this.butSaveFN);
             this.tabPage3.Controls.Add(this.butSaveOFD);
@@ -2045,18 +2577,18 @@
             this.tabPage3.Controls.Add(this.materialLabel9);
             this.tabPage3.Controls.Add(this.materialLabel10);
             this.tabPage3.Controls.Add(this.materialLabel11);
-            this.tabPage3.Controls.Add(this.materialTextBox310);
-            this.tabPage3.Controls.Add(this.materialTextBox39);
-            this.tabPage3.Controls.Add(this.materialComboBox2);
-            this.tabPage3.Controls.Add(this.materialTextBox38);
-            this.tabPage3.Controls.Add(this.materialTextBox37);
-            this.tabPage3.Controls.Add(this.materialTextBox36);
-            this.tabPage3.Controls.Add(this.materialTextBox35);
-            this.tabPage3.Controls.Add(this.materialTextBox34);
-            this.tabPage3.Controls.Add(this.materialTextBox33);
-            this.tabPage3.Controls.Add(this.materialComboBox3);
-            this.tabPage3.Controls.Add(this.materialTextBox32);
-            this.tabPage3.Controls.Add(this.materialTextBox31);
+            this.tabPage3.Controls.Add(this.TextBox_port_FN3);
+            this.tabPage3.Controls.Add(this.TextBox_adress_FN3);
+            this.tabPage3.Controls.Add(this.ComboBox_Name_FN3);
+            this.tabPage3.Controls.Add(this.TextBox_port_OFD3);
+            this.tabPage3.Controls.Add(this.TextBox_adress2_OFD3);
+            this.tabPage3.Controls.Add(this.TextBox_DNS_OFD3);
+            this.tabPage3.Controls.Add(this.TextBox_TCP_OFD3);
+            this.tabPage3.Controls.Add(this.TextBox_IP_OFD3);
+            this.tabPage3.Controls.Add(this.TextBox_adress_OFD3);
+            this.tabPage3.Controls.Add(this.ComboBox_Name_OFD3);
+            this.tabPage3.Controls.Add(this.TextBox_Email_OFD3);
+            this.tabPage3.Controls.Add(this.TextBox_INN_OFD3);
             this.tabPage3.Controls.Add(this.materialLabel12);
             this.tabPage3.ImageKey = "icons8-список-32.png";
             this.tabPage3.Location = new System.Drawing.Point(4, 39);
@@ -2065,6 +2597,53 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Параметры ОФД";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // CheckButton_AddNewOFD
+            // 
+            this.CheckButton_AddNewOFD.AutoSize = true;
+            this.CheckButton_AddNewOFD.Depth = 0;
+            this.CheckButton_AddNewOFD.Location = new System.Drawing.Point(107, 701);
+            this.CheckButton_AddNewOFD.Margin = new System.Windows.Forms.Padding(0);
+            this.CheckButton_AddNewOFD.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.CheckButton_AddNewOFD.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CheckButton_AddNewOFD.Name = "CheckButton_AddNewOFD";
+            this.CheckButton_AddNewOFD.ReadOnly = false;
+            this.CheckButton_AddNewOFD.Ripple = true;
+            this.CheckButton_AddNewOFD.Size = new System.Drawing.Size(200, 37);
+            this.CheckButton_AddNewOFD.TabIndex = 140;
+            this.CheckButton_AddNewOFD.Text = "Добавить новый ОФД";
+            this.CheckButton_AddNewOFD.UseVisualStyleBackColor = true;
+            this.CheckButton_AddNewOFD.CheckedChanged += new System.EventHandler(this.CheckButton_AddNewOFD_Checked);
+            // 
+            // TextBox_NewName_OFD3
+            // 
+            this.TextBox_NewName_OFD3.AnimateReadOnly = false;
+            this.TextBox_NewName_OFD3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_NewName_OFD3.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_NewName_OFD3.Depth = 0;
+            this.TextBox_NewName_OFD3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_NewName_OFD3.HideSelection = true;
+            this.TextBox_NewName_OFD3.Hint = "Наименование нового ОФД";
+            this.TextBox_NewName_OFD3.LeadingIcon = null;
+            this.TextBox_NewName_OFD3.Location = new System.Drawing.Point(107, 63);
+            this.TextBox_NewName_OFD3.MaxLength = 32767;
+            this.TextBox_NewName_OFD3.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_NewName_OFD3.Name = "TextBox_NewName_OFD3";
+            this.TextBox_NewName_OFD3.PasswordChar = '\0';
+            this.TextBox_NewName_OFD3.PrefixSuffixText = null;
+            this.TextBox_NewName_OFD3.ReadOnly = false;
+            this.TextBox_NewName_OFD3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_NewName_OFD3.SelectedText = "";
+            this.TextBox_NewName_OFD3.SelectionLength = 0;
+            this.TextBox_NewName_OFD3.SelectionStart = 0;
+            this.TextBox_NewName_OFD3.ShortcutsEnabled = true;
+            this.TextBox_NewName_OFD3.Size = new System.Drawing.Size(363, 48);
+            this.TextBox_NewName_OFD3.TabIndex = 139;
+            this.TextBox_NewName_OFD3.TabStop = false;
+            this.TextBox_NewName_OFD3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_NewName_OFD3.TrailingIcon = null;
+            this.TextBox_NewName_OFD3.UseSystemPasswordChar = false;
+            this.TextBox_NewName_OFD3.Visible = false;
             // 
             // labelVers3
             // 
@@ -2104,6 +2683,7 @@
             this.butSaveFN.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.butSaveFN.UseAccentColor = false;
             this.butSaveFN.UseVisualStyleBackColor = true;
+            this.butSaveFN.Click += new System.EventHandler(this.butSave_FN_Click);
             // 
             // butSaveOFD
             // 
@@ -2128,6 +2708,7 @@
             this.butSaveOFD.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.butSaveOFD.UseAccentColor = false;
             this.butSaveOFD.UseVisualStyleBackColor = true;
+            this.butSaveOFD.Click += new System.EventHandler(this.butSave_OFD_Click);
             // 
             // materialLabel8
             // 
@@ -2189,351 +2770,353 @@
             this.materialLabel11.TabIndex = 131;
             this.materialLabel11.Text = "Параметры ОФД";
             // 
-            // materialTextBox310
+            // TextBox_port_FN3
             // 
-            this.materialTextBox310.AnimateReadOnly = false;
-            this.materialTextBox310.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox310.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox310.Depth = 0;
-            this.materialTextBox310.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.materialTextBox310.HideSelection = true;
-            this.materialTextBox310.Hint = "Порт";
-            this.materialTextBox310.LeadingIcon = null;
-            this.materialTextBox310.Location = new System.Drawing.Point(610, 193);
-            this.materialTextBox310.MaxLength = 32767;
-            this.materialTextBox310.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox310.Name = "materialTextBox310";
-            this.materialTextBox310.PasswordChar = '\0';
-            this.materialTextBox310.PrefixSuffixText = null;
-            this.materialTextBox310.ReadOnly = false;
-            this.materialTextBox310.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox310.SelectedText = "";
-            this.materialTextBox310.SelectionLength = 0;
-            this.materialTextBox310.SelectionStart = 0;
-            this.materialTextBox310.ShortcutsEnabled = true;
-            this.materialTextBox310.Size = new System.Drawing.Size(363, 48);
-            this.materialTextBox310.TabIndex = 130;
-            this.materialTextBox310.TabStop = false;
-            this.materialTextBox310.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox310.TrailingIcon = null;
-            this.materialTextBox310.UseSystemPasswordChar = false;
+            this.TextBox_port_FN3.AnimateReadOnly = false;
+            this.TextBox_port_FN3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_port_FN3.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_port_FN3.Depth = 0;
+            this.TextBox_port_FN3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_port_FN3.HideSelection = true;
+            this.TextBox_port_FN3.Hint = "Порт";
+            this.TextBox_port_FN3.LeadingIcon = null;
+            this.TextBox_port_FN3.Location = new System.Drawing.Point(610, 193);
+            this.TextBox_port_FN3.MaxLength = 32767;
+            this.TextBox_port_FN3.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_port_FN3.Name = "TextBox_port_FN3";
+            this.TextBox_port_FN3.PasswordChar = '\0';
+            this.TextBox_port_FN3.PrefixSuffixText = null;
+            this.TextBox_port_FN3.ReadOnly = false;
+            this.TextBox_port_FN3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_port_FN3.SelectedText = "";
+            this.TextBox_port_FN3.SelectionLength = 0;
+            this.TextBox_port_FN3.SelectionStart = 0;
+            this.TextBox_port_FN3.ShortcutsEnabled = true;
+            this.TextBox_port_FN3.Size = new System.Drawing.Size(363, 48);
+            this.TextBox_port_FN3.TabIndex = 130;
+            this.TextBox_port_FN3.TabStop = false;
+            this.TextBox_port_FN3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_port_FN3.TrailingIcon = null;
+            this.TextBox_port_FN3.UseSystemPasswordChar = false;
             // 
-            // materialTextBox39
+            // TextBox_adress_FN3
             // 
-            this.materialTextBox39.AnimateReadOnly = false;
-            this.materialTextBox39.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox39.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox39.Depth = 0;
-            this.materialTextBox39.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.materialTextBox39.HideSelection = true;
-            this.materialTextBox39.Hint = "Адрес АС ОКП";
-            this.materialTextBox39.LeadingIcon = null;
-            this.materialTextBox39.Location = new System.Drawing.Point(610, 139);
-            this.materialTextBox39.MaxLength = 32767;
-            this.materialTextBox39.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox39.Name = "materialTextBox39";
-            this.materialTextBox39.PasswordChar = '\0';
-            this.materialTextBox39.PrefixSuffixText = null;
-            this.materialTextBox39.ReadOnly = false;
-            this.materialTextBox39.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox39.SelectedText = "";
-            this.materialTextBox39.SelectionLength = 0;
-            this.materialTextBox39.SelectionStart = 0;
-            this.materialTextBox39.ShortcutsEnabled = true;
-            this.materialTextBox39.Size = new System.Drawing.Size(363, 48);
-            this.materialTextBox39.TabIndex = 129;
-            this.materialTextBox39.TabStop = false;
-            this.materialTextBox39.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox39.TrailingIcon = null;
-            this.materialTextBox39.UseSystemPasswordChar = false;
+            this.TextBox_adress_FN3.AnimateReadOnly = false;
+            this.TextBox_adress_FN3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_adress_FN3.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_adress_FN3.Depth = 0;
+            this.TextBox_adress_FN3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_adress_FN3.HideSelection = true;
+            this.TextBox_adress_FN3.Hint = "Адрес АС ОКП";
+            this.TextBox_adress_FN3.LeadingIcon = null;
+            this.TextBox_adress_FN3.Location = new System.Drawing.Point(610, 139);
+            this.TextBox_adress_FN3.MaxLength = 32767;
+            this.TextBox_adress_FN3.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_adress_FN3.Name = "TextBox_adress_FN3";
+            this.TextBox_adress_FN3.PasswordChar = '\0';
+            this.TextBox_adress_FN3.PrefixSuffixText = null;
+            this.TextBox_adress_FN3.ReadOnly = false;
+            this.TextBox_adress_FN3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_adress_FN3.SelectedText = "";
+            this.TextBox_adress_FN3.SelectionLength = 0;
+            this.TextBox_adress_FN3.SelectionStart = 0;
+            this.TextBox_adress_FN3.ShortcutsEnabled = true;
+            this.TextBox_adress_FN3.Size = new System.Drawing.Size(363, 48);
+            this.TextBox_adress_FN3.TabIndex = 129;
+            this.TextBox_adress_FN3.TabStop = false;
+            this.TextBox_adress_FN3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_adress_FN3.TrailingIcon = null;
+            this.TextBox_adress_FN3.UseSystemPasswordChar = false;
             // 
-            // materialComboBox2
+            // ComboBox_Name_FN3
             // 
-            this.materialComboBox2.AutoResize = false;
-            this.materialComboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialComboBox2.Depth = 0;
-            this.materialComboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.materialComboBox2.DropDownHeight = 174;
-            this.materialComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.materialComboBox2.DropDownWidth = 121;
-            this.materialComboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.materialComboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialComboBox2.FormattingEnabled = true;
-            this.materialComboBox2.Hint = "Производитель ФН";
-            this.materialComboBox2.IntegralHeight = false;
-            this.materialComboBox2.ItemHeight = 43;
-            this.materialComboBox2.Items.AddRange(new object[] {
+            this.ComboBox_Name_FN3.AutoResize = false;
+            this.ComboBox_Name_FN3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ComboBox_Name_FN3.Depth = 0;
+            this.ComboBox_Name_FN3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.ComboBox_Name_FN3.DropDownHeight = 174;
+            this.ComboBox_Name_FN3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_Name_FN3.DropDownWidth = 121;
+            this.ComboBox_Name_FN3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.ComboBox_Name_FN3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ComboBox_Name_FN3.FormattingEnabled = true;
+            this.ComboBox_Name_FN3.Hint = "Производитель ФН";
+            this.ComboBox_Name_FN3.IntegralHeight = false;
+            this.ComboBox_Name_FN3.ItemHeight = 43;
+            this.ComboBox_Name_FN3.Items.AddRange(new object[] {
             "Инвента",
             "Автоматика",
             "Эвотор"});
-            this.materialComboBox2.Location = new System.Drawing.Point(610, 62);
-            this.materialComboBox2.MaxDropDownItems = 4;
-            this.materialComboBox2.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialComboBox2.Name = "materialComboBox2";
-            this.materialComboBox2.Size = new System.Drawing.Size(363, 49);
-            this.materialComboBox2.StartIndex = 0;
-            this.materialComboBox2.TabIndex = 128;
+            this.ComboBox_Name_FN3.Location = new System.Drawing.Point(610, 62);
+            this.ComboBox_Name_FN3.MaxDropDownItems = 4;
+            this.ComboBox_Name_FN3.MouseState = MaterialSkin.MouseState.OUT;
+            this.ComboBox_Name_FN3.Name = "ComboBox_Name_FN3";
+            this.ComboBox_Name_FN3.Size = new System.Drawing.Size(363, 49);
+            this.ComboBox_Name_FN3.StartIndex = 0;
+            this.ComboBox_Name_FN3.TabIndex = 128;
+            this.ComboBox_Name_FN3.TextChanged += new System.EventHandler(this.Name_FN_Changed);
             // 
-            // materialTextBox38
+            // TextBox_port_OFD3
             // 
-            this.materialTextBox38.AnimateReadOnly = false;
-            this.materialTextBox38.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox38.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox38.Depth = 0;
-            this.materialTextBox38.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.materialTextBox38.HideSelection = true;
-            this.materialTextBox38.Hint = "Порт";
-            this.materialTextBox38.LeadingIcon = null;
-            this.materialTextBox38.Location = new System.Drawing.Point(107, 565);
-            this.materialTextBox38.MaxLength = 32767;
-            this.materialTextBox38.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox38.Name = "materialTextBox38";
-            this.materialTextBox38.PasswordChar = '\0';
-            this.materialTextBox38.PrefixSuffixText = null;
-            this.materialTextBox38.ReadOnly = false;
-            this.materialTextBox38.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox38.SelectedText = "";
-            this.materialTextBox38.SelectionLength = 0;
-            this.materialTextBox38.SelectionStart = 0;
-            this.materialTextBox38.ShortcutsEnabled = true;
-            this.materialTextBox38.Size = new System.Drawing.Size(363, 48);
-            this.materialTextBox38.TabIndex = 127;
-            this.materialTextBox38.TabStop = false;
-            this.materialTextBox38.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox38.TrailingIcon = null;
-            this.materialTextBox38.UseSystemPasswordChar = false;
+            this.TextBox_port_OFD3.AnimateReadOnly = false;
+            this.TextBox_port_OFD3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_port_OFD3.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_port_OFD3.Depth = 0;
+            this.TextBox_port_OFD3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_port_OFD3.HideSelection = true;
+            this.TextBox_port_OFD3.Hint = "Порт";
+            this.TextBox_port_OFD3.LeadingIcon = null;
+            this.TextBox_port_OFD3.Location = new System.Drawing.Point(107, 565);
+            this.TextBox_port_OFD3.MaxLength = 32767;
+            this.TextBox_port_OFD3.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_port_OFD3.Name = "TextBox_port_OFD3";
+            this.TextBox_port_OFD3.PasswordChar = '\0';
+            this.TextBox_port_OFD3.PrefixSuffixText = null;
+            this.TextBox_port_OFD3.ReadOnly = false;
+            this.TextBox_port_OFD3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_port_OFD3.SelectedText = "";
+            this.TextBox_port_OFD3.SelectionLength = 0;
+            this.TextBox_port_OFD3.SelectionStart = 0;
+            this.TextBox_port_OFD3.ShortcutsEnabled = true;
+            this.TextBox_port_OFD3.Size = new System.Drawing.Size(363, 48);
+            this.TextBox_port_OFD3.TabIndex = 127;
+            this.TextBox_port_OFD3.TabStop = false;
+            this.TextBox_port_OFD3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_port_OFD3.TrailingIcon = null;
+            this.TextBox_port_OFD3.UseSystemPasswordChar = false;
             // 
-            // materialTextBox37
+            // TextBox_adress2_OFD3
             // 
-            this.materialTextBox37.AnimateReadOnly = false;
-            this.materialTextBox37.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox37.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox37.Depth = 0;
-            this.materialTextBox37.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.materialTextBox37.HideSelection = true;
-            this.materialTextBox37.Hint = "Адрес ОФД";
-            this.materialTextBox37.LeadingIcon = null;
-            this.materialTextBox37.Location = new System.Drawing.Point(107, 511);
-            this.materialTextBox37.MaxLength = 32767;
-            this.materialTextBox37.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox37.Name = "materialTextBox37";
-            this.materialTextBox37.PasswordChar = '\0';
-            this.materialTextBox37.PrefixSuffixText = null;
-            this.materialTextBox37.ReadOnly = false;
-            this.materialTextBox37.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox37.SelectedText = "";
-            this.materialTextBox37.SelectionLength = 0;
-            this.materialTextBox37.SelectionStart = 0;
-            this.materialTextBox37.ShortcutsEnabled = true;
-            this.materialTextBox37.Size = new System.Drawing.Size(363, 48);
-            this.materialTextBox37.TabIndex = 126;
-            this.materialTextBox37.TabStop = false;
-            this.materialTextBox37.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox37.TrailingIcon = null;
-            this.materialTextBox37.UseSystemPasswordChar = false;
+            this.TextBox_adress2_OFD3.AnimateReadOnly = false;
+            this.TextBox_adress2_OFD3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_adress2_OFD3.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_adress2_OFD3.Depth = 0;
+            this.TextBox_adress2_OFD3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_adress2_OFD3.HideSelection = true;
+            this.TextBox_adress2_OFD3.Hint = "Адрес ОФД";
+            this.TextBox_adress2_OFD3.LeadingIcon = null;
+            this.TextBox_adress2_OFD3.Location = new System.Drawing.Point(107, 511);
+            this.TextBox_adress2_OFD3.MaxLength = 32767;
+            this.TextBox_adress2_OFD3.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_adress2_OFD3.Name = "TextBox_adress2_OFD3";
+            this.TextBox_adress2_OFD3.PasswordChar = '\0';
+            this.TextBox_adress2_OFD3.PrefixSuffixText = null;
+            this.TextBox_adress2_OFD3.ReadOnly = false;
+            this.TextBox_adress2_OFD3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_adress2_OFD3.SelectedText = "";
+            this.TextBox_adress2_OFD3.SelectionLength = 0;
+            this.TextBox_adress2_OFD3.SelectionStart = 0;
+            this.TextBox_adress2_OFD3.ShortcutsEnabled = true;
+            this.TextBox_adress2_OFD3.Size = new System.Drawing.Size(363, 48);
+            this.TextBox_adress2_OFD3.TabIndex = 126;
+            this.TextBox_adress2_OFD3.TabStop = false;
+            this.TextBox_adress2_OFD3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_adress2_OFD3.TrailingIcon = null;
+            this.TextBox_adress2_OFD3.UseSystemPasswordChar = false;
             // 
-            // materialTextBox36
+            // TextBox_DNS_OFD3
             // 
-            this.materialTextBox36.AnimateReadOnly = false;
-            this.materialTextBox36.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox36.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox36.Depth = 0;
-            this.materialTextBox36.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.materialTextBox36.HideSelection = true;
-            this.materialTextBox36.Hint = "DNS ОФД";
-            this.materialTextBox36.LeadingIcon = null;
-            this.materialTextBox36.Location = new System.Drawing.Point(107, 417);
-            this.materialTextBox36.MaxLength = 32767;
-            this.materialTextBox36.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox36.Name = "materialTextBox36";
-            this.materialTextBox36.PasswordChar = '\0';
-            this.materialTextBox36.PrefixSuffixText = null;
-            this.materialTextBox36.ReadOnly = false;
-            this.materialTextBox36.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox36.SelectedText = "";
-            this.materialTextBox36.SelectionLength = 0;
-            this.materialTextBox36.SelectionStart = 0;
-            this.materialTextBox36.ShortcutsEnabled = true;
-            this.materialTextBox36.Size = new System.Drawing.Size(363, 48);
-            this.materialTextBox36.TabIndex = 125;
-            this.materialTextBox36.TabStop = false;
-            this.materialTextBox36.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox36.TrailingIcon = null;
-            this.materialTextBox36.UseSystemPasswordChar = false;
+            this.TextBox_DNS_OFD3.AnimateReadOnly = false;
+            this.TextBox_DNS_OFD3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_DNS_OFD3.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_DNS_OFD3.Depth = 0;
+            this.TextBox_DNS_OFD3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_DNS_OFD3.HideSelection = true;
+            this.TextBox_DNS_OFD3.Hint = "DNS ОФД";
+            this.TextBox_DNS_OFD3.LeadingIcon = null;
+            this.TextBox_DNS_OFD3.Location = new System.Drawing.Point(107, 417);
+            this.TextBox_DNS_OFD3.MaxLength = 32767;
+            this.TextBox_DNS_OFD3.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_DNS_OFD3.Name = "TextBox_DNS_OFD3";
+            this.TextBox_DNS_OFD3.PasswordChar = '\0';
+            this.TextBox_DNS_OFD3.PrefixSuffixText = null;
+            this.TextBox_DNS_OFD3.ReadOnly = false;
+            this.TextBox_DNS_OFD3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_DNS_OFD3.SelectedText = "";
+            this.TextBox_DNS_OFD3.SelectionLength = 0;
+            this.TextBox_DNS_OFD3.SelectionStart = 0;
+            this.TextBox_DNS_OFD3.ShortcutsEnabled = true;
+            this.TextBox_DNS_OFD3.Size = new System.Drawing.Size(363, 48);
+            this.TextBox_DNS_OFD3.TabIndex = 125;
+            this.TextBox_DNS_OFD3.TabStop = false;
+            this.TextBox_DNS_OFD3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_DNS_OFD3.TrailingIcon = null;
+            this.TextBox_DNS_OFD3.UseSystemPasswordChar = false;
             // 
-            // materialTextBox35
+            // TextBox_TCP_OFD3
             // 
-            this.materialTextBox35.AnimateReadOnly = false;
-            this.materialTextBox35.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox35.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox35.Depth = 0;
-            this.materialTextBox35.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.materialTextBox35.HideSelection = true;
-            this.materialTextBox35.Hint = "TCP-порт";
-            this.materialTextBox35.LeadingIcon = null;
-            this.materialTextBox35.Location = new System.Drawing.Point(107, 363);
-            this.materialTextBox35.MaxLength = 32767;
-            this.materialTextBox35.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox35.Name = "materialTextBox35";
-            this.materialTextBox35.PasswordChar = '\0';
-            this.materialTextBox35.PrefixSuffixText = null;
-            this.materialTextBox35.ReadOnly = false;
-            this.materialTextBox35.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox35.SelectedText = "";
-            this.materialTextBox35.SelectionLength = 0;
-            this.materialTextBox35.SelectionStart = 0;
-            this.materialTextBox35.ShortcutsEnabled = true;
-            this.materialTextBox35.Size = new System.Drawing.Size(363, 48);
-            this.materialTextBox35.TabIndex = 124;
-            this.materialTextBox35.TabStop = false;
-            this.materialTextBox35.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox35.TrailingIcon = null;
-            this.materialTextBox35.UseSystemPasswordChar = false;
+            this.TextBox_TCP_OFD3.AnimateReadOnly = false;
+            this.TextBox_TCP_OFD3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_TCP_OFD3.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_TCP_OFD3.Depth = 0;
+            this.TextBox_TCP_OFD3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_TCP_OFD3.HideSelection = true;
+            this.TextBox_TCP_OFD3.Hint = "TCP-порт";
+            this.TextBox_TCP_OFD3.LeadingIcon = null;
+            this.TextBox_TCP_OFD3.Location = new System.Drawing.Point(107, 363);
+            this.TextBox_TCP_OFD3.MaxLength = 32767;
+            this.TextBox_TCP_OFD3.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_TCP_OFD3.Name = "TextBox_TCP_OFD3";
+            this.TextBox_TCP_OFD3.PasswordChar = '\0';
+            this.TextBox_TCP_OFD3.PrefixSuffixText = null;
+            this.TextBox_TCP_OFD3.ReadOnly = false;
+            this.TextBox_TCP_OFD3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_TCP_OFD3.SelectedText = "";
+            this.TextBox_TCP_OFD3.SelectionLength = 0;
+            this.TextBox_TCP_OFD3.SelectionStart = 0;
+            this.TextBox_TCP_OFD3.ShortcutsEnabled = true;
+            this.TextBox_TCP_OFD3.Size = new System.Drawing.Size(363, 48);
+            this.TextBox_TCP_OFD3.TabIndex = 124;
+            this.TextBox_TCP_OFD3.TabStop = false;
+            this.TextBox_TCP_OFD3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_TCP_OFD3.TrailingIcon = null;
+            this.TextBox_TCP_OFD3.UseSystemPasswordChar = false;
             // 
-            // materialTextBox34
+            // TextBox_IP_OFD3
             // 
-            this.materialTextBox34.AnimateReadOnly = false;
-            this.materialTextBox34.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox34.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox34.Depth = 0;
-            this.materialTextBox34.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.materialTextBox34.HideSelection = true;
-            this.materialTextBox34.Hint = "IP";
-            this.materialTextBox34.LeadingIcon = null;
-            this.materialTextBox34.Location = new System.Drawing.Point(107, 309);
-            this.materialTextBox34.MaxLength = 32767;
-            this.materialTextBox34.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox34.Name = "materialTextBox34";
-            this.materialTextBox34.PasswordChar = '\0';
-            this.materialTextBox34.PrefixSuffixText = null;
-            this.materialTextBox34.ReadOnly = false;
-            this.materialTextBox34.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox34.SelectedText = "";
-            this.materialTextBox34.SelectionLength = 0;
-            this.materialTextBox34.SelectionStart = 0;
-            this.materialTextBox34.ShortcutsEnabled = true;
-            this.materialTextBox34.Size = new System.Drawing.Size(363, 48);
-            this.materialTextBox34.TabIndex = 123;
-            this.materialTextBox34.TabStop = false;
-            this.materialTextBox34.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox34.TrailingIcon = null;
-            this.materialTextBox34.UseSystemPasswordChar = false;
+            this.TextBox_IP_OFD3.AnimateReadOnly = false;
+            this.TextBox_IP_OFD3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_IP_OFD3.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_IP_OFD3.Depth = 0;
+            this.TextBox_IP_OFD3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_IP_OFD3.HideSelection = true;
+            this.TextBox_IP_OFD3.Hint = "IP";
+            this.TextBox_IP_OFD3.LeadingIcon = null;
+            this.TextBox_IP_OFD3.Location = new System.Drawing.Point(107, 309);
+            this.TextBox_IP_OFD3.MaxLength = 32767;
+            this.TextBox_IP_OFD3.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_IP_OFD3.Name = "TextBox_IP_OFD3";
+            this.TextBox_IP_OFD3.PasswordChar = '\0';
+            this.TextBox_IP_OFD3.PrefixSuffixText = null;
+            this.TextBox_IP_OFD3.ReadOnly = false;
+            this.TextBox_IP_OFD3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_IP_OFD3.SelectedText = "";
+            this.TextBox_IP_OFD3.SelectionLength = 0;
+            this.TextBox_IP_OFD3.SelectionStart = 0;
+            this.TextBox_IP_OFD3.ShortcutsEnabled = true;
+            this.TextBox_IP_OFD3.Size = new System.Drawing.Size(363, 48);
+            this.TextBox_IP_OFD3.TabIndex = 123;
+            this.TextBox_IP_OFD3.TabStop = false;
+            this.TextBox_IP_OFD3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_IP_OFD3.TrailingIcon = null;
+            this.TextBox_IP_OFD3.UseSystemPasswordChar = false;
             // 
-            // materialTextBox33
+            // TextBox_adress_OFD3
             // 
-            this.materialTextBox33.AnimateReadOnly = false;
-            this.materialTextBox33.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox33.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox33.Depth = 0;
-            this.materialTextBox33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.materialTextBox33.HideSelection = true;
-            this.materialTextBox33.Hint = "Адрес ОФД";
-            this.materialTextBox33.LeadingIcon = null;
-            this.materialTextBox33.Location = new System.Drawing.Point(107, 255);
-            this.materialTextBox33.MaxLength = 32767;
-            this.materialTextBox33.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox33.Name = "materialTextBox33";
-            this.materialTextBox33.PasswordChar = '\0';
-            this.materialTextBox33.PrefixSuffixText = null;
-            this.materialTextBox33.ReadOnly = false;
-            this.materialTextBox33.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox33.SelectedText = "";
-            this.materialTextBox33.SelectionLength = 0;
-            this.materialTextBox33.SelectionStart = 0;
-            this.materialTextBox33.ShortcutsEnabled = true;
-            this.materialTextBox33.Size = new System.Drawing.Size(363, 48);
-            this.materialTextBox33.TabIndex = 122;
-            this.materialTextBox33.TabStop = false;
-            this.materialTextBox33.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox33.TrailingIcon = null;
-            this.materialTextBox33.UseSystemPasswordChar = false;
+            this.TextBox_adress_OFD3.AnimateReadOnly = false;
+            this.TextBox_adress_OFD3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_adress_OFD3.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_adress_OFD3.Depth = 0;
+            this.TextBox_adress_OFD3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_adress_OFD3.HideSelection = true;
+            this.TextBox_adress_OFD3.Hint = "Адрес ОФД";
+            this.TextBox_adress_OFD3.LeadingIcon = null;
+            this.TextBox_adress_OFD3.Location = new System.Drawing.Point(107, 255);
+            this.TextBox_adress_OFD3.MaxLength = 32767;
+            this.TextBox_adress_OFD3.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_adress_OFD3.Name = "TextBox_adress_OFD3";
+            this.TextBox_adress_OFD3.PasswordChar = '\0';
+            this.TextBox_adress_OFD3.PrefixSuffixText = null;
+            this.TextBox_adress_OFD3.ReadOnly = false;
+            this.TextBox_adress_OFD3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_adress_OFD3.SelectedText = "";
+            this.TextBox_adress_OFD3.SelectionLength = 0;
+            this.TextBox_adress_OFD3.SelectionStart = 0;
+            this.TextBox_adress_OFD3.ShortcutsEnabled = true;
+            this.TextBox_adress_OFD3.Size = new System.Drawing.Size(363, 48);
+            this.TextBox_adress_OFD3.TabIndex = 122;
+            this.TextBox_adress_OFD3.TabStop = false;
+            this.TextBox_adress_OFD3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_adress_OFD3.TrailingIcon = null;
+            this.TextBox_adress_OFD3.UseSystemPasswordChar = false;
             // 
-            // materialComboBox3
+            // ComboBox_Name_OFD3
             // 
-            this.materialComboBox3.AutoResize = false;
-            this.materialComboBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialComboBox3.Depth = 0;
-            this.materialComboBox3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.materialComboBox3.DropDownHeight = 174;
-            this.materialComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.materialComboBox3.DropDownWidth = 121;
-            this.materialComboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.materialComboBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialComboBox3.FormattingEnabled = true;
-            this.materialComboBox3.Hint = "ОФД";
-            this.materialComboBox3.IntegralHeight = false;
-            this.materialComboBox3.ItemHeight = 43;
-            this.materialComboBox3.Items.AddRange(new object[] {
+            this.ComboBox_Name_OFD3.AutoResize = false;
+            this.ComboBox_Name_OFD3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ComboBox_Name_OFD3.Depth = 0;
+            this.ComboBox_Name_OFD3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.ComboBox_Name_OFD3.DropDownHeight = 174;
+            this.ComboBox_Name_OFD3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_Name_OFD3.DropDownWidth = 121;
+            this.ComboBox_Name_OFD3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.ComboBox_Name_OFD3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ComboBox_Name_OFD3.FormattingEnabled = true;
+            this.ComboBox_Name_OFD3.Hint = "ОФД";
+            this.ComboBox_Name_OFD3.IntegralHeight = false;
+            this.ComboBox_Name_OFD3.ItemHeight = 43;
+            this.ComboBox_Name_OFD3.Items.AddRange(new object[] {
             "ООО «Эвотор ОФД»",
             "АО «ЭСК»",
             "АО Контур НТТ",
             "ООО «Такском»",
             "АО «Калуга Астрал»"});
-            this.materialComboBox3.Location = new System.Drawing.Point(107, 62);
-            this.materialComboBox3.MaxDropDownItems = 4;
-            this.materialComboBox3.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialComboBox3.Name = "materialComboBox3";
-            this.materialComboBox3.Size = new System.Drawing.Size(300, 49);
-            this.materialComboBox3.StartIndex = 0;
-            this.materialComboBox3.TabIndex = 121;
+            this.ComboBox_Name_OFD3.Location = new System.Drawing.Point(107, 62);
+            this.ComboBox_Name_OFD3.MaxDropDownItems = 4;
+            this.ComboBox_Name_OFD3.MouseState = MaterialSkin.MouseState.OUT;
+            this.ComboBox_Name_OFD3.Name = "ComboBox_Name_OFD3";
+            this.ComboBox_Name_OFD3.Size = new System.Drawing.Size(363, 49);
+            this.ComboBox_Name_OFD3.StartIndex = 0;
+            this.ComboBox_Name_OFD3.TabIndex = 121;
+            this.ComboBox_Name_OFD3.TextChanged += new System.EventHandler(this.Name_OFD_Changed);
             // 
-            // materialTextBox32
+            // TextBox_Email_OFD3
             // 
-            this.materialTextBox32.AnimateReadOnly = false;
-            this.materialTextBox32.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox32.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox32.Depth = 0;
-            this.materialTextBox32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.materialTextBox32.HideSelection = true;
-            this.materialTextBox32.Hint = "Адрес отправителя чека";
-            this.materialTextBox32.LeadingIcon = null;
-            this.materialTextBox32.Location = new System.Drawing.Point(107, 171);
-            this.materialTextBox32.MaxLength = 32767;
-            this.materialTextBox32.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox32.Name = "materialTextBox32";
-            this.materialTextBox32.PasswordChar = '\0';
-            this.materialTextBox32.PrefixSuffixText = null;
-            this.materialTextBox32.ReadOnly = false;
-            this.materialTextBox32.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox32.SelectedText = "";
-            this.materialTextBox32.SelectionLength = 0;
-            this.materialTextBox32.SelectionStart = 0;
-            this.materialTextBox32.ShortcutsEnabled = true;
-            this.materialTextBox32.Size = new System.Drawing.Size(363, 48);
-            this.materialTextBox32.TabIndex = 120;
-            this.materialTextBox32.TabStop = false;
-            this.materialTextBox32.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox32.TrailingIcon = null;
-            this.materialTextBox32.UseSystemPasswordChar = false;
+            this.TextBox_Email_OFD3.AnimateReadOnly = false;
+            this.TextBox_Email_OFD3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_Email_OFD3.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_Email_OFD3.Depth = 0;
+            this.TextBox_Email_OFD3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_Email_OFD3.HideSelection = true;
+            this.TextBox_Email_OFD3.Hint = "Адрес отправителя чека";
+            this.TextBox_Email_OFD3.LeadingIcon = null;
+            this.TextBox_Email_OFD3.Location = new System.Drawing.Point(107, 171);
+            this.TextBox_Email_OFD3.MaxLength = 32767;
+            this.TextBox_Email_OFD3.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_Email_OFD3.Name = "TextBox_Email_OFD3";
+            this.TextBox_Email_OFD3.PasswordChar = '\0';
+            this.TextBox_Email_OFD3.PrefixSuffixText = null;
+            this.TextBox_Email_OFD3.ReadOnly = false;
+            this.TextBox_Email_OFD3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_Email_OFD3.SelectedText = "";
+            this.TextBox_Email_OFD3.SelectionLength = 0;
+            this.TextBox_Email_OFD3.SelectionStart = 0;
+            this.TextBox_Email_OFD3.ShortcutsEnabled = true;
+            this.TextBox_Email_OFD3.Size = new System.Drawing.Size(363, 48);
+            this.TextBox_Email_OFD3.TabIndex = 120;
+            this.TextBox_Email_OFD3.TabStop = false;
+            this.TextBox_Email_OFD3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_Email_OFD3.TrailingIcon = null;
+            this.TextBox_Email_OFD3.UseSystemPasswordChar = false;
             // 
-            // materialTextBox31
+            // TextBox_INN_OFD3
             // 
-            this.materialTextBox31.AnimateReadOnly = false;
-            this.materialTextBox31.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox31.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox31.Depth = 0;
-            this.materialTextBox31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.materialTextBox31.HideSelection = true;
-            this.materialTextBox31.Hint = "ИНН ОФД";
-            this.materialTextBox31.LeadingIcon = null;
-            this.materialTextBox31.Location = new System.Drawing.Point(107, 117);
-            this.materialTextBox31.MaxLength = 32767;
-            this.materialTextBox31.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox31.Name = "materialTextBox31";
-            this.materialTextBox31.PasswordChar = '\0';
-            this.materialTextBox31.PrefixSuffixText = null;
-            this.materialTextBox31.ReadOnly = false;
-            this.materialTextBox31.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox31.SelectedText = "";
-            this.materialTextBox31.SelectionLength = 0;
-            this.materialTextBox31.SelectionStart = 0;
-            this.materialTextBox31.ShortcutsEnabled = true;
-            this.materialTextBox31.Size = new System.Drawing.Size(363, 48);
-            this.materialTextBox31.TabIndex = 119;
-            this.materialTextBox31.TabStop = false;
-            this.materialTextBox31.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox31.TrailingIcon = null;
-            this.materialTextBox31.UseSystemPasswordChar = false;
+            this.TextBox_INN_OFD3.AnimateReadOnly = false;
+            this.TextBox_INN_OFD3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_INN_OFD3.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_INN_OFD3.Depth = 0;
+            this.TextBox_INN_OFD3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_INN_OFD3.HideSelection = true;
+            this.TextBox_INN_OFD3.Hint = "ИНН ОФД";
+            this.TextBox_INN_OFD3.LeadingIcon = null;
+            this.TextBox_INN_OFD3.Location = new System.Drawing.Point(107, 117);
+            this.TextBox_INN_OFD3.MaxLength = 32767;
+            this.TextBox_INN_OFD3.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_INN_OFD3.Name = "TextBox_INN_OFD3";
+            this.TextBox_INN_OFD3.PasswordChar = '\0';
+            this.TextBox_INN_OFD3.PrefixSuffixText = null;
+            this.TextBox_INN_OFD3.ReadOnly = false;
+            this.TextBox_INN_OFD3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_INN_OFD3.SelectedText = "";
+            this.TextBox_INN_OFD3.SelectionLength = 0;
+            this.TextBox_INN_OFD3.SelectionStart = 0;
+            this.TextBox_INN_OFD3.ShortcutsEnabled = true;
+            this.TextBox_INN_OFD3.Size = new System.Drawing.Size(363, 48);
+            this.TextBox_INN_OFD3.TabIndex = 119;
+            this.TextBox_INN_OFD3.TabStop = false;
+            this.TextBox_INN_OFD3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_INN_OFD3.TrailingIcon = null;
+            this.TextBox_INN_OFD3.UseSystemPasswordChar = false;
             // 
             // materialLabel12
             // 
@@ -2553,12 +3136,15 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.materialSwitch1);
+            this.tabPage4.Controls.Add(this.Switch_Print_Akt);
+            this.tabPage4.Controls.Add(this.ComboBox_Model_FN4);
+            this.tabPage4.Controls.Add(this.ComboBox_Name_OFD4);
+            this.tabPage4.Controls.Add(this.Switch_Del_xml);
             this.tabPage4.Controls.Add(this.labelVers4);
-            this.tabPage4.Controls.Add(this.materialTextBox2);
-            this.tabPage4.Controls.Add(this.materialTextBox1);
-            this.tabPage4.Controls.Add(this.materialButton2);
-            this.tabPage4.Controls.Add(this.materialButton1);
+            this.tabPage4.Controls.Add(this.TextBox_name_operator);
+            this.tabPage4.Controls.Add(this.TextBox_Adr_file);
+            this.tabPage4.Controls.Add(this.Button_Open_folder);
+            this.tabPage4.Controls.Add(this.Button_Save4);
             this.tabPage4.Controls.Add(this.materialLabel13);
             this.tabPage4.ImageKey = "icons8-настройки-32.png";
             this.tabPage4.Location = new System.Drawing.Point(4, 39);
@@ -2568,20 +3154,95 @@
             this.tabPage4.Text = "Настройки";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // materialSwitch1
+            // Switch_Print_Akt
             // 
-            this.materialSwitch1.AutoSize = true;
-            this.materialSwitch1.Depth = 0;
-            this.materialSwitch1.Location = new System.Drawing.Point(826, 72);
-            this.materialSwitch1.Margin = new System.Windows.Forms.Padding(0);
-            this.materialSwitch1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialSwitch1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSwitch1.Name = "materialSwitch1";
-            this.materialSwitch1.Ripple = true;
-            this.materialSwitch1.Size = new System.Drawing.Size(372, 37);
-            this.materialSwitch1.TabIndex = 139;
-            this.materialSwitch1.Text = "Удаление файла XML после создания ZIP\r\n";
-            this.materialSwitch1.UseVisualStyleBackColor = true;
+            this.Switch_Print_Akt.AutoSize = true;
+            this.Switch_Print_Akt.Depth = 0;
+            this.Switch_Print_Akt.Location = new System.Drawing.Point(826, 159);
+            this.Switch_Print_Akt.Margin = new System.Windows.Forms.Padding(0);
+            this.Switch_Print_Akt.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.Switch_Print_Akt.MouseState = MaterialSkin.MouseState.HOVER;
+            this.Switch_Print_Akt.Name = "Switch_Print_Akt";
+            this.Switch_Print_Akt.Ripple = true;
+            this.Switch_Print_Akt.Size = new System.Drawing.Size(353, 37);
+            this.Switch_Print_Akt.TabIndex = 142;
+            this.Switch_Print_Akt.Text = "Отправлять Акт ввода сразу на печать";
+            this.Switch_Print_Akt.UseVisualStyleBackColor = true;
+            // 
+            // ComboBox_Model_FN4
+            // 
+            this.ComboBox_Model_FN4.AutoResize = false;
+            this.ComboBox_Model_FN4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ComboBox_Model_FN4.Depth = 0;
+            this.ComboBox_Model_FN4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.ComboBox_Model_FN4.DropDownHeight = 174;
+            this.ComboBox_Model_FN4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_Model_FN4.DropDownWidth = 121;
+            this.ComboBox_Model_FN4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.ComboBox_Model_FN4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ComboBox_Model_FN4.FormattingEnabled = true;
+            this.ComboBox_Model_FN4.Hint = "Модель ФН по умолчанию";
+            this.ComboBox_Model_FN4.IntegralHeight = false;
+            this.ComboBox_Model_FN4.ItemHeight = 43;
+            this.ComboBox_Model_FN4.Items.AddRange(new object[] {
+            "Ин36-4",
+            "Ав36-3",
+            "Ав15-3",
+            "Ин36-3",
+            "Ин15-3",
+            "Эв15-3",
+            "Другое"});
+            this.ComboBox_Model_FN4.Location = new System.Drawing.Point(69, 331);
+            this.ComboBox_Model_FN4.MaxDropDownItems = 4;
+            this.ComboBox_Model_FN4.MouseState = MaterialSkin.MouseState.OUT;
+            this.ComboBox_Model_FN4.Name = "ComboBox_Model_FN4";
+            this.ComboBox_Model_FN4.Size = new System.Drawing.Size(363, 49);
+            this.ComboBox_Model_FN4.StartIndex = 0;
+            this.ComboBox_Model_FN4.TabIndex = 141;
+            // 
+            // ComboBox_Name_OFD4
+            // 
+            this.ComboBox_Name_OFD4.AutoResize = false;
+            this.ComboBox_Name_OFD4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ComboBox_Name_OFD4.Depth = 0;
+            this.ComboBox_Name_OFD4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.ComboBox_Name_OFD4.DropDownHeight = 174;
+            this.ComboBox_Name_OFD4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_Name_OFD4.DropDownWidth = 121;
+            this.ComboBox_Name_OFD4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.ComboBox_Name_OFD4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ComboBox_Name_OFD4.FormattingEnabled = true;
+            this.ComboBox_Name_OFD4.Hint = "ОФД по умолчанию";
+            this.ComboBox_Name_OFD4.IntegralHeight = false;
+            this.ComboBox_Name_OFD4.ItemHeight = 43;
+            this.ComboBox_Name_OFD4.Items.AddRange(new object[] {
+            "ООО «Эвотор ОФД»",
+            "АО «ЭСК»",
+            "АО Контур НТТ",
+            "ООО «Такском»",
+            "АО «Калуга Астрал»"});
+            this.ComboBox_Name_OFD4.Location = new System.Drawing.Point(69, 243);
+            this.ComboBox_Name_OFD4.MaxDropDownItems = 4;
+            this.ComboBox_Name_OFD4.MouseState = MaterialSkin.MouseState.OUT;
+            this.ComboBox_Name_OFD4.Name = "ComboBox_Name_OFD4";
+            this.ComboBox_Name_OFD4.Size = new System.Drawing.Size(363, 49);
+            this.ComboBox_Name_OFD4.StartIndex = 0;
+            this.ComboBox_Name_OFD4.TabIndex = 140;
+            // 
+            // Switch_Del_xml
+            // 
+            this.Switch_Del_xml.AutoSize = true;
+            this.Switch_Del_xml.Depth = 0;
+            this.Switch_Del_xml.Location = new System.Drawing.Point(826, 72);
+            this.Switch_Del_xml.Margin = new System.Windows.Forms.Padding(0);
+            this.Switch_Del_xml.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.Switch_Del_xml.MouseState = MaterialSkin.MouseState.HOVER;
+            this.Switch_Del_xml.Name = "Switch_Del_xml";
+            this.Switch_Del_xml.Ripple = true;
+            this.Switch_Del_xml.Size = new System.Drawing.Size(372, 37);
+            this.Switch_Del_xml.TabIndex = 139;
+            this.Switch_Del_xml.Text = "Удаление файла XML после создания ZIP\r\n";
+            this.Switch_Del_xml.UseVisualStyleBackColor = true;
             // 
             // labelVers4
             // 
@@ -2598,113 +3259,113 @@
             this.labelVers4.TabIndex = 138;
             this.labelVers4.Text = "Версия";
             // 
-            // materialTextBox2
+            // TextBox_name_operator
             // 
-            this.materialTextBox2.AnimateReadOnly = false;
-            this.materialTextBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox2.Depth = 0;
-            this.materialTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.materialTextBox2.HideSelection = true;
-            this.materialTextBox2.Hint = "Фамилия, инициалы оператора";
-            this.materialTextBox2.LeadingIcon = null;
-            this.materialTextBox2.Location = new System.Drawing.Point(69, 159);
-            this.materialTextBox2.MaxLength = 32767;
-            this.materialTextBox2.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox2.Name = "materialTextBox2";
-            this.materialTextBox2.PasswordChar = '\0';
-            this.materialTextBox2.PrefixSuffixText = null;
-            this.materialTextBox2.ReadOnly = false;
-            this.materialTextBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox2.SelectedText = "";
-            this.materialTextBox2.SelectionLength = 0;
-            this.materialTextBox2.SelectionStart = 0;
-            this.materialTextBox2.ShortcutsEnabled = true;
-            this.materialTextBox2.Size = new System.Drawing.Size(626, 48);
-            this.materialTextBox2.TabIndex = 120;
-            this.materialTextBox2.TabStop = false;
-            this.materialTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox2.TrailingIcon = null;
-            this.materialTextBox2.UseSystemPasswordChar = false;
+            this.TextBox_name_operator.AnimateReadOnly = false;
+            this.TextBox_name_operator.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_name_operator.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_name_operator.Depth = 0;
+            this.TextBox_name_operator.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_name_operator.HideSelection = true;
+            this.TextBox_name_operator.Hint = "Фамилия, инициалы оператора";
+            this.TextBox_name_operator.LeadingIcon = null;
+            this.TextBox_name_operator.Location = new System.Drawing.Point(69, 159);
+            this.TextBox_name_operator.MaxLength = 32767;
+            this.TextBox_name_operator.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_name_operator.Name = "TextBox_name_operator";
+            this.TextBox_name_operator.PasswordChar = '\0';
+            this.TextBox_name_operator.PrefixSuffixText = null;
+            this.TextBox_name_operator.ReadOnly = false;
+            this.TextBox_name_operator.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_name_operator.SelectedText = "";
+            this.TextBox_name_operator.SelectionLength = 0;
+            this.TextBox_name_operator.SelectionStart = 0;
+            this.TextBox_name_operator.ShortcutsEnabled = true;
+            this.TextBox_name_operator.Size = new System.Drawing.Size(626, 48);
+            this.TextBox_name_operator.TabIndex = 120;
+            this.TextBox_name_operator.TabStop = false;
+            this.TextBox_name_operator.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_name_operator.TrailingIcon = null;
+            this.TextBox_name_operator.UseSystemPasswordChar = false;
             // 
-            // materialTextBox1
+            // TextBox_Adr_file
             // 
-            this.materialTextBox1.AnimateReadOnly = false;
-            this.materialTextBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox1.Depth = 0;
-            this.materialTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.materialTextBox1.HideSelection = true;
-            this.materialTextBox1.Hint = "Папка по умолчанию для сохранения файлов";
-            this.materialTextBox1.LeadingIcon = null;
-            this.materialTextBox1.Location = new System.Drawing.Point(69, 72);
-            this.materialTextBox1.MaxLength = 32767;
-            this.materialTextBox1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox1.Name = "materialTextBox1";
-            this.materialTextBox1.PasswordChar = '\0';
-            this.materialTextBox1.PrefixSuffixText = null;
-            this.materialTextBox1.ReadOnly = false;
-            this.materialTextBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox1.SelectedText = "";
-            this.materialTextBox1.SelectionLength = 0;
-            this.materialTextBox1.SelectionStart = 0;
-            this.materialTextBox1.ShortcutsEnabled = true;
-            this.materialTextBox1.Size = new System.Drawing.Size(626, 48);
-            this.materialTextBox1.TabIndex = 119;
-            this.materialTextBox1.TabStop = false;
-            this.materialTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox1.TrailingIcon = null;
-            this.materialTextBox1.UseSystemPasswordChar = false;
+            this.TextBox_Adr_file.AnimateReadOnly = false;
+            this.TextBox_Adr_file.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextBox_Adr_file.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_Adr_file.Depth = 0;
+            this.TextBox_Adr_file.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBox_Adr_file.HideSelection = true;
+            this.TextBox_Adr_file.Hint = "Папка по умолчанию для сохранения файлов";
+            this.TextBox_Adr_file.LeadingIcon = null;
+            this.TextBox_Adr_file.Location = new System.Drawing.Point(69, 72);
+            this.TextBox_Adr_file.MaxLength = 32767;
+            this.TextBox_Adr_file.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_Adr_file.Name = "TextBox_Adr_file";
+            this.TextBox_Adr_file.PasswordChar = '\0';
+            this.TextBox_Adr_file.PrefixSuffixText = null;
+            this.TextBox_Adr_file.ReadOnly = false;
+            this.TextBox_Adr_file.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TextBox_Adr_file.SelectedText = "";
+            this.TextBox_Adr_file.SelectionLength = 0;
+            this.TextBox_Adr_file.SelectionStart = 0;
+            this.TextBox_Adr_file.ShortcutsEnabled = true;
+            this.TextBox_Adr_file.Size = new System.Drawing.Size(626, 48);
+            this.TextBox_Adr_file.TabIndex = 119;
+            this.TextBox_Adr_file.TabStop = false;
+            this.TextBox_Adr_file.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_Adr_file.TrailingIcon = null;
+            this.TextBox_Adr_file.UseSystemPasswordChar = false;
             // 
-            // materialButton2
+            // Button_Open_folder
             // 
-            this.materialButton2.AutoSize = false;
-            this.materialButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.materialButton2.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton2.Depth = 0;
-            this.materialButton2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.materialButton2.HighEmphasis = true;
-            this.materialButton2.Icon = null;
-            this.materialButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.materialButton2.Location = new System.Drawing.Point(712, 72);
-            this.materialButton2.Margin = new System.Windows.Forms.Padding(14, 4, 4, 4);
-            this.materialButton2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton2.Name = "materialButton2";
-            this.materialButton2.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton2.Padding = new System.Windows.Forms.Padding(2);
-            this.materialButton2.Size = new System.Drawing.Size(62, 48);
-            this.materialButton2.TabIndex = 118;
-            this.materialButton2.Text = "...";
-            this.materialButton2.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
-            this.materialButton2.UseAccentColor = false;
-            this.materialButton2.UseVisualStyleBackColor = true;
-            this.materialButton2.Click += new System.EventHandler(this.materialButton2_Click);
+            this.Button_Open_folder.AutoSize = false;
+            this.Button_Open_folder.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Button_Open_folder.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Open_folder.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.Button_Open_folder.Depth = 0;
+            this.Button_Open_folder.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Button_Open_folder.HighEmphasis = true;
+            this.Button_Open_folder.Icon = null;
+            this.Button_Open_folder.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Button_Open_folder.Location = new System.Drawing.Point(712, 72);
+            this.Button_Open_folder.Margin = new System.Windows.Forms.Padding(14, 4, 4, 4);
+            this.Button_Open_folder.MouseState = MaterialSkin.MouseState.HOVER;
+            this.Button_Open_folder.Name = "Button_Open_folder";
+            this.Button_Open_folder.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.Button_Open_folder.Padding = new System.Windows.Forms.Padding(2);
+            this.Button_Open_folder.Size = new System.Drawing.Size(62, 48);
+            this.Button_Open_folder.TabIndex = 118;
+            this.Button_Open_folder.Text = "...";
+            this.Button_Open_folder.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
+            this.Button_Open_folder.UseAccentColor = false;
+            this.Button_Open_folder.UseVisualStyleBackColor = true;
+            this.Button_Open_folder.Click += new System.EventHandler(this.materialButton2_Click);
             // 
-            // materialButton1
+            // Button_Save4
             // 
-            this.materialButton1.AutoSize = false;
-            this.materialButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton1.Depth = 0;
-            this.materialButton1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.materialButton1.HighEmphasis = true;
-            this.materialButton1.Icon = null;
-            this.materialButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.materialButton1.Location = new System.Drawing.Point(69, 244);
-            this.materialButton1.Margin = new System.Windows.Forms.Padding(14, 4, 4, 4);
-            this.materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton1.Name = "materialButton1";
-            this.materialButton1.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton1.Padding = new System.Windows.Forms.Padding(2);
-            this.materialButton1.Size = new System.Drawing.Size(1129, 47);
-            this.materialButton1.TabIndex = 117;
-            this.materialButton1.Text = "Сохранить";
-            this.materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton1.UseAccentColor = false;
-            this.materialButton1.UseVisualStyleBackColor = true;
-            this.materialButton1.Click += new System.EventHandler(this.materialButton1_Click);
+            this.Button_Save4.AutoSize = false;
+            this.Button_Save4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Button_Save4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Save4.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.Button_Save4.Depth = 0;
+            this.Button_Save4.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Button_Save4.HighEmphasis = true;
+            this.Button_Save4.Icon = null;
+            this.Button_Save4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Button_Save4.Location = new System.Drawing.Point(69, 530);
+            this.Button_Save4.Margin = new System.Windows.Forms.Padding(14, 4, 4, 4);
+            this.Button_Save4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.Button_Save4.Name = "Button_Save4";
+            this.Button_Save4.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.Button_Save4.Padding = new System.Windows.Forms.Padding(2);
+            this.Button_Save4.Size = new System.Drawing.Size(1129, 47);
+            this.Button_Save4.TabIndex = 117;
+            this.Button_Save4.Text = "Сохранить";
+            this.Button_Save4.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.Button_Save4.UseAccentColor = false;
+            this.Button_Save4.UseVisualStyleBackColor = true;
+            this.Button_Save4.Click += new System.EventHandler(this.materialButton1_Click);
             // 
             // materialLabel13
             // 
@@ -2728,6 +3389,8 @@
             this.imageList1.Images.SetKeyName(1, "icons8-список-32.png");
             this.imageList1.Images.SetKeyName(2, "icons8-принтер-50.png");
             this.imageList1.Images.SetKeyName(3, "icons8-квитанция-80.png");
+            this.imageList1.Images.SetKeyName(4, "Yes_save");
+            this.imageList1.Images.SetKeyName(5, "Not_save");
             // 
             // materialCheckbox1
             // 
@@ -2836,6 +3499,34 @@
             this.materialCheckbox7.Text = "УСН Доход";
             this.materialCheckbox7.UseVisualStyleBackColor = true;
             // 
+            // label_datatime
+            // 
+            this.label_datatime.AutoSize = true;
+            this.label_datatime.Depth = 0;
+            this.label_datatime.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.label_datatime.FontType = MaterialSkin.MaterialSkinManager.fontType.Button;
+            this.label_datatime.HighEmphasis = true;
+            this.label_datatime.Location = new System.Drawing.Point(116, 526);
+            this.label_datatime.MouseState = MaterialSkin.MouseState.HOVER;
+            this.label_datatime.Name = "label_datatime";
+            this.label_datatime.Size = new System.Drawing.Size(21, 17);
+            this.label_datatime.TabIndex = 161;
+            this.label_datatime.Text = "----";
+            // 
+            // materialLabel20
+            // 
+            this.materialLabel20.AutoSize = true;
+            this.materialLabel20.Depth = 0;
+            this.materialLabel20.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel20.FontType = MaterialSkin.MaterialSkinManager.fontType.Button;
+            this.materialLabel20.HighEmphasis = true;
+            this.materialLabel20.Location = new System.Drawing.Point(14, 526);
+            this.materialLabel20.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel20.Name = "materialLabel20";
+            this.materialLabel20.Size = new System.Drawing.Size(90, 17);
+            this.materialLabel20.TabIndex = 160;
+            this.materialLabel20.Text = "Время в ККТ:";
+            // 
             // Form_Start
             // 
             this.ClientSize = new System.Drawing.Size(1829, 1100);
@@ -2848,6 +3539,7 @@
             this.Text = "КОМТЕТ Касса. Регистрация";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_Closing);
+            this.Load += new System.EventHandler(this.Form_Start_Load);
             this.materialTabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -2869,30 +3561,28 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.ImageList imageList1;
-        private MaterialSkin.Controls.MaterialTextBox2 textBox18;
-        private MaterialSkin.Controls.MaterialTextBox2 textBox3;
-        private MaterialSkin.Controls.MaterialTextBox2 textBox21;
-        private MaterialSkin.Controls.MaterialComboBox comboBox2;
-        private MaterialSkin.Controls.MaterialTextBox2 textBox5;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_Model_KKT;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_ZN_KKT;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_Number_automatic;
+        private MaterialSkin.Controls.MaterialComboBox ComboBox_Model_FN1;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_ZN_FN;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private MaterialSkin.Controls.MaterialTextBox2 textBox9;
-        private MaterialSkin.Controls.MaterialTextBox2 textBox8;
-        private MaterialSkin.Controls.MaterialTextBox2 textBox7;
-        private MaterialSkin.Controls.MaterialTextBox2 textBox1;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_INN_organization;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_Director_org;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_Name_organization;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
-        private MaterialSkin.Controls.MaterialTextBox2 textBox15;
-        private MaterialSkin.Controls.MaterialTextBox2 textBox12;
-        private MaterialSkin.Controls.MaterialComboBox comboBox1;
-        private MaterialSkin.Controls.MaterialTextBox2 textBox20;
-        private MaterialSkin.Controls.MaterialTextBox2 textBox4;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_KPP_organization;
+        private MaterialSkin.Controls.MaterialComboBox ComboBox_Name_OFD1;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_Email_OFD1;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_INN_OFD1;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
-        private MaterialSkin.Controls.MaterialTextBox2 textBox14;
-        private MaterialSkin.Controls.MaterialTextBox2 textBox13;
-        private MaterialSkin.Controls.MaterialTextBox2 TextBoxNFD;
-        private MaterialSkin.Controls.MaterialTextBox2 textBox19;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_PlaceSale;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_adressSale;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_Number_FD;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_FP_FD;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
-        private MaterialSkin.Controls.MaterialTextBox2 textBox2;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_RNM1;
         private MaterialSkin.Controls.MaterialButton butSave;
         private MaterialSkin.Controls.MaterialButton butLoading;
         private MaterialSkin.Controls.MaterialButton butReaddata;
@@ -2900,19 +3590,19 @@
         private MaterialSkin.Controls.MaterialButton buttonAkt;
         private MaterialSkin.Controls.MaterialButton buttonXML;
         private MaterialSkin.Controls.MaterialButton butReg_Terminal_FA;
-        private MaterialSkin.Controls.MaterialCheckbox checkBox1;
+        private MaterialSkin.Controls.MaterialCheckbox CheckBox_Podakziz;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
-        private MaterialSkin.Controls.MaterialCheckbox checkBox2;
-        private MaterialSkin.Controls.MaterialCheckbox checkBox3;
-        private MaterialSkin.Controls.MaterialTextBox2 textBox6;
-        private MaterialSkin.Controls.MaterialCheckbox checkBox12;
-        private MaterialSkin.Controls.MaterialCheckbox checkBox10;
-        private MaterialSkin.Controls.MaterialCheckbox checkBox9;
-        private MaterialSkin.Controls.MaterialCheckbox checkBox8;
-        private MaterialSkin.Controls.MaterialCheckbox checkBox7;
-        private MaterialSkin.Controls.MaterialCheckbox checkBox5;
-        private MaterialSkin.Controls.MaterialCheckbox checkBox4;
-        private MaterialSkin.Controls.MaterialCheckbox checkBox6;
+        private MaterialSkin.Controls.MaterialCheckbox CheckBox_Mark;
+        private MaterialSkin.Controls.MaterialCheckbox CheckBox_Azart_play;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_Domen;
+        private MaterialSkin.Controls.MaterialCheckbox CheckBox_Internet;
+        private MaterialSkin.Controls.MaterialCheckbox CheckBox_Delivery;
+        private MaterialSkin.Controls.MaterialCheckbox CheckBox_Avtonom;
+        private MaterialSkin.Controls.MaterialCheckbox CheckBox_Shifr;
+        private MaterialSkin.Controls.MaterialCheckbox CheckBox_Plat_agent;
+        private MaterialSkin.Controls.MaterialCheckbox CheckBox_Printer_v_avtomate;
+        private MaterialSkin.Controls.MaterialCheckbox CheckBox_Lotereya;
+        private MaterialSkin.Controls.MaterialCheckbox CheckBox_Bank_agent;
         private MaterialSkin.Controls.MaterialCheckbox materialCheckbox1;
         private MaterialSkin.Controls.MaterialCheckbox materialCheckbox2;
         private MaterialSkin.Controls.MaterialCheckbox materialCheckbox3;
@@ -2921,49 +3611,49 @@
         private MaterialSkin.Controls.MaterialCheckbox materialCheckbox6;
         private MaterialSkin.Controls.MaterialCheckbox materialCheckbox7;
         private MaterialSkin.Controls.MaterialLabel materialLabel7;
-        private MaterialSkin.Controls.MaterialCheckbox materialCheckbox12;
-        private MaterialSkin.Controls.MaterialCheckbox materialCheckbox8;
-        private MaterialSkin.Controls.MaterialCheckbox materialCheckbox9;
-        private MaterialSkin.Controls.MaterialCheckbox materialCheckbox10;
-        private MaterialSkin.Controls.MaterialCheckbox materialCheckbox11;
+        private MaterialSkin.Controls.MaterialCheckbox Checkbox_ESHN;
+        private MaterialSkin.Controls.MaterialCheckbox Checkbox_Patent;
+        private MaterialSkin.Controls.MaterialCheckbox Checkbox_USN_Dohod_rashod;
+        private MaterialSkin.Controls.MaterialCheckbox Checkbox_USN_Dohod;
+        private MaterialSkin.Controls.MaterialCheckbox Checkbox_OSN;
         private MaterialSkin.Controls.MaterialButton buttonAkt2;
-        private MaterialSkin.Controls.MaterialButton butReaddataAKT;
-        private MaterialSkin.Controls.MaterialButton butLoadingAKT;
-        private MaterialSkin.Controls.MaterialButton butSaveAKT;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox21;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox22;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox24;
-        private MaterialSkin.Controls.MaterialComboBox materialComboBox1;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox25;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox26;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox27;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox29;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox210;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox211;
+        private MaterialSkin.Controls.MaterialButton butReaddata2;
+        private MaterialSkin.Controls.MaterialButton butLoading2;
+        private MaterialSkin.Controls.MaterialButton butSave2;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_NumberFD2;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_FPDocument2;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_RNM2;
+        private MaterialSkin.Controls.MaterialComboBox ComboBox_Name_OFD2;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_INN_OFD2;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_INNOrganization2;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_NameOrganization2;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_ZN_FN2;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_ZN_KKT2;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_Model_KKT2;
         private MaterialSkin.Controls.MaterialButton butSaveFN;
         private MaterialSkin.Controls.MaterialButton butSaveOFD;
         private MaterialSkin.Controls.MaterialLabel materialLabel8;
         private MaterialSkin.Controls.MaterialLabel materialLabel9;
         private MaterialSkin.Controls.MaterialLabel materialLabel10;
         private MaterialSkin.Controls.MaterialLabel materialLabel11;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox310;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox39;
-        private MaterialSkin.Controls.MaterialComboBox materialComboBox2;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox38;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox37;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox36;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox35;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox34;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox33;
-        private MaterialSkin.Controls.MaterialComboBox materialComboBox3;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox32;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox31;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_port_FN3;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_adress_FN3;
+        private MaterialSkin.Controls.MaterialComboBox ComboBox_Name_FN3;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_port_OFD3;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_adress2_OFD3;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_DNS_OFD3;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_TCP_OFD3;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_IP_OFD3;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_adress_OFD3;
+        private MaterialSkin.Controls.MaterialComboBox ComboBox_Name_OFD3;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_Email_OFD3;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_INN_OFD3;
         private MaterialSkin.Controls.MaterialLabel materialLabel12;
         private MaterialSkin.Controls.MaterialLabel materialLabel13;
-        private MaterialSkin.Controls.MaterialButton materialButton1;
-        private MaterialSkin.Controls.MaterialButton materialButton2;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox1;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox2;
+        private MaterialSkin.Controls.MaterialButton Button_Save4;
+        private MaterialSkin.Controls.MaterialButton Button_Open_folder;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_Adr_file;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_name_operator;
         private MaterialSkin.Controls.MaterialLabel labelVers1;
         private MaterialSkin.Controls.MaterialLabel labelVers2;
         private MaterialSkin.Controls.MaterialLabel labelVers3;
@@ -2971,12 +3661,53 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel14;
         private MaterialSkin.Controls.MaterialLabel materialLabel15;
         private MaterialSkin.Controls.MaterialLabel materialLabel16;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox212;
-        private MaterialSkin.Controls.MaterialMaskedTextBox textBox11;
-        private MaterialSkin.Controls.MaterialMaskedTextBox textBox17;
-        private MaterialSkin.Controls.MaterialMaskedTextBox materialTextBox23;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox28;
-        private MaterialSkin.Controls.MaterialSwitch materialSwitch1;
+        private MaterialSkin.Controls.MaterialMaskedTextBox TextBox_Telephon_number;
+        private MaterialSkin.Controls.MaterialMaskedTextBox TextBox_Datetime_FD;
+        private MaterialSkin.Controls.MaterialMaskedTextBox TextBox_Date2;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_ID_client2;
+        private MaterialSkin.Controls.MaterialSwitch Switch_Del_xml;
+        private MaterialSkin.Controls.MaterialButton butCleare1;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_NewName_OFD3;
+        private MaterialSkin.Controls.MaterialCheckbox CheckButton_AddNewOFD;
+        private MaterialSkin.Controls.MaterialComboBox ComboBox_Model_FN4;
+        private MaterialSkin.Controls.MaterialComboBox ComboBox_Name_OFD4;
+        private MaterialSkin.Controls.MaterialButton butCleare2;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_Email_organization;
+        private MaterialSkin.Controls.MaterialLabel label_save_status;
+        private MaterialSkin.Controls.MaterialLabel label_image_save_status;
+        private MaterialSkin.Controls.MaterialTextBox2 TextBox_ID_client;
+        private MaterialSkin.Controls.MaterialButton cancelDocumentButton;
+        private MaterialSkin.Controls.MaterialSwitch switch_open_KKT1;
+        private MaterialSkin.Controls.MaterialSwitch switch_open_KKT2;
+        private MaterialSkin.Controls.MaterialLabel label_vers_config;
+        private MaterialSkin.Controls.MaterialLabel materialLabel18;
+        private MaterialSkin.Controls.MaterialLabel label_vers_FFD;
+        private MaterialSkin.Controls.MaterialLabel materialLabel17;
+        private MaterialSkin.Controls.MaterialSwitch Switch_Print_Akt;
+        private MaterialSkin.Controls.MaterialButton materialButton1;
+        private System.Windows.Forms.Button buttonCopy1;
+        private System.Windows.Forms.Button buttonCopy17;
+        private System.Windows.Forms.Button buttonCopy16;
+        private System.Windows.Forms.Button buttonCopy15;
+        private System.Windows.Forms.Button buttonCopy14;
+        private System.Windows.Forms.Button buttonCopy13;
+        private System.Windows.Forms.Button buttonCopy12;
+        private System.Windows.Forms.Button buttonCopy11;
+        private System.Windows.Forms.Button buttonCopy10;
+        private System.Windows.Forms.Button buttonCopy9;
+        private System.Windows.Forms.Button buttonCopy8;
+        private System.Windows.Forms.Button buttonCopy7;
+        private System.Windows.Forms.Button buttonCopy6;
+        private System.Windows.Forms.Button buttonCopy5;
+        private System.Windows.Forms.Button buttonCopy4;
+        private System.Windows.Forms.Button buttonCopy2;
+        private System.Windows.Forms.Button buttonCopy3;
+        private System.Windows.Forms.Button buttonCopy21;
+        private System.Windows.Forms.Button buttonCopy20;
+        private System.Windows.Forms.Button buttonCopy19;
+        private System.Windows.Forms.Button buttonCopy18;
+        private MaterialSkin.Controls.MaterialLabel label_datatime;
+        private MaterialSkin.Controls.MaterialLabel materialLabel20;
     }
 }
 

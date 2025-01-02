@@ -1,125 +1,143 @@
-﻿using MaterialSkin;
+﻿using KitCashProtocol;
 using MaterialSkin.Controls;
-using Microsoft.Office.Interop.Access;
+using Microsoft.Data.SqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+using System.Configuration;
 using System.Data;
-using System.Drawing;
+using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.IO;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Kassa
 {
     public partial class DanReg : MaterialForm
     {
-        public DanReg(string data, string fn)
+        //SqlConnection sqlConnection = null;
+        string ofd;
+        string fn;
+        public DanReg(string ofd, string fn)
         {
             InitializeComponent();
-            
-            this.data = data;
+
+            this.ofd = ofd;
             this.fn = fn;
-
-            string Pr_FN = "";
-            string Ad_FN = "";
-            string Port_FN = "";
-
-            string str = File.ReadAllText("options_OFD.txt");
-            string[] str_mas = str.Split(':');
-
-            if ((data == "Эвотор ОФД") || (data == "ООО «Эвотор ОФД»"))
+            TextBox_Name_OFD_Data.Text = ofd;
+            // Получаем строку подключения из App.config
+            string connectionString = ConfigurationManager.ConnectionStrings["SQLiteDB"].ConnectionString;
+            // Создание подключения к базе данных
+            using (var connection = new SQLiteConnection(connectionString))
             {
-                textBox1.Text = str_mas[1];
-                textBox2.Text = str_mas[7];
-                textBox3.Text = str_mas[9];
-                textBox4.Text = str_mas[11];
-                textBox5.Text = str_mas[13];
 
-                textBox6.Text = str_mas[7];
-                textBox7.Text = str_mas[15];
-            }
-            else if ((data == "ЭСК") || (data == "АО «ЭСК»"))
-            {
-                textBox1.Text = str_mas[17];
-                textBox2.Text = str_mas[23];
-                textBox3.Text = str_mas[25];
-                textBox4.Text = str_mas[27];
-                textBox5.Text = str_mas[29];
 
-                textBox6.Text = str_mas[23];
-                textBox7.Text = str_mas[31];
-            }
-            else if ((data == "АО Контур НТТ") || (data == "Контур НТТ"))
-            {
-                textBox1.Text = str_mas[33];
-                textBox2.Text = str_mas[39];
-                textBox3.Text = str_mas[41];
-                textBox4.Text = str_mas[43];
-                textBox5.Text = str_mas[45];
-
-                textBox6.Text = str_mas[39];
-                textBox7.Text = str_mas[47];
-            }
-            else if ((data == "Такском") || (data == "ООО «Такском»"))
-            {
-                textBox1.Text = str_mas[49];
-                textBox2.Text = str_mas[55];
-                textBox3.Text = str_mas[57];
-                textBox4.Text = str_mas[59];
-                textBox5.Text = str_mas[61];
-
-                textBox6.Text = str_mas[55];
-                textBox7.Text = str_mas[63];
-            }
-            else if ((data == "Калуга Астрал") || (data == "АО «Калуга Астрал»"))
-            {
-                textBox1.Text = str_mas[65];
-                textBox2.Text = str_mas[71];
-                textBox3.Text = str_mas[73];
-                textBox4.Text = str_mas[75];
-                textBox5.Text = str_mas[77];
-
-                textBox6.Text = str_mas[71];
-                textBox7.Text = str_mas[79];
-            }
-            else { textBox1.Text = "ОФД не определен"; }
-
-            if (fn != "Автоматика" || fn != "Инвента")
-            {
-                if (fn.Length == 6) { fn = fn.Remove(fn.Length - 4); }
-                if (fn.Length == 7) { fn = fn.Remove(fn.Length - 5); }
-            }
-            string str2 = File.ReadAllText("options_FN.txt");
-            string[] str_mas2 = str2.Split(':');
-            if (fn == "Инвента" || fn == "Ин" || fn == "ин" || fn == "ИН") 
+                // Открытие подключения
+                connection.Open();
+                string selectQuery = @"
+            SELECT 
+                adress_OFD, 
+                IP_OFD, 
+                TCP_OFD, 
+                DNS_OFD, 
+                port_OFD,
+                adress_OISM_OFD
+            FROM options_OFD 
+            WHERE name_OFD = @name_OFD";
+                using (SQLiteCommand sqlCommand = new SQLiteCommand(selectQuery, connection))
                 {
-                    Pr_FN = str_mas2[1];
-                    Ad_FN = str_mas2[3];
-                    Port_FN = str_mas2[5];
+                    // Добавление параметра к запросу для предотвращения SQL-инъекций
+                    sqlCommand.Parameters.AddWithValue("@name_OFD", ofd);
+
+                    try
+                    {
+                        // Выполнение запроса и получение результата
+                        using (SQLiteDataReader reader = sqlCommand.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // Запись значений в TextBox'ы
+                                TextBox_adress_OFD_Data.Text = reader["adress_OFD"].ToString();
+                                TextBox_IP_OFD_Data.Text = reader["IP_OFD"].ToString();
+                                TextBox_TCP_OFD_Data.Text = reader["TCP_OFD"].ToString();
+                                TextBox_DNS_OFD_Data.Text = reader["DNS_OFD"].ToString();
+                                TextBox_port_OFD_Data.Text = reader["port_OFD"].ToString();
+                                TextBox_adress2_OFD_Data.Text = reader["adress_OISM_OFD"].ToString();
+                            }
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        // Обработка возможных ошибок
+                        MessageBox.Show("Ошибка: " + ex.Message);
+                    }
+
                 }
 
-                else if (fn == "Автоматика" || fn == "Ав" || fn == "ав" || fn == "АВ")
+
+                selectQuery = @"
+                SELECT 
+                    manufacture_FN 
+                FROM table_model_FN 
+                WHERE model_FN = @model_FN";
+                using (SQLiteCommand sqlCommand = new SQLiteCommand(selectQuery, connection))
                 {
-                Pr_FN = str_mas2[7];
-                Ad_FN = str_mas2[9];
-                Port_FN = str_mas2[11];
+                    // Добавление параметра к запросу для предотвращения SQL-инъекций
+                    sqlCommand.Parameters.AddWithValue("@model_FN", fn);
+
+                    try
+                    {
+
+                        using (SQLiteDataReader reader = sqlCommand.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                TextBox_Name_FN_Data.Text = reader["manufacture_FN"].ToString();
+                            }
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        // Обработка возможных ошибок
+                        MessageBox.Show("Ошибка: " + ex.Message);
+                    }
                 }
-                
-                else { textBox8.Text = "Производитель ФН не определен"; }
 
-            textBox8.Text = Pr_FN;
-            textBox9.Text = Ad_FN;
-            textBox10.Text = Port_FN;
+                selectQuery = @"
+                SELECT 
+                    adress_FN, 
+                    port_FN 
+                FROM options_FN 
+                WHERE name_FN = @name_FN";
+                using (SQLiteCommand sqlCommand = new SQLiteCommand(selectQuery, connection))
+                {
+                    // Добавление параметра к запросу для предотвращения SQL-инъекций
+                    sqlCommand.Parameters.AddWithValue("@name_FN", TextBox_Name_FN_Data.Text);
+
+                    try
+                    {
+                        using (SQLiteDataReader reader = sqlCommand.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                TextBox_adress_FN_Data.Text = reader["adress_FN"].ToString();
+                                TextBox_port_FN_Data.Text = reader["port_FN"].ToString();
+                            }
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        // Обработка возможных ошибок
+                        MessageBox.Show("Ошибка: " + ex.Message);
+                    }
+                }
 
 
+            }
+        
         }
-        string data;
-        string fn;
+        
         private void butClose_Click(object sender, EventArgs e)
         {
             this.Close();

@@ -1,26 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Printing;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using KitCashProtocol;
 using MaterialSkin;
 using MaterialSkin.Controls;
-using Microsoft.Office.Interop.Word;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using Microsoft.Data.SqlClient;
-using System.Net;
-using Microsoft.Data.Sqlite;
 using System.IO.Compression;
+using System.Configuration;
+using System.Data.SQLite;
+using System.IO.Ports;
+
+
 
 namespace Kassa
 {
@@ -28,447 +20,1149 @@ namespace Kassa
     {
         public bool Internet_status = false;
         public int t = 0;
-        public bool save_closing = false;
-        public string nameDB = "RegistratorDB.db";
-        public bool delete_xml;
-        private TerminalFA CashRegister { get; set; }
-        static SqliteConnection connection;
-        static SqliteCommand command;
+        public long result;
+        public string adr_file;
+        public string delete_xml;
+        public string print_akt;
+        public string name_operator;
+        public string standart_model_FN;
+        public string standart_OFD;
+        public string standart_ModelKKT = "Терминал-ФА";
+        public string vers_config = "------";
+        public string vers_FFD = "------";
 
-        //static public bool Connect(string nameDB)
-        //{
-        //    try
-        //    {
-        //        connection = new SqliteConnection("Data Source=" + nameDB + ";Version=3; FailIfMissing=False");
-        //        connection.Open();
-        //        return true;
-        //    }
-        //    catch (SqliteException ex)
-        //    {
-        //        Console.WriteLine($"Ошибка доступа к базе данных. Исключение: {ex.Message}");
-        //        return false;
-        //    }
-        //}
+        public string M_FN;
+        public bool otherModelFN = false;
+        public bool[] Save_parametrs = new bool[39];
+
+        // Заполнение версии программы на всех 4 страницах
+        string program_version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
+        private TerminalFA CashRegister { get; set; }
+
+        // Получаем строку подключения из App.config
+        public string connectionString = ConfigurationManager.ConnectionStrings["SQLiteDB"].ConnectionString;
+
+
+
         public Form_Start()
         {
-            InitializeComponent();
-
-            //if (Connect(nameDB))
-            //{
-            //    materialLabel17.Text = "Connected";
-            //}
-
-
+            InitializeComponent();     
+            
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Indigo500, Primary.Indigo700, Primary.Amber50, Accent.Indigo400, TextShade.WHITE);
-
-            string str2 = System.IO.File.ReadAllText("options_OFD.txt");
-            string[] str_mas2 = str2.Split(':');
-            materialTextBox25.Text = str_mas2[3]; // ИНН ОФД на второй странице
-
-            string curvers = Assembly.GetExecutingAssembly().GetName().Version.ToString(); // Заполнение версии
-            labelVers1.Text = curvers;
-            labelVers2.Text = curvers;
-            labelVers3.Text = curvers;
-            labelVers4.Text = curvers;
-
-            string OFD = materialComboBox1.Text;
-            string str = File.ReadAllText("options_OFD.txt");
-            string[] str_mas = str.Split(':');
-
-            string INN_OFD = "";
-            string email_OFD = "";
-            string adr_OFD = "";
-            string IP = "";
-            string TCP = "";
-            string DNS = "";
-            string port = "";
-
-
-            if ((OFD == str_mas[1].Trim()))
-            {
-                INN_OFD = str_mas[3].Trim();
-                email_OFD = str_mas[5].Trim();
-                adr_OFD = str_mas[7].Trim();
-                IP = str_mas[9].Trim();
-                TCP = str_mas[11].Trim();
-                DNS = str_mas[13].Trim();
-                port = str_mas[15].Trim();
-
-            }
-            if ((OFD == str_mas[17].Trim()))
-            {
-                INN_OFD = str_mas[19].Trim();
-                email_OFD = str_mas[21].Trim();
-                adr_OFD = str_mas[23].Trim();
-                IP = str_mas[25].Trim();
-                TCP = str_mas[27].Trim();
-                DNS = str_mas[29].Trim();
-                port = str_mas[31].Trim();
-            }
-            if ((OFD == str_mas[33].Trim()))
-            {
-                INN_OFD = str_mas[35].Trim();
-                email_OFD = str_mas[37].Trim();
-                adr_OFD = str_mas[39].Trim();
-                IP = str_mas[41].Trim();
-                TCP = str_mas[43].Trim();
-                DNS = str_mas[45].Trim();
-                port = str_mas[47].Trim();
-            }
-            if ((OFD == str_mas[49].Trim()))
-            {
-                INN_OFD = str_mas[51].Trim();
-                email_OFD = str_mas[53].Trim();
-                adr_OFD = str_mas[55].Trim();
-                IP = str_mas[57].Trim();
-                TCP = str_mas[59].Trim();
-                DNS = str_mas[61].Trim();
-                port = str_mas[63].Trim();
-            }
-            if ((OFD == str_mas[65].Trim()))
-            {
-                INN_OFD = str_mas[67].Trim();
-                email_OFD = str_mas[69].Trim();
-                adr_OFD = str_mas[71].Trim();
-                IP = str_mas[73].Trim();
-                TCP = str_mas[75].Trim();
-                DNS = str_mas[77].Trim();
-                port = str_mas[79].Trim();
-            }
-            materialTextBox31.Text = Convert.ToString(INN_OFD);
-            materialTextBox32.Text = Convert.ToString(email_OFD);
-            materialTextBox33.Text = Convert.ToString(adr_OFD);
-            materialTextBox34.Text = Convert.ToString(IP);
-            materialTextBox35.Text = Convert.ToString(TCP);
-            materialTextBox36.Text = Convert.ToString(DNS);
-            materialTextBox37.Text = Convert.ToString(adr_OFD);
-            materialTextBox38.Text = Convert.ToString(port);
-
-            str = "";
-
-            str = File.ReadAllText("options_FN.txt");
-            str_mas = str.Split(':');
-
-            string adr = "";
-            string port_fn = "";
-
-
-            string FN = materialComboBox2.Text;
-            if ((FN == str_mas[1].Trim()))
-            {
-                adr = str_mas[3].Trim();
-                port_fn = str_mas[5].Trim();
-            }
-            if ((FN == str_mas[7].Trim()))
-            {
-                adr = str_mas[9].Trim();
-                port_fn = str_mas[11].Trim();
-            }
-
-            materialTextBox39.Text = adr;
-            materialTextBox310.Text = port_fn;
-            materialTextBox212.Text = comboBox1.Text;
-
-            str = System.IO.File.ReadAllText("options_OFD.txt"); // заполнение по умолчанию параметров ОФД Эвотор
-            str_mas = str.Split(':');
-            textBox4.Text = str_mas[3];
-            textBox20.Text = str_mas[5];
-
-            string str_del = System.IO.File.ReadAllText("del_xml.txt"); //кнопка настроек удаление файла xml
-            if(str_del == "true")
-            {
-                delete_xml = true;
-            }
-
-            CashRegister = new TerminalFA("COM1"); // вводные для Терминала-ФА
-            //ErrorCode answer = CashRegister.Initialize();
-            //textBox1.Text += EnumHelper.GetTypeDescription(answer) + Environment.NewLine;
+            
         }
 
-        private void NameOr_TextChanged(object sender, EventArgs e) // открытие поля КПП если ЮЛ и ввод имя руководителя
+
+
+        private void Form_Start_Load(object sender, EventArgs e)
         {
-            string[] n = textBox7.Text.Split(' ');
-            string NOrganization = n[0];
-            if (NOrganization != "ИП" && NOrganization.Length > 2)
+            
+                // Создание подключения к базе данных
+                using (var sqliteConnection = new SQLiteConnection(connectionString))
             {
-                textBox15.Visible = true; // открытие поля КПП
-            }
-            else if (NOrganization == "ИП")
-            {
-                textBox15.Visible = false;
-                textBox8.Text = textBox7.Text.Substring(Math.Max(0, 3)); // ввод имя руководителя
+                // Открываем соединение
+                sqliteConnection.Open();
+                try
+                {               
+
+                //запрос Адреса сохранения по умолчанию
+                string selectQuery = "SELECT * FROM options_program WHERE parameter = @adr_file";
+                using (SQLiteCommand command = new SQLiteCommand(selectQuery, sqliteConnection))
+                {
+                    command.Parameters.AddWithValue("@adr_file", "adr_file");
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())   // построчно считываем данные
+                        {
+                            adr_file = (string)reader["meaning"];
+                        }
+                    }
+                }
+                //запрос ОФД по умолчанию сохранения по умолчанию
+                selectQuery = "SELECT * FROM options_program WHERE parameter = @standart_OFD";
+
+                using (SQLiteCommand command = new SQLiteCommand(selectQuery, sqliteConnection))
+                {
+                    command.Parameters.AddWithValue("@standart_OFD", "standart_OFD");
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())   // построчно считываем данные
+                        {
+                            standart_OFD = (string)reader["meaning"];
+                            //delete_xml = (string)reader[1];
+                            //standart_model_FN = (string)reader[1];
+                            //standart_OFD = (string)reader[1];
+                            //name_operator = (string)reader[1];
+                        }
+                    }
+                }
+                    //запрос ФН по умолчанию сохранения по умолчанию
+                    selectQuery = "SELECT * FROM options_program WHERE parameter = @standart_FN";
+
+                    using (SQLiteCommand command = new SQLiteCommand(selectQuery, sqliteConnection))
+                    {
+                        command.Parameters.AddWithValue("@standart_FN", "standart_FN");
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())   // построчно считываем данные
+                            {
+                                standart_model_FN = (string)reader["meaning"];
+                                //delete_xml = (string)reader[1];
+                                //standart_model_FN = (string)reader[1];
+                                //standart_OFD = (string)reader[1];
+                                //name_operator = (string)reader[1];
+                            }
+                        }
+                    }
+                    //запрос del_XML по умолчанию сохранения по умолчанию
+                    selectQuery = "SELECT * FROM options_program WHERE parameter = @delete_xml";
+
+                    using (SQLiteCommand command = new SQLiteCommand(selectQuery, sqliteConnection))
+                    {
+                        command.Parameters.AddWithValue("@delete_xml", "del_xml");
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())   // построчно считываем данные
+                            {
+                                delete_xml = (string)reader["meaning"];
+                                //delete_xml = (string)reader[1];
+                                //standart_model_FN = (string)reader[1];
+                                //standart_OFD = (string)reader[1];
+                                //name_operator = (string)reader[1];
+                            }
+                        }
+                    }
+
+                    //запрос print_akt по умолчанию сохранения по умолчанию
+                    selectQuery = "SELECT * FROM options_program WHERE parameter = @print_akt";
+
+                    using (SQLiteCommand command = new SQLiteCommand(selectQuery, sqliteConnection))
+                    {
+                        command.Parameters.AddWithValue("@print_akt", "print_akt");
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())   // построчно считываем данные
+                            {
+                                print_akt = (string)reader["meaning"];
+                                //delete_xml = (string)reader[1];
+                                //standart_model_FN = (string)reader[1];
+                                //standart_OFD = (string)reader[1];
+                                //name_operator = (string)reader[1];
+                            }
+                        }
+                    }
+
+                    //запрос name_operator по умолчанию сохранения по умолчанию
+                    selectQuery = "SELECT * FROM options_program WHERE parameter = @name_operator";
+                    using (SQLiteCommand command = new SQLiteCommand(selectQuery, sqliteConnection))
+                    {
+                        command.Parameters.AddWithValue("@name_operator", "name_operator");
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())   // построчно считываем данные
+                            {
+                                name_operator = (string)reader["meaning"];
+                                //delete_xml = (string)reader[1];
+                                //standart_model_FN = (string)reader[1];
+                                //standart_OFD = (string)reader[1];
+                                //name_operator = (string)reader[1];
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MaterialMessageBox.Show("Ошибка: " + ex.Message);
+                }
+
+                
+                labelVers1.Text = program_version;
+                labelVers2.Text = program_version;
+                labelVers3.Text = program_version;
+                labelVers4.Text = program_version;
+
+                //_______________________________________________________________________ Заполнение Параметров ОФД данными из Базы
+                string name_OFD = standart_OFD;
+                string query = @"
+                SELECT 
+                    inn_OFD, 
+                    email_OFD, 
+                    adress_OFD, 
+                    IP_OFD, 
+                    TCP_OFD, 
+                    DNS_OFD, 
+                    adress_OISM_OFD,
+                    port_OFD 
+                FROM options_OFD 
+                WHERE name_OFD = @name_OFD";
+                //using (SQLiteConnection sqliteConnection = new SQLiteConnection(connectionString))
+                //{
+                //    // Открываем соединение
+                //    sqliteConnection.Open();
+
+                    using (SQLiteCommand sqliteCommand = new SQLiteCommand(query, sqliteConnection))
+                    {
+                        // Добавление параметра к запросу для предотвращения SQL-инъекций
+                        sqliteCommand.Parameters.AddWithValue("@name_OFD", name_OFD);
+
+                        try
+                        {
+                            // Выполнение запроса
+                            using (SQLiteDataReader reader = sqliteCommand.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    // Вкладка 1
+                                    TextBox_INN_OFD1.Text = reader["inn_OFD"].ToString();
+                                    TextBox_Email_OFD1.Text = reader["email_OFD"].ToString();
+
+                                    // Вкладка 2
+                                    TextBox_INN_OFD2.Text = reader["inn_OFD"].ToString();
+
+                                    // Вкладка 3
+                                    TextBox_INN_OFD3.Text = reader["inn_OFD"].ToString();
+                                    TextBox_Email_OFD3.Text = reader["email_OFD"].ToString();
+                                    TextBox_adress_OFD3.Text = reader["adress_OFD"].ToString();
+                                    TextBox_IP_OFD3.Text = reader["IP_OFD"].ToString();
+                                    TextBox_TCP_OFD3.Text = reader["TCP_OFD"].ToString();
+                                    TextBox_DNS_OFD3.Text = reader["DNS_OFD"].ToString();
+                                    TextBox_adress2_OFD3.Text = reader["adress_OISM_OFD"].ToString();
+                                    TextBox_port_OFD3.Text = reader["port_OFD"].ToString();
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MaterialMessageBox.Show("Ошибка: " + ex.Message);
+                        }
+                    //}
+                }
+                //_______________________________________________________________________ Заполнение Параметров ФН на Странице 3 данными из Базы
+                string name_FN = "Инвента";
+                query = @"
+                SELECT  
+                    adress_FN, 
+                    port_FN
+                FROM options_FN 
+                WHERE name_FN = @name_FN";
+                //using (SQLiteConnection sqliteConnection = new SQLiteConnection(connectionString))
+                //{
+                    using (SQLiteCommand sqliteCommand = new SQLiteCommand(query, sqliteConnection))
+                    {
+                        // Добавление параметра к запросу для предотвращения SQL-инъекций
+                        sqliteCommand.Parameters.AddWithValue("@name_FN", name_FN);
+
+                        try
+                        {
+                            using (SQLiteDataReader reader = sqliteCommand.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    // Вкладка 3
+                                    TextBox_adress_FN3.Text = reader["adress_FN"].ToString();
+                                    TextBox_port_FN3.Text = reader["port_FN"].ToString();
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MaterialMessageBox.Show("Ошибка: " + ex.Message);
+                        }
+                    //}
+                }
+
+                //_______________________________________________________________________ Заполнение ComboBox_Name_OFD массивом из Базы
+                // SQL-запрос для получения значений name_OFD
+                query = "SELECT name_OFD FROM options_OFD ORDER BY id_ofd";
+                //using (SQLiteConnection sqliteConnection = new SQLiteConnection(connectionString))
+                //{
+                    using (SQLiteCommand sqliteCommand = new SQLiteCommand(query, sqliteConnection))
+                    {
+                        try
+                        {
+                            using (SQLiteDataReader reader = sqliteCommand.ExecuteReader())
+                            {
+                                // Очистка текущих элементов ComboBox
+                                ComboBox_Name_OFD1.Items.Clear();
+                                ComboBox_Name_OFD2.Items.Clear();
+                                ComboBox_Name_OFD3.Items.Clear();
+                                ComboBox_Name_OFD4.Items.Clear();
+
+                                // Заполнение ComboBox значениями из базы данных
+                                while (reader.Read())
+                                {
+                                    ComboBox_Name_OFD1.Items.Add(reader["name_OFD"].ToString());
+                                    ComboBox_Name_OFD2.Items.Add(reader["name_OFD"].ToString());
+                                    ComboBox_Name_OFD3.Items.Add(reader["name_OFD"].ToString());
+                                    ComboBox_Name_OFD4.Items.Add(reader["name_OFD"].ToString());
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MaterialMessageBox.Show("Ошибка при заполнении параметров списка ОФД: " + ex.Message);
+                        }
+                    }
+                //}
+                // Постановка значений по умолчанию в ComboBox на всех вкладках
+                ComboBox_Name_OFD1.SelectedItem = standart_OFD;
+                ComboBox_Name_OFD2.SelectedItem = standart_OFD;
+                ComboBox_Name_OFD3.SelectedItem = standart_OFD;
+                ComboBox_Name_OFD4.SelectedItem = standart_OFD;
+                ComboBox_Model_FN4.SelectedItem = standart_OFD;
+
+                
+
+                
+
+
+                //_______________________________________________________________________ Заполнение ComboBox_Model_FN1 массивом из Базы
+
+                query = "SELECT model_FN FROM table_model_FN";
+                //using (SQLiteConnection sqliteConnection = new SQLiteConnection(connectionString))
+                //{
+                    using (SQLiteCommand sqliteCommand = new SQLiteCommand(query, sqliteConnection))
+                    {
+                        try
+                        {
+                            using (SQLiteDataReader reader = sqliteCommand.ExecuteReader())
+                            {
+                                // Очистка текущих элементов ComboBox
+                                ComboBox_Model_FN1.Items.Clear();
+                                ComboBox_Model_FN4.Items.Clear();
+
+
+                                // Заполнение ComboBox значениями из базы данных
+                                while (reader.Read())
+                                {
+                                    ComboBox_Model_FN1.Items.Add(reader["model_FN"].ToString());
+                                    ComboBox_Model_FN4.Items.Add(reader["model_FN"].ToString());
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MaterialMessageBox.Show("Ошибка при заполнении параметров списка ОФД: " + ex.Message);
+                        }
+                    }
+                    
+                //}
+                // Постановка значений по умолчанию в ComboBox на всех вкладках
+                ComboBox_Model_FN1.SelectedItem = standart_model_FN;
+                ComboBox_Model_FN4.SelectedItem = standart_model_FN;
+
+
+                
+
+                for (int i = 0; i < Save_parametrs.Length; i++) // Массив проверки сохранения
+                {
+                    Save_parametrs[i] = true;
+                }
+                label_save_status.Text = "";
+                label_image_save_status.Text = "";
+
             }
             
         }
+
+        
         private void OFD_TextChanged(object sender, EventArgs e) // заполнение полей ИНН ОФД и почта отправителя
         {
-            string INN_OFD = "";
-            string mail_OFD = "";
-
-            string str = System.IO.File.ReadAllText("options_OFD.txt");
-            string[] str_mas = str.Split(':');
-            string OFD = comboBox1.Text;
-            if ((OFD == "Эвотор ОФД") || (OFD == "ООО «Эвотор ОФД»"))
+            string name_OFD = ComboBox_Name_OFD1.Text;
+            string query = @"
+            SELECT 
+                inn_OFD, 
+                email_OFD
+                FROM options_OFD 
+            WHERE name_OFD = @name_OFD";
+            using (SQLiteConnection sqliteConnection = new SQLiteConnection(connectionString))
             {
+                // Открытие соединения
+                sqliteConnection.Open();
+                using (SQLiteCommand sqliteCommand = new SQLiteCommand(query, sqliteConnection))
+                {
+                    // Добавление параметра к запросу для предотвращения SQL-инъекций
+                    sqliteCommand.Parameters.AddWithValue("@name_OFD", name_OFD);
 
-                INN_OFD = str_mas[3];
-                mail_OFD = str_mas[5];
+                    try
+                    {
+
+                        // Выполнение запроса и получение результата
+                        using (SQLiteDataReader reader = sqliteCommand.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // Запись значений в TextBox'ы
+                                TextBox_INN_OFD1.Text = reader["inn_OFD"].ToString();
+                                TextBox_Email_OFD1.Text = reader["email_OFD"].ToString();
+
+                            }
+                        }
+                    }
+
+                    catch (Exception ex)
+                    {
+                        // Обработка возможных ошибок
+                        MaterialMessageBox.Show("Ошибка: " + ex.Message);
+                    }
+                }
             }
-            if ((OFD == "ЭСК") || (OFD == "АО «ЭСК»"))
+            Save_parametrs[14] = false;
+        }
+
+        // __________________________ Проверки на изменения перед перез закрытием и на правильность ввода данных _____________
+        private void Model_KKT_Changet(object sender, EventArgs e) // Проверка Модели ККТ
+        {
+            Save_parametrs[0] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void ZN_KKT_TextChanged(object sender, EventArgs e) // Проверка ЗН ККТ, заполнение номера автомата
+        {
+            TextBox_Number_automatic.Text = TextBox_ZN_KKT.Text.Substring(Math.Max(0, TextBox_ZN_KKT.Text.Length - 6));
+            Save_parametrs[1] = false;
+            TextBox_ZN_KKT.Text = TextBox_ZN_KKT.Text.Replace(" ", "");
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void ZN_KKT_Leave(object sender, EventArgs e) // проверки ЗН ККТ
+        {
+            if ((TextBox_ZN_KKT.Text.Length != 12) && (TextBox_Model_KKT.Text == "Терминал-ФА") && TextBox_ZN_KKT.Text.Length != 0)
             {
-
-                INN_OFD = str_mas[19];
-                mail_OFD = str_mas[21];
+                MaterialMessageBox.Show("Некорректно указан Заводской номер ККТ. Номер должен содержать 12 символов");
             }
-            if ((OFD == "АО Контур НТТ") || (OFD == "Контур НТТ"))
+            if (TextBox_ZN_KKT.Text.Length != 0)
             {
-
-                INN_OFD = str_mas[35];
-                mail_OFD = str_mas[37];
+                try { result = Convert.ToInt64(TextBox_ZN_KKT.Text); }
+                catch { MaterialMessageBox.Show("В поле Заводской номер ККТ допускается ввод только цифр"); }
             }
-            if ((OFD == "Такском") || (OFD == "ООО «Такском»"))
-            {
-
-                INN_OFD = str_mas[51];
-                mail_OFD = str_mas[53];
-            }
-            if ((OFD == "Калуга Астрал") || (OFD == "АО «Калуга Астрал»"))
-            {
-
-                INN_OFD = str_mas[67];
-                mail_OFD = str_mas[69];
-            }
-            textBox4.Text = INN_OFD;
-            textBox20.Text = mail_OFD;
-            materialTextBox212.Text = comboBox1.Text;
 
         }
-        private void NAvtomat_TextChanged(object sender, EventArgs e) // заполнение номера автомата
+        private void Number_automatic_Changet(object sender, EventArgs e) // Проверка Номера автомата
         {
-            textBox21.Text = textBox3.Text.Substring(Math.Max(0, textBox3.Text.Length - 6));
+            Save_parametrs[2] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
         }
-        private void Internet_Click(object sender, EventArgs e) //выпадающий адрес Интернет
+        private void Model_FN1_Changet(object sender, EventArgs e) // Проверка Модели ФН
         {
-            if ((Internet_status == false) && (checkBox12.Checked == false))
-            {
-                textBox6.Text = textBox14.Text;
-                Internet_status = true;
+            Save_parametrs[3] = false;
+            if ((CheckBox_Podakziz.Checked == true) && (ComboBox_Model_FN1.Text.Substring(2, 2) != "15")) 
+            { 
+                MaterialMessageBox.Show("Некорретный выбор модели ФН. С Подакцизными товарами можно работать только на ФН 15 месяцев");
             }
-            else
+            if ((Checkbox_OSN.Checked == true) && (ComboBox_Model_FN1.Text.Substring(2, 2) != "15"))
             {
-                textBox6.Clear();
-                Internet_status = false;
+                MaterialMessageBox.Show("Некорретный выбор модели ФН. С системой налогоообложения ОСН можно работать только на ФН 15 месяцев");
             }
-
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
         }
-        private void RNM_Changed(object sender, EventArgs e) //автоудаление пробелов в РНМ
+        private void ZN_FN_Changet(object sender, EventArgs e) // ЗН ФН + автоподстановка модели ФН по номеру ФН
         {
-            textBox2.Text = textBox2.Text.Replace(" ", "");
+            
+            Save_parametrs[4] = false;
+            if (TextBox_ZN_FN.Text.Length > 7)
+            {
+                if (TextBox_ZN_FN.Text.Substring(0, 8) == "73814408") { ComboBox_Model_FN1.Text = null; ComboBox_Model_FN1.SelectedIndex = 0; } // Ин36-4
+                if (TextBox_ZN_FN.Text.Substring(0, 8) == "72804405") { ComboBox_Model_FN1.Text = null; ComboBox_Model_FN1.SelectedIndex = 1; } // Ин36-3
+                if (TextBox_ZN_FN.Text.Substring(0, 8) == "73804408") { ComboBox_Model_FN1.Text = null; ComboBox_Model_FN1.SelectedIndex = 7; } // Ин15-4
+                if (TextBox_ZN_FN.Text.Substring(0, 8) == "72814407") { ComboBox_Model_FN1.Text = null; ComboBox_Model_FN1.SelectedIndex = 2; } // Ин15-3
+                if (TextBox_ZN_FN.Text.Substring(0, 8) == "99604403") { ComboBox_Model_FN1.Text = null; ComboBox_Model_FN1.SelectedIndex = 10; } // Ин15-1
+                if (TextBox_ZN_FN.Text.Substring(0, 8) == "72824405") { ComboBox_Model_FN1.Text = null; ComboBox_Model_FN1.SelectedIndex = 5; } // Эв15-3
+                //if (TextBox_ZN_FN.Text.Substring(0, 8) == "") { ComboBox_Model_FN1.Text = null; ComboBox_Model_FN1.SelectedIndex = "Эв36-3"; }
+                if (TextBox_ZN_FN.Text.Substring(0, 8) == "72844405") { ComboBox_Model_FN1.Text = null; ComboBox_Model_FN1.SelectedIndex = 3;  }  // Ав15-3
+                if (TextBox_ZN_FN.Text.Substring(0, 8) == "72854405") { ComboBox_Model_FN1.Text = null; ComboBox_Model_FN1.SelectedIndex = 4; } // Ав36-3
+            }
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void ZN_FN_Leave(object sender, EventArgs e) // Проверка ЗН ФН
+        {
+            if (TextBox_ZN_FN.Text.Length != 16 && TextBox_ZN_FN.Text.Length != 0)
+            {
+                MaterialMessageBox.Show("Некорректно указан заводской номер ФН. Номер должен содержать 16 символов");
+            }
+            if (TextBox_ZN_FN.Text.Length != 0)
+            {
+                try { result = Convert.ToInt64(TextBox_ZN_FN.Text); }
+                catch { MaterialMessageBox.Show("В поле Заводской номер ФН допускается ввод только цифр"); }
+            }
+        }
+        private void ID_Changet(object sender, EventArgs e) //автоудаление пробелов в ID Клиента
+        {
+            TextBox_ID_client.Text = TextBox_ID_client.Text.Replace(" ", "");
+            Save_parametrs[5] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void ID_Leave(object sender, EventArgs e) // Проверка ID
+        {
+            if (TextBox_ID_client.Text.Length != 0)
+            {
+                try { result = Convert.ToInt64(TextBox_ID_client.Text); }
+                catch { MaterialMessageBox.Show("В поле ID клиента допускается ввод только цифр"); }
+            }
+        }
+        private void NameOr_TextChanged(object sender, EventArgs e) // открытие поля КПП если ЮЛ и ввод имя руководителя
+        {
+            string[] n = TextBox_Name_organization.Text.Split(' ');
+            string NOrganization = n[0];
+            if (NOrganization != "ИП" && NOrganization.Length > 2)
+            {
+                TextBox_KPP_organization.Visible = true; // открытие поля КПП
+                TextBox_KPP_organization.Visible = true; // открытие поля КПП
+            }
+            else if (NOrganization == "ИП" && TextBox_Name_organization.Text.Length > 2)
+            {
+                TextBox_KPP_organization.Visible = false;
+                TextBox_Director_org.Text = TextBox_Name_organization.Text.Substring(Math.Max(0, 3)); // ввод имя руководителя
+            }
+            Save_parametrs[6] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void Director_org_Changet(object sender, EventArgs e) // ФИО Руководителя
+        {
+            Save_parametrs[7] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void INNOr_TextChanged(object sender, EventArgs e) // ИНН Организации
+        {
+            TextBox_INN_organization.Text = TextBox_INN_organization.Text.Replace(" ", "");
+            Save_parametrs[8] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void INNOr_Leave(object sender, EventArgs e) // Проверка ИНН Организации
+        {
+            if (TextBox_INN_organization.Text.Length != 10 && TextBox_INN_organization.Text.Length != 12 && TextBox_INN_organization.Text.Length != 0)
+            {
+                MaterialMessageBox.Show("Некорректно указан ИНН организации. ИНН должен состоять из 10 (ЮЛ) или 12 (ИП) символов");
+                try { result = Convert.ToInt64(TextBox_INN_organization.Text); }
+                catch { MaterialMessageBox.Show("В поле ИНН Организации допускается ввод только цифр"); }
+            }
+        }
+        private void KPP_organization_Chenged(object sender, EventArgs e) // КПП Организации
+        {
+            TextBox_KPP_organization.Text = TextBox_KPP_organization.Text.Replace(" ", "");
+            Save_parametrs[9] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void KPP_organization_Leave(object sender, EventArgs e) // Проверка КПП Организации
+        {
+            if (TextBox_KPP_organization.Text.Length != 9 && TextBox_KPP_organization.Text.Length != 0)
+            {
+                MaterialMessageBox.Show("Некорректно указан КПП организации. КПП должен состоять из 9 символов");
+            }
+            try { result = Convert.ToInt64(TextBox_KPP_organization.Text); }
+            catch { MaterialMessageBox.Show("В поле КПП Организации допускается ввод только цифр"); }
         }
         private void Telephone_Changet(object sender, EventArgs e) //автоудаление символом из Номера телефона
         {
-            //string Telephone = textBox11.Text;
-            //Telephone = Telephone.Replace(" ", "");
-            //Telephone = Telephone.Replace("-", "");
-            //Telephone = Telephone.Replace("(", "");
-            //Telephone = Telephone.Replace(")", "");
-            //if ((Telephone.Length == 12) && (Telephone.Substring(0,2) == "+7"))
-            //{
-            //    Telephone = Telephone.Replace("+7", "");
-            //}
-            //if ((Telephone.Length == 11) && (Telephone.Substring(0, 2) == "8"))
-            //{
-            //    Telephone = Telephone.Replace("8", "");
-            //}
-            //textBox11.Text = Telephone;
-        }
-        private void Internet_Checked(object sender, EventArgs e) // проверка одновременной развозной торговли и интернет
-        {
-            if ((checkBox10.Checked == true)&&(checkBox12.Checked == true))
+            bool remove9 = false;
+            string Telephone = TextBox_Telephon_number.Text;
+
+            if ((Telephone.Length == 19) && (Telephone.Substring(0, 3) == "+ 7") && (remove9 == false))
             {
-                MaterialMessageBox.Show(
-                    "Запрещено отмечать в параметрах регистрации одновременно развозную торговлю и применение ККТ в сети Интернет. Измените выбор параметров",
-                "Оповещение");
-            } 
-        }
-        private void Razvoz_Checked(object sender, EventArgs e) // проверка одновременной развозной торговли и интернет
-        {
-            if ((checkBox10.Checked == true) && (checkBox12.Checked == true))
+                Telephone = Telephone.Replace("+ 7", "7");
+            }
+            if ((Telephone.Length == 19) && (Telephone.Substring(0, 3) == "+ 8"))
             {
-                MaterialMessageBox.Show(
-                    "Запрещено отмечать в параметрах регистрации одновременно развозную торговлю и применение ККТ в сети Интернет. Измените выбор параметров",
-                "Оповещение");
+                Telephone = Telephone.Replace("+ 8", "7");
+            }
+            TextBox_Telephon_number.Text = Telephone;
+            Save_parametrs[10] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void Email_Changet(object sender, EventArgs e) // Email организации
+        {
+            Save_parametrs[11] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void Adress_Changet(object sender, EventArgs e) // Адрес расчетов
+        {
+            Save_parametrs[12] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void Place_Changet(object sender, EventArgs e) // Место расчетов
+        {
+            Save_parametrs[13] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void INN_OFD_Changet(object sender, EventArgs e) // ИНН ОФД
+        {
+            Save_parametrs[15] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void INN_OFD_Leave(object sender, EventArgs e) // Проверка ИНН ОФД
+        {
+            if (TextBox_INN_OFD1.Text.Length != 10 && TextBox_INN_OFD1.Text.Length != 0)
+            {
+                MaterialMessageBox.Show("Некорректно указан ИНН ОФД. ИНН должен состоять из 10 символов");
+                try { result = Convert.ToInt64(TextBox_INN_OFD1.Text); }
+                catch
+                {
+                    MaterialMessageBox.Show("В поле ИНН ОФД допускается ввод только цифр");
+                }
             }
         }
+        private void Name_OFD_Textbox_Changet(object sender, EventArgs e) // ОФД в TextBox
+        {
+            Save_parametrs[16] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void Email_OFD_Changet(object sender, EventArgs e) // Email ОФД
+        {
+            Save_parametrs[17] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void RNM_Changed(object sender, EventArgs e) //автоудаление пробелов в РНМ
+        {
+            TextBox_RNM1.Text = TextBox_RNM1.Text.Replace(" ", "");
+            Save_parametrs[18] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void RNM_Leave(object sender, EventArgs e) // Проверка РНМ
+        {
+            if (TextBox_RNM1.Text.Length != 16 && TextBox_RNM1.Text.Length != 0)
+            {
+                MaterialMessageBox.Show("Некорректно указан РНМ. РНМ должен состоять из 16 символов");
+            }
+            if (TextBox_RNM1.Text.Length != 0)
+            {
+                try { result = Convert.ToInt64(TextBox_RNM1.Text); }
+                catch { MaterialMessageBox.Show("В поле РНМ допускается ввод только цифр"); }
+            }
+        } 
+        private void Number_FD_Changed(object sender, EventArgs e) // Номер ФД
+        {
+            Save_parametrs[19] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+            if (TextBox_Number_FD.Text.Length != 0)
+            {
+                try { result = Convert.ToInt64(TextBox_Number_FD.Text); }
+                catch { MaterialMessageBox.Show("В поле Номер ФД допускается ввод только цифр"); }
+            }
+        }
+        private void Datetime_Changed(object sender, EventArgs e) // Дата и время ФД
+        {
+            Save_parametrs[20] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void Datetime_Leave(object sender, EventArgs e) // Проверка Даты и времени ФД
+        { 
+            
+            string D_FD = TextBox_Datetime_FD.Text;
+            if (D_FD[0] != ' ' && D_FD[1] != ' ' && D_FD[3] != ' ' && D_FD[4] != ' ' && D_FD[6] != ' ' && D_FD[7] != ' ' && D_FD[8] != ' ' && D_FD[9] != ' ' && D_FD[11] != ' ' && D_FD[12] != ' ' && D_FD[14] != ' ' && D_FD[15] != ' '){
+                //char a0 = D_FD[0];
+                //char a1 = D_FD[1];
+                //char a2 = D_FD[2];
+                //char a3 = D_FD[3];
+                //char a4 = D_FD[4];
+                //char a5 = D_FD[5];
+                //char a6 = D_FD[6];
+                //char a7 = D_FD[7];
+                //char a8 = D_FD[8];
+                //char a9 = D_FD[9];
+                //char a10 = D_FD[10];
+                //char a11 = D_FD[11];
+                //char a12 = D_FD[12];
+                //char a13 = D_FD[13];
+                //char a14 = D_FD[14];
+                //char a15 = D_FD[15];
 
+
+                if (D_FD[2] != '.' || D_FD[5] != '.' || D_FD[10] != ' ' || D_FD[13] != ':')
+                {
+                    MaterialMessageBox.Show("Некорректно указанны дата и время. Введите по следующему формату: дд.мм.гггг чч:мм");
+                }
+                if (D_FD[0] != '0' && D_FD[0] != '1' && D_FD[0] != '2' && D_FD[0] != '3') // ограничения первого числа дней
+                { MaterialMessageBox.Show("Некорректно указано число"); }
+
+                if (D_FD[0] == '0' && D_FD[1] == '0') { MaterialMessageBox.Show("Некорректно указано число"); } // ограничение 0 месяца
+
+                if (D_FD[3] != '0' && D_FD[3] != '1') { MaterialMessageBox.Show("Некорректно указан месяц"); } // ограничение первого числа месяца
+
+                if (D_FD[3] == '0' && D_FD[4] == '0') { MaterialMessageBox.Show("Некорректно указан месяц"); } // ограничение 0 месяца
+
+                if (D_FD[3] == '1' && (D_FD[4] != '0' && D_FD[4] != '1' & D_FD[4] != '2')) { MaterialMessageBox.Show("Некорректно указан месяц"); } // ограничение второй цифры месяца
+
+                if (D_FD[11] != '0' && D_FD[11] != '1' && D_FD[11] != '2') { MaterialMessageBox.Show("Некорректно указаны часы"); } // ограничение первой цифры часа
+
+                if (D_FD[11] == '2' && (D_FD[12] != '0' && D_FD[12] != '1' && D_FD[12] != '2' && D_FD[12] != '3')) { MaterialMessageBox.Show("Некорректно указаны часы"); } // ограничения второй цифры часа
+
+                if (D_FD[14] != '0' && D_FD[14] != '1' && D_FD[14] != '2' && D_FD[14] != '3' && D_FD[14] != '4' && D_FD[14] != '5') { MaterialMessageBox.Show("Некорректно указаны минуты"); } // ограничение первой цифры минут
+
+                if (D_FD[3] == '0' && D_FD[4] == '2' && (D_FD[0] != '0' && D_FD[0] != '1' && D_FD[0] != '2')) // проверка феврала
+                {
+                    MaterialMessageBox.Show("В феврале может быть только 28 или 29 дней");
+                }
+                if (D_FD[3] == '0' && (D_FD[4] == '3' || D_FD[4] == '6' || D_FD[4] == '9' || D_FD[4] == '1')) // проверка месяцев с 30 днями
+                {
+                    if (D_FD[0] == '3' && D_FD[1] != '0')
+                        MaterialMessageBox.Show("Указан месяц в котором не может быть 31 день.");
+                }
+
+                if (D_FD[0] == '3' && (D_FD[1] != '0' && D_FD[1] != '1')) { MaterialMessageBox.Show("Указано некорректное число"); } }
+        }
+        private void FP_FD_Changed(object sender, EventArgs e) // ФП ФД
+        {
+            Save_parametrs[21] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void FP_FD_Leave(object sender, EventArgs e) // ФП ФД
+        {
+            if (TextBox_FP_FD.Text.Length != 10 && TextBox_FP_FD.Text.Length != 9 && TextBox_FP_FD.Text.Length != 0)
+            {
+                MaterialMessageBox.Show("Некорректно указан Фискальный признак документа. ФП должен состоять из 10 или 9 символов");
+            }
+            if (TextBox_FP_FD.Text.Length != 0)
+            {
+                try { result = Convert.ToInt64(TextBox_FP_FD.Text); }
+                catch { MaterialMessageBox.Show("В поле Фискальный признак допускается ввод только цифр"); }
+            }
+        }
+        // _________________________________________________________ Перечень СНО
+        private void SNO_OSN_Checked(object sender, EventArgs e)
+        {
+            Save_parametrs[22] = false;
+            if ((Checkbox_OSN.Checked == true) && (ComboBox_Model_FN1.Text.Substring(2, 2) != "15"))
+            {
+                MaterialMessageBox.Show("Некорретный выбор СНО. С системой налогоообложения ОСН можно работать только на ФН 15 месяцев");
+            }
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void SNO_USN_Dohod_Checked(object sender, EventArgs e)
+        {
+            Save_parametrs[23] = false;
+            if ((Checkbox_USN_Dohod.Checked == true) && (ComboBox_Model_FN1.Text.Substring(2, 2) == "15"))
+            {
+                MaterialMessageBox.Show("Некорретный выбор СНО. С системой налогоообложения УСН можно работать только на ФН 36 месяцев");
+            }
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void SNO_USN_Dohod_rashod_Checked(object sender, EventArgs e)
+        {
+            Save_parametrs[24] = false;
+            if ((Checkbox_USN_Dohod_rashod.Checked == true) && (ComboBox_Model_FN1.Text.Substring(2, 2) == "15"))
+            {
+                MaterialMessageBox.Show("Некорретный выбор СНО. С системой налогоообложения УСН можно работать только на ФН 36 месяцев");
+            }
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void SNO_Patent_Checked(object sender, EventArgs e)
+        {
+            Save_parametrs[25] = false;
+            if ((Checkbox_Patent.Checked == true) && (ComboBox_Model_FN1.Text.Substring(2, 2) == "15"))
+            {
+                MaterialMessageBox.Show("Некорретный выбор СНО. С системой налогоообложения ПАТЕНТ можно работать только на ФН 36 месяцев");
+            }
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void SNO_ESHN_Checked(object sender, EventArgs e)
+        {
+            Save_parametrs[26] = false;
+            if ((Checkbox_ESHN.Checked == true) && (ComboBox_Model_FN1.Text.Substring(2, 2) == "15"))
+            {
+                MaterialMessageBox.Show("Некорретный выбор СНО. С системой налогоообложения ЕСХН можно работать только на ФН 36 месяцев");
+            }
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        // _________________________________________________________ Перечень режимов работы
+        private void Podakziz_Checked(object sender, EventArgs e)
+        {
+            Save_parametrs[27] = false;
+            if ((CheckBox_Podakziz.Checked == true) && (ComboBox_Model_FN1.Text.Substring(2, 2) != "15"))
+            {
+                MaterialMessageBox.Show("Некорретный выбор режима работы. Для работы с подакцизными товарами требуется ФН 15 месяцев");
+            }
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void Mark_Checked(object sender, EventArgs e)
+        {
+            Save_parametrs[28] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void Azart_play_Checked(object sender, EventArgs e)
+        {
+            Save_parametrs[29] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void Lotereya_Checked(object sender, EventArgs e)
+        {
+            Save_parametrs[30] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void Printer_v_avtomate_Checked(object sender, EventArgs e)
+        {
+            Save_parametrs[31] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void Bank_agent_Checked(object sender, EventArgs e)
+        {
+            Save_parametrs[32] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void Plat_agent_Checked(object sender, EventArgs e)
+        {
+            Save_parametrs[33] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void Shifr_Checked(object sender, EventArgs e)
+        {
+            Save_parametrs[34] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void Avtonom_Checked(object sender, EventArgs e)
+        {
+            Save_parametrs[35] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void Domen_Changed(object sender, EventArgs e)
+        {
+            Save_parametrs[38] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void Internet_Checked(object sender, EventArgs e) // проверка одновременной развозной торговли и интернет и выпадающий адрес Интернет
+        {
+            if ((CheckBox_Delivery.Checked == true)&&(CheckBox_Internet.Checked == true))
+            {
+                MaterialMessageBox.Show(
+                    "Запрещено отмечать в параметрах регистрации одновременно развозную торговлю и применение ККТ в сети Интернет. Измените выбор параметров",
+                "Оповещение");
+                CheckBox_Internet.Checked = false;
+            }
+            if (CheckBox_Internet.Checked == true) //Открытие поля Домен сайта
+            {
+                TextBox_Domen.Visible = true;
+                TextBox_Domen.Text = TextBox_PlaceSale.Text;
+            }
+            if (CheckBox_Internet.Checked == false) //Закрытие поля Домен сайта
+            {
+                TextBox_Domen.Visible = false;
+                TextBox_Domen.Clear();
+            }
+            Save_parametrs[37] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        private void Delivery_Checked(object sender, EventArgs e) // проверка одновременной развозной торговли и интернет
+        {
+            if ((CheckBox_Delivery.Checked == true) && (CheckBox_Internet.Checked == true))
+            {
+                MaterialMessageBox.Show(
+                    "Запрещено отмечать в параметрах регистрации одновременно развозную торговлю и применение ККТ в сети Интернет. Измените выбор параметров",
+                "Оповещение");
+                CheckBox_Delivery.Checked = false;
+            }
+
+            if ((CheckBox_Delivery.Checked == true) && (CheckBox_Internet.Checked == false) && (TextBox_PlaceSale.Text.Contains("Курьер") == false))
+            {
+                string text_place_calculations = TextBox_PlaceSale.Text + "; Курьер"; // добавление к месту расчетов "Курьер" при отметке развозной торговли
+                TextBox_PlaceSale.Text = text_place_calculations;
+            }
+            Save_parametrs[38] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
+        }
+        
         private void buttonParOFD_Click(object sender, EventArgs e) // кнопка Параметры ОФД
         {
-            DanReg f = new DanReg(this.comboBox1.Text, this.comboBox2.Text);
+
+            DanReg f = new DanReg(this.ComboBox_Name_OFD1.Text, this.ComboBox_Model_FN1.Text);
             f.ShowDialog();
         }
         public void butSave_Click(object sender, EventArgs e) // кнопка Сохранить
         {
-            string DandT_FD = textBox17.Text;
-            string D_FD = textBox17.Text.Substring(0,10);
-            //if (D_FD[2] != '.' || D_FD[5] != '.' || D_FD[10] != ' ' || D_FD[13] != ':')
-            //{
-            //MaterialMessageBox.Show(
-            //"Проверьте формат ввода даты и времени (дд.мм.гггг чч:мм)",
-            //"Внимательнее");
+            string adr_file_save = adr_file;
+            FolderBrowserDialog Browserdialog = new FolderBrowserDialog(); //открытие проводника и выбор папки сохраннения
+            Browserdialog.RootFolder = Environment.SpecialFolder.Desktop;
+            Browserdialog.SelectedPath = adr_file;
 
+            if (Browserdialog.ShowDialog() == DialogResult.OK)
+            {
+                adr_file_save = Browserdialog.SelectedPath;
+                SaveData(adr_file_save);
+            }
+            else
+            {
+                return;
+            }
 
-            //}
-            //else
-            //{
-                string ID_Сlient = textBox1.Text;
-                string RNM = textBox2.Text;
-                string ZN_KKT = textBox3.Text;
-                string N_av = textBox21.Text;
-                string N_FN = textBox5.Text;
-                string M_FN = comboBox2.Text;
-                string NameOrganization = textBox7.Text;
-                string Director_org = textBox8.Text;
-                string INN_Organization = textBox9.Text;
-                string KPP_Organization = textBox15.Text;
-                string Telephone = textBox11.Text;
-                string Email = textBox12.Text;
-                string Address_ras = textBox13.Text;
-                string Place_ras = textBox14.Text;
-                string OFD = comboBox1.Text;
-                string INN_OFD = textBox4.Text;
-                string T_FD = textBox17.Text.Substring(Math.Max(0, textBox17.Text.Length - 5)); // нахождение даты ФД
-                string N_FD = TextBoxNFD.Text;
-                string FP = textBox19.Text;
-                string Model_KKT = textBox18.Text;
-                string Adr_Internet = textBox6.Text;
-
-                string SNO_OSN = " ";
-                string SNO_USN_D = " ";
-                string SNO_USN_D_R = " ";
-                string SNO_PATENT = " ";
-                string SNO_ESHN = " ";
-                if (materialCheckbox11.Checked == true) { SNO_OSN = "ОСН"; }
-                if (materialCheckbox10.Checked == true) { SNO_USN_D = "УСН Доход"; }
-                if (materialCheckbox9.Checked == true) { SNO_USN_D_R = "УСН Доход - расход"; }
-                if (materialCheckbox8.Checked == true) { SNO_PATENT = "Патент"; }
-                if (materialCheckbox12.Checked == true) { SNO_ESHN = "ЕСХН"; }
-
-
-                string PrAvtonom = "2"; // сведения регистрации ККТ
-                string PrLotereya = "2";
-                string PrAzart = "2";
-                string PrBankPlat = "2";
-                string PrPlatAgent = "2";
-                string PrAvtomatUstr = "2";
-                string PrInternet = "2";
-                string PrRazvoz = "2";
-                string PrAkxizTovar = "2";
-                string PrMark = "2";
-
-
-                if (checkBox9.Checked == true) { PrAvtonom = "1"; } // сведения регистрации ККТ
-                if (checkBox3.Checked == true) { PrAzart = "1"; }
-                if (checkBox2.Checked == true) { PrMark = "1"; }
-                if (checkBox6.Checked == true) { PrBankPlat = "1"; }
-                if (checkBox7.Checked == true) { PrPlatAgent = "1"; }
-                if (checkBox4.Checked == true) { PrLotereya = "1"; }
-                if (checkBox12.Checked == true) { PrInternet = "1"; }
-                if (checkBox10.Checked == true) { PrRazvoz = "1"; }
-                if (checkBox1.Checked == true) { PrAkxizTovar = "1"; }
-                if (checkBox5.Checked == true) { PrAvtomatUstr = "1"; }
-
-                Save s = new Save();
-                s.setValues(D_FD, ID_Сlient, RNM, ZN_KKT, N_av, N_FN, M_FN, NameOrganization,
-            Director_org, INN_Organization, KPP_Organization, SNO_OSN, SNO_USN_D, SNO_USN_D_R, SNO_PATENT, SNO_ESHN,
-            Telephone, Email, Address_ras, Place_ras,
-            OFD, INN_OFD, T_FD, N_FD, FP, Model_KKT, Adr_Internet, PrAvtonom, PrLotereya, PrAzart, PrBankPlat,
-            PrPlatAgent, PrAvtomatUstr, PrInternet, PrRazvoz, PrAkxizTovar, PrMark);
-
-            //}
+            for (int i = 0; i < Save_parametrs.Length; i++) // Массив проверки сохранения
+            {
+                Save_parametrs[i] = true;
+            }
+            label_save_status.Text = "Сохранено";
+            label_image_save_status.Text = "🗸";
         }
         private void butLoading_Click(object sender, EventArgs e)// кнопка Открыть
         {
-            string str = "";
-            using (OpenFileDialog ofd = new OpenFileDialog())
+            int local_close = 1;
+            for (int i = 0; i < Save_parametrs.Length; i++) // Массив проверки сохранения
             {
-                if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (Save_parametrs[i] == false)
                 {
-                    if (Path.GetExtension(ofd.FileName).ToUpper().ToLower().Equals(".txt", StringComparison.CurrentCultureIgnoreCase))
-                    {
-                        str = System.IO.File.ReadAllText(ofd.FileName);
-                    }
+                    local_close *= 0;
                 }
-
-
             }
-            string[] str_mas = str.Split('#');
-            if (str_mas.Length > 70)
+            if (local_close == 0)
             {
-                textBox3.Text = str_mas[1].Trim();
-                textBox21.Text = str_mas[5].Trim();
-                textBox18.Text = str_mas[3].Trim();
-                textBox5.Text = str_mas[7].Trim();
-                comboBox2.Text = str_mas[9].Trim();
-                textBox1.Text = str_mas[11].Trim();
-                textBox7.Text = str_mas[13].Trim();
-                textBox8.Text = str_mas[15].Trim();
-                textBox9.Text = str_mas[17].Trim();
+                DialogResult result = MaterialMessageBox.Show("Уверены что хотите открыть файл? Несохраненные данный на форме исчезнут", "Да", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
-                if (str_mas[19].Trim() == "ОСН") { materialCheckbox11.Checked = true; } // СНО
-                if (str_mas[20].Trim() == "УСН Доход") { materialCheckbox10.Checked = true; }
-                if (str_mas[21].Trim() == "УСН Доход - расход") { materialCheckbox9.Checked = true; }
-                if (str_mas[22].Trim() == "Патент") { materialCheckbox8.Checked = true; }
-                if (str_mas[23].Trim() == "ЕСХН") { materialCheckbox12.Checked = true; }
-                textBox11.Text = str_mas[25].Trim();
-                textBox12.Text = str_mas[27].Trim();
-                textBox13.Text = str_mas[29].Trim();
-                textBox14.Text = str_mas[31].Trim();
-                comboBox1.Text = str_mas[33].Trim();
-                textBox2.Text = str_mas[39].Trim();
-                string d_fd = str_mas[41].Trim() + str_mas[43].Trim(); //объединение даты и времени
-                textBox17.Text = d_fd;
-                TextBoxNFD.Text = str_mas[45].Trim();
-                textBox19.Text = str_mas[47].Trim();
-                textBox6.Text = str_mas[49].Trim();
+                if (result == DialogResult.Yes)
+                {
+                    Clear_form();
+                    local_close = 1;
+                }
+            }
+            if (local_close == 1)
+            {
+
+                string str = "";
+                using (OpenFileDialog ofd = new OpenFileDialog())
+                {
+                    if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        if (Path.GetExtension(ofd.FileName).ToUpper().ToLower().Equals(".txt", StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            str = System.IO.File.ReadAllText(ofd.FileName);
+                        }
+                    }
 
 
-                if (str_mas[51].Trim() == "1") { checkBox9.Checked = true; } // сведения регистрации ККТ
-                if (str_mas[53].Trim() == "1") { checkBox3.Checked = true; }
-                if (str_mas[55].Trim() == "1") { checkBox2.Checked = true; }
-                if (str_mas[57].Trim() == "1") { checkBox6.Checked = true; }
-                if (str_mas[59].Trim() == "1") { checkBox7.Checked = true; }
-                if (str_mas[61].Trim() == "1") { checkBox4.Checked = true; }
-                if (str_mas[63].Trim() == "1") { checkBox12.Checked = true; }
-                if (str_mas[65].Trim() == "1") { checkBox10.Checked = true; }
-                if (str_mas[67].Trim() == "1") { checkBox1.Checked = true; }
-                if (str_mas[69].Trim() == "1") { checkBox5.Checked = true; }
-                textBox15.Text = str_mas[71].Trim(); //КПП организации раннее забыл подставить
+                }
+                string[] str_mas = str.Split('#');
+                if (str_mas.Length > 70)
+                {
+                    TextBox_ZN_KKT.Text = str_mas[1].Trim();
+                    TextBox_Number_automatic.Text = str_mas[5].Trim();
+                    TextBox_Model_KKT.Text = str_mas[3].Trim();
+                    TextBox_ZN_FN.Text = str_mas[7].Trim();
+                    ComboBox_Model_FN1.Text = str_mas[9].Trim();
+                    TextBox_ID_client.Text = str_mas[11].Trim();
+                    TextBox_Name_organization.Text = str_mas[13].Trim();
+                    TextBox_Director_org.Text = str_mas[15].Trim();
+                    TextBox_INN_organization.Text = str_mas[17].Trim();
+
+                    if (str_mas[19].Trim() == "ОСН") { Checkbox_OSN.Checked = true; } // СНО
+                    if (str_mas[20].Trim() == "УСН Доход") { Checkbox_USN_Dohod.Checked = true; }
+                    if (str_mas[21].Trim() == "УСН Доход - расход") { Checkbox_USN_Dohod_rashod.Checked = true; }
+                    if (str_mas[22].Trim() == "Патент") { Checkbox_Patent.Checked = true; }
+                    if (str_mas[23].Trim() == "ЕСХН") { Checkbox_ESHN.Checked = true; }
+                    TextBox_Telephon_number.Text = str_mas[25].Trim();
+                    TextBox_Email_organization.Text = str_mas[27].Trim();
+                    TextBox_adressSale.Text = str_mas[29].Trim();
+                    TextBox_PlaceSale.Text = str_mas[31].Trim();
+                    ComboBox_Name_OFD1.Text = str_mas[33].Trim();
+                    TextBox_RNM1.Text = str_mas[39].Trim();
+                    string d_fd = str_mas[41].Trim() + str_mas[43].Trim(); //объединение даты и времени
+                    TextBox_Datetime_FD.Text = d_fd;
+                    TextBox_Number_FD.Text = str_mas[45].Trim();
+                    TextBox_FP_FD.Text = str_mas[47].Trim();
+                    TextBox_Domen.Text = str_mas[49].Trim();
+
+
+                    if (str_mas[51].Trim() == "1") { CheckBox_Avtonom.Checked = true; } // сведения регистрации ККТ
+                    if (str_mas[53].Trim() == "1") { CheckBox_Lotereya.Checked = true; }
+                    if (str_mas[55].Trim() == "1") { CheckBox_Azart_play.Checked = true; }
+                    if (str_mas[57].Trim() == "1") { CheckBox_Bank_agent.Checked = true; }
+                    if (str_mas[59].Trim() == "1") { CheckBox_Plat_agent.Checked = true; }
+                    if (str_mas[61].Trim() == "1") { CheckBox_Printer_v_avtomate.Checked = true; }
+                    if (str_mas[63].Trim() == "1") { CheckBox_Internet.Checked = true; }
+                    if (str_mas[65].Trim() == "1") { CheckBox_Delivery.Checked = true; }
+                    if (str_mas[67].Trim() == "1") { CheckBox_Podakziz.Checked = true; }
+                    if (str_mas[69].Trim() == "1") { CheckBox_Mark.Checked = true; }
+                    TextBox_KPP_organization.Text = str_mas[71].Trim(); //КПП организации раннее забыл подставить
+                    if (str_mas.Length > 71)
+                    { if (str_mas[71] == program_version) { } }
+                }
+                else { MaterialMessageBox.Show("Версия файла устарела. Открыть его неполучится. Прости :("); }
+
+                for (int i = 0; i < Save_parametrs.Length; i++) // Массив проверки сохранения
+                {
+                    Save_parametrs[i] = true;
+                }
+                label_save_status.Text = "Сохранено";
+                label_image_save_status.Text = "🗸";
             }
         }
+
+        private static SerialPort Port { get; set; }
+        private byte[] TLV { get; set; }
+        private ushort TLVPosition { get; set; }
+        private TaxType DefaultTaxType { get; set; }
+        
         private void butReaddata_Click(object sender, EventArgs e) //кнопка Считать данные
         {
-            MaterialMessageBox.Show(
-                "Функционал кнопки в разработке. Скоро она будет считавать данные из ККТ, а пока можете просто тыкнуть на нее еще раз",
-                "ТЫК");
+            bool result_open = false;
+            if (switch_open_KKT1.Checked == false) 
+            {
+                result_open = open_KKT(!switch_open_KKT1.Checked);
+            }
+            if (result_open == true) {
+                try
+                {
+                    TextBox_ZN_KKT.Text = CashRegister.GetZN(); // запрос ЗН ККТ
+                    //label_datatime.Text = CashRegister.GetDATATIME(); // запрос времени в ККТ
+                    try { TextBox_ZN_FN.Text = CashRegister.GetFN(); } // запрос ЗН ФН 
+                    catch { MaterialMessageBox.Show("Нет данных об ФН"); }
+                    vers_config = CashRegister.GetVersConfig().Replace("rw","");// запрос версии конфигурации
+                    if (vers_config.Substring(4,1) == "4" || vers_config.Substring(4, 2) == "54") {vers_FFD = "1.2";}
+                    else { vers_FFD = "1.05"; }
+                }
+                catch { MaterialMessageBox.Show("Не удалось считать данные с ККТ"); }
+
+                label_vers_config.Text = vers_config;
+                label_vers_FFD.Text = vers_FFD;
+            }
+            
+        }
+
+        private void Clean_Click(object sender, EventArgs e) // Книпка Очистить поля
+        {
+            DialogResult result = MaterialMessageBox.Show("Уверены что хотите очистить поля?", "Да", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Clear_form();
+            }
+
+
+        }
+        public bool open_KKT(bool isOpened)
+        {
+            if (isOpened == true)
+            {
+                try
+                {
+                    CashRegister = new TerminalFA("COM3");
+                    ErrorCode answer = CashRegister.Initialize();
+                    switch_open_KKT1.Checked = true;
+                    switch_open_KKT2.Checked = true;
+                    return true;
+                }
+                catch
+                {
+                    CashRegister?.CloseConnection(); // Явное закрытие соединения
+                    MaterialMessageBox.Show("Не удалось подключиться к COM3");
+                    switch_open_KKT1.Checked = false;
+                    switch_open_KKT2.Checked = false;
+                    return false;
+                }
+            }
+            else
+            {
+                try
+                {
+                    CashRegister = new TerminalFA("COM3");
+                    CashRegister.CloseConnection();
+                    MaterialMessageBox.Show("Соединение с COM3 успешно закрыто.");
+                    switch_open_KKT1.Checked = false;
+                    switch_open_KKT2.Checked = false;
+                    return false;
+                }
+                catch
+                {
+                    MaterialMessageBox.Show("Не удалось отключиться от COM3");
+                    switch_open_KKT1.Checked = false;
+                    switch_open_KKT2.Checked = false;
+                    return false;
+                }
+            }
+        }
+        private void switchclick_openKKT1(object sender, EventArgs e) //Подключение ККТ
+        {
+            bool result_open = open_KKT(switch_open_KKT1.Checked);
+            //if (switch_open_KKT1.Checked == true)
+            //{
+            //    try 
+            //    { 
+            //        CashRegister = new TerminalFA("COM3"); 
+            //        ErrorCode answer = CashRegister.Initialize();
+            //        switch_open_KKT2.Checked = true;
+            //    }
+            //    catch 
+            //    {
+            //        CashRegister.CloseConnection(); // Явное закрытие соединения
+            //        MaterialMessageBox.Show("Не удалось подключиться к COM3");
+
+            //    }
+            //}
+            //else 
+            //{
+            //    try 
+            //    {
+            //        CashRegister = new TerminalFA("COM3");
+            //        CashRegister.CloseConnection();
+            //    }
+            //    catch {
+            //        MaterialMessageBox.Show("Не удалось отключиться COM3");
+            //    }
+
+            //}
         }
         private void buttonXML_Click(object sender, EventArgs e) // кнопка Файл регистрации
         {
-            string D_FD = textBox17.Text;
+            string D_FD = TextBox_Datetime_FD.Text;
             if (D_FD[2] == '.' && D_FD[5] == '.' && D_FD[10] == ' ' && D_FD[13] == ':')
             {
-                //Создание папки Регистрация
-                string adr_file = System.IO.File.ReadAllText("adr_file.txt");
-                Directory.CreateDirectory(adr_file);
+                ////Адрес по умолчанию
+                //string query = "SELECT adr_file FROM table_adr_file";
+                //using (SQLiteConnection sqliteConnection = new SQLiteConnection(connectionString))
+                //{// Открытие соединения
+                //    sqliteConnection.Open();
+                //    using (SQLiteCommand sqliteCommand = new SQLiteCommand(query, sqliteConnection))
+                //    {
+                //        try
+                //        {
+                //            adr_file = (string)sqliteCommand.ExecuteScalar();
+                //        }
+                //        catch (Exception ex)
+                //        {
+                //            MaterialMessageBox.Show("Ошибка: " + ex.Message);
+                //        }
+                //    }
+                //}
 
-                string RNM = textBox2.Text;
-                string ZN_KKT = textBox3.Text;
-                string M_KKT = textBox18.Text;
-                string N_FN = textBox5.Text;
-                string M_FN = comboBox2.Text;
-                string NameOrganization = textBox7.Text;
+                string ZN_KKT = TextBox_ZN_KKT.Text;
+                string M_KKT = TextBox_Model_KKT.Text;
+                string N_FN = TextBox_ZN_FN.Text;
+                string M_FN = ComboBox_Model_FN1.Text.Replace(" ", "");
+                string NameOrganization = TextBox_Name_organization.Text;
 
                 string[] n = NameOrganization.Split(' ');
                 string NOrganization = n[0];
@@ -480,12 +1174,12 @@ namespace Kassa
                 {
                     NameOrganization = "АКЦИОНЕРНОЕ ОБЩЕСТВО " + NameOrganization.Substring(3);
                 }
-                string Director_org = textBox8.Text;
-                string INN_Organization = textBox9.Text;
-                string Place_ras = textBox14.Text;
-                string OFD = comboBox1.Text;
-                string INN_OFD = "";
-                string KPP_Organization = textBox15.Text;
+                string Director_org = TextBox_Director_org.Text.ToUpper(); //Конвертация в заглавные буквы ФИО директора
+                string INN_Organization = TextBox_INN_organization.Text;
+                string Place_ras = TextBox_PlaceSale.Text;
+                string OFD = ComboBox_Name_OFD1.Text;
+                string INN_OFD = TextBox_INN_OFD1.Text;
+                string KPP_Organization = TextBox_KPP_organization.Text;
 
                 string PrAvtonomS = "2"; // сведения регистрации ККТ
                 string PrLotereyaS = "2";
@@ -498,27 +1192,17 @@ namespace Kassa
                 string PrAkxizTovarS = "2";
                 string PrMarkS = "2";
 
-                if (checkBox9.Checked == true) { PrAvtonomS = "1"; } // сведения регистрации ККТ
-                if (checkBox3.Checked == true) { PrAzartS = "1"; }
-                if (checkBox2.Checked == true) { PrMarkS = "1"; }
-                if (checkBox6.Checked == true) { PrBankPlatS = "1"; }
-                if (checkBox7.Checked == true) { PrPlatAgentS = "1"; }
-                if (checkBox4.Checked == true) { PrLotereyaS = "1"; }
-                if (checkBox12.Checked == true) { PrInternetS = "1"; }
-                if (checkBox10.Checked == true) { PrRazvozS = "1"; }
-                if (checkBox1.Checked == true) { PrAkxizTovarS = "1"; }
-                if (checkBox5.Checked == true) { PrAvtomatUstrS = "1"; }
+                if (CheckBox_Avtonom.Checked == true) { PrAvtonomS = "1"; } // сведения регистрации ККТ
+                if (CheckBox_Azart_play.Checked == true) { PrAzartS = "1"; }
+                if (CheckBox_Mark.Checked == true) { PrMarkS = "1"; }
+                if (CheckBox_Bank_agent.Checked == true) { PrBankPlatS = "1"; }
+                if (CheckBox_Plat_agent.Checked == true) { PrPlatAgentS = "1"; }
+                if (CheckBox_Lotereya.Checked == true) { PrLotereyaS = "1"; }
+                if (CheckBox_Internet.Checked == true) { PrInternetS = "1"; }
+                if (CheckBox_Delivery.Checked == true) { PrRazvozS = "1"; }
+                if (CheckBox_Podakziz.Checked == true) { PrAkxizTovarS = "1"; }
+                if (CheckBox_Printer_v_avtomate.Checked == true) { PrAvtomatUstrS = "1"; }
 
-
-                string str = System.IO.File.ReadAllText("options_OFD.txt");
-                string[] str_mas = str.Split(':');
-
-                if ((OFD == "Эвотор ОФД") || (OFD == "ООО «Эвотор ОФД»")){ INN_OFD = str_mas[3]; }
-                if ((OFD == "ЭСК") || (OFD == "АО \"ЭСК\"")){INN_OFD = str_mas[19];}
-                if ((OFD == "АО Контур НТТ") || (OFD == "Контур НТТ")){INN_OFD = str_mas[35];}
-                if ((OFD == "Такском") || (OFD == "ООО «Такском»")){INN_OFD = str_mas[51];}
-                if ((OFD == "Калуга Астрал") || (OFD == "АО «Калуга Астрал»")){INN_OFD = str_mas[67];}
-                
                 XmlDocument xmlDocument = new XmlDocument();
 
                 xmlDocument.Load("XML_FNS.xml");
@@ -681,7 +1365,7 @@ namespace Kassa
                 string ID_file = "KO_ZVLREGKKT_5018_5018_" + INN_Organization + KPP_Organization + "_" + dd[2] + dd[1] + dd[0] + "_" + rand;
 
 
-                if (fio.Length > 2)
+                if (fio.Length == 2 || fio.Length == 3)
                 {
 
                     XmlText VersProgT = xmlDocument.CreateTextNode("1.0");
@@ -700,7 +1384,7 @@ namespace Kassa
 
 
                     XmlText KPPT = xmlDocument.CreateTextNode(KPP_Organization);
-                    XmlText NaimOrgT = xmlDocument.CreateTextNode(NameOrganization);
+                    XmlText NaimOrgT = xmlDocument.CreateTextNode(NameOrganization.Replace("\"", "&quot;"));
 
 
                     XmlText PrPodpT = xmlDocument.CreateTextNode("1"); //Подписант 
@@ -936,22 +1620,31 @@ namespace Kassa
                     Fail.Attributes.Append(VersForm);
                     Fail.Attributes.Append(IdFail);
                     Fail.AppendChild(Document);
-
-
-                    adr_file = System.IO.File.ReadAllText("adr_file.txt");
+                    
                     string adr_file_save = null;
+                    string[] zap_znak = { "\"", "\\", "/", ":", "*", "?", "<", ">", "|", "\"" };
+                    string NameOrganization_save = NameOrganization;
+                    if (NameOrganization != "")
+                    {
+                        for (int i = 0; i < zap_znak.Length; i++)
+                        {
+                            NameOrganization_save = NameOrganization_save.Replace(zap_znak[i], "");
+                        }
+                    }
 
                     FolderBrowserDialog Browserdialog = new FolderBrowserDialog(); //открытие проводника и выбор папки сохраннения
                     Browserdialog.RootFolder = Environment.SpecialFolder.Desktop;
-                    Browserdialog.SelectedPath = adr_file.Remove(adr_file.Length - 2);
+                    Browserdialog.SelectedPath = adr_file;
                     if (Browserdialog.ShowDialog() == DialogResult.OK)
                     {
                         adr_file_save = Browserdialog.SelectedPath;
                     }
+                    else { return; }
                     Directory.CreateDirectory(adr_file_save + "\\" + ID_file);
                     xmlDocument.Save(adr_file_save + "\\" + ID_file + "\\" + ID_file + ".xml"); //сохранение файла xml
-                    ZipFile.CreateFromDirectory(adr_file_save + "\\" + ID_file, adr_file_save + "\\" + ID_file + ".zip"); //сохранение zip (что упаковываем, куда)
-                    if (delete_xml == true)
+                    
+                    ZipFile.CreateFromDirectory(adr_file_save + "\\" + ID_file, adr_file_save + "\\" + NameOrganization_save + ".zip"); //сохранение zip (что упаковываем, куда)
+                    if (delete_xml == "true")
                     {
                         Directory.Delete(adr_file_save + "\\" + ID_file, true);
                     }
@@ -964,7 +1657,7 @@ namespace Kassa
                 else
                 {
                     MaterialMessageBox.Show(
-                "Неверно введены ФИО руководителя",
+                "Неверно введены ФИО руководителя. Программа принимает фамилию, имя или полное ФИО",
                 "Внимательнее");
                 }
             }
@@ -977,42 +1670,49 @@ namespace Kassa
         }
         private void buttonAkt_Click(object sender, EventArgs e) //кнопка Акт ввода в эксплуатацию
         {
-            string DanaT_FD = textBox17.Text;
+            string DanaT_FD = TextBox_Datetime_FD.Text;
             if (DanaT_FD[2] == '.' && DanaT_FD[5] == '.' && DanaT_FD[10] == ' ' && DanaT_FD[13] == ':')
             {
+                string Model_KKT = TextBox_Model_KKT.Text;
+                string ID_Сlient = TextBox_ID_client.Text;
+                string RNM = TextBox_RNM1.Text;
+                string ZN_KKT = TextBox_ZN_KKT.Text;
+                string N_FN = TextBox_ZN_FN.Text;
 
-                string ID_Сlient = textBox1.Text;
-                string RNM = textBox2.Text;
-                string ZN_KKT = textBox3.Text;
-                string N_FN = textBox5.Text;
-
-                string NameOrganization = textBox7.Text;
-                string INN_Organization = textBox9.Text;
-                string OFD = comboBox1.Text;
+                string NameOrganization = TextBox_Name_organization.Text;
+                string INN_Organization = TextBox_INN_organization.Text;
+                string OFD = ComboBox_Name_OFD1.Text;
 
                 string D_FD = DanaT_FD.Substring(0,10);
                 string T_FD = DanaT_FD.Substring(Math.Max(0, DanaT_FD.Length - 5));
-                string N_FD = TextBoxNFD.Text;
-                string FP = textBox19.Text;
-                string Name_operator = "";
-                string INN_OFD = "";
+                string N_FD = TextBox_Number_FD.Text;
+                string FP = TextBox_FP_FD.Text;
+                string INN_OFD = TextBox_INN_OFD1.Text;
 
-                string str = System.IO.File.ReadAllText("options_OFD.txt");
-                string[] str_mas = str.Split(':');
-                if ((OFD == "Эвотор ОФД") || (OFD == "ООО «Эвотор ОФД»")) { INN_OFD = str_mas[3]; }
-                if ((OFD == "ЭСК") || (OFD == "АО «ЭСК»")) { INN_OFD = str_mas[19]; }
-                if ((OFD == "АО Контур НТТ") || (OFD == "Контур НТТ")) { INN_OFD = str_mas[35]; }
-                if ((OFD == "Такском") || (OFD == "ООО «Такском»")) { INN_OFD = str_mas[51]; }
-                if ((OFD == "Калуга Астрал") || (OFD == "АО «Калуга Астрал»")) { INN_OFD = str_mas[67]; }
-
-                //Выбор оператора
-                Name_operator = System.IO.File.ReadAllText("Authorization.txt");
+                //// запрос Фамилии ИО оператора
+                //string query = "SELECT name_operator FROM table_name_operator";
+                //using (SQLiteConnection sqliteConnection = new SQLiteConnection(connectionString))
+                //{// Открытие соединения
+                //    sqliteConnection.Open();
+                //    using (SQLiteCommand sqliteCommand = new SQLiteCommand(query, sqliteConnection))
+                //    {
+                //        try
+                //        {
+                //            Name_operator = (string)sqliteCommand.ExecuteScalar();
+                //        }
+                //        catch (Exception ex)
+                //        {
+                //            MaterialMessageBox.Show("Ошибка: " + ex.Message);
+                //        }
+                //    }
+                //}
 
 
                 var newakt = new NewAKT("Akt.docx");
 
                 var items = new Dictionary<string, string>
             {
+                {"<Model_KKT>", Model_KKT },
                 {"<ZN_KKT>", ZN_KKT },
                 {"<RNM>", RNM },
                 {"<N_FN>", N_FN },
@@ -1023,16 +1723,12 @@ namespace Kassa
                 {"<INN_Organization>", INN_Organization },
                 {"<INN_OFD>", INN_OFD },
                 {"<NameOrganization>", NameOrganization },
-                {"<Name_operator>", Name_operator },
+                {"<Name_operator>", name_operator },
                 {"<ID_Client>", ID_Сlient },
             };
 
-                newakt.Process(items);
-
-                //adr_file = File.ReadAllText("adr_file.txt");
-                MaterialMessageBox.Show(
-            "Акт ввода сформирован и сохранен",
-            "Сообщение");
+                newakt.Process(items, adr_file, print_akt);
+                
             }
 
 
@@ -1063,7 +1759,7 @@ namespace Kassa
 
 
             // временное оповещение
-            string RNM = textBox2.Text;
+            string RNM = TextBox_RNM1.Text;
             if (RNM.Length == 16)
             {
                 t++;
@@ -1091,196 +1787,218 @@ namespace Kassa
             else
             {
                 MaterialMessageBox.Show(
-            "Значени РНМ введено некорректно. РНМ должен состоять из 16 цифр без пробелов.",
+            "Значение РНМ введено некорректно. РНМ должен состоять из 16 цифр без пробелов.",
             "Внимательнее");
             }
         }
         
-        
+        private bool closingProcessed = false; // Флаг для отслеживания состояния закрытия формы
         private void Form1_Closing(object sender, FormClosingEventArgs e) //Сохранение при закрытии формы
         {
-            
-            if (save_closing == false)
+            if (closingProcessed)
             {
-                DialogResult result = MaterialMessageBox.Show("Возможно у вас есть несохраненные данные. Сохранить?", "Да", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
+                // Если уже обработали событие закрытия, выходим
+                return;
+            }
+            int local_close = 1;
+            for (int i = 0; i < Save_parametrs.Length; i++) // Массив проверки сохранения
+            {
+                if (Save_parametrs[i] == false)
                 {
-                    save_closing = true;
-                    string ID_Сlient = textBox1.Text;
-                    string RNM = textBox2.Text;
-                    string ZN_KKT = textBox3.Text;
-                    string N_av = textBox21.Text;
-                    string N_FN = textBox5.Text;
-                    string M_FN = comboBox2.Text;
-                    string NameOrganization = textBox7.Text;
-                    string Director_org = textBox8.Text;
-                    string INN_Organization = textBox9.Text;
-                    string KPP_Organization = textBox15.Text;
-                    string Telephone = textBox11.Text;
-                    string Email = textBox12.Text;
-                    string Address_ras = textBox13.Text;
-                    string Place_ras = textBox14.Text;
-                    string OFD = comboBox1.Text;
-                    string INN_OFD = textBox4.Text;
-                    string DandT_FD = textBox17.Text;
-                    string D_FD = textBox17.Text.Substring(10);
-                    string T_FD = textBox17.Text.Substring(Math.Max(0, textBox17.Text.Length - 5)); // нахождение даты ФД
-                    string N_FD = TextBoxNFD.Text;
-                    string FP = textBox19.Text;
-                    string Model_KKT = textBox18.Text;
-                    string Adr_Internet = textBox6.Text;
-
-                    string SNO_OSN = " ";
-                    string SNO_USN_D = " ";
-                    string SNO_USN_D_R = " ";
-                    string SNO_PATENT = " ";
-                    string SNO_ESHN = " ";
-                    if (materialCheckbox11.Checked == true) { SNO_OSN = "ОСН"; }
-                    if (materialCheckbox10.Checked == true) { SNO_USN_D = "УСН Доход"; }
-                    if (materialCheckbox9.Checked == true) { SNO_USN_D_R = "УСН Доход - расход"; }
-                    if (materialCheckbox8.Checked == true) { SNO_PATENT = "Патент"; }
-                    if (materialCheckbox12.Checked == true) { SNO_ESHN = "ЕСХН"; }
-
-
-                    string PrAvtonom = "2"; // сведения регистрации ККТ
-                    string PrLotereya = "2";
-                    string PrAzart = "2";
-                    string PrBankPlat = "2";
-                    string PrPlatAgent = "2";
-                    string PrAvtomatUstr = "2";
-                    string PrInternet = "2";
-                    string PrRazvoz = "2";
-                    string PrAkxizTovar = "2";
-                    string PrMark = "2";
-                    if (checkBox9.Checked == true) { PrAvtonom = "1"; } // сведения регистрации ККТ
-                    if (checkBox3.Checked == true) { PrAzart = "1"; }
-                    if (checkBox2.Checked == true) { PrMark = "1"; }
-                    if (checkBox6.Checked == true) { PrBankPlat = "1"; }
-                    if (checkBox7.Checked == true) { PrPlatAgent = "1"; }
-                    if (checkBox4.Checked == true) { PrLotereya = "1"; }
-                    if (checkBox12.Checked == true) { PrInternet = "1"; }
-                    if (checkBox10.Checked == true) { PrRazvoz = "1"; }
-                    if (checkBox1.Checked == true) { PrAkxizTovar = "1"; }
-                    if (checkBox5.Checked == true) { PrAvtomatUstr = "1"; }
-
-                    Save s = new Save();
-                    s.setValues(D_FD, ID_Сlient, RNM, ZN_KKT, N_av, N_FN, M_FN, NameOrganization,
-                Director_org, INN_Organization, KPP_Organization, SNO_OSN, SNO_USN_D, SNO_USN_D_R, SNO_PATENT, SNO_ESHN,
-                Telephone, Email, Address_ras, Place_ras,
-                OFD, INN_OFD, T_FD, N_FD, FP, Model_KKT, Adr_Internet, PrAvtonom, PrLotereya, PrAzart, PrBankPlat,
-                PrPlatAgent, PrAvtomatUstr, PrInternet, PrRazvoz, PrAkxizTovar, PrMark);
-
+                    local_close *= 0;
                 }
-                else if (result == DialogResult.Cancel)
+            }
+            if ((local_close == 0) && (materialTabControl1.SelectedIndex == 0))
+            {
+                DialogResult result_close = MaterialMessageBox.Show("У вас есть несохраненные данные. Сохранить?", "Да", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+                if (result_close == DialogResult.Yes)
+                {
+                    ////Адрес по умолчанию
+                    //string query = "SELECT adr_file FROM table_adr_file";
+                    //using (SQLiteConnection sqliteConnection = new SQLiteConnection(connectionString))
+                    //{// Открытие соединения
+                    //    sqliteConnection.Open();
+                    //    using (SQLiteCommand sqliteCommand = new SQLiteCommand(query, sqliteConnection))
+                    //    {
+                    //        try
+                    //        {
+                    //            adr_file = (string)sqliteCommand.ExecuteScalar();
+                    //        }
+                    //        catch (Exception ex)
+                    //        {
+                    //            MaterialMessageBox.Show("Ошибка: " + ex.Message);
+                    //        }
+                    //    }
+                    //}
+                    string adr_file_save = adr_file;
+                    FolderBrowserDialog Browserdialog = new FolderBrowserDialog(); //открытие проводника и выбор папки сохраннения
+                    Browserdialog.RootFolder = Environment.SpecialFolder.Desktop;
+                    Browserdialog.SelectedPath = adr_file;
+
+                    if (Browserdialog.ShowDialog() == DialogResult.OK)
+                    {
+                        adr_file_save = Browserdialog.SelectedPath;
+                        SaveData(adr_file_save);
+                        closingProcessed = true;
+                        Application.Exit();
+                    }
+                    else { e.Cancel = true; return;  }
+                    
+                }
+                else if (result_close == DialogResult.No)
+                {
+                    closingProcessed = true;
+                    Application.Exit();
+                }
+                else if (result_close == DialogResult.Cancel)
                 {
                     e.Cancel = true;
                 }
-                save_closing = true;
             }
-        }
-
-
-
-
-        // служебные для Терминала-ФА
-        //private ushort crc16_update(ushort crc16, byte data)
-        //{
-        //    crc16 ^= (ushort)(data << 8);
-        //    for (byte i = 0; i < 8; i++) crc16 = (ushort)(((crc16 & 0x8000) != 0) ? (crc16 << 1) ^ 0x1021 : crc16 << 1);
-        //    return crc16;
-        //}
-
-        
+        }        
 
         //____Страница_2________________________________________________
         private void OFD2_TextChanged(object sender, EventArgs e) // Подстановка ИНН ОФД на второй странице
         {
-            string INN_OFD = "";
+            string OFD = ComboBox_Name_OFD2.Text;
+            string query = @"
+            SELECT 
+                inn_OFD            
+            FROM options_OFD 
+            WHERE name_OFD = @name_OFD";
+            using (SQLiteConnection sqliteConnection = new SQLiteConnection(connectionString))
+            {
+                // Открытие соединения
+                sqliteConnection.Open();
+                using (SQLiteCommand sqliteCommand = new SQLiteCommand(query, sqliteConnection))
+                {
+                    sqliteCommand.Parameters.AddWithValue("@name_OFD", OFD);
 
-            string str = System.IO.File.ReadAllText("options_OFD.txt");
-            string[] str_mas = str.Split(':');
-            string OFD = materialComboBox1.Text;
-            if ((OFD == "Эвотор ОФД") || (OFD == "ООО «Эвотор ОФД»"))
-            {
-                INN_OFD = str_mas[3];
+                    try
+                    {
+                        using (SQLiteDataReader reader = sqliteCommand.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                TextBox_INN_OFD2.Text = reader["inn_OFD"].ToString();
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MaterialMessageBox.Show("Ошибка: " + ex.Message);
+                    }
+                }
             }
-            if ((OFD == "ЭСК") || (OFD == "АО «ЭСК»"))
-            {
-                INN_OFD = str_mas[19];
-            }
-            if ((OFD == "АО Контур НТТ") || (OFD == "Контур НТТ"))
-            {
-                INN_OFD = str_mas[35];
-            }
-            if ((OFD == "Такском") || (OFD == "ООО «Такском»"))
-            {
-                INN_OFD = str_mas[51];
-            }
-            if ((OFD == "Калуга Астрал") || (OFD == "АО «Калуга Астрал»"))
-            {
-                INN_OFD = str_mas[67];
-            }
-            materialTextBox25.Text = INN_OFD;
+
         }
+        private void switchclick_openKKT2(object sender, EventArgs e) // Подключение к ККТ
+        {
+            if (switch_open_KKT2.Checked == true)
+            {
+                try
+                {
+                    CashRegister = new TerminalFA("COM3");
+                    ErrorCode answer = CashRegister.Initialize();
+                    switch_open_KKT1.Checked = true;
+                }
+                catch
+                {
+                    MaterialMessageBox.Show("Не удалось подключиться к COM3");
+                    switch_open_KKT1.Checked = false;
+                    switch_open_KKT2.Checked = false;
+                }
+            }
+            else
+            {
+                try
+                {
+                    CashRegister = new TerminalFA("COM3");
+                    ErrorCode answer = CashRegister.Initialize();
+                    MaterialMessageBox.Show("Соединение отключено");
+                }
+                catch
+                {
+                    MaterialMessageBox.Show("Не удалось отключиться от COM3");
+                }
+            }
+        }
+        
         private void buttonAkt2_Click(object sender, EventArgs e) // Кнопка Акт ввода на второй странице
         {
-            string DanaT_FD = textBox17.Text;
-            if (DanaT_FD[2] == '.' && DanaT_FD[5] == '.' && DanaT_FD[10] == ' ' && DanaT_FD[13] == ':')
+            string DateT_FD = TextBox_Date2.Text;
+            if (DateT_FD[2] == '.' && DateT_FD[5] == '.' && DateT_FD[10] == ' ' && DateT_FD[13] == ':')
             {
 
-                string ID_Сlient = textBox1.Text;
-                string RNM = textBox2.Text;
-                string ZN_KKT = textBox3.Text;
-                string N_FN = textBox5.Text;
+                string ID_Сlient = TextBox_ID_client2.Text;
+                string RNM = TextBox_RNM2.Text;
+                string Model_KKT = TextBox_Model_KKT2.Text;
+                string ZN_KKT = TextBox_ZN_KKT2.Text;
+                string ZN_FN = TextBox_ZN_FN2.Text;
 
-                string NameOrganization = textBox7.Text;
-                string INN_Organization = textBox9.Text;
-                string OFD = comboBox1.Text;
+                string NameOrganization = TextBox_NameOrganization2.Text;
+                string INN_Organization = TextBox_INNOrganization2.Text;
+                string OFD = ComboBox_Name_OFD2.Text;
 
-                string D_FD = DanaT_FD.Substring(0, 10);
-                string T_FD = DanaT_FD.Substring(Math.Max(0, DanaT_FD.Length - 5));
-                string N_FD = TextBoxNFD.Text;
-                string FP = textBox19.Text;
-                string Name_operator = "";
-                string INN_OFD = "";
+                string D_FD = DateT_FD.Substring(0, 10);
+                string T_FD = DateT_FD.Substring(Math.Max(0, DateT_FD.Length - 5));
+                string Number_FD = TextBox_NumberFD2.Text;
+                string FP = TextBox_FPDocument2.Text;
+                string INN_OFD = TextBox_INN_OFD2.Text;
 
-                string str = System.IO.File.ReadAllText("options_OFD.txt");
-                string[] str_mas = str.Split(':');
-                if ((OFD == "Эвотор ОФД") || (OFD == "ООО «Эвотор ОФД»")) { INN_OFD = str_mas[3]; }
-                if ((OFD == "ЭСК") || (OFD == "АО «ЭСК»")) { INN_OFD = str_mas[19]; }
-                if ((OFD == "АО Контур НТТ") || (OFD == "Контур НТТ")) { INN_OFD = str_mas[35]; }
-                if ((OFD == "Такском") || (OFD == "ООО «Такском»")) { INN_OFD = str_mas[51]; }
-                if ((OFD == "Калуга Астрал") || (OFD == "АО «Калуга Астрал»")) { INN_OFD = str_mas[67]; }
-
-                //Выбор оператора
-                Name_operator = System.IO.File.ReadAllText("Authorization.txt");
-
+                ////запрос Фамилии ИО оператора
+                //string query = "SELECT name_operator FROM table_name_operator";
+                //using (SQLiteConnection sqliteConnection = new SQLiteConnection(connectionString))
+                //{// Открытие соединения
+                //    sqliteConnection.Open();
+                //    using (SQLiteCommand sqliteCommand = new SQLiteCommand(query, sqliteConnection))
+                //    {
+                //        try
+                //        {
+                //            Name_operator = (string)sqliteCommand.ExecuteScalar();
+                //        }
+                //        catch (Exception ex)
+                //        {
+                //            MaterialMessageBox.Show("Ошибка: " + ex.Message);
+                //        }
+                //    }
+                //}
 
                 var newakt = new NewAKT("Akt.docx");
 
                 var items = new Dictionary<string, string>
             {
+                {"<Model_KKT>", Model_KKT},
                 {"<ZN_KKT>", ZN_KKT },
                 {"<RNM>", RNM },
-                {"<N_FN>", N_FN },
+                {"<N_FN>", ZN_FN },
                 {"<D_FD>", D_FD },
                 {"<T_FD>", T_FD },
-                {"<N_FD>", N_FD },
+                {"<N_FD>", Number_FD },
                 {"<FP>", FP },
                 {"<INN_Organization>", INN_Organization },
                 {"<INN_OFD>", INN_OFD },
                 {"<NameOrganization>", NameOrganization },
-                {"<Name_operator>", Name_operator },
+                {"<Name_operator>", name_operator },
                 {"<ID_Client>", ID_Сlient },
             };
 
-                newakt.Process(items);
+                newakt.Process(items, adr_file, print_akt);
             }
+
+
+            else
+            {
+                MaterialMessageBox.Show(
+            "Ошибка в вводе даты и времени. Введите по формату (дд.мм.гггг чч:мм)",
+            "Внимательнее");
+            }
+        
         }
         private void butSaveAKT_Click(object sender, EventArgs e) // Кнопка Сохранить на второй странцие
         {
-            string D_FD = materialTextBox23.Text;
+            string D_FD = TextBox_Date2.Text;
             if (D_FD[2] != '.' || D_FD[5] != '.' || D_FD[10] != ' ' || D_FD[13] != ':')
             {
                 MaterialMessageBox.Show(
@@ -1291,26 +2009,26 @@ namespace Kassa
             }
             else
             {
-                string ID_Сlient = materialTextBox28.Text;
-                string RNM = materialTextBox24.Text;
-                string ZN_KKT = materialTextBox210.Text;
+                string ID_Сlient = TextBox_ID_client2.Text;
+                string RNM = TextBox_RNM2.Text;
+                string ZN_KKT = TextBox_ZN_KKT2.Text;
                 string N_av = " ";
-                string N_FN = materialTextBox29.Text;
+                string N_FN = TextBox_ZN_FN2.Text;
                 string M_FN = " ";
-                string NameOrganization = materialTextBox27.Text;
+                string NameOrganization = TextBox_NameOrganization2.Text;
                 string Director_org = " ";
-                string INN_Organization = materialTextBox26.Text;
+                string INN_Organization = TextBox_INNOrganization2.Text;
                 string KPP_Organization = " ";
                 string Telephone = " ";
                 string Email = " ";
                 string Address_ras = " ";
                 string Place_ras = " ";
-                string OFD = materialComboBox1.Text;
-                string INN_OFD = materialTextBox25.Text;
+                string OFD = ComboBox_Name_OFD2.Text;
+                string INN_OFD = TextBox_INN_OFD2.Text;
                 string T_FD = D_FD.Substring(Math.Max(0, D_FD.Length - 5)); // нахождение даты ФД
-                string N_FD = materialTextBox21.Text;
-                string FP = materialTextBox22.Text;
-                string Model_KKT = materialTextBox211.Text;
+                string N_FD = TextBox_NumberFD2.Text;
+                string FP = TextBox_FPDocument2.Text;
+                string Model_KKT = TextBox_Model_KKT2.Text;
                 string Adr_Internet = " ";
 
                 string SNO_OSN = " ";
@@ -1330,14 +2048,32 @@ namespace Kassa
                 string PrRazvoz = " ";
                 string PrAkxizTovar = " ";
                 string PrMark = " ";
+                
+                FolderBrowserDialog Browserdialog = new FolderBrowserDialog(); //открытие проводника и выбор папки сохраннения
+                Browserdialog.RootFolder = Environment.SpecialFolder.Desktop;
+                Browserdialog.SelectedPath = adr_file;
+
+                if (Browserdialog.ShowDialog() == DialogResult.OK)
+                {
+                    adr_file = Browserdialog.SelectedPath;
+                    SaveData(adr_file);
+                }
+                else
+                {
+                    return;
+                }
 
                 Save s = new Save();
                 s.setValues(D_FD, ID_Сlient, RNM, ZN_KKT, N_av, N_FN, M_FN, NameOrganization,
             Director_org, INN_Organization, KPP_Organization, SNO_OSN, SNO_USN_D, SNO_USN_D_R, SNO_PATENT, SNO_ESHN,
             Telephone, Email, Address_ras, Place_ras,
             OFD, INN_OFD, T_FD, N_FD, FP, Model_KKT, Adr_Internet, PrAvtonom, PrLotereya, PrAzart, PrBankPlat,
-            PrPlatAgent, PrAvtomatUstr, PrInternet, PrRazvoz, PrAkxizTovar, PrMark);
+            PrPlatAgent, PrAvtomatUstr, PrInternet, PrRazvoz, PrAkxizTovar, PrMark, adr_file);
 
+                for (int i = 0; i < Save_parametrs.Length; i++) // Массив проверки сохранения
+                {
+                    Save_parametrs[i] = true;
+                }
             }
         }
         private void butLoadingAKT_Click(object sender, EventArgs e) // Кнопка Открыть на второй странице
@@ -1355,167 +2091,225 @@ namespace Kassa
 
 
             }
-            string[] str_mas = str.Split('+');
+            string[] str_mas = str.Split('#');
             if (str_mas.Length > 47)
             {
-                materialTextBox210.Text = str_mas[1].Trim();
-                materialTextBox211.Text = str_mas[3].Trim();
-                materialTextBox29.Text = str_mas[7].Trim();
-                materialTextBox28.Text = str_mas[11].Trim();
-                materialTextBox27.Text = str_mas[13].Trim();
-                materialTextBox26.Text = str_mas[17].Trim();
-                materialComboBox1.Text = str_mas[33].Trim();
-                materialTextBox25.Text = str_mas[35].Trim();
-                materialTextBox24.Text = str_mas[39].Trim();
-                materialTextBox23.Text = str_mas[41].Trim();
-                materialTextBox21.Text = str_mas[45].Trim();
-                materialTextBox22.Text = str_mas[47].Trim();
+                TextBox_ZN_KKT2.Text = str_mas[1].Trim();
+                TextBox_Model_KKT2.Text = str_mas[3].Trim();
+                TextBox_ZN_FN2.Text = str_mas[7].Trim();
+                TextBox_ID_client2.Text = str_mas[11].Trim();
+                TextBox_NameOrganization2.Text = str_mas[13].Trim();
+                TextBox_INNOrganization2.Text = str_mas[17].Trim();
+                ComboBox_Name_OFD2.Text = str_mas[33].Trim();
+                TextBox_INN_OFD2.Text = str_mas[35].Trim();
+                TextBox_RNM2.Text = str_mas[39].Trim();
+                TextBox_Date2.Text = str_mas[41].Trim() + str_mas[43].Trim(); //объединение даты и времени
+                TextBox_NumberFD2.Text = str_mas[45].Trim();
+                TextBox_FPDocument2.Text = str_mas[47].Trim();
+            }
+        }
+        private void butReaddata2_Click(object sender, EventArgs e) // Кнопка Считать на второй странице
+        {
+            bool result_open = false;
+            if (switch_open_KKT2.Checked == false)
+            {
+                result_open = open_KKT(!switch_open_KKT2.Checked);
+            }
+            if (result_open == true)
+            {
+                try
+                {
+                    TextBox_ZN_KKT2.Text = CashRegister.GetZN(); // запрос ЗН ККТ
+                    try { TextBox_ZN_FN2.Text = CashRegister.GetFN(); } // запрос ЗН ФН 
+                    catch { MaterialMessageBox.Show("Нет данных об ФН"); }
+                }
+                catch { MaterialMessageBox.Show("Не удалось считать данные с ККТ"); }
+            }
+        }
+        private void butCleare2_Click(object sender, EventArgs e) // Кнопка Очистить поля на второй странице
+        {
+            DialogResult result = MaterialMessageBox.Show("Уверены что хотите очистить поля?", "Да", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                TextBox_ZN_KKT2.Text = null;
+                TextBox_Model_KKT2.Text = null;
+                TextBox_ZN_FN2.Text = null;
+                TextBox_ID_client2.Text = null;
+                TextBox_NameOrganization2.Text = null;
+                TextBox_INNOrganization2.Text = null;
+                TextBox_RNM2.Text = null;
+                TextBox_Date2.Text = null; 
+                TextBox_NumberFD2.Text = null;
+                TextBox_FPDocument2.Text = null;
+                ComboBox_Name_OFD2.Text = standart_OFD;
+                string query = @"
+                SELECT 
+                    inn_OFD 
+                    FROM options_OFD 
+                WHERE name_OFD = @name_OFD";
+                using (SQLiteConnection sqliteConnection = new SQLiteConnection(connectionString))
+                {
+                    // Открытие соединения
+                    sqliteConnection.Open();
+                    using (SQLiteCommand sqliteCommand = new SQLiteCommand(query, sqliteConnection))
+                    {
+                        sqliteCommand.Parameters.AddWithValue("@name_OFD", ComboBox_Name_OFD1.Text);
+                        try
+                        {
+                            using (SQLiteDataReader reader = sqliteCommand.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    // Запись значений в TextBox'ы
+                                    TextBox_INN_OFD2.Text = reader["inn_OFD"].ToString();
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            // Обработка возможных ошибок
+                            MaterialMessageBox.Show("Ошибка: " + ex.Message);
+                        }
+                    }
+                }
+
+
             }
         }
 
 
 
         //____Страница_3________________________________________________
-        private void butSave_OFD_Click(object sender, EventArgs e) // Сохранение ОФД
+        private void butSave_OFD_Click(object sender, EventArgs e) // Сохранение парметров ОФД
         {
-            DialogResult result = MaterialMessageBox.Show("Уверены что хотите сохранить данные ОФД? Отменить действие будет невозможно", "Подтверждение", 
-                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            if (CheckButton_AddNewOFD.Checked == false)
             {
-                try
+                DialogResult result = MaterialMessageBox.Show("Уверены что хотите сохранить данные ОФД? Отменить действие будет невозможно", "Подтверждение",
+                    MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
                 {
-                    string INN_OFD = materialTextBox31.Text;
-                    string email_OFD = materialTextBox32.Text;
-                    string adr_OFD = materialTextBox33.Text;
-                    string IP = materialTextBox34.Text;
-                    string TCP = materialTextBox35.Text;
-                    string DNS = materialTextBox36.Text;
-                    string port = materialTextBox38.Text;
-
-                    string str = File.ReadAllText("options_OFD.txt");
-                    string[] str_mas = str.Split(':');
-
-                    string OFD = materialComboBox1.Text;
-                    if ((OFD == str_mas[1].Trim()))
+                    try
                     {
+                        //Получение выбранного значения из ComboBox
+                        string selectedOFDName = ComboBox_Name_OFD3.SelectedItem.ToString();
 
-                        str_mas[3] = INN_OFD;
-                        str_mas[5] = email_OFD;
-                        str_mas[7] = adr_OFD;
-                        str_mas[9] = IP;
-                        str_mas[11] = TCP;
-                        str_mas[13] = DNS;
-                        str_mas[15] = port;
+                        // SQL-запрос для обновления данных
+                        string query = @"
+                    UPDATE options_OFD 
+                    SET 
+                        inn_OFD = @inn_OFD, 
+                        email_OFD = @email_OFD, 
+                        adress_OFD = @adress_OFD, 
+                        IP_OFD = @IP_OFD, 
+                        TCP_OFD = @TCP_OFD, 
+                        DNS_OFD = @DNS_OFD, 
+                        port_OFD = @port_OFD,
+                        adress_OISM_OFD = @adress_OISM_OFD
+                    WHERE name_OFD = @name_OFD";
+                        using (SQLiteConnection sqliteConnection = new SQLiteConnection(connectionString))
+                        {// Открытие соединения
+                            sqliteConnection.Open();
+                            // Создание команды SQL
+                            using (SQLiteCommand sqliteCommand = new SQLiteCommand(query, sqliteConnection))
+                            {
+                                // Добавление параметров к запросу
+                                sqliteCommand.Parameters.AddWithValue("@inn_OFD", TextBox_INN_OFD3.Text);
+                                sqliteCommand.Parameters.AddWithValue("@email_OFD", TextBox_Email_OFD3.Text);
+                                sqliteCommand.Parameters.AddWithValue("@adress_OFD", TextBox_adress_OFD3.Text);
+                                sqliteCommand.Parameters.AddWithValue("@IP_OFD", TextBox_IP_OFD3.Text);
+                                sqliteCommand.Parameters.AddWithValue("@TCP_OFD", TextBox_TCP_OFD3.Text);
+                                sqliteCommand.Parameters.AddWithValue("@DNS_OFD", TextBox_DNS_OFD3.Text);
+                                sqliteCommand.Parameters.AddWithValue("@port_OFD", TextBox_port_OFD3.Text);
+                                sqliteCommand.Parameters.AddWithValue("@adress_OISM_OFD", TextBox_adress2_OFD3.Text);
+                                sqliteCommand.Parameters.AddWithValue("@name_OFD", selectedOFDName);
+
+
+                                // Выполнение запроса
+                                int rowsAffected = sqliteCommand.ExecuteNonQuery();
+
+                                //Проверка, были ли обновлены строки
+                                if (rowsAffected > 0)
+                                {
+                                    MaterialMessageBox.Show(
+                    "Данные сохранены",
+                    "ОК");
+                                }
+                                else
+                                {
+                                    MaterialMessageBox.Show("Не удалось обновить данные. Проверьте выбранное имя ОФД.");
+                                }
+                            }
+                        }
                     }
-                    if ((OFD == str_mas[17].Trim()))
+                    catch (Exception ex)
                     {
-
-                        str_mas[19] = INN_OFD;
-                        str_mas[21] = email_OFD;
-                        str_mas[23] = adr_OFD;
-                        str_mas[25] = IP;
-                        str_mas[27] = TCP;
-                        str_mas[29] = DNS;
-                        str_mas[31] = port;
+                        // Обработка возможных ошибок
+                        MaterialMessageBox.Show("Ошибка: " + ex.Message);
                     }
-                    if ((OFD == str_mas[33].Trim()))
-                    {
 
-                        str_mas[35] = INN_OFD;
-                        str_mas[37] = email_OFD;
-                        str_mas[39] = adr_OFD;
-                        str_mas[41] = IP;
-                        str_mas[43] = TCP;
-                        str_mas[45] = DNS;
-                        str_mas[47] = port;
-                    }
-                    if ((OFD == str_mas[49].Trim()))
-                    {
-
-                        str_mas[51] = INN_OFD;
-                        str_mas[53] = email_OFD;
-                        str_mas[55] = adr_OFD;
-                        str_mas[57] = IP;
-                        str_mas[59] = TCP;
-                        str_mas[61] = DNS;
-                        str_mas[63] = port;
-                    }
-                    if ((OFD == str_mas[65].Trim()))
-                    {
-
-                        str_mas[67] = INN_OFD;
-                        str_mas[69] = email_OFD;
-                        str_mas[71] = adr_OFD;
-                        str_mas[73] = IP;
-                        str_mas[75] = TCP;
-                        str_mas[77] = DNS;
-                        str_mas[79] = port;
-                    }
-                    StreamWriter str2 = new StreamWriter("options_OFD.txt");
-
-                    str2.WriteLine("ОФД:" + str_mas[1] + ":");
-                    str2.WriteLine("ИНН:" + str_mas[3] + ":");
-                    str2.WriteLine("Почта:" + str_mas[5] + ":");
-                    str2.WriteLine("Адрес:" + str_mas[7] + ":");
-                    str2.WriteLine("IP:" + str_mas[9] + ":");
-                    str2.WriteLine("TCP-порт:" + str_mas[11] + ":");
-                    str2.WriteLine("DNS ОФД:" + str_mas[13] + ":");
-                    str2.WriteLine();
-                    str2.WriteLine("Порт:" + str_mas[15] + ":");
-                    str2.WriteLine();
-                    str2.WriteLine("ОФД:" + str_mas[17] + ":");
-                    str2.WriteLine("ИНН:" + str_mas[19] + ":");
-                    str2.WriteLine("Почта:" + str_mas[21] + ":");
-                    str2.WriteLine("Адрес:" + str_mas[23] + ":");
-                    str2.WriteLine("IP:" + str_mas[25] + ":");
-                    str2.WriteLine("TCP-порт:" + str_mas[27] + ":");
-                    str2.WriteLine("DNS ОФД:" + str_mas[29] + ":");
-                    str2.WriteLine();
-                    str2.WriteLine("Порт:" + str_mas[31] + ":");
-                    str2.WriteLine();
-                    str2.WriteLine("ОФД:" + str_mas[33] + ":");
-                    str2.WriteLine("ИНН:" + str_mas[35] + ":");
-                    str2.WriteLine("Почта:" + str_mas[37] + ":");
-                    str2.WriteLine("Адрес:" + str_mas[39] + ":");
-                    str2.WriteLine("IP:" + str_mas[41] + ":");
-                    str2.WriteLine("TCP-порт:" + str_mas[43] + ":");
-                    str2.WriteLine("DNS ОФД:" + str_mas[45] + ":");
-                    str2.WriteLine();
-                    str2.WriteLine("Порт:" + str_mas[47] + ":");
-                    str2.WriteLine();
-                    str2.WriteLine("ОФД:" + str_mas[49] + ":");
-                    str2.WriteLine("ИНН:" + str_mas[51] + ":");
-                    str2.WriteLine("Почта:" + str_mas[53] + ":");
-                    str2.WriteLine("Адрес:" + str_mas[55] + ":");
-                    str2.WriteLine("IP:" + str_mas[57] + ":");
-                    str2.WriteLine("TCP-порт:" + str_mas[59] + ":");
-                    str2.WriteLine("DNS ОФД:" + str_mas[61] + ":");
-                    str2.WriteLine();
-                    str2.WriteLine("Порт:" + str_mas[63] + ":");
-                    str2.WriteLine();
-                    str2.WriteLine("ОФД:" + str_mas[65] + ":");
-                    str2.WriteLine("ИНН:" + str_mas[67] + ":");
-                    str2.WriteLine("Почта:" + str_mas[69] + ":");
-                    str2.WriteLine("Адрес:" + str_mas[71] + ":");
-                    str2.WriteLine("IP:" + str_mas[73] + ":");
-                    str2.WriteLine("TCP-порт:" + str_mas[75] + ":");
-                    str2.WriteLine("DNS ОФД:" + str_mas[77] + ":");
-                    str2.WriteLine();
-                    str2.WriteLine("Порт:" + str_mas[79] + ":");
-                    str2.Close();
-
-
-                }
-                catch (Exception ex)
-                {
-                    MaterialMessageBox.Show(
-            "Ошибка при сохранении" + ex,
-            "Сообщение");
                 }
             }
 
+            // добавление новой записи о ОФД
+            else
+            {
+                DialogResult result2 = MaterialMessageBox.Show("Уверены что хотите добавить ОФД? Отменить действие будет невозможно", "Подтверждение",
+                                    MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (result2 == DialogResult.Yes)
+                {
+                    // Получение нового имени ОФД из TextBox
+                    string newNameOFD = TextBox_NewName_OFD3.Text;
 
 
+                    // SQL-запрос для вставки новой записи
+                    string query = @"
+        INSERT INTO options_OFD (name_OFD, inn_OFD, email_OFD, adress_OFD, IP_OFD, TCP_OFD, DNS_OFD, port_OFD, adress_OISM_OFD) 
+        VALUES (@name_OFD, @inn_OFD, @email_OFD, @adress_OFD, @IP_OFD, @TCP_OFD, @DNS_OFD, @port_OFD, @adress_OISM_OFD)";
+
+                    using (SQLiteConnection sqliteConnection = new SQLiteConnection(connectionString))
+                    {
+                        // Открытие соединения
+                        sqliteConnection.Open();
+
+                        using (SQLiteCommand sqliteCommand = new SQLiteCommand(query, sqliteConnection))
+                        {
+                            // Добавление параметров к запросу
+                            sqliteCommand.Parameters.AddWithValue("@name_OFD", newNameOFD);
+                            sqliteCommand.Parameters.AddWithValue("@inn_OFD", TextBox_INN_OFD3.Text);
+                            sqliteCommand.Parameters.AddWithValue("@email_OFD", TextBox_Email_OFD3.Text);
+                            sqliteCommand.Parameters.AddWithValue("@adress_OFD", TextBox_adress_OFD3.Text);
+                            sqliteCommand.Parameters.AddWithValue("@IP_OFD", TextBox_IP_OFD3.Text);
+                            sqliteCommand.Parameters.AddWithValue("@TCP_OFD", TextBox_TCP_OFD3.Text);
+                            sqliteCommand.Parameters.AddWithValue("@DNS_OFD", TextBox_DNS_OFD3.Text);
+                            sqliteCommand.Parameters.AddWithValue("@port_OFD", TextBox_port_OFD3.Text);
+                            sqliteCommand.Parameters.AddWithValue("@adress_OISM_OFD", TextBox_adress2_OFD3.Text);
+
+                            try
+                            {
+                                // Выполнение запроса
+                                int rowsAffected = sqliteCommand.ExecuteNonQuery();
+
+                                // Проверка, была ли добавлена запись
+                                if (rowsAffected > 0)
+                                {
+                                    MaterialMessageBox.Show("Запись о новом ОФД добавлена.");
+                                }
+                                else
+                                {
+                                    MaterialMessageBox.Show("Не удалось добавить новую запись ОФД.");
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                // Обработка возможных ошибок
+                                MaterialMessageBox.Show("Ошибка: " + ex.Message);
+                            }
+                        }
+                    }
+                }
+            }
+            
         }
         private void butSave_FN_Click(object sender, EventArgs e) // Сохранение КП ФН
         {
@@ -1527,139 +2321,365 @@ namespace Kassa
             {
                 try
                 {
-                    string adr = materialTextBox39.Text;
-                    string port_fn = materialTextBox310.Text;
+                    //Получение выбранного значения из ComboBox
+                    string selectedFNName = ComboBox_Name_FN3.SelectedItem.ToString();
 
-                    string str = File.ReadAllText("options_FN.txt");
-                    string[] str_mas = str.Split(':');
+                    // SQL-запрос для обновления данных
+                    string query = @"
+                    UPDATE options_FN 
+                    SET 
+                        
+                        adress_FN = @adress_FN,
+                        port_FN = @port_FN
+                    WHERE name_FN = @name_FN";
+                    using (SQLiteConnection sqliteConnection = new SQLiteConnection(connectionString))
+                    {// Открытие соединения
+                        sqliteConnection.Open();
+                        // Создание команды SQL
+                        using (SQLiteCommand sqliteCommand = new SQLiteCommand(query, sqliteConnection))
+                        {
+                            // Добавление параметров к запросу
+                            sqliteCommand.Parameters.AddWithValue("@adress_FN", TextBox_adress_FN3.Text);
+                            sqliteCommand.Parameters.AddWithValue("@adress_FN", TextBox_port_FN3.Text);
+                            sqliteCommand.Parameters.AddWithValue("@name_FN", selectedFNName);
 
-                    string FN = materialComboBox1.Text;
-                    if ((FN == str_mas[1].Trim()))
-                    {
 
-                        str_mas[3] = adr;
-                        str_mas[5] = port_fn;
+                            // Выполнение запроса
+                            int rowsAffected = sqliteCommand.ExecuteNonQuery();
 
+                            //Проверка, были ли обновлены строки
+                            if (rowsAffected > 0)
+                            {
+                                MaterialMessageBox.Show(
+                "Данные сохранены",
+                "ОК");
+                            }
+                            else
+                            {
+                                MaterialMessageBox.Show("Не удалось обновить данные. Проверьте выбранное имя ФН.");
+                            }
+                        }
                     }
-                    if ((FN == str_mas[7].Trim()))
-                    {
-
-                        str_mas[9] = adr;
-                        str_mas[11] = port_fn;
-                    }
-
-                    StreamWriter str2 = new StreamWriter("options_FN.txt");
-
-                    str2.WriteLine("Производитель ФН:" + str_mas[1] + ":");
-                    str2.WriteLine("Адрес КМ:" + str_mas[3] + ":");
-                    str2.WriteLine("Порт:" + str_mas[5] + ":");
-                    str2.WriteLine();
-                    str2.WriteLine("Производитель ФН:" + str_mas[7] + ":");
-                    str2.WriteLine("Адрес КМ:" + str_mas[9] + ":");
-                    str2.WriteLine("Порт:" + str_mas[11] + ":");
-
-                    str2.Close();
                 }
                 catch (Exception ex)
                 {
-                    MaterialMessageBox.Show(
-            "Ошибка при сохранении" + ex,
-            "Сообщение");
+                    // Обработка возможных ошибок
+                    MaterialMessageBox.Show("Ошибка: " + ex.Message);
                 }
             }
         }
-
-        private void FN_Leave(object sender, EventArgs e) //вывод в поля данных КП при неактивном поле Производитель ФН
+        private void CheckButton_AddNewOFD_Checked(object sender, EventArgs e) // Открытие поля Наименование нового ОФД
         {
-            string str = "";
-
-            str = File.ReadAllText("options_FN.txt");
-            string[] str_mas = str.Split(':');
-
-            string adr = "";
-            string port_fn = "";
-
-
-            string FN = materialComboBox2.Text;
-            if ((FN == str_mas[1].Trim()))
-            {
-                adr = str_mas[3].Trim();
-                port_fn = str_mas[5].Trim();
+            if (CheckButton_AddNewOFD.Checked == true) 
+            { 
+                TextBox_NewName_OFD3.Visible = true;
+                ComboBox_Name_OFD3.Visible = false;
             }
-            if ((FN == str_mas[7].Trim()))
-            {
+            else { TextBox_NewName_OFD3.Visible = false; ComboBox_Name_OFD3.Visible = true; }
+        }
+        private void Name_OFD_Changed(object sender, EventArgs e) // Подстановка параметров ОФД в соответствии с ComboBox
+        {
+            string name_OFD = ComboBox_Name_OFD3.Text;
+            string query = @"
+            SELECT 
+                inn_OFD, 
+                email_OFD, 
+                adress_OFD, 
+                IP_OFD, 
+                TCP_OFD, 
+                DNS_OFD, 
+                adress_OISM_OFD,
+                port_OFD
+            FROM options_OFD 
+            WHERE name_OFD = @name_OFD";
+            using (SQLiteConnection sqliteConnection = new SQLiteConnection(connectionString))
+            {// Открытие соединения
+                sqliteConnection.Open();
+                using (SQLiteCommand sqliteCommand = new SQLiteCommand(query, sqliteConnection))
+                {
+                    // Добавление параметра к запросу для предотвращения SQL-инъекций
+                    sqliteCommand.Parameters.AddWithValue("@name_OFD", name_OFD);
 
-                adr = str_mas[9].Trim();
-                port_fn = str_mas[11].Trim();
+                    try
+                    {
+
+                        // Выполнение запроса и получение результата
+                        using (SQLiteDataReader reader = sqliteCommand.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // Запись значений в TextBox'ы
+                                TextBox_INN_OFD3.Text = reader["inn_OFD"].ToString();
+                                TextBox_Email_OFD3.Text = reader["email_OFD"].ToString();
+                                TextBox_adress_OFD3.Text = reader["adress_OFD"].ToString();
+                                TextBox_IP_OFD3.Text = reader["IP_OFD"].ToString();
+                                TextBox_TCP_OFD3.Text = reader["TCP_OFD"].ToString();
+                                TextBox_DNS_OFD3.Text = reader["DNS_OFD"].ToString();
+                                TextBox_adress2_OFD3.Text = reader["adress_OISM_OFD"].ToString();
+                                TextBox_port_OFD3.Text = reader["port_OFD"].ToString();
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Обработка возможных ошибок
+                        MessageBox.Show("Ошибка: " + ex.Message);
+                    }
+                }
             }
-
-            materialTextBox39.Text = adr;
-            materialTextBox310.Text = port_fn;
 
         }
+        private void Name_FN_Changed(object sender, EventArgs e) // Подстановка параметров FN в соответствии с ComboBox
+        {
+            string name_FN = ComboBox_Name_FN3.Text;
+            string query = @"
+            SELECT 
+                adress_FN, 
+                port_FN 
+            FROM options_FN 
+            WHERE name_FN = @name_FN";
+            using (SQLiteConnection sqliteConnection = new SQLiteConnection(connectionString))
+            {// Открытие соединения
+                sqliteConnection.Open();
+                using (SQLiteCommand sqliteCommand = new SQLiteCommand(query, sqliteConnection))
+                {
+                    // Добавление параметра к запросу для предотвращения SQL-инъекций
+                    sqliteCommand.Parameters.AddWithValue("@name_FN", name_FN);
 
+                    try
+                    {
+                        using (SQLiteDataReader reader = sqliteCommand.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                TextBox_adress_FN3.Text = reader["adress_FN"].ToString();
+                                TextBox_port_FN3.Text = reader["port_FN"].ToString();
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Обработка возможных ошибок
+                        MessageBox.Show("Ошибка: " + ex.Message);
+                    }
+
+                }
+            }
+        }
+        
 
 
         //____Страница_4________________________________________________
         private void TabControl_Selected(object sender, TabControlEventArgs e) // событие автозаполнения textBox настроек при активации вкладки
         {
-            StreamReader sr = new StreamReader("adr_file.txt"); // автозаполнение textBox на странице настроек
-            string line1 = sr.ReadLine();
-            materialTextBox1.Text = line1;
-            sr.Close();
+            // Адрес по умолчанию
+            ////Адрес по умолчанию
+            //string query = "SELECT adr_file FROM table_adr_file";
+            using (SQLiteConnection sqliteConnection = new SQLiteConnection(connectionString))
+            {// Открытие соединения
+                sqliteConnection.Open();
 
-            StreamReader r = new StreamReader("Authorization.txt"); // автозаполнение textBox на странице настроек
-            string line2 = r.ReadLine();
-            materialTextBox2.Text = line2;
-            r.Close();
-
-            StreamReader str_del = new StreamReader("del_xml.txt"); // автозаполнение switch на странице настроек
-            string line3 = str_del.ReadLine();
-            str_del.Close();
-            if (line3 == "true") { materialSwitch1.Checked = true; }
-            if (line3 == "false") { materialSwitch1.Checked = false; }
-        } 
+                TextBox_Adr_file.Text = adr_file;
+                TextBox_name_operator.Text = name_operator;
+                if (delete_xml == "true") { Switch_Del_xml.Checked = true; }
+                else { Switch_Del_xml.Checked = false; }
+                if (print_akt == "true") { Switch_Print_Akt.Checked = true; }
+                else { Switch_Print_Akt.Checked = false; }
+            }
+        }
         private void materialButton1_Click(object sender, EventArgs e) // Кнопка сохранение
         {
-            try
+            DialogResult result = MaterialMessageBox.Show("Уверены что хотите сохранить данные? Отменить действие будет невозможно", "Подтверждение",
+                    MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
             {
-                if (materialSwitch1.Checked == true) { delete_xml = true; }
-                if (materialSwitch1.Checked == false) { delete_xml = false; }
-
-                StreamWriter sr = new StreamWriter("adr_file.txt", false);
-                sr.WriteLine(materialTextBox1.Text);
-                sr.Close();
-                StreamWriter r = new StreamWriter("Authorization.txt", false);
-                r.WriteLine(materialTextBox2.Text);
-                r.Close();
-
-                StreamWriter str_del = new StreamWriter("del_xml.txt", false);
-                if (delete_xml == true)
+                try
                 {
-                    str_del.WriteLine("true");
+                    if (Switch_Del_xml.Checked == true) { delete_xml = "true"; }
+                    else { delete_xml = "false"; }
+                    if (Switch_Print_Akt.Checked == true) { print_akt = "true"; }
+                    else { print_akt = "false"; }
+
+                    string adr_file = TextBox_Adr_file.Text;
+                    if (adr_file.Substring(adr_file.Length - 1, 1) == "\\") { adr_file = adr_file.Remove(adr_file.Length - 1); }
+
+                    string query = @"
+            UPDATE options_program
+            SET 
+                meaning = @adr_file
+                WHERE parameter = 'adr_file'";
+                    using (SQLiteConnection sqliteConnection = new SQLiteConnection(connectionString))
+                    {// Открытие соединения
+                        sqliteConnection.Open();
+                        using (SQLiteCommand sqliteCommand = new SQLiteCommand(query, sqliteConnection))
+                        {
+                            sqliteCommand.Parameters.AddWithValue("@adr_file", adr_file);
+                            try
+                            {
+                                int rowsAffected = sqliteCommand.ExecuteNonQuery();
+                                if (rowsAffected <= 0)
+                                {
+                                    MaterialMessageBox.Show("Не удалось обновить данные адреса по умочанию");
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MaterialMessageBox.Show("Ошибка: " + ex.Message);
+                            }
+
+                            // Сохранение Фамилии ИО опреатора -------------------------------------------------------------------------
+
+                            query = @"
+            UPDATE options_program
+            SET 
+                meaning = @name_operator
+                WHERE parameter = 'name_operator'";
+                            using (SQLiteCommand sqliteCommand2 = new SQLiteCommand(query, sqliteConnection))
+                            {
+                                sqliteCommand2.Parameters.AddWithValue("@name_operator", TextBox_name_operator.Text);
+                                try
+                                {
+                                    int rowsAffected = sqliteCommand2.ExecuteNonQuery();
+                                    if (rowsAffected <= 0)
+                                    {
+                                        MaterialMessageBox.Show("Не удалось обновить данные оператора");
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    MaterialMessageBox.Show("Ошибка: " + ex.Message);
+                                }
+                            }
+
+                            // Удаление xml  -------------------------------------------------------------------------
+                            string del_xml = "";
+                            if (delete_xml == "true")
+                            {
+                                del_xml = "true";
+                            }
+                            else
+                            {
+                                del_xml = "false";
+                            }
+
+                            query = @"
+            UPDATE options_program
+            SET 
+                meaning = @del_xml
+                WHERE parameter = 'del_xml'";
+                            // Создание команды SQL
+                            using (SQLiteCommand sqliteCommand3 = new SQLiteCommand(query, sqliteConnection))
+                            {
+                                // Добавление параметров к запрос
+                                sqliteCommand3.Parameters.AddWithValue("@del_xml", del_xml);
+                                try
+                                {
+                                    int rowsAffected = sqliteCommand3.ExecuteNonQuery();
+                                    // Проверка, были ли обновлены строки
+                                    if (rowsAffected <= 0)
+                                    {
+                                        MaterialMessageBox.Show("Не удалось обновить данные удаление папки с файлом XML.");
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    MaterialMessageBox.Show("Ошибка: " + ex.Message);
+                                }
+                            }
+
+                            // Печать акта ввода по умолчанию  -------------------------------------------------------------------------
+                            string pr_akt = "";
+                            if (print_akt == "true")
+                            {
+                                pr_akt = "true";
+                            }
+                            else
+                            {
+                                pr_akt = "false";
+                            }
+
+                            query = @"
+            UPDATE options_program
+            SET 
+                meaning = @print_akt
+                WHERE parameter = 'print_akt'";
+                            // Создание команды SQL
+                            using (SQLiteCommand sqliteCommand4 = new SQLiteCommand(query, sqliteConnection))
+                            {
+                                // Добавление параметров к запрос
+                                sqliteCommand4.Parameters.AddWithValue("@print_akt", pr_akt);
+                                try
+                                {
+                                    int rowsAffected = sqliteCommand4.ExecuteNonQuery();
+                                    // Проверка, были ли обновлены строки
+                                    if (rowsAffected <= 0)
+                                    {
+                                        MaterialMessageBox.Show("Не удалось обновить статус печати акта ввода по умолчанию.");
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    MaterialMessageBox.Show("Ошибка: " + ex.Message);
+                                }
+                            }
+
+                            // Сохранение ОФД по умолчанию -------------------------------------------------------------------------
+
+                            query = @"
+            UPDATE options_program
+            SET 
+                meaning = @standart_OFD
+                WHERE parameter = 'standart_OFD'";
+                            using (SQLiteCommand sqliteCommand5 = new SQLiteCommand(query, sqliteConnection))
+                            {
+                                sqliteCommand5.Parameters.AddWithValue("@standart_OFD", ComboBox_Name_OFD4.Text);
+                                try
+                                {
+                                    int rowsAffected = sqliteCommand5.ExecuteNonQuery();
+                                    if (rowsAffected <= 0)
+                                    {
+                                        MaterialMessageBox.Show("Не удалось обновить ОФД по умолчанию.");
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    MaterialMessageBox.Show("Ошибка: " + ex.Message);
+                                }
+                            }
+
+                            // Сохранение ФН по умолчанию -------------------------------------------------------------------------
+
+                            query = @"
+            UPDATE options_program
+            SET 
+                meaning = @standart_FN
+                WHERE parameter = 'standart_FN'";
+                            using (SQLiteCommand sqliteCommand6 = new SQLiteCommand(query, sqliteConnection))
+                            {
+                                sqliteCommand6.Parameters.AddWithValue("@standart_FN", ComboBox_Model_FN4.Text);
+                                try
+                                {
+                                    int rowsAffected = sqliteCommand6.ExecuteNonQuery();
+                                    if (rowsAffected <= 0)
+                                    {
+                                        MaterialMessageBox.Show("Не удалось обновить ФН по умолчанию");
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    MaterialMessageBox.Show("Ошибка: " + ex.Message);
+                                }
+                            }
+                        }
+                    }
+                MaterialMessageBox.Show("Данные сохранены. Все настройки применятся после перезагрузки программы");
                 }
-                if (delete_xml == false)
+                catch (Exception ex)
                 {
-                    str_del.WriteLine("false");
+                    MaterialMessageBox.Show(
+            "Ошибка сохранения " + ex,
+            "Ошибка");
                 }
-                str_del.Close();
-
-                MaterialMessageBox.Show(
-        "Настройки сохранены",
-        "Сообщение");
-
-
-
-            }
-            catch (Exception ex)
-            {
-                MaterialMessageBox.Show(
-        "Ошибка сохранения " + ex,
-        "Ошибка");
-            }
-            finally
-            {
-
             }
         }
         private void materialButton2_Click(object sender, EventArgs e) //открытие проводника
@@ -1667,10 +2687,264 @@ namespace Kassa
             FolderBrowserDialog Browserdialog = new FolderBrowserDialog();
             if (Browserdialog.ShowDialog() == DialogResult.OK)
             {
-                materialTextBox1.Text = Browserdialog.SelectedPath;
+                TextBox_Adr_file.Text = Browserdialog.SelectedPath;
             }
         }
 
-        
+        private void SaveData(string _adr_file_save)
+        {
+            string adr_file_save = _adr_file_save;
+            string ID_Сlient = TextBox_ID_client.Text;
+            string RNM = TextBox_RNM1.Text;
+            string ZN_KKT = TextBox_ZN_KKT.Text;
+            string N_av = TextBox_Number_automatic.Text;
+            string N_FN = TextBox_ZN_FN.Text;
+            string M_FN = ComboBox_Model_FN1.Text;
+            string NameOrganization = TextBox_Name_organization.Text;
+            string Director_org = TextBox_Director_org.Text;
+            string INN_Organization = TextBox_INN_organization.Text;
+            string KPP_Organization = TextBox_KPP_organization.Text;
+            string Telephone = TextBox_Telephon_number.Text;
+            string Email = TextBox_Email_organization.Text;
+            string Address_ras = TextBox_adressSale.Text;
+            string Place_ras = TextBox_PlaceSale.Text;
+            string OFD = ComboBox_Name_OFD1.Text;
+            string INN_OFD = TextBox_INN_OFD1.Text;
+            string D_FD = TextBox_Datetime_FD.Text.Substring(0, 10); // нахождение даты ФД
+            string T_FD = TextBox_Datetime_FD.Text.Substring(11);
+            string N_FD = TextBox_Number_FD.Text;
+            string FP = TextBox_FP_FD.Text;
+            string Model_KKT = TextBox_Model_KKT.Text;
+            string Adr_Internet = TextBox_Domen.Text;
+
+            string SNO_OSN = " ";
+            string SNO_USN_D = " ";
+            string SNO_USN_D_R = " ";
+            string SNO_PATENT = " ";
+            string SNO_ESHN = " ";
+            if (Checkbox_OSN.Checked == true) { SNO_OSN = "ОСН"; }
+            if (Checkbox_USN_Dohod.Checked == true) { SNO_USN_D = "УСН Доход"; }
+            if (Checkbox_USN_Dohod_rashod.Checked == true) { SNO_USN_D_R = "УСН Доход - расход"; }
+            if (Checkbox_Patent.Checked == true) { SNO_PATENT = "Патент"; }
+            if (Checkbox_ESHN.Checked == true) { SNO_ESHN = "ЕСХН"; }
+
+
+            string PrAvtonom = "2"; // сведения регистрации ККТ
+            string PrLotereya = "2";
+            string PrAzart = "2";
+            string PrBankPlat = "2";
+            string PrPlatAgent = "2";
+            string PrAvtomatUstr = "2";
+            string PrInternet = "2";
+            string PrRazvoz = "2";
+            string PrAkxizTovar = "2";
+            string PrMark = "2";
+            if (CheckBox_Avtonom.Checked == true) { PrAvtonom = "1"; } // сведения регистрации ККТ
+            if (CheckBox_Azart_play.Checked == true) { PrAzart = "1"; }
+            if (CheckBox_Mark.Checked == true) { PrMark = "1"; }
+            if (CheckBox_Bank_agent.Checked == true) { PrBankPlat = "1"; }
+            if (CheckBox_Plat_agent.Checked == true) { PrPlatAgent = "1"; }
+            if (CheckBox_Lotereya.Checked == true) { PrLotereya = "1"; }
+            if (CheckBox_Internet.Checked == true) { PrInternet = "1"; }
+            if (CheckBox_Delivery.Checked == true) { PrRazvoz = "1"; }
+            if (CheckBox_Podakziz.Checked == true) { PrAkxizTovar = "1"; }
+            if (CheckBox_Printer_v_avtomate.Checked == true) { PrAvtomatUstr = "1"; }
+
+            Save s = new Save();
+            s.setValues(D_FD, ID_Сlient, RNM, ZN_KKT, N_av, N_FN, M_FN, NameOrganization,
+        Director_org, INN_Organization, KPP_Organization, SNO_OSN, SNO_USN_D, SNO_USN_D_R, SNO_PATENT, SNO_ESHN,
+        Telephone, Email, Address_ras, Place_ras,
+        OFD, INN_OFD, T_FD, N_FD, FP, Model_KKT, Adr_Internet, PrAvtonom, PrLotereya, PrAzart, PrBankPlat,
+        PrPlatAgent, PrAvtomatUstr, PrInternet, PrRazvoz, PrAkxizTovar, PrMark, adr_file_save);
+        }
+        private void Clear_form()
+        {
+            for (int i = 0; i < Save_parametrs.Length; i++) // Массив проверки сохранения
+            {
+                Save_parametrs[i] = true;
+            }
+            label_save_status.Text = "";
+            label_image_save_status.Text = "";
+
+            Checkbox_OSN.Checked = false;
+            Checkbox_USN_Dohod.Checked = false;
+            Checkbox_USN_Dohod_rashod.Checked = false;
+            Checkbox_Patent.Checked = false;
+            Checkbox_ESHN.Checked = false;
+
+            TextBox_ID_client.Text = null;
+            TextBox_RNM1.Text = null;
+            TextBox_ZN_KKT.Text = null;
+            TextBox_Number_automatic.Text = null;
+            TextBox_ZN_FN.Text = null;
+            ComboBox_Model_FN1.Text = standart_model_FN;
+            TextBox_Name_organization.Text = null;
+            TextBox_Director_org.Text = null;
+            TextBox_INN_organization.Text = null;
+            TextBox_KPP_organization.Text = null;
+            TextBox_Telephon_number.Text = null;
+            TextBox_Email_organization.Text = null;
+            TextBox_adressSale.Text = "440000, г.Пенза, ул. Суворова, стр 92";
+            TextBox_PlaceSale.Text = null;
+            ComboBox_Name_OFD1.Text = standart_OFD;
+            string query = @"
+                SELECT 
+                    inn_OFD, 
+                    email_OFD
+                    FROM options_OFD 
+                WHERE name_OFD = @name_OFD";
+            using (SQLiteConnection sqliteConnection = new SQLiteConnection(connectionString))
+            {
+                // Открытие соединения
+                sqliteConnection.Open();
+                using (SQLiteCommand sqliteCommand = new SQLiteCommand(query, sqliteConnection))
+                {
+                    sqliteCommand.Parameters.AddWithValue("@name_OFD", ComboBox_Name_OFD1.Text);
+                    try
+                    {
+                        using (SQLiteDataReader reader = sqliteCommand.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // Запись значений в TextBox'ы
+                                TextBox_INN_OFD1.Text = reader["inn_OFD"].ToString();
+                                TextBox_Email_OFD1.Text = reader["email_OFD"].ToString();
+
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Обработка возможных ошибок
+                        MaterialMessageBox.Show("Ошибка: " + ex.Message);
+                    }
+                }
+            }
+
+            TextBox_Datetime_FD.Text = null;
+            TextBox_Number_FD.Text = "1";
+            TextBox_FP_FD.Text = null;
+            TextBox_Model_KKT.Text = "Терминал-ФА";
+            TextBox_Domen.Text = null;
+
+
+
+
+            CheckBox_Avtonom.Checked = false; // сведения регистрации ККТ
+            CheckBox_Azart_play.Checked = false;
+            CheckBox_Mark.Checked = false;
+            CheckBox_Bank_agent.Checked = false;
+            CheckBox_Plat_agent.Checked = false;
+            CheckBox_Lotereya.Checked = false;
+            CheckBox_Internet.Checked = false;
+            CheckBox_Delivery.Checked = false;
+            CheckBox_Podakziz.Checked = false;
+            CheckBox_Printer_v_avtomate.Checked = false;
+        }
+
+        private void buttonCopy1_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(TextBox_Model_KKT.Text);
+        }
+
+        private void buttonCopy2_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(TextBox_ZN_KKT.Text);
+        }
+
+        private void buttonCopy3_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(TextBox_Number_automatic.Text);
+        }
+
+        private void buttonCopy4_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(ComboBox_Model_FN1.Text);
+        }
+
+        private void buttonCopy5_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(TextBox_ZN_FN.Text);
+        }
+
+        private void buttonCopy6_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(TextBox_ID_client.Text);
+        }
+
+        private void buttonCopy7_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(TextBox_Name_organization.Text);
+        }
+
+        private void buttonCopy8_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(TextBox_Director_org.Text);
+        }
+
+        private void buttonCopy9_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(TextBox_INN_organization.Text);
+        }
+
+        private void buttonCopy10_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(TextBox_KPP_organization.Text);
+        }
+
+        private void buttonCopy11_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(TextBox_Telephon_number.Text);
+        }
+
+        private void buttonCopy12_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(TextBox_Email_organization.Text);
+        }
+
+        private void buttonCopy13_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(TextBox_adressSale.Text);
+        }
+
+        private void buttonCopy14_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(TextBox_PlaceSale.Text);
+        }
+
+        private void buttonCopy15_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(ComboBox_Name_OFD1.Text);
+        }
+
+        private void buttonCopy16_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(TextBox_INN_OFD1.Text);
+        }
+
+        private void buttonCopy17_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(TextBox_Email_OFD1.Text);
+        }
+
+        private void buttonCopy18_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(TextBox_RNM1.Text);
+        }
+
+        private void buttonCopy19_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(TextBox_Number_FD.Text);
+        }
+
+        private void buttonCopy20_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(TextBox_Datetime_FD.Text);
+        }
+
+        private void buttonCopy21_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(TextBox_FP_FD.Text);
+        }
     }
 } 

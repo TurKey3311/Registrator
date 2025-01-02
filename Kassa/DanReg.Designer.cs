@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new MaterialSkin.Controls.MaterialTextBox();
-            this.textBox2 = new MaterialSkin.Controls.MaterialTextBox();
-            this.textBox3 = new MaterialSkin.Controls.MaterialTextBox();
-            this.textBox5 = new MaterialSkin.Controls.MaterialTextBox();
-            this.textBox4 = new MaterialSkin.Controls.MaterialTextBox();
-            this.textBox7 = new MaterialSkin.Controls.MaterialTextBox();
-            this.textBox6 = new MaterialSkin.Controls.MaterialTextBox();
+            this.TextBox_Name_OFD_Data = new MaterialSkin.Controls.MaterialTextBox();
+            this.TextBox_adress_OFD_Data = new MaterialSkin.Controls.MaterialTextBox();
+            this.TextBox_IP_OFD_Data = new MaterialSkin.Controls.MaterialTextBox();
+            this.TextBox_DNS_OFD_Data = new MaterialSkin.Controls.MaterialTextBox();
+            this.TextBox_TCP_OFD_Data = new MaterialSkin.Controls.MaterialTextBox();
+            this.TextBox_port_OFD_Data = new MaterialSkin.Controls.MaterialTextBox();
+            this.TextBox_adress2_OFD_Data = new MaterialSkin.Controls.MaterialTextBox();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
@@ -45,139 +45,139 @@
             this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
-            this.textBox10 = new MaterialSkin.Controls.MaterialTextBox();
-            this.textBox9 = new MaterialSkin.Controls.MaterialTextBox();
-            this.textBox8 = new MaterialSkin.Controls.MaterialTextBox();
+            this.TextBox_port_FN_Data = new MaterialSkin.Controls.MaterialTextBox();
+            this.TextBox_adress_FN_Data = new MaterialSkin.Controls.MaterialTextBox();
+            this.TextBox_Name_FN_Data = new MaterialSkin.Controls.MaterialTextBox();
             this.materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
             this.butClose = new MaterialSkin.Controls.MaterialButton();
             this.SuspendLayout();
             // 
-            // textBox1
+            // TextBox_Name_OFD_Data
             // 
-            this.textBox1.AnimateReadOnly = false;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Depth = 0;
-            this.textBox1.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.textBox1.LeadingIcon = null;
-            this.textBox1.Location = new System.Drawing.Point(199, 104);
-            this.textBox1.MaxLength = 50;
-            this.textBox1.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox1.Multiline = false;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(403, 50);
-            this.textBox1.TabIndex = 24;
-            this.textBox1.Text = "";
-            this.textBox1.TrailingIcon = null;
+            this.TextBox_Name_OFD_Data.AnimateReadOnly = false;
+            this.TextBox_Name_OFD_Data.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TextBox_Name_OFD_Data.Depth = 0;
+            this.TextBox_Name_OFD_Data.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TextBox_Name_OFD_Data.LeadingIcon = null;
+            this.TextBox_Name_OFD_Data.Location = new System.Drawing.Point(199, 104);
+            this.TextBox_Name_OFD_Data.MaxLength = 50;
+            this.TextBox_Name_OFD_Data.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_Name_OFD_Data.Multiline = false;
+            this.TextBox_Name_OFD_Data.Name = "TextBox_Name_OFD_Data";
+            this.TextBox_Name_OFD_Data.Size = new System.Drawing.Size(403, 50);
+            this.TextBox_Name_OFD_Data.TabIndex = 24;
+            this.TextBox_Name_OFD_Data.Text = "";
+            this.TextBox_Name_OFD_Data.TrailingIcon = null;
             // 
-            // textBox2
+            // TextBox_adress_OFD_Data
             // 
-            this.textBox2.AnimateReadOnly = false;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Depth = 0;
-            this.textBox2.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.textBox2.LeadingIcon = null;
-            this.textBox2.Location = new System.Drawing.Point(199, 160);
-            this.textBox2.MaxLength = 50;
-            this.textBox2.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox2.Multiline = false;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(403, 50);
-            this.textBox2.TabIndex = 25;
-            this.textBox2.Text = "";
-            this.textBox2.TrailingIcon = null;
+            this.TextBox_adress_OFD_Data.AnimateReadOnly = false;
+            this.TextBox_adress_OFD_Data.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TextBox_adress_OFD_Data.Depth = 0;
+            this.TextBox_adress_OFD_Data.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TextBox_adress_OFD_Data.LeadingIcon = null;
+            this.TextBox_adress_OFD_Data.Location = new System.Drawing.Point(199, 160);
+            this.TextBox_adress_OFD_Data.MaxLength = 50;
+            this.TextBox_adress_OFD_Data.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_adress_OFD_Data.Multiline = false;
+            this.TextBox_adress_OFD_Data.Name = "TextBox_adress_OFD_Data";
+            this.TextBox_adress_OFD_Data.Size = new System.Drawing.Size(403, 50);
+            this.TextBox_adress_OFD_Data.TabIndex = 25;
+            this.TextBox_adress_OFD_Data.Text = "";
+            this.TextBox_adress_OFD_Data.TrailingIcon = null;
             // 
-            // textBox3
+            // TextBox_IP_OFD_Data
             // 
-            this.textBox3.AnimateReadOnly = false;
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Depth = 0;
-            this.textBox3.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.textBox3.LeadingIcon = null;
-            this.textBox3.Location = new System.Drawing.Point(199, 216);
-            this.textBox3.MaxLength = 50;
-            this.textBox3.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox3.Multiline = false;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(403, 50);
-            this.textBox3.TabIndex = 26;
-            this.textBox3.Text = "";
-            this.textBox3.TrailingIcon = null;
+            this.TextBox_IP_OFD_Data.AnimateReadOnly = false;
+            this.TextBox_IP_OFD_Data.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TextBox_IP_OFD_Data.Depth = 0;
+            this.TextBox_IP_OFD_Data.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TextBox_IP_OFD_Data.LeadingIcon = null;
+            this.TextBox_IP_OFD_Data.Location = new System.Drawing.Point(199, 216);
+            this.TextBox_IP_OFD_Data.MaxLength = 50;
+            this.TextBox_IP_OFD_Data.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_IP_OFD_Data.Multiline = false;
+            this.TextBox_IP_OFD_Data.Name = "TextBox_IP_OFD_Data";
+            this.TextBox_IP_OFD_Data.Size = new System.Drawing.Size(403, 50);
+            this.TextBox_IP_OFD_Data.TabIndex = 26;
+            this.TextBox_IP_OFD_Data.Text = "";
+            this.TextBox_IP_OFD_Data.TrailingIcon = null;
             // 
-            // textBox5
+            // TextBox_DNS_OFD_Data
             // 
-            this.textBox5.AnimateReadOnly = false;
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Depth = 0;
-            this.textBox5.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.textBox5.LeadingIcon = null;
-            this.textBox5.Location = new System.Drawing.Point(199, 326);
-            this.textBox5.MaxLength = 50;
-            this.textBox5.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox5.Multiline = false;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(403, 50);
-            this.textBox5.TabIndex = 28;
-            this.textBox5.Text = "";
-            this.textBox5.TrailingIcon = null;
+            this.TextBox_DNS_OFD_Data.AnimateReadOnly = false;
+            this.TextBox_DNS_OFD_Data.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TextBox_DNS_OFD_Data.Depth = 0;
+            this.TextBox_DNS_OFD_Data.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TextBox_DNS_OFD_Data.LeadingIcon = null;
+            this.TextBox_DNS_OFD_Data.Location = new System.Drawing.Point(199, 326);
+            this.TextBox_DNS_OFD_Data.MaxLength = 50;
+            this.TextBox_DNS_OFD_Data.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_DNS_OFD_Data.Multiline = false;
+            this.TextBox_DNS_OFD_Data.Name = "TextBox_DNS_OFD_Data";
+            this.TextBox_DNS_OFD_Data.Size = new System.Drawing.Size(403, 50);
+            this.TextBox_DNS_OFD_Data.TabIndex = 28;
+            this.TextBox_DNS_OFD_Data.Text = "";
+            this.TextBox_DNS_OFD_Data.TrailingIcon = null;
             // 
-            // textBox4
+            // TextBox_TCP_OFD_Data
             // 
-            this.textBox4.AnimateReadOnly = false;
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Depth = 0;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.textBox4.LeadingIcon = null;
-            this.textBox4.Location = new System.Drawing.Point(199, 270);
-            this.textBox4.MaxLength = 50;
-            this.textBox4.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox4.Multiline = false;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(403, 50);
-            this.textBox4.TabIndex = 27;
-            this.textBox4.Text = "";
-            this.textBox4.TrailingIcon = null;
+            this.TextBox_TCP_OFD_Data.AnimateReadOnly = false;
+            this.TextBox_TCP_OFD_Data.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TextBox_TCP_OFD_Data.Depth = 0;
+            this.TextBox_TCP_OFD_Data.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TextBox_TCP_OFD_Data.LeadingIcon = null;
+            this.TextBox_TCP_OFD_Data.Location = new System.Drawing.Point(199, 270);
+            this.TextBox_TCP_OFD_Data.MaxLength = 50;
+            this.TextBox_TCP_OFD_Data.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_TCP_OFD_Data.Multiline = false;
+            this.TextBox_TCP_OFD_Data.Name = "TextBox_TCP_OFD_Data";
+            this.TextBox_TCP_OFD_Data.Size = new System.Drawing.Size(403, 50);
+            this.TextBox_TCP_OFD_Data.TabIndex = 27;
+            this.TextBox_TCP_OFD_Data.Text = "";
+            this.TextBox_TCP_OFD_Data.TrailingIcon = null;
             // 
-            // textBox7
+            // TextBox_port_OFD_Data
             // 
-            this.textBox7.AnimateReadOnly = false;
-            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox7.Depth = 0;
-            this.textBox7.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.textBox7.LeadingIcon = null;
-            this.textBox7.Location = new System.Drawing.Point(199, 479);
-            this.textBox7.MaxLength = 50;
-            this.textBox7.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox7.Multiline = false;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(403, 50);
-            this.textBox7.TabIndex = 30;
-            this.textBox7.Text = "";
-            this.textBox7.TrailingIcon = null;
+            this.TextBox_port_OFD_Data.AnimateReadOnly = false;
+            this.TextBox_port_OFD_Data.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TextBox_port_OFD_Data.Depth = 0;
+            this.TextBox_port_OFD_Data.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TextBox_port_OFD_Data.LeadingIcon = null;
+            this.TextBox_port_OFD_Data.Location = new System.Drawing.Point(199, 479);
+            this.TextBox_port_OFD_Data.MaxLength = 50;
+            this.TextBox_port_OFD_Data.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_port_OFD_Data.Multiline = false;
+            this.TextBox_port_OFD_Data.Name = "TextBox_port_OFD_Data";
+            this.TextBox_port_OFD_Data.Size = new System.Drawing.Size(403, 50);
+            this.TextBox_port_OFD_Data.TabIndex = 30;
+            this.TextBox_port_OFD_Data.Text = "";
+            this.TextBox_port_OFD_Data.TrailingIcon = null;
             // 
-            // textBox6
+            // TextBox_adress2_OFD_Data
             // 
-            this.textBox6.AnimateReadOnly = false;
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Depth = 0;
-            this.textBox6.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.textBox6.LeadingIcon = null;
-            this.textBox6.Location = new System.Drawing.Point(199, 423);
-            this.textBox6.MaxLength = 50;
-            this.textBox6.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox6.Multiline = false;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(403, 50);
-            this.textBox6.TabIndex = 29;
-            this.textBox6.Text = "";
-            this.textBox6.TrailingIcon = null;
+            this.TextBox_adress2_OFD_Data.AnimateReadOnly = false;
+            this.TextBox_adress2_OFD_Data.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TextBox_adress2_OFD_Data.Depth = 0;
+            this.TextBox_adress2_OFD_Data.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TextBox_adress2_OFD_Data.LeadingIcon = null;
+            this.TextBox_adress2_OFD_Data.Location = new System.Drawing.Point(199, 423);
+            this.TextBox_adress2_OFD_Data.MaxLength = 50;
+            this.TextBox_adress2_OFD_Data.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_adress2_OFD_Data.Multiline = false;
+            this.TextBox_adress2_OFD_Data.Name = "TextBox_adress2_OFD_Data";
+            this.TextBox_adress2_OFD_Data.Size = new System.Drawing.Size(403, 50);
+            this.TextBox_adress2_OFD_Data.TabIndex = 29;
+            this.TextBox_adress2_OFD_Data.Text = "";
+            this.TextBox_adress2_OFD_Data.TrailingIcon = null;
             // 
             // materialLabel1
             // 
             this.materialLabel1.AutoSize = true;
             this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Berlin Sans FB", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.ForeColor = System.Drawing.Color.IndianRed;
             this.materialLabel1.Location = new System.Drawing.Point(216, 82);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -294,56 +294,56 @@
             this.materialLabel10.TabIndex = 40;
             this.materialLabel10.Text = "Данные КП ФН";
             // 
-            // textBox10
+            // TextBox_port_FN_Data
             // 
-            this.textBox10.AnimateReadOnly = false;
-            this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox10.Depth = 0;
-            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.textBox10.LeadingIcon = null;
-            this.textBox10.Location = new System.Drawing.Point(199, 681);
-            this.textBox10.MaxLength = 50;
-            this.textBox10.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox10.Multiline = false;
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(403, 50);
-            this.textBox10.TabIndex = 43;
-            this.textBox10.Text = "";
-            this.textBox10.TrailingIcon = null;
+            this.TextBox_port_FN_Data.AnimateReadOnly = false;
+            this.TextBox_port_FN_Data.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TextBox_port_FN_Data.Depth = 0;
+            this.TextBox_port_FN_Data.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TextBox_port_FN_Data.LeadingIcon = null;
+            this.TextBox_port_FN_Data.Location = new System.Drawing.Point(199, 681);
+            this.TextBox_port_FN_Data.MaxLength = 50;
+            this.TextBox_port_FN_Data.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_port_FN_Data.Multiline = false;
+            this.TextBox_port_FN_Data.Name = "TextBox_port_FN_Data";
+            this.TextBox_port_FN_Data.Size = new System.Drawing.Size(403, 50);
+            this.TextBox_port_FN_Data.TabIndex = 43;
+            this.TextBox_port_FN_Data.Text = "";
+            this.TextBox_port_FN_Data.TrailingIcon = null;
             // 
-            // textBox9
+            // TextBox_adress_FN_Data
             // 
-            this.textBox9.AnimateReadOnly = false;
-            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox9.Depth = 0;
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.textBox9.LeadingIcon = null;
-            this.textBox9.Location = new System.Drawing.Point(199, 625);
-            this.textBox9.MaxLength = 50;
-            this.textBox9.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox9.Multiline = false;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(403, 50);
-            this.textBox9.TabIndex = 42;
-            this.textBox9.Text = "";
-            this.textBox9.TrailingIcon = null;
+            this.TextBox_adress_FN_Data.AnimateReadOnly = false;
+            this.TextBox_adress_FN_Data.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TextBox_adress_FN_Data.Depth = 0;
+            this.TextBox_adress_FN_Data.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TextBox_adress_FN_Data.LeadingIcon = null;
+            this.TextBox_adress_FN_Data.Location = new System.Drawing.Point(199, 625);
+            this.TextBox_adress_FN_Data.MaxLength = 50;
+            this.TextBox_adress_FN_Data.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_adress_FN_Data.Multiline = false;
+            this.TextBox_adress_FN_Data.Name = "TextBox_adress_FN_Data";
+            this.TextBox_adress_FN_Data.Size = new System.Drawing.Size(403, 50);
+            this.TextBox_adress_FN_Data.TabIndex = 42;
+            this.TextBox_adress_FN_Data.Text = "";
+            this.TextBox_adress_FN_Data.TrailingIcon = null;
             // 
-            // textBox8
+            // TextBox_Name_FN_Data
             // 
-            this.textBox8.AnimateReadOnly = false;
-            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox8.Depth = 0;
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.textBox8.LeadingIcon = null;
-            this.textBox8.Location = new System.Drawing.Point(199, 571);
-            this.textBox8.MaxLength = 50;
-            this.textBox8.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBox8.Multiline = false;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(403, 50);
-            this.textBox8.TabIndex = 41;
-            this.textBox8.Text = "";
-            this.textBox8.TrailingIcon = null;
+            this.TextBox_Name_FN_Data.AnimateReadOnly = false;
+            this.TextBox_Name_FN_Data.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TextBox_Name_FN_Data.Depth = 0;
+            this.TextBox_Name_FN_Data.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TextBox_Name_FN_Data.LeadingIcon = null;
+            this.TextBox_Name_FN_Data.Location = new System.Drawing.Point(199, 571);
+            this.TextBox_Name_FN_Data.MaxLength = 50;
+            this.TextBox_Name_FN_Data.MouseState = MaterialSkin.MouseState.OUT;
+            this.TextBox_Name_FN_Data.Multiline = false;
+            this.TextBox_Name_FN_Data.Name = "TextBox_Name_FN_Data";
+            this.TextBox_Name_FN_Data.Size = new System.Drawing.Size(403, 50);
+            this.TextBox_Name_FN_Data.TabIndex = 41;
+            this.TextBox_Name_FN_Data.Text = "";
+            this.TextBox_Name_FN_Data.TrailingIcon = null;
             // 
             // materialLabel11
             // 
@@ -415,9 +415,9 @@
             this.Controls.Add(this.materialLabel13);
             this.Controls.Add(this.materialLabel12);
             this.Controls.Add(this.materialLabel11);
-            this.Controls.Add(this.textBox10);
-            this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.textBox8);
+            this.Controls.Add(this.TextBox_port_FN_Data);
+            this.Controls.Add(this.TextBox_adress_FN_Data);
+            this.Controls.Add(this.TextBox_Name_FN_Data);
             this.Controls.Add(this.materialLabel10);
             this.Controls.Add(this.materialLabel9);
             this.Controls.Add(this.materialLabel8);
@@ -428,13 +428,13 @@
             this.Controls.Add(this.materialLabel3);
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.materialLabel1);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TextBox_port_OFD_Data);
+            this.Controls.Add(this.TextBox_adress2_OFD_Data);
+            this.Controls.Add(this.TextBox_DNS_OFD_Data);
+            this.Controls.Add(this.TextBox_TCP_OFD_Data);
+            this.Controls.Add(this.TextBox_IP_OFD_Data);
+            this.Controls.Add(this.TextBox_adress_OFD_Data);
+            this.Controls.Add(this.TextBox_Name_OFD_Data);
             this.Name = "DanReg";
             this.Text = "Данные настройки ОФД";
             this.ResumeLayout(false);
@@ -443,13 +443,13 @@
         }
 
         #endregion
-        private MaterialSkin.Controls.MaterialTextBox textBox1;
-        private MaterialSkin.Controls.MaterialTextBox textBox2;
-        private MaterialSkin.Controls.MaterialTextBox textBox3;
-        private MaterialSkin.Controls.MaterialTextBox textBox5;
-        private MaterialSkin.Controls.MaterialTextBox textBox4;
-        private MaterialSkin.Controls.MaterialTextBox textBox7;
-        private MaterialSkin.Controls.MaterialTextBox textBox6;
+        private MaterialSkin.Controls.MaterialTextBox TextBox_Name_OFD_Data;
+        private MaterialSkin.Controls.MaterialTextBox TextBox_adress_OFD_Data;
+        private MaterialSkin.Controls.MaterialTextBox TextBox_IP_OFD_Data;
+        private MaterialSkin.Controls.MaterialTextBox TextBox_DNS_OFD_Data;
+        private MaterialSkin.Controls.MaterialTextBox TextBox_TCP_OFD_Data;
+        private MaterialSkin.Controls.MaterialTextBox TextBox_port_OFD_Data;
+        private MaterialSkin.Controls.MaterialTextBox TextBox_adress2_OFD_Data;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
@@ -460,9 +460,9 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel8;
         private MaterialSkin.Controls.MaterialLabel materialLabel9;
         private MaterialSkin.Controls.MaterialLabel materialLabel10;
-        private MaterialSkin.Controls.MaterialTextBox textBox10;
-        private MaterialSkin.Controls.MaterialTextBox textBox9;
-        private MaterialSkin.Controls.MaterialTextBox textBox8;
+        private MaterialSkin.Controls.MaterialTextBox TextBox_port_FN_Data;
+        private MaterialSkin.Controls.MaterialTextBox TextBox_adress_FN_Data;
+        private MaterialSkin.Controls.MaterialTextBox TextBox_Name_FN_Data;
         private MaterialSkin.Controls.MaterialLabel materialLabel11;
         private MaterialSkin.Controls.MaterialLabel materialLabel12;
         private MaterialSkin.Controls.MaterialLabel materialLabel13;
