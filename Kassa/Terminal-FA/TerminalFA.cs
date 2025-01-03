@@ -192,7 +192,6 @@ namespace KitCashProtocol
         {
             byte[] command = CommandGenerator.GetCommand(Command.GET_ZN);
             Port.Write(command, 0, command.Length);
-            MaterialMessageBox.Show("Запрос: " + BitConverter.ToString(command));
             byte[] response = ReadResponse();
             if (response != null)
             {
@@ -225,20 +224,12 @@ namespace KitCashProtocol
         }
         public string GetDATATIME()
         {
-            // Определяем TAG 0x73 для команды GET_DATATIME
-            byte tag = 0x73;
-            byte length = 0;  // Нет входных параметров
-
-            // Сформируем команду TLV (1 байт для TAG + 1 байт для LEN)
-            byte[] command = new byte[1 + 1];
-            command[0] = tag;
-            command[1] = length;
+            byte[] command = CommandGenerator.GetCommand(Command.GET_DATATIME);
 
             // Отправляем команду
             try
             {
                 Port.Write(command, 0, command.Length);
-                MaterialMessageBox.Show("Запрос: " + BitConverter.ToString(command));
             }
             catch (Exception ex)
             {
@@ -247,29 +238,49 @@ namespace KitCashProtocol
                 return string.Empty;
             }
 
-            // Читаем ответ
             byte[] response = ReadResponse();
-            MaterialMessageBox.Show("Ответ: " + BitConverter.ToString(response));
-            if (response != null && response.Length >= 7) // 1 байт TAG + 1 байт LEN + 5 байт для DATETIME
-            {
-                // Проверяем первый байт (TAG) для правильности
-                int tagResponse = response[0] << 8 | response[1]; // Переводим два байта в одно целое значение
-                if (tagResponse == 30000) // Проверьте тег, который соответствует 30000
-                {
-                    // Проверяем длину
-                    byte lengthResponse = response[2];
-                    if (lengthResponse == 5)
-                    {
-                        // Извлекаем значение даты/времени (начиная с 3-го байта)
-                        byte[] dateTimeBytes = new byte[5];
-                        Array.Copy(response, 3, dateTimeBytes, 0, 5);
 
-                        // Здесь можно преобразовать byte[] в строку или в нужный вам формат
-                        // Например, преобразуем в строку, если даты/времена хранятся в определенном формате
-                        // Исходный вид преобразования зависит от того, как представлены данные.
-                        return BitConverter.ToString(dateTimeBytes); // Пример: Конвертируем в строку
+            if (response != null && response.Length >= 7) // Проверка длины ответа
+            {
+
+                // Проверяем длину
+                byte lengthResponse = response[3];
+                if (lengthResponse == 5)
+                {
+                    // Извлекаем значение даты/времени (начиная с 3-го байта)
+                    byte year = response[5]; // Предполагаем, что год представлен как 00-99
+                    byte month = response[6];
+                    byte day = response[7];
+                    byte hour = response[8];
+                    byte minute = response[9];
+
+                    // Создаем объект DateTime
+                    DateTime dateTime;
+                    dateTime = new DateTime(year, month, day, hour, minute, 0);
+                    try
+                    {
+                        dateTime = new DateTime(year+2000, month, day, hour, minute, 0);
+
+                        // Преобразуем DateTime в строку с нужным форматом
+                        string dateTimeString = dateTime.ToString("dd.MM.yyyy HH:mm");
+                        MaterialMessageBox.Show("Дата и время: " + dateTimeString);
+
+                        return dateTimeString; // Возвращаем строку с датой и временем
+                    }
+                    catch (ArgumentOutOfRangeException ex)
+                    {
+                        MaterialMessageBox.Show("Ошибка при создании DateTime: " + ex.Message);
                     }
                 }
+                else
+                {
+                    MaterialMessageBox.Show("Неверная длина данных: " + lengthResponse);
+                }
+
+            }
+            else
+            {
+                MaterialMessageBox.Show("Недопустимый ответ или недостаточная длина: " + (response?.Length ?? 0));
             }
 
             return string.Empty; // Возвращаем пустую строку, если ответ некорректен

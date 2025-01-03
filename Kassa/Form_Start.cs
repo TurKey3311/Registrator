@@ -30,7 +30,6 @@ namespace Kassa
         public string standart_ModelKKT = "Терминал-ФА";
         public string vers_config = "------";
         public string vers_FFD = "------";
-        public string abcd = "------";
 
         public string M_FN;
         public bool otherModelFN = false;
@@ -1038,7 +1037,7 @@ namespace Kassa
                 try
                 {
                     TextBox_ZN_KKT.Text = CashRegister.GetZN(); // запрос ЗН ККТ
-                    //label_datatime.Text = CashRegister.GetDATATIME(); // запрос времени в ККТ
+                    label_datatime.Text = CashRegister.GetDATATIME(); // запрос времени в ККТ
                     try { TextBox_ZN_FN.Text = CashRegister.GetFN(); } // запрос ЗН ФН 
                     catch { MaterialMessageBox.Show("Нет данных об ФН"); }
                     vers_config = CashRegister.GetVersConfig().Replace("rw","");// запрос версии конфигурации
