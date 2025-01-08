@@ -32,6 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Start));
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.materialButton2 = new MaterialSkin.Controls.MaterialButton();
+            this.label_datatime = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel20 = new MaterialSkin.Controls.MaterialLabel();
             this.buttonCopy21 = new System.Windows.Forms.Button();
             this.buttonCopy20 = new System.Windows.Forms.Button();
             this.buttonCopy19 = new System.Windows.Forms.Button();
@@ -116,7 +119,6 @@
             this.TextBox_ZN_KKT = new MaterialSkin.Controls.MaterialTextBox2();
             this.TextBox_Model_KKT = new MaterialSkin.Controls.MaterialTextBox2();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.materialButton1 = new MaterialSkin.Controls.MaterialButton();
             this.switch_open_KKT2 = new MaterialSkin.Controls.MaterialSwitch();
             this.butCleare2 = new MaterialSkin.Controls.MaterialButton();
             this.TextBox_ID_client2 = new MaterialSkin.Controls.MaterialTextBox2();
@@ -181,8 +183,6 @@
             this.materialCheckbox5 = new MaterialSkin.Controls.MaterialCheckbox();
             this.materialCheckbox6 = new MaterialSkin.Controls.MaterialCheckbox();
             this.materialCheckbox7 = new MaterialSkin.Controls.MaterialCheckbox();
-            this.label_datatime = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel20 = new MaterialSkin.Controls.MaterialLabel();
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -211,6 +211,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage1.Controls.Add(this.materialButton2);
             this.tabPage1.Controls.Add(this.label_datatime);
             this.tabPage1.Controls.Add(this.materialLabel20);
             this.tabPage1.Controls.Add(this.buttonCopy21);
@@ -303,6 +304,54 @@
             this.tabPage1.Size = new System.Drawing.Size(1818, 990);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Регистрация ККТ";
+            // 
+            // materialButton2
+            // 
+            this.materialButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton2.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton2.Depth = 0;
+            this.materialButton2.HighEmphasis = true;
+            this.materialButton2.Icon = null;
+            this.materialButton2.Location = new System.Drawing.Point(14, 558);
+            this.materialButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton2.Name = "materialButton2";
+            this.materialButton2.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton2.Size = new System.Drawing.Size(167, 36);
+            this.materialButton2.TabIndex = 162;
+            this.materialButton2.Text = "Ввести время с ПК";
+            this.materialButton2.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton2.UseAccentColor = false;
+            this.materialButton2.UseVisualStyleBackColor = true;
+            this.materialButton2.Click += new System.EventHandler(this.materialButton2_Click_1);
+            // 
+            // label_datatime
+            // 
+            this.label_datatime.AutoSize = true;
+            this.label_datatime.Depth = 0;
+            this.label_datatime.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.label_datatime.FontType = MaterialSkin.MaterialSkinManager.fontType.Button;
+            this.label_datatime.HighEmphasis = true;
+            this.label_datatime.Location = new System.Drawing.Point(116, 526);
+            this.label_datatime.MouseState = MaterialSkin.MouseState.HOVER;
+            this.label_datatime.Name = "label_datatime";
+            this.label_datatime.Size = new System.Drawing.Size(21, 17);
+            this.label_datatime.TabIndex = 161;
+            this.label_datatime.Text = "----";
+            // 
+            // materialLabel20
+            // 
+            this.materialLabel20.AutoSize = true;
+            this.materialLabel20.Depth = 0;
+            this.materialLabel20.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel20.FontType = MaterialSkin.MaterialSkinManager.fontType.Button;
+            this.materialLabel20.HighEmphasis = true;
+            this.materialLabel20.Location = new System.Drawing.Point(14, 526);
+            this.materialLabel20.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel20.Name = "materialLabel20";
+            this.materialLabel20.Size = new System.Drawing.Size(90, 17);
+            this.materialLabel20.TabIndex = 160;
+            this.materialLabel20.Text = "Время в ККТ:";
             // 
             // buttonCopy21
             // 
@@ -1953,7 +2002,6 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.materialButton1);
             this.tabPage2.Controls.Add(this.switch_open_KKT2);
             this.tabPage2.Controls.Add(this.butCleare2);
             this.tabPage2.Controls.Add(this.TextBox_ID_client2);
@@ -1984,25 +2032,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Акт ввода";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // materialButton1
-            // 
-            this.materialButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton1.Depth = 0;
-            this.materialButton1.HighEmphasis = true;
-            this.materialButton1.Icon = null;
-            this.materialButton1.Location = new System.Drawing.Point(434, 119);
-            this.materialButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton1.Name = "materialButton1";
-            this.materialButton1.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton1.Size = new System.Drawing.Size(64, 36);
-            this.materialButton1.TabIndex = 134;
-            this.materialButton1.Text = "...";
-            this.materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton1.UseAccentColor = false;
-            this.materialButton1.UseVisualStyleBackColor = true;
             // 
             // switch_open_KKT2
             // 
@@ -3499,34 +3528,6 @@
             this.materialCheckbox7.Text = "УСН Доход";
             this.materialCheckbox7.UseVisualStyleBackColor = true;
             // 
-            // label_datatime
-            // 
-            this.label_datatime.AutoSize = true;
-            this.label_datatime.Depth = 0;
-            this.label_datatime.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.label_datatime.FontType = MaterialSkin.MaterialSkinManager.fontType.Button;
-            this.label_datatime.HighEmphasis = true;
-            this.label_datatime.Location = new System.Drawing.Point(116, 526);
-            this.label_datatime.MouseState = MaterialSkin.MouseState.HOVER;
-            this.label_datatime.Name = "label_datatime";
-            this.label_datatime.Size = new System.Drawing.Size(21, 17);
-            this.label_datatime.TabIndex = 161;
-            this.label_datatime.Text = "----";
-            // 
-            // materialLabel20
-            // 
-            this.materialLabel20.AutoSize = true;
-            this.materialLabel20.Depth = 0;
-            this.materialLabel20.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel20.FontType = MaterialSkin.MaterialSkinManager.fontType.Button;
-            this.materialLabel20.HighEmphasis = true;
-            this.materialLabel20.Location = new System.Drawing.Point(14, 526);
-            this.materialLabel20.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel20.Name = "materialLabel20";
-            this.materialLabel20.Size = new System.Drawing.Size(90, 17);
-            this.materialLabel20.TabIndex = 160;
-            this.materialLabel20.Text = "Время в ККТ:";
-            // 
             // Form_Start
             // 
             this.ClientSize = new System.Drawing.Size(1829, 1100);
@@ -3684,7 +3685,6 @@
         private MaterialSkin.Controls.MaterialLabel label_vers_FFD;
         private MaterialSkin.Controls.MaterialLabel materialLabel17;
         private MaterialSkin.Controls.MaterialSwitch Switch_Print_Akt;
-        private MaterialSkin.Controls.MaterialButton materialButton1;
         private System.Windows.Forms.Button buttonCopy1;
         private System.Windows.Forms.Button buttonCopy17;
         private System.Windows.Forms.Button buttonCopy16;
@@ -3708,6 +3708,7 @@
         private System.Windows.Forms.Button buttonCopy18;
         private MaterialSkin.Controls.MaterialLabel label_datatime;
         private MaterialSkin.Controls.MaterialLabel materialLabel20;
+        private MaterialSkin.Controls.MaterialButton materialButton2;
     }
 }
 

@@ -192,6 +192,7 @@ namespace KitCashProtocol
         {
             byte[] command = CommandGenerator.GetCommand(Command.GET_ZN);
             Port.Write(command, 0, command.Length);
+            //MaterialMessageBox.Show("ЗН ККТ команда " + BitConverter.ToString(command)); // проверка команды
             byte[] response = ReadResponse();
             if (response != null)
             {
@@ -209,6 +210,7 @@ namespace KitCashProtocol
         {
             byte[] command = CommandGenerator.GetCommand(Command.GET_FN);
             Port.Write(command, 0, command.Length);
+            //MaterialMessageBox.Show("ЗН ФН команда " + BitConverter.ToString(command)); // проверка команды
             byte[] response = ReadResponse();
             if (response != null)
             {
@@ -230,6 +232,7 @@ namespace KitCashProtocol
             try
             {
                 Port.Write(command, 0, command.Length);
+                //MaterialMessageBox.Show("Время и дата команда" + BitConverter.ToString(command)); // проверка команды
             }
             catch (Exception ex)
             {
@@ -239,7 +242,7 @@ namespace KitCashProtocol
             }
 
             byte[] response = ReadResponse();
-
+            //MaterialMessageBox.Show("Время и дата ответ" + BitConverter.ToString(response)); // проверка команды
             if (response != null && response.Length >= 7) // Проверка длины ответа
             {
 
@@ -263,7 +266,7 @@ namespace KitCashProtocol
 
                         // Преобразуем DateTime в строку с нужным форматом
                         string dateTimeString = dateTime.ToString("dd.MM.yyyy HH:mm");
-                        MaterialMessageBox.Show("Дата и время: " + dateTimeString);
+                        //MaterialMessageBox.Show("Дата и время: " + dateTimeString);
 
                         return dateTimeString; // Возвращаем строку с датой и временем
                     }
@@ -285,6 +288,30 @@ namespace KitCashProtocol
 
             return string.Empty; // Возвращаем пустую строку, если ответ некорректен
         }
+        public void InputDATATIME()
+        {
+            try {
+                DateTime now = DateTime.Now;
+                byte[] data = { 48, 117, 5, 0, 25, 1, 1, 12, 00 };
+                // Обновляем значения в массиве
+                int year = now.Year - 2000;
+                data[4] = (byte)year;   // Год
+                data[5] = (byte)now.Month;  // Месяц
+                data[6] = (byte)now.Day;    // День
+                data[7] = (byte)now.Hour;   // Час
+                data[8] = (byte)now.Minute;  // Минута
+
+                byte[] command = CommandGenerator.GetCommand(Command.Input_DATATIME, data);
+                Port.Write(command, 0, command.Length);
+                //MaterialMessageBox.Show("Команда " + BitConverter.ToString(command)); // проверка команды
+
+                MaterialMessageBox.Show("Время в ККТ и в ПК синхронизированы"); // проверка команды
+                }
+            catch (ArgumentOutOfRangeException ex) { MaterialMessageBox.Show("Не удалось ввести время. ОшибКа:" + ex.Message); }
+
+
+
+            }
         public string GetVersConfig()
         {
             byte[] command = CommandGenerator.GetCommand(Command.GET_VERS_CONFIG);

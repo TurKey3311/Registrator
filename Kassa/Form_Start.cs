@@ -11,6 +11,7 @@ using System.IO.Compression;
 using System.Configuration;
 using System.Data.SQLite;
 using System.IO.Ports;
+using System.Net.NetworkInformation;
 
 
 
@@ -1028,6 +1029,7 @@ namespace Kassa
         
         private void butReaddata_Click(object sender, EventArgs e) //кнопка Считать данные
         {
+            string dataTime_KKT = "01.01.2000 00:00";
             bool result_open = false;
             if (switch_open_KKT1.Checked == false) 
             {
@@ -1037,14 +1039,30 @@ namespace Kassa
                 try
                 {
                     TextBox_ZN_KKT.Text = CashRegister.GetZN(); // запрос ЗН ККТ
-                    label_datatime.Text = CashRegister.GetDATATIME(); // запрос времени в ККТ
                     try { TextBox_ZN_FN.Text = CashRegister.GetFN(); } // запрос ЗН ФН 
                     catch { MaterialMessageBox.Show("Нет данных об ФН"); }
+                    dataTime_KKT = CashRegister.GetDATATIME(); // запрос времени в ККТ
+                    label_datatime.Text = dataTime_KKT;
                     vers_config = CashRegister.GetVersConfig().Replace("rw","");// запрос версии конфигурации
                     if (vers_config.Substring(4,1) == "4" || vers_config.Substring(4, 2) == "54") {vers_FFD = "1.2";}
                     else { vers_FFD = "1.05"; }
                 }
                 catch { MaterialMessageBox.Show("Не удалось считать данные с ККТ"); }
+
+                DateTime dateTime;
+                DateTime.TryParseExact(dataTime_KKT, "dd.MM.yyyy HH:mm", null, System.Globalization.DateTimeStyles.None, out dateTime);
+                // Получаем текущее время на ПК
+                DateTime dateTime_PK = DateTime.Now;
+
+                // Сравниваем разницу во времени
+                TimeSpan difference = dateTime_PK - dateTime;
+
+                // Проверяем, превышает ли разница 5 минут
+                if (Math.Abs(difference.TotalMinutes) > 5)
+                {
+                    MaterialMessageBox.Show("Разница во времени на ККТ и в ПК более 5 минут. Введите корректное время в ККТ");
+                }
+
 
                 label_vers_config.Text = vers_config;
                 label_vers_FFD.Text = vers_FFD;
@@ -2766,6 +2784,10 @@ namespace Kassa
             label_save_status.Text = "";
             label_image_save_status.Text = "";
 
+            label_vers_FFD.Text = "----";
+            label_vers_config.Text = "----";
+            label_datatime.Text = "----";
+
             Checkbox_OSN.Checked = false;
             Checkbox_USN_Dohod.Checked = false;
             Checkbox_USN_Dohod_rashod.Checked = false;
@@ -2945,6 +2967,13 @@ namespace Kassa
         private void buttonCopy21_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(TextBox_FP_FD.Text);
+        }
+
+        private void materialButton2_Click_1(object sender, EventArgs e)
+        {
+            CashRegister.InputDATATIME();
+            DateTime now = DateTime.Now;
+            label_datatime.Text = now.ToString("dd.MM.yyyy HH:mm");
         }
     }
 } 
