@@ -9,6 +9,8 @@ namespace KitCashProtocol
         GET_FN = 0x05,
         Input_DATATIME = 0x72,
         GET_DATATIME = 0x73,
+        GET_PARAMETERS_OFD = 0x77,
+
         GET_VERS_CONFIG = 0x0B,
         GET_FISCAL_STORAGE_STATUS = 0x08,
         BEGIN_OPEN_SESSION = 0x21,

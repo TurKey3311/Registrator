@@ -312,6 +312,71 @@ namespace KitCashProtocol
 
 
             }
+
+        public string GetPARAMETERS_OFD()
+        {
+            byte[] command = CommandGenerator.GetCommand(Command.GET_PARAMETERS_OFD);
+
+            // Отправляем команду
+            try
+            {
+                Port.Write(command, 0, command.Length);
+                //MaterialMessageBox.Show("Время и дата команда" + BitConverter.ToString(command)); // проверка команды
+            }
+            catch (Exception ex)
+            {
+                // Обработка ошибок при отправке
+                MaterialMessageBox.Show("Ошибка отправки команды: " + ex.Message);
+                return string.Empty;
+            }
+
+            byte[] response = ReadResponse();
+            //MaterialMessageBox.Show("Время и дата ответ" + BitConverter.ToString(response)); // проверка команды
+            if (response != null && response.Length >= 7) // Проверка длины ответа
+            {
+
+                // Проверяем длину
+                byte lengthResponse = response[3];
+                if (lengthResponse == 5)
+                {
+                    // Извлекаем значение даты/времени (начиная с 3-го байта)
+                    byte year = response[5]; // Предполагаем, что год представлен как 00-99
+                    byte month = response[6];
+                    byte day = response[7];
+                    byte hour = response[8];
+                    byte minute = response[9];
+
+                    // Создаем объект DateTime
+                    DateTime dateTime;
+                    dateTime = new DateTime(year, month, day, hour, minute, 0);
+                    try
+                    {
+                        dateTime = new DateTime(year + 2000, month, day, hour, minute, 0);
+
+                        // Преобразуем DateTime в строку с нужным форматом
+                        string dateTimeString = dateTime.ToString("dd.MM.yyyy HH:mm");
+                        //MaterialMessageBox.Show("Дата и время: " + dateTimeString);
+
+                        return dateTimeString; // Возвращаем строку с датой и временем
+                    }
+                    catch (ArgumentOutOfRangeException ex)
+                    {
+                        MaterialMessageBox.Show("Ошибка при создании DateTime: " + ex.Message);
+                    }
+                }
+                else
+                {
+                    MaterialMessageBox.Show("Неверная длина данных: " + lengthResponse);
+                }
+
+            }
+            else
+            {
+                MaterialMessageBox.Show("Недопустимый ответ или недостаточная длина: " + (response?.Length ?? 0));
+            }
+
+            return string.Empty; // Возвращаем пустую строку, если ответ некорректен
+        }
         public string GetVersConfig()
         {
             byte[] command = CommandGenerator.GetCommand(Command.GET_VERS_CONFIG);

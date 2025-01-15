@@ -731,9 +731,9 @@ namespace Kassa
         }
         private void FP_FD_Leave(object sender, EventArgs e) // ФП ФД
         {
-            if (TextBox_FP_FD.Text.Length != 10 && TextBox_FP_FD.Text.Length != 9 && TextBox_FP_FD.Text.Length != 0)
+            if (TextBox_FP_FD.Text.Length != 10 && TextBox_FP_FD.Text.Length != 9 && TextBox_FP_FD.Text.Length != 8 && TextBox_FP_FD.Text.Length != 0)
             {
-                MaterialMessageBox.Show("Некорректно указан Фискальный признак документа. ФП должен состоять из 10 или 9 символов");
+                MaterialMessageBox.Show("Некорректно указан Фискальный признак документа. ФП должен состоять из 8-10 символов");
             }
             if (TextBox_FP_FD.Text.Length != 0)
             {
@@ -757,7 +757,7 @@ namespace Kassa
             Save_parametrs[23] = false;
             if ((Checkbox_USN_Dohod.Checked == true) && (ComboBox_Model_FN1.Text.Substring(2, 2) == "15"))
             {
-                MaterialMessageBox.Show("Некорретный выбор СНО. С системой налогоообложения УСН можно работать только на ФН 36 месяцев");
+                MaterialMessageBox.Show("Некорретный выбор СНО. С системой налогоообложения УСН можно работать только на ФН 36 месяцев или добавьте работу с подакцизными товарами");
             }
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -767,7 +767,7 @@ namespace Kassa
             Save_parametrs[24] = false;
             if ((Checkbox_USN_Dohod_rashod.Checked == true) && (ComboBox_Model_FN1.Text.Substring(2, 2) == "15"))
             {
-                MaterialMessageBox.Show("Некорретный выбор СНО. С системой налогоообложения УСН можно работать только на ФН 36 месяцев");
+                MaterialMessageBox.Show("Некорретный выбор СНО. С системой налогоообложения УСН можно работать только на ФН 36 месяцев или добавьте работу с подакцизными товарами");
             }
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -777,7 +777,7 @@ namespace Kassa
             Save_parametrs[25] = false;
             if ((Checkbox_Patent.Checked == true) && (ComboBox_Model_FN1.Text.Substring(2, 2) == "15"))
             {
-                MaterialMessageBox.Show("Некорретный выбор СНО. С системой налогоообложения ПАТЕНТ можно работать только на ФН 36 месяцев");
+                MaterialMessageBox.Show("Некорретный выбор СНО. С системой налогоообложения ПАТЕНТ можно работать только на ФН 36 месяцев или добавьте работу с подакцизными товарами");
             }
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -787,7 +787,7 @@ namespace Kassa
             Save_parametrs[26] = false;
             if ((Checkbox_ESHN.Checked == true) && (ComboBox_Model_FN1.Text.Substring(2, 2) == "15"))
             {
-                MaterialMessageBox.Show("Некорретный выбор СНО. С системой налогоообложения ЕСХН можно работать только на ФН 36 месяцев");
+                MaterialMessageBox.Show("Некорретный выбор СНО. С системой налогоообложения ЕСХН можно работать только на ФН 36 месяцев или добавьте работу с подакцизными товарами");
             }
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -1030,7 +1030,7 @@ namespace Kassa
         private void butReaddata_Click(object sender, EventArgs e) //кнопка Считать данные
         {
             string dataTime_KKT = "01.01.2000 00:00";
-            bool result_open = false;
+            bool result_open = switch_open_KKT1.Checked;
             if (switch_open_KKT1.Checked == false) 
             {
                 result_open = open_KKT(!switch_open_KKT1.Checked);
