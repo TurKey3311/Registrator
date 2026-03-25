@@ -10,9 +10,9 @@
 
 **Установка**
 Перейдите по ссылке для скачивания установочного файла:
-https://s3-kassa.komtet.ru/komtetkassa-support/Регистратор/Setup_Registrator_2.1.2.msi
+[Установочный файл Регистратор 2.4.0](https://drive.google.com/file/d/1TGcNtFFLSQZohXAh8NGPJimH3Bwbgd5n/view?usp=drive_link)
 
-Скачайте файл Setup_Registrator_2.1.2.msi
+Скачайте файл Setup_Registrator_2.4.0.msi
 
 Запустите скачанный файл и следуйте инструкциям мастера установки.
 
