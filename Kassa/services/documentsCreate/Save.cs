@@ -49,9 +49,10 @@ namespace Kassa
                 {
                     NameOrganization_save = "Пустой файл";
                 }
+                string saveID = dataKKT.ID;
                 if (dataKKT.ID == "")
                 {
-                    dataKKT.ID = "ID";
+                    saveID = "ID";
                 }
                 string file = settings.AdressFile;
                 FolderBrowserDialog Browserdialog = new FolderBrowserDialog(); //открытие проводника и выбор папки сохраннения
@@ -75,7 +76,7 @@ namespace Kassa
         bool is_down = false;
         for (int i = 0; i < arrayFilePath.Length; i++)  // Если в пути файла встречается папка с названием орагнизации, то заново она не создается
         {
-            if (arrayFilePath[i] == dataKKT.ID + " " + NameOrganization_save)
+            if (arrayFilePath[i] == saveID + " " + NameOrganization_save)
             {
                 is_down = true;
                 break;
@@ -83,11 +84,11 @@ namespace Kassa
         }
         if (!is_down)
         {
-            file += "\\" + dataKKT.ID + " " + NameOrganization_save;
+            file += "\\" + saveID + " " + NameOrganization_save;
             Directory.CreateDirectory(file);
         }
     }
-                StreamWriter sw = new StreamWriter(file + "\\" + dataKKT.ID + " " + NameOrganization_save + ".txt");
+                StreamWriter sw = new StreamWriter(file + "\\" + saveID + " " + NameOrganization_save + ".txt");
                 
                 sw.WriteLine("ЗН ККТ #" + dataKKT.ZN_KKT + " #");
                 sw.WriteLine("Модель ККТ #" + dataKKT.ModelKKT + " #");

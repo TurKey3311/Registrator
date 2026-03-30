@@ -27,7 +27,7 @@ namespace Registrator
 
             if (clean_number.Length == 10)
             {
-                formatted_number = "7" + formatted_number.Substring(0);
+                formatted_number = $"+7 ({formatted_number.Substring(0, 3)}) {formatted_number.Substring(3, 3)}-{formatted_number.Substring(6, 2)}-{formatted_number.Substring(8, 2)}";
             }
             else if (clean_number.Length == 11)
             {
@@ -36,6 +36,10 @@ namespace Registrator
                     formatted_number = "7" + formatted_number.Substring(1);
                 }
                 formatted_number = $"+{formatted_number[0]} ({formatted_number.Substring(1, 3)}) {formatted_number.Substring(4, 3)}-{formatted_number.Substring(7, 2)}-{formatted_number.Substring(9, 2)}";
+            }
+            else if (clean_number.Length == 12 && formatted_number[0] == '7')
+            {
+                formatted_number = $"+ ({formatted_number.Substring(0, 3)}) {formatted_number.Substring(3, 3)}-{formatted_number.Substring(6, 2)}-{formatted_number.Substring(8, 2)}";
             }
             else { MaterialMessageBox.Show("Указан некорректный номер телефона"); }
             return formatted_number;

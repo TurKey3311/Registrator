@@ -389,7 +389,6 @@ namespace Kassa
                 TextBox_KPP_organization.Visible = false;
                 buttonCopy10.Visible = false;
                 TextBox_Director_org.Text = TextBox_Name_organization.Text.Substring(Math.Max(0, 3)); // ввод имя руководителя
-                TextBox_Cashier.Text = TextBox_Name_organization.Text.Substring(Math.Max(0, 3));
             }
             else
             {
@@ -417,6 +416,7 @@ namespace Kassa
         }
         private void Director_org_Changet(object sender, EventArgs e) // ФИО Руководителя
         {
+            TextBox_Cashier.Text = TextBox_Director_org.Text;
             Save_parametrs[7] = false;
 
             if (TextBox_Director_org.Text != "")
@@ -1104,8 +1104,7 @@ namespace Kassa
                     string[] dataFileLine = FileLine.Split('#');
                     string v = dataFileLine[dataFileLine.Length - 3].Trim();
                     string vv = dataFileLine[dataFileLine.Length - 2].Trim();
-                    if (dataFileLine[dataFileLine.Length - 3].Trim() == "Версия файла" && dataFileLine[dataFileLine.Length - 2].Trim() == "2.1.4.0")
-                    {
+                    
                         for (int i = 0; i < (dataFileLine.Length - 1); i = i + 2)
                         {
                             string key = dataFileLine[i].Trim();
@@ -1248,46 +1247,6 @@ namespace Kassa
                             }
                         }
                     }
-                    else
-                    {
-                        TextBox_ZN_KKT.Text = dataFileLine[1].Trim();
-                        TextBox_Number_automatic.Text = dataFileLine[5].Trim();
-                        TextBox_Model_KKT.Text = dataFileLine[3].Trim();
-                        TextBox_ZN_FN.Text = dataFileLine[7].Trim();
-                        ComboBox_Model_FN1.Text = dataFileLine[9].Trim();
-                        TextBox_ID_client.Text = dataFileLine[11].Trim();
-                        TextBox_Name_organization.Text = dataFileLine[13].Trim();
-                        TextBox_Director_org.Text = dataFileLine[15].Trim();
-                        TextBox_INN_organization.Text = dataFileLine[17].Trim();
-
-                        if (dataFileLine[19].Trim() == "ОСН") { Checkbox_OSN.Checked = true; } // СНО
-                        if (dataFileLine[20].Trim() == "УСН Доход") { Checkbox_USN_Dohod.Checked = true; }
-                        if (dataFileLine[21].Trim() == "УСН Доход - расход") { Checkbox_USN_Dohod_rashod.Checked = true; }
-                        if (dataFileLine[22].Trim() == "Патент") { Checkbox_Patent.Checked = true; }
-                        if (dataFileLine[23].Trim() == "ЕСХН") { Checkbox_ESHN.Checked = true; }
-                        TextBox_Telephon_number.Text = dataFileLine[25].Trim();
-                        TextBox_Email_organization.Text = dataFileLine[27].Trim();
-                        TextBox_adressSale.Text = dataFileLine[29].Trim();
-                        TextBox_PlaceSale.Text = dataFileLine[31].Trim();
-                        ComboBox_Name_OFD1.Text = dataFileLine[33].Trim();
-                        TextBox_RNM1.Text = dataFileLine[39].Trim();
-                        string dataTime = dataFileLine[41].Trim() + dataFileLine[43].Trim(); //объединение даты и времени
-                        TextBox_Datetime_FD.Text = dataTime;
-                        TextBox_Number_FD.Text = dataFileLine[45].Trim();
-                        TextBox_FP_FD.Text = dataFileLine[47].Trim();
-
-
-                        if (dataFileLine[53].Trim() == "1") { CheckBox_Lotereya.Checked = true; }
-                        if (dataFileLine[55].Trim() == "1") { CheckBox_Azart_play.Checked = true; }
-                        if (dataFileLine[59].Trim() == "1") { CheckBox_Plat_agent.Checked = true; }
-                        if (dataFileLine[63].Trim() == "1") { CheckBox_Internet.Checked = true; }
-                        if (dataFileLine[65].Trim() == "1") { CheckBox_Delivery.Checked = true; }
-                        if (dataFileLine[67].Trim() == "1") { CheckBox_Podakziz.Checked = true; }
-                        if (dataFileLine[69].Trim() == "1") { CheckBox_Mark.Checked = true; }
-                        TextBox_KPP_organization.Text = dataFileLine[71].Trim(); //КПП организации раннее забыл подставить
-                        if (dataFileLine.Length > 71)
-                        { if (dataFileLine[71] == program_version) { } }
-                    }
 
                     TextBox_RNM1.Enabled = true;
                     TextBox_Number_FD.Enabled = true;
@@ -1302,7 +1261,7 @@ namespace Kassa
                     label_image_save_status.Text = "🗸";
                 }
             }
-        }
+        
         private void butReaddata_Click(object sender, EventArgs e) //кнопка Считать данные
         {
             RegistrationReportKKT dataKKTService = new RegistrationReportKKT();
@@ -1909,7 +1868,7 @@ namespace Kassa
                     
                     string adr_file_save = null;
                     string[] zap_znak = { "\"", "\\", "/", ":", "*", "?", "<", ">", "|", "\"" };
-                    string NameOrganization_save = NameOrganization;
+                    string NameOrganization_save = TextBox_Name_organization.Text;
                     if (NameOrganization != "")
                     {
                         for (int i = 0; i < zap_znak.Length; i++)
@@ -2429,6 +2388,7 @@ namespace Kassa
 
             TextBox_NameOrganization2.Text = dataKKTresult.NameOrganization;
             TextBox_INNOrganization2.Text = dataKKTresult.INNOrganization;
+            ComboBox_Name_OFD2.Text = dataKKTresult.NameOFD;
             TextBox_INN_OFD2.Text = dataKKTresult.INNOFD;
 
             TextBox_Date2.Text = dataKKTresult.DataTimeFD;
@@ -2841,7 +2801,7 @@ namespace Kassa
             TextBox_KPP_organization.Text = null;
             TextBox_Telephon_number.Text = null;
             TextBox_Email_organization.Text = null;
-            TextBox_adressSale.Text = "440000, г.Пенза, ул. Суворова, стр 92";
+            TextBox_adressSale.Text = settings.Adress_registration;
             TextBox_PlaceSale.Text = null;
             ComboBox_Name_OFD1.Text = settings.StandartOFD;
             var repo = new OFDandFN();
