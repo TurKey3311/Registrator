@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using Registrator.repo.models;
+using Registrator.services.common;
+using System.Data;
 
 namespace Registrator.services
 {
@@ -51,7 +53,6 @@ namespace Registrator.services
             string datestring = Convert.ToString(dateNow);
             datestring = datestring.Substring(0, datestring.Length - 8);
 
-            //dataRegistrationKKT.DirectorOrganization.ToUpper();
             string[] directorOrganization_array = dataRegistrationKKT.DirectorOrganization.ToUpper().Split(' ');// Получение ФИО
             // Обработка массива ФИО в зависимости от количества элементов
             if (directorOrganization_array.Length == 2)
@@ -234,7 +235,7 @@ namespace Registrator.services
             XmlText KodNOT = xmlDocument.CreateTextNode("9965"); //«Система обозначений налоговых органов» 
 
 
-            XmlText INNFLT = xmlDocument.CreateTextNode(dataRegistrationKKT.INNOrganization); //поправить 
+            XmlText INNFLT = xmlDocument.CreateTextNode(dataRegistrationKKT.INNOrganization);
             XmlText ImyT = xmlDocument.CreateTextNode(directorOrganization_array[1]);
             XmlText FamiliyaT = xmlDocument.CreateTextNode(directorOrganization_array[0]);
             XmlText OtcestvoT = xmlDocument.CreateTextNode(directorOrganization_array[2]);
@@ -287,17 +288,19 @@ namespace Registrator.services
             XmlText NaimOrgOFDT = xmlDocument.CreateTextNode(dataRegistrationKKT.NameOFD);
             XmlText NaimMUstT = xmlDocument.CreateTextNode(dataRegistrationKKT.PlacePayment);
 
-            XmlText IdNomT = xmlDocument.CreateTextNode("307e942a-83b6-4f99-8a94-9996b5a1b953"); //АдрФИАС 
-            XmlText IndexT = xmlDocument.CreateTextNode("440000");
-            XmlText RegionT = xmlDocument.CreateTextNode("58");
-            XmlText VidKodT = xmlDocument.CreateTextNode("2");
-            XmlText NaimT = xmlDocument.CreateTextNode("город Пенза");
-            XmlText VidT = xmlDocument.CreateTextNode("г");
-            XmlText Naim2T = xmlDocument.CreateTextNode("Пенза");
-            XmlText Naim3T = xmlDocument.CreateTextNode("Суворова");
-            XmlText TipT = xmlDocument.CreateTextNode("ул");
-            XmlText NomerT = xmlDocument.CreateTextNode("92");
-            XmlText Tip2T = xmlDocument.CreateTextNode("стр.");
+            XmlText IdNomT = xmlDocument.CreateTextNode(settings.AdrMU_ID); //АдрФИАС 
+            XmlText IndexT = xmlDocument.CreateTextNode(settings.AdrMU_Index);
+            XmlText RegionT = xmlDocument.CreateTextNode(settings.AdrMU_Region);
+            XmlText VidKodT = xmlDocument.CreateTextNode(settings.AdrMU_MunRay_Code);
+            XmlText NaimT = xmlDocument.CreateTextNode(settings.AdrMU_MunRay_Name);
+            XmlText VidT = xmlDocument.CreateTextNode(settings.AdrMU_NasPunkt_type);
+            XmlText Naim2T = xmlDocument.CreateTextNode(settings.AdrMU_NasPunkt_Name);
+            XmlText TipT = xmlDocument.CreateTextNode(settings.AdrMU_Street_type);
+            XmlText Naim3T = xmlDocument.CreateTextNode(settings.AdrMU_Street_name);
+            XmlText Tip2T = xmlDocument.CreateTextNode(settings.AdrMU_Building_type);
+            XmlText NomerT = xmlDocument.CreateTextNode(settings.AdrMU_Building_number);
+            XmlText TypeBodyT = xmlDocument.CreateTextNode(settings.AdrMU_building_body_type);
+            XmlText NomerBodyT = xmlDocument.CreateTextNode(settings.AdrMU_building_body_number);
 
 
             Imy.AppendChild(ImyT);
@@ -478,7 +481,6 @@ namespace Registrator.services
             Fail.Attributes.Append(IdFail);
             Fail.AppendChild(Document);
 
-            string adr_file_save = null;
             string[] zap_znak = { "\"", "\\", "/", ":", "*", "?", "<", ">", "|", "\"" };
             string NameOrganization_save = dataRegistrationKKT.NameOrganization;
             if (dataRegistrationKKT.NameOrganization != "")
@@ -488,40 +490,25 @@ namespace Registrator.services
                     NameOrganization_save = NameOrganization_save.Replace(zap_znak[i], "");
                 }
             }
+            string fileAdress = Folder.CreateDirectoryNameBase(settings.AdressFile, dataRegistrationKKT.ID, dataRegistrationKKT.NameOrganization);
 
-            FolderBrowserDialog Browserdialog = new FolderBrowserDialog(); //открытие проводника и выбор папки сохраннения
-            Browserdialog.RootFolder = Environment.SpecialFolder.Desktop;
-            Browserdialog.SelectedPath = settings.AdressFile;
-            if (Browserdialog.ShowDialog() == DialogResult.OK)
-            {
-                adr_file_save = Browserdialog.SelectedPath;
-            }
-            else { return false; }
-            Directory.CreateDirectory(adr_file_save + "\\" + ID_file);
-            xmlDocument.Save(adr_file_save + "\\" + ID_file + "\\" + ID_file + ".xml"); //сохранение файла xml
+            Directory.CreateDirectory(fileAdress + "\\" + ID_file);
+            xmlDocument.Save(fileAdress + "\\" + ID_file + "\\" + ID_file + ".xml"); //сохранение файла xml
 
-            string zipFilePath = adr_file_save + "\\" + NameOrganization_save + ".zip";
+            string zipFilePath = fileAdress + "\\" + NameOrganization_save + ".zip";
             string tempZipPath = zipFilePath;
             int counter = 1;
 
-            // Проверяем, существует ли файл, и добавляем индекс, если нужно
-            while (File.Exists(tempZipPath))
+            string zipPath = fileAdress + "\\" + NameOrganization_save + ".zip";
+            // Удаляем существующий файл, если он есть
+            if (File.Exists(zipPath))
             {
-                tempZipPath = Path.Combine(
-                    adr_file_save,
-                    $"{Path.GetFileNameWithoutExtension(NameOrganization_save)} ({counter}).zip"
-                );
-                counter++;
+                File.Delete(zipPath);
             }
-
-            // Создаем ZIP-архив (что упаковываем, куда)
-            ZipFile.CreateFromDirectory(
-                sourceDirectoryName: adr_file_save + "\\" + ID_file,
-                destinationArchiveFileName: tempZipPath
-            ); 
+            ZipFile.CreateFromDirectory(fileAdress + "\\" + ID_file, zipPath); //сохранение zip (что упаковываем, куда)
             if (settings.DeleteXML == true)
             {
-                Directory.Delete(adr_file_save + "\\" + ID_file, true);
+                Directory.Delete(fileAdress + "\\" + ID_file, true);
             }
 
             MaterialMessageBox.Show("Файл XML создан и сохранен", "Сообщение");

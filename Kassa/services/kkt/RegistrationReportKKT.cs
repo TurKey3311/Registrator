@@ -156,8 +156,8 @@ namespace Registrator.services
                                             dataKKT.NameCashier = message;
                                             break;
                                         case 1046:
-                                            message.Replace("<", "\"");
-                                            message.Replace(">", "\"");
+                                            message = message.Replace("<", "«");
+                                            message = message.Replace(">", "»");
                                             dataKKT.NameOFD = message;
                                             break;
                                         case 1117:

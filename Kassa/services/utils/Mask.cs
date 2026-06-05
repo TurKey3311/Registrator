@@ -1,4 +1,5 @@
 ﻿using MaterialSkin.Controls;
+using Registrator.services.utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,67 +8,56 @@ using System.Threading.Tasks;
 
 namespace Registrator
 {
-    class Mask
+    public class Mask
     {
-        public string MaskPhoneNumber_Changet(string phone_number)
+        public Result<string> MaskPhoneNumber(string phone_number)
         {
-            string formatted_number = phone_number.Replace(" ", "");
-            formatted_number = formatted_number.Replace("(", "");
-            formatted_number = formatted_number.Replace(")", "");
-            formatted_number = formatted_number.Replace("-", "");
-            formatted_number = formatted_number.Replace("+", "");
-            if (formatted_number.IndexOf("[") != -1 || formatted_number.IndexOf("]") != -1)
+            if (string.IsNullOrWhiteSpace(phone_number))
             {
-                MaterialMessageBox.Show("Кияс специально попросил сделать проверку на символы '[]' и он их нашел!");
+                return Result<string>.Failure("Номер телефона не может быть пустым");
             }
-            formatted_number = formatted_number.Replace("[", "");
-            formatted_number = formatted_number.Replace("]", "");
 
-            string clean_number = new string(formatted_number.Where(char.IsDigit).ToArray());
+            string clean_number = phone_number.Replace(" ", "")
+                                              .Replace("(", "")
+                                              .Replace(")", "")
+                                              .Replace("-", "")
+                                              .Replace("+", "");
 
-            if (clean_number.Length == 10)
+            // Проверка на символы '[]' с предупреждением
+            if (clean_number.Contains("[") || clean_number.Contains("]"))
             {
-                formatted_number = $"+7 ({formatted_number.Substring(0, 3)}) {formatted_number.Substring(3, 3)}-{formatted_number.Substring(6, 2)}-{formatted_number.Substring(8, 2)}";
+                //MaterialMessageBox.Show("Кияс специально попросил сделать проверку на символы '[]' и он их нашел!");
+                clean_number = clean_number.Replace("[", "").Replace("]", "");
             }
-            else if (clean_number.Length == 11)
-            {
-                if (formatted_number[0] == '8') 
-                {
-                    formatted_number = "7" + formatted_number.Substring(1);
-                }
-                formatted_number = $"+{formatted_number[0]} ({formatted_number.Substring(1, 3)}) {formatted_number.Substring(4, 3)}-{formatted_number.Substring(7, 2)}-{formatted_number.Substring(9, 2)}";
-            }
-            else if (clean_number.Length == 12 && formatted_number[0] == '7')
-            {
-                formatted_number = $"+ ({formatted_number.Substring(0, 3)}) {formatted_number.Substring(3, 3)}-{formatted_number.Substring(6, 2)}-{formatted_number.Substring(8, 2)}";
-            }
-            else { MaterialMessageBox.Show("Указан некорректный номер телефона"); }
-            return formatted_number;
 
+            if (clean_number.Length > 10)
+            {
+                clean_number = clean_number.Remove(0, 1);
+            }
+
+            clean_number = new string(clean_number.Where(char.IsDigit).ToArray());
+
+            if (clean_number.Length != 10)
+            {
+                return Result<string>.Failure($"Неверная длина номера телефона. Ожидается 10 цифр, получено {clean_number.Length}");
+            }
+
+            StringBuilder formatted_number = new StringBuilder("+7(___)___-__-__");
+            for (int i = 0; i < clean_number.Length; i++)
+            {
+                if (i < 3)
+                    formatted_number[i + 3] = clean_number[i];
+                else if (i < 6)
+                    formatted_number[i + 4] = clean_number[i];
+                else if (i < 8)
+                    formatted_number[i + 5] = clean_number[i];
+                else if (i < 10)
+                    formatted_number[i + 6] = clean_number[i];
+            }
+
+            return Result<string>.Success(formatted_number.ToString());
         }
 
-        public string MaskPhoneNumber_Leave(string phone_number)
-        {
-            string formatted_number = phone_number.Replace(" ", "");
-            formatted_number = formatted_number.Replace("(", "");
-            formatted_number = formatted_number.Replace(")", "");
-            formatted_number = formatted_number.Replace("-", "");
-            formatted_number = formatted_number.Replace("+", "");
-
-            if (formatted_number.Length == 10 && (formatted_number[0] != '8' || formatted_number[0] != '7'))
-            {
-                if (formatted_number[0] != '8' || formatted_number[0] != '7') 
-                { 
-                    formatted_number = "7" + formatted_number.Substring(0); 
-                }                    
-            }
-            else
-            {
-                MaterialMessageBox.Show("Указан некорректный номер телефона");
-            }
-            formatted_number = MaskPhoneNumber_Changet(formatted_number);
-            return formatted_number;
-        }
         public void MaskDateTime(string dataTime)
         {
             

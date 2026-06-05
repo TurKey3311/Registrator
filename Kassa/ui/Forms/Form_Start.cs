@@ -18,6 +18,12 @@ using Registrator.services.kkt;
 using Registrator.ui.Forms.CashRegisterForms;
 using Registrator.ui.components;
 using Registrator.models;
+using System.Linq;
+using System.Diagnostics;
+using System.Management;
+using Registrator.services.common;
+using Registrator.services.utils;
+using System.Net.Sockets;
 
 
 
@@ -61,6 +67,7 @@ namespace Kassa
             InitializeComponent();
             InitializeNotification();
 
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
@@ -168,17 +175,8 @@ namespace Kassa
             arrayCheckingFilledFields[18] = true;
         }
 
-        private void OFD_TextChanged(object sender, EventArgs e) // заполнение полей ИНН ОФД и почта отправителя
-        {
-            var repo = new OFDandFN();
-            optionsStandartOFD = repo.GetOptionsOFDByName(ComboBox_Name_OFD1.Text);
-            TextBox_INN_OFD1.Text = optionsStandartOFD.INN;
-            TextBox_Email_OFD1.Text = optionsStandartOFD.Email;
-            Save_parametrs[14] = false;
-        }
-
         // __________________________ Проверки на изменения перед перез закрытием и на правильность ввода данных _____________
-        private void Model_KKT_Changet(object sender, EventArgs e) // Проверка Модели ККТ
+        private void Model_KKT_Changed(object sender, EventArgs e) // Проверка Модели ККТ
         {
             Save_parametrs[0] = false;
             label_save_status.Text = "Требуется сохранение";
@@ -304,7 +302,7 @@ namespace Kassa
             TextBox_ZN_FN.Text = TextBox_ZN_FN.Text.Replace(" ", "");
             if (TextBox_ZN_FN.Text.Length > 7)
             {
-                if (TextBox_ZN_FN.Text.Substring(0, 8) == "73814408") { ComboBox_Model_FN1.Text = null; ComboBox_Model_FN1.SelectedIndex = 0; } // Ин36-4
+                if (TextBox_ZN_FN.Text.Substring(0, 8) == "73814408" || TextBox_ZN_FN.Text.Substring(0, 8) == "73814409") { ComboBox_Model_FN1.Text = null; ComboBox_Model_FN1.SelectedIndex = 0; } // Ин36-4
                 if (TextBox_ZN_FN.Text.Substring(0, 8) == "72804405") { ComboBox_Model_FN1.Text = null; ComboBox_Model_FN1.SelectedIndex = 1; } // Ин36-3
                 if (TextBox_ZN_FN.Text.Substring(0, 8) == "73804408" || TextBox_ZN_FN.Text.Substring(0, 8) == "73804409") { ComboBox_Model_FN1.Text = null; ComboBox_Model_FN1.SelectedIndex = 7; } // Ин15-4
                 if (TextBox_ZN_FN.Text.Substring(0, 8) == "72814407") { ComboBox_Model_FN1.Text = null; ComboBox_Model_FN1.SelectedIndex = 2; } // Ин15-3
@@ -313,6 +311,8 @@ namespace Kassa
                 //if (TextBox_ZN_FN.Text.Substring(0, 8) == "") { ComboBox_Model_FN1.Text = null; ComboBox_Model_FN1.SelectedIndex = "Эв36-3"; }
                 if (TextBox_ZN_FN.Text.Substring(0, 8) == "72844405") { ComboBox_Model_FN1.Text = null; ComboBox_Model_FN1.SelectedIndex = 3; }  // Ав15-3
                 if (TextBox_ZN_FN.Text.Substring(0, 8) == "72854405" || TextBox_ZN_FN.Text.Substring(0, 8) == "72854407") { ComboBox_Model_FN1.Text = null; ComboBox_Model_FN1.SelectedIndex = 4; } // Ав36-3
+
+                ComboBox_Model_FN1.Refresh();
             }
 
 
@@ -538,29 +538,24 @@ namespace Kassa
                 });
             }
         }
-        private void Phone_Changet(object sender, EventArgs e) //автоудаление символом из Номера телефона
-        {
-            if (TextBox_Telephon_number.Text.Length > 0)
-            {
-                if (TextBox_Telephon_number.Text.Length >= 11)
-                {
-                    Mask mask = new Mask();
-                    string formatted_number = mask.MaskPhoneNumber_Changet(TextBox_Telephon_number.Text);
-                    TextBox_Telephon_number.Text = formatted_number;
-                }
-            }
-            Save_parametrs[10] = false;
-            label_save_status.Text = "Требуется сохранение";
-            label_image_save_status.Text = "×";
-        }
         private void Phone_Leave(object sender, EventArgs e) // Маска телефона
         {
             if (TextBox_Telephon_number.Text.Length > 0)
             {
                 Mask mask = new Mask();
-                string formatted_number = mask.MaskPhoneNumber_Leave(TextBox_Telephon_number.Text);
-                TextBox_Telephon_number.Text = formatted_number;
+                var result = mask.MaskPhoneNumber(TextBox_Telephon_number.Text);
+                if (result.IsSuccess)
+                {
+                    TextBox_Telephon_number.Text = result.Value;
+                }
+                else
+                {
+                    MaterialMessageBox.Show(result.ErrorMessage, "Ошибка");
+                }
             }
+            Save_parametrs[10] = false;
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
         }
         private void Email_Changet(object sender, EventArgs e) // Email организации
         {
@@ -674,6 +669,12 @@ namespace Kassa
         }
         private void Name_OFD_Textbox_Changet(object sender, EventArgs e) // ОФД в TextBox
         {
+            var repo = new OFDandFN();
+            optionsStandartOFD = repo.GetOptionsOFDByName(ComboBox_Name_OFD1.Text);
+            TextBox_INN_OFD1.Text = optionsStandartOFD.INN;
+            TextBox_Email_OFD1.Text = optionsStandartOFD.Email;
+            Save_parametrs[14] = false;
+
             Save_parametrs[15] = false;
 
             if (ComboBox_Name_OFD1.Text != "")
@@ -953,28 +954,7 @@ namespace Kassa
         }
         private void SNO_ESHN_Checked(object sender, EventArgs e)
         {
-            Save_parametrs[25] = false;
-            if ((Checkbox_ESHN.Checked == true) && (ComboBox_Model_FN1.Text.Substring(2, 2) == "15"))
-            {
-                MaterialMessageBox.Show("Некорретный выбор СНО. С системой налогоообложения ЕСХН можно работать только на ФН 36 месяцев или добавьте работу с подакцизными товарами", "Ошибка");
-            }
 
-            if (Checkbox_ESHN.Checked == true)
-            {
-                arrayCheckingFilledFields[25] = true;
-            }
-            else
-            {
-                arrayCheckingFilledFields[25] = false;
-            }
-
-            CheckingFilledFields Checked = new CheckingFilledFields();
-            buttonXML.Enabled = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
-            buttonAkt.Enabled = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
-            buttonRegistrationKKT.Enabled = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
-
-            label_save_status.Text = "Требуется сохранение";
-            label_image_save_status.Text = "×";
         }
         // _________________________________________________________ Перечень режимов работы
         private void Podakziz_Checked(object sender, EventArgs e)
@@ -1083,6 +1063,7 @@ namespace Kassa
                 if (result == DialogResult.Yes)
                 {
                     Clear_form();
+                    dataKKT = new DataKKT();
                     local_close = 1;
                 }
             }
@@ -1090,8 +1071,11 @@ namespace Kassa
             {
 
                 string FileLine = "";
+                
                 using (OpenFileDialog ofd = new OpenFileDialog())
                 {
+                    ofd.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+                    ofd.FilterIndex = 1; // По умолчанию выбран фильтр txt файлов
                     if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
                         if (Path.GetExtension(ofd.FileName).ToUpper().ToLower().Equals(".txt", StringComparison.CurrentCultureIgnoreCase))
@@ -1100,11 +1084,14 @@ namespace Kassa
                         }
                     }
                 }
-                if (FileLine.Length > 4) {
-                    string[] dataFileLine = FileLine.Split('#');
-                    string v = dataFileLine[dataFileLine.Length - 3].Trim();
-                    string vv = dataFileLine[dataFileLine.Length - 2].Trim();
-                    
+                if (FileLine.Length > 4)
+                {
+                    try
+                    {
+                        string[] dataFileLine = FileLine.Split('#');
+                        string v = dataFileLine[dataFileLine.Length - 3].Trim();
+                        string vv = dataFileLine[dataFileLine.Length - 2].Trim();
+
                         for (int i = 0; i < (dataFileLine.Length - 1); i = i + 2)
                         {
                             string key = dataFileLine[i].Trim();
@@ -1247,21 +1234,32 @@ namespace Kassa
                             }
                         }
                     }
+                    catch
+                    {
+                        errorSnackbar.ShowErrorSnackbar(this, "Не удалось считать данные или выбран неверный формат файла");
+                        return;
+                    }
+                }
 
-                    TextBox_RNM1.Enabled = true;
+                else
+                {
+                    errorSnackbar.ShowErrorSnackbar(this, "Не удалось считать данные или выбран неверный формат файла");
+                    return;
+                }
+
+                TextBox_RNM1.Enabled = true;
                     TextBox_Number_FD.Enabled = true;
                     TextBox_Datetime_FD.Enabled = true;
                     TextBox_FP_FD.Enabled = true;
 
-                    for (int i = 0; i < Save_parametrs.Length; i++) // Массив проверки сохранения
-                    {
-                        Save_parametrs[i] = true;
-                    }
-                    label_save_status.Text = "Сохранено";
-                    label_image_save_status.Text = "🗸";
+                for (int i = 0; i < Save_parametrs.Length; i++) // Массив проверки сохранения
+                {
+                    Save_parametrs[i] = true;
                 }
+                label_save_status.Text = "Сохранено";
+                label_image_save_status.Text = "🗸";
             }
-        
+        }
         private void butReaddata_Click(object sender, EventArgs e) //кнопка Считать данные
         {
             RegistrationReportKKT dataKKTService = new RegistrationReportKKT();
@@ -1327,7 +1325,8 @@ namespace Kassa
                     TextBox_adressSale.Text = dataKKT.AddressPayment;
                     TextBox_PlaceSale.Text = dataKKT.PlacePayment;
                     TextBox_Cashier.Text = dataKKT.NameCashier;
-                    ComboBox_Name_OFD1.Text = dataKKT.NameOFD;
+                    ComboBox_Name_OFD1.SelectedItem = dataKKT.NameOFD;
+                    ComboBox_Name_OFD1.Refresh();
                     TextBox_Email_OFD1.Text = dataKKT.EmailOFD;
                 }
 
@@ -1384,7 +1383,7 @@ namespace Kassa
             if (result == DialogResult.Yes)
             {
                 Clear_form();
-                dataKKT = null;
+                dataKKT = new DataKKT();
             }
         }
         private void buttonXML_Click(object sender, EventArgs e) // кнопка Файл регистрации
@@ -1397,6 +1396,7 @@ namespace Kassa
                 string N_FN = TextBox_ZN_FN.Text;
                 string M_FN = ComboBox_Model_FN1.Text.Replace(" ", "");
                 string NameOrganization = TextBox_Name_organization.Text;
+                string IDclient = TextBox_ID_client.Text;  
 
                 string[] n = NameOrganization.Split(' ');
                 string NOrganization = n[0];
@@ -1594,11 +1594,7 @@ namespace Kassa
                 {
                     KPP_Organization = "";
                 }
-
-
-
                 string ID_file = "KO_ZVLREGKKT_5018_5018_" + INN_Organization + KPP_Organization + "_" + dd[2] + dd[1] + dd[0] + "_" + rand;
-
 
                 if (fio.Length == 2 || fio.Length == 3)
                 {
@@ -1876,19 +1872,21 @@ namespace Kassa
                             NameOrganization_save = NameOrganization_save.Replace(zap_znak[i], "");
                         }
                     }
-
-                    FolderBrowserDialog Browserdialog = new FolderBrowserDialog(); //открытие проводника и выбор папки сохраннения
-                    Browserdialog.RootFolder = Environment.SpecialFolder.Desktop;
-                    Browserdialog.SelectedPath = settings.AdressFile;
-                    if (Browserdialog.ShowDialog() == DialogResult.OK)
+                    if (NameOrganization_save == "")
                     {
-                        adr_file_save = Browserdialog.SelectedPath;
+                        errorSnackbar.ShowErrorSnackbar(this, "Файл не был сохранен. Пустое значение наименования организации.");
                     }
-                    else { return; }
+                    adr_file_save = settings.AdressFile + "\\" + IDclient + " " + NameOrganization_save;
                     Directory.CreateDirectory(adr_file_save + "\\" + ID_file);
                     xmlDocument.Save(adr_file_save + "\\" + ID_file + "\\" + ID_file + ".xml"); //сохранение файла xml
-                    
-                    ZipFile.CreateFromDirectory(adr_file_save + "\\" + ID_file, adr_file_save + "\\" + NameOrganization_save + ".zip"); //сохранение zip (что упаковываем, куда)
+
+                    string zipPath = adr_file_save + "\\" + NameOrganization_save + ".zip";
+                    // Удаляем существующий файл, если он есть
+                    if (File.Exists(zipPath))
+                    {
+                        File.Delete(zipPath);
+                    }
+                    ZipFile.CreateFromDirectory(adr_file_save + "\\" + ID_file, zipPath); //сохранение zip (что упаковываем, куда)
                     if (settings.DeleteXML == true)
                     {
                         Directory.Delete(adr_file_save + "\\" + ID_file, true);
@@ -2259,7 +2257,7 @@ namespace Kassa
             }
             catch (Exception ex)
             {
-                MaterialMessageBox.Show("Ошибка формирования акта", ex.Message);
+                new MaterialSnackBar(ex.Message).Show(this);
             }
             
             
@@ -2317,6 +2315,8 @@ namespace Kassa
             string FileLine = "";
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
+                ofd.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+                ofd.FilterIndex = 1; // По умолчанию выбран фильтр txt файлов
                 if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     if (Path.GetExtension(ofd.FileName).ToUpper().ToLower().Equals(".txt", StringComparison.CurrentCultureIgnoreCase))
@@ -2324,55 +2324,67 @@ namespace Kassa
                         FileLine = System.IO.File.ReadAllText(ofd.FileName);
                     }
                 }
+                else { return; }
 
 
             }
-            string[] dataFileLine = FileLine.Split('#');
-            string v = dataFileLine[dataFileLine.Length - 3].Trim();
-            string vv = dataFileLine[dataFileLine.Length - 2].Trim();
-            for (int i = 0; i < (dataFileLine.Length - 1); i = i + 2)
+            try
             {
-                string key = dataFileLine[i].Trim();
-                string value = dataFileLine[i + 1].Trim();
+                string[] dataFileLine = FileLine.Split('#');
+                string v = dataFileLine[dataFileLine.Length - 3].Trim();
+                string vv = dataFileLine[dataFileLine.Length - 2].Trim();
 
-                switch (key)
+                for (int i = 0; i < (dataFileLine.Length - 1); i = i + 2)
                 {
-                    case "ЗН ККТ":
-                        TextBox_ZN_KKT2.Text = value;
-                        break;
-                    case "Модель ККТ":
-                        TextBox_Model_KKT2.Text = value;
-                        break;
-                    case "Номер ФН":
-                        TextBox_ZN_FN2.Text = value;
-                        break;
-                    case "ID клиента":
-                        TextBox_ID_client2.Text = value;
-                        break;
-                    case "Наименование организации":
-                        TextBox_NameOrganization2.Text = value;
-                        break;
-                    case "ИНН организации":
-                        TextBox_INNOrganization2.Text = value;
-                        break;
-                    case "ОФД":
-                        ComboBox_Name_OFD2.Text = value;
-                        break;
-                    case "РНМ":
-                        TextBox_RNM2.Text = value;
-                        break;
-                    case "Дата, время":
-                        TextBox_Date2.Text = value;
-                        break;
-                    case "Номер ФД":
-                        TextBox_NumberFD2.Text = value;
-                        break;
-                    case "ФП":
-                        TextBox_FPDocument2.Text = value;
-                        break;
+                    string key = dataFileLine[i].Trim();
+                    string value = dataFileLine[i + 1].Trim();
 
+                    switch (key)
+                    {
+                        case "ЗН ККТ":
+                            TextBox_ZN_KKT2.Text = value;
+                            break;
+                        case "Модель ККТ":
+                            TextBox_Model_KKT2.Text = value;
+                            break;
+                        case "Номер ФН":
+                            TextBox_ZN_FN2.Text = value;
+                            break;
+                        case "ID клиента":
+                            TextBox_ID_client2.Text = value;
+                            break;
+                        case "Наименование организации":
+                            TextBox_NameOrganization2.Text = value;
+                            break;
+                        case "ИНН организации":
+                            TextBox_INNOrganization2.Text = value;
+                            break;
+                        case "ОФД":
+                            ComboBox_Name_OFD2.Text = value;
+                            break;
+                        case "РНМ":
+                            TextBox_RNM2.Text = value;
+                            break;
+                        case "Дата, время":
+                            TextBox_Date2.Text = value;
+                            break;
+                        case "Номер ФД":
+                            TextBox_NumberFD2.Text = value;
+                            break;
+                        case "ФП":
+                            TextBox_FPDocument2.Text = value;
+                            break;
+
+                    }
                 }
             }
+            catch
+            {
+                errorSnackbar.ShowErrorSnackbar(this, "Не удалось считать данные или выбран неверный формат файла");
+                return;
+            }
+            
+            
         }
         private void butReaddata2_Click(object sender, EventArgs e) // Кнопка Считать на второй странице
         {
@@ -2380,20 +2392,30 @@ namespace Kassa
             var result = dataKKTService.ReadingRegistrationReportKKT(statusConnectionKKT, settings, switch_DHCP_KKT1.Checked);
 
             DataKKT dataKKTresult = result.Item1;
+            FNStatusParsed statusFN = result.Item3;
+            TerminalFAStatus status_KKT = result.Item4;
+            if (status_KKT.FNThereis == 1) // если ФН подключен
+            {
+                if (statusFN.Phase == "ФН не зарегистрирован")
+                {
+                    errorSnackbar.ShowErrorSnackbar(this, "ФН не зарегистрирован");
+                    return;
+                }
+                TextBox_RNM2.Text = dataKKTresult.RNM;
+                TextBox_Model_KKT2.Text = "Терминал-ФА";
+                TextBox_ZN_KKT2.Text = dataKKTresult.ZN_KKT;
+                TextBox_ZN_FN2.Text = dataKKTresult.NumberFN;
 
-            TextBox_RNM2.Text = dataKKTresult.RNM;
-            TextBox_Model_KKT2.Text = "Терминал-ФА";
-            TextBox_ZN_KKT2.Text = dataKKTresult.ZN_KKT;
-            TextBox_ZN_FN2.Text = dataKKTresult.NumberFN;
+                TextBox_NameOrganization2.Text = dataKKTresult.NameOrganization;
+                TextBox_INNOrganization2.Text = dataKKTresult.INNOrganization;
+                ComboBox_Name_OFD2.SelectedItem = dataKKTresult.NameOFD;
+                ComboBox_Name_OFD2.Refresh();
+                TextBox_INN_OFD2.Text = dataKKTresult.INNOFD;
 
-            TextBox_NameOrganization2.Text = dataKKTresult.NameOrganization;
-            TextBox_INNOrganization2.Text = dataKKTresult.INNOrganization;
-            ComboBox_Name_OFD2.Text = dataKKTresult.NameOFD;
-            TextBox_INN_OFD2.Text = dataKKTresult.INNOFD;
-
-            TextBox_Date2.Text = dataKKTresult.DataTimeFD;
-            TextBox_NumberFD2.Text = dataKKTresult.NumberFD;
-            TextBox_FPDocument2.Text = dataKKTresult.FP;
+                TextBox_Date2.Text = dataKKTresult.DataTimeFD;
+                TextBox_NumberFD2.Text = dataKKTresult.NumberFD;
+                TextBox_FPDocument2.Text = dataKKTresult.FP;
+            }
 
         }
         private void butCleare2_Click(object sender, EventArgs e) // Кнопка Очистить поля на второй странице
@@ -2403,16 +2425,17 @@ namespace Kassa
             if (result == DialogResult.Yes)
             {
                 TextBox_ZN_KKT2.Text = null;
-                TextBox_Model_KKT2.Text = null;
+                TextBox_Model_KKT2.Text = standart_ModelKKT;
                 TextBox_ZN_FN2.Text = null;
                 TextBox_ID_client2.Text = null;
                 TextBox_NameOrganization2.Text = null;
                 TextBox_INNOrganization2.Text = null;
                 TextBox_RNM2.Text = null;
                 TextBox_Date2.Text = null; 
-                TextBox_NumberFD2.Text = null;
+                TextBox_NumberFD2.Text = "1";
                 TextBox_FPDocument2.Text = null;
-                ComboBox_Name_OFD2.Text = settings.StandartOFD;
+                ComboBox_Name_OFD2.SelectedItem = settings.StandartOFD;
+                ComboBox_Name_OFD2.Refresh();
                 TextBox_INN_OFD2.Text = optionsStandartOFD.INN;
             }
         }
@@ -2639,7 +2662,6 @@ namespace Kassa
             textBoxNameOperator.Text = settings.NameOperator;
             Switch_Del_xml.Checked = settings.DeleteXML;
             Switch_Print_Akt.Checked = settings.PrintAkt;
-            Switch_CreateFolder.Checked = settings.CreateFolder;
             textBoxPortName.Text = settings.PortName;
             textBox_AdrMU_ID.Text = settings.AdrMU_ID;
             textBox_AdrMU_Index.Text = settings.AdrMU_Index;
@@ -2656,7 +2678,7 @@ namespace Kassa
             textBox_AdrMU_building_body_number.Text = settings.AdrMU_building_body_number;
             textBox_AdrMU.Text = settings.Adress_registration;
         }
-        private void materialButton1_Click(object sender, EventArgs e) // Кнопка сохранение
+        private void ButtonSave4_Click(object sender, EventArgs e) // Кнопка сохранение
         {
             DialogResult result = MaterialMessageBox.Show("Уверены что хотите сохранить данные? Отменить действие будет невозможно", "Подтверждение",
                     MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
@@ -2664,7 +2686,6 @@ namespace Kassa
             {
                 settings.DeleteXML = Switch_Del_xml.Checked;
                 settings.PrintAkt = Switch_Print_Akt.Checked;
-                settings.CreateFolder = Switch_CreateFolder.Checked;
                 settings.AdressFile = textBoxAdressFile.Text;
                 if (settings.AdressFile.Length > 0)
                 {
@@ -2688,7 +2709,6 @@ namespace Kassa
                 success &= repo.UpdateParameter("name_operator", textBoxNameOperator.Text);
                 success &= repo.UpdateParameter("del_xml", settings.DeleteXML ? "true" : "false");
                 success &= repo.UpdateParameter("print_akt", settings.PrintAkt ? "true" : "false");
-                success &= repo.UpdateParameter("create_folder", settings.CreateFolder ? "true" : "false");
                 success &= repo.UpdateParameter("port_name", textBoxPortName.Text);
                 success &= repo.UpdateParameter("standart_OFD", ComboBox_Name_OFD4.Text);
                 success &= repo.UpdateParameter("standart_FN", ComboBox_Model_FN4.Text);
@@ -2718,7 +2738,7 @@ namespace Kassa
                 }
             }
         }
-        private void materialButton2_Click(object sender, EventArgs e) //открытие проводника
+        private void ButtonOpenFolder_Click(object sender, EventArgs e) //открытие проводника
         {
             FolderBrowserDialog Browserdialog = new FolderBrowserDialog();
             if (Browserdialog.ShowDialog() == DialogResult.OK)
@@ -2822,7 +2842,7 @@ namespace Kassa
             CheckBox_Podakziz.Checked = false;
         }
 
-        private void buttonCopy1_Click(object sender, EventArgs e)
+        private void buttonCopyModel_KKT_Click(object sender, EventArgs e)
         {
             if (TextBox_Model_KKT.Text != "")
             {
@@ -2836,7 +2856,7 @@ namespace Kassa
             
         }
 
-        private void buttonCopy2_Click(object sender, EventArgs e)
+        private void buttonCopyZN_KKT_Click(object sender, EventArgs e)
         {
             if (TextBox_ZN_KKT.Text != "")
             {
@@ -2849,7 +2869,7 @@ namespace Kassa
             }
         }
 
-        private void buttonCopy3_Click(object sender, EventArgs e)
+        private void buttonCopyNumber_automatic_Click(object sender, EventArgs e)
         {
             if (TextBox_Number_automatic.Text != "")
             {
@@ -2862,7 +2882,7 @@ namespace Kassa
             }
         }
 
-        private void buttonCopy4_Click(object sender, EventArgs e)
+        private void buttonCopyModel_FN1_Click(object sender, EventArgs e)
         {
             if (ComboBox_Model_FN1.Text != "")
             {
@@ -2875,7 +2895,7 @@ namespace Kassa
             }
         }
 
-        private void buttonCopy5_Click(object sender, EventArgs e)
+        private void buttonCopyZN_FN_Click(object sender, EventArgs e)
         {
             if (TextBox_ZN_FN.Text != "")
             {
@@ -2888,7 +2908,7 @@ namespace Kassa
             }
         }
 
-        private void buttonCopy6_Click(object sender, EventArgs e)
+        private void buttonCopyID_client_Click(object sender, EventArgs e)
         {
             if (TextBox_ID_client.Text != "")
             {
@@ -2901,7 +2921,7 @@ namespace Kassa
             }
         }
 
-        private void buttonCopy7_Click(object sender, EventArgs e)
+        private void buttonCopyName_organization_Click(object sender, EventArgs e)
         {
             if (TextBox_Name_organization.Text != "")
             {
@@ -2914,7 +2934,7 @@ namespace Kassa
             }
         }
 
-        private void buttonCopy8_Click(object sender, EventArgs e)
+        private void buttonCopyDirector_org_Click(object sender, EventArgs e)
         {
             if (TextBox_Director_org.Text != "")
             {
@@ -2927,7 +2947,7 @@ namespace Kassa
             }
         }
 
-        private void buttonCopy9_Click(object sender, EventArgs e)
+        private void buttonCopyINN_organization_Click(object sender, EventArgs e)
         {
             if (TextBox_INN_organization.Text != "")
             {
@@ -2940,7 +2960,7 @@ namespace Kassa
             }
         }
 
-        private void buttonCopy10_Click(object sender, EventArgs e)
+        private void buttonCopyKPP_organization_Click(object sender, EventArgs e)
         {
             if (TextBox_KPP_organization.Text != "")
             {
@@ -2953,7 +2973,7 @@ namespace Kassa
             }
         }
 
-        private void buttonCopy11_Click(object sender, EventArgs e)
+        private void buttonCopyTelephon_number_Click(object sender, EventArgs e)
         {
             if (TextBox_Telephon_number.Text != "")
             {
@@ -2966,7 +2986,7 @@ namespace Kassa
             }
         }
 
-        private void buttonCopy12_Click(object sender, EventArgs e)
+        private void buttonCopyEmail_organization_Click(object sender, EventArgs e)
         {
             if (TextBox_Email_organization.Text != "")
             {
@@ -2979,7 +2999,7 @@ namespace Kassa
             }
         }
 
-        private void buttonCopy13_Click(object sender, EventArgs e)
+        private void buttonCopyAdressSale_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(TextBox_adressSale.Text);
             if (TextBox_adressSale.Text != "")
@@ -2993,7 +3013,7 @@ namespace Kassa
             }
         }
 
-        private void buttonCopy14_Click(object sender, EventArgs e)
+        private void buttonCopyPlaceSale_Click(object sender, EventArgs e)
         {
             if (TextBox_PlaceSale.Text != "")
             {
@@ -3008,7 +3028,7 @@ namespace Kassa
 
         // Обработка двойного клика при копировании ОФД
         private DateTime _lastClickTime;
-        private void buttonCopy15_Click(object sender, EventArgs e)
+        private void buttonCopyName_OFD1_Click(object sender, EventArgs e)
         {
             if ((DateTime.Now - _lastClickTime).TotalMilliseconds < 500) // 500 мс
             {
@@ -3025,7 +3045,7 @@ namespace Kassa
             
         }
 
-        private void buttonCopy16_Click(object sender, EventArgs e)
+        private void buttonCopyINN_OFD1_Click(object sender, EventArgs e)
         {
             if (TextBox_INN_OFD1.Text != "")
             {
@@ -3038,7 +3058,7 @@ namespace Kassa
             }
         }
 
-        private void buttonCopy17_Click(object sender, EventArgs e)
+        private void buttonCopyEmail_OFD1_Click(object sender, EventArgs e)
         {
             if (TextBox_Email_OFD1.Text != "")
             {
@@ -3051,7 +3071,7 @@ namespace Kassa
             }
         }
 
-        private void buttonCopy18_Click(object sender, EventArgs e)
+        private void buttonCopyRNM1_Click(object sender, EventArgs e)
         {
             if (TextBox_RNM1.Text != "")
             {
@@ -3064,7 +3084,7 @@ namespace Kassa
             }
         }
 
-        private void buttonCopy19_Click(object sender, EventArgs e)
+        private void buttonCopyNumber_FD_Click(object sender, EventArgs e)
         {
             if (TextBox_Number_FD.Text != "")
             {
@@ -3077,7 +3097,7 @@ namespace Kassa
             }
         }
 
-        private void buttonCopy20_Click(object sender, EventArgs e)
+        private void buttonCopyDatetime_FD_Click(object sender, EventArgs e)
         {
             if (TextBox_Datetime_FD.Text != "")
             {
@@ -3090,7 +3110,7 @@ namespace Kassa
             }
         }
 
-        private void buttonCopy21_Click(object sender, EventArgs e)
+        private void buttonCopyFP_FD_Click(object sender, EventArgs e)
         {
             if (TextBox_FP_FD.Text != "")
             {
@@ -3146,4 +3166,4 @@ namespace Kassa
             CashRegister.Registration_12(dataKKT);
         }
     }
-} 
+}

@@ -98,43 +98,54 @@ namespace Registrator.services
 
         public FNStatusParsed ParseResponseStatusFN () //обработка отчета о состоянии ФН
         {
+            statusConnectionKKT = CashRegistor.OpenConnection(statusConnectionKKT, settings.PortName);
             FNStatus statusFNfromKKT = new FNStatus();
-            statusFNfromKKT = CashRegistor.GetStatusFN();
-
             FNStatusParsed statusFN = new FNStatusParsed();
-            switch (statusFNfromKKT.Phase)
+            try
             {
-                case 0x01:
-                    statusFN.Phase = "ФН не зарегистрирован";
-                    break;
-                case 0x03:
-                    statusFN.Phase = "ФН зарегистрирован";
-                    break;
-                case 0x07:
-                    statusFN.Phase = "ФН закрыт, идет передача в ОФД";
-                    break;
-                case 0x0F:
-                    statusFN.Phase = "ФН закрыт, передача в ОФД заверешена";
-                    break;
-            }
-            if (statusFNfromKKT.Document != 0x00)
-            {
-                statusFN.Document = "открыт";
-            }
-            else
-            {
-                statusFN.Document = "закрыт";
-            }
-            if (statusFNfromKKT.StatusShift != 0x00)
-            {
-                statusFN.StatusShift = "открыта";
-            }
-            else
-            {
-                statusFN.StatusShift = "закрыта";
-            }
+                
+                statusFNfromKKT = CashRegistor.GetStatusFN();
 
-            statusFN.NumberLastDocument = Convert.ToInt32(statusFNfromKKT.NumberLastDocument);
+                
+                switch (statusFNfromKKT.Phase)
+                {
+                    case 0x01:
+                        statusFN.Phase = "ФН не зарегистрирован";
+                        break;
+                    case 0x03:
+                        statusFN.Phase = "ФН зарегистрирован";
+                        break;
+                    case 0x07:
+                        statusFN.Phase = "ФН закрыт, идет передача в ОФД";
+                        break;
+                    case 0x0F:
+                        statusFN.Phase = "ФН закрыт, передача в ОФД заверешена";
+                        break;
+                }
+                if (statusFNfromKKT.Document != 0x00)
+                {
+                    statusFN.Document = "открыт";
+                }
+                else
+                {
+                    statusFN.Document = "закрыт";
+                }
+                if (statusFNfromKKT.StatusShift != 0x00)
+                {
+                    statusFN.StatusShift = "открыта";
+                }
+                else
+                {
+                    statusFN.StatusShift = "закрыта";
+                }
+
+                statusFN.NumberLastDocument = Convert.ToInt32(statusFNfromKKT.NumberLastDocument);
+            }
+            finally
+            {
+                statusConnectionKKT = CashRegistor.CloseConnection(statusConnectionKKT);
+            }
+            
             return statusFN;
         }
     }

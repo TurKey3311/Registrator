@@ -1,4 +1,5 @@
-﻿using MaterialSkin.Controls;
+﻿using Kassa;
+using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -17,6 +18,11 @@ namespace Registrator.ui.components
             snackbar.BackColor = Color.Red;
             snackbar.ForeColor = Color.White;
             snackbar.Show(form);
+        }
+
+        internal void ShowErrorSnackbar(Save save, string v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

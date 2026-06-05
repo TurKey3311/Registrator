@@ -1,12 +1,15 @@
 ﻿using MaterialSkin.Controls;
 using Microsoft.Data.SqlClient;
 using Registrator.repo.models;
+using Registrator.services.common;
+using Registrator.ui.components;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +21,7 @@ namespace Kassa
     class Save
     {
         public SqlConnection sqlConnection = null;
+        ErrorSnackbar errorSnackbar = new ErrorSnackbar();
 
         public void SaveData(DataKKT dataKKT, SettingsProgram settings, Form form)
         {
@@ -27,16 +31,6 @@ namespace Kassa
             
             try
             {
-                string[] zap_znak = { "\"", "\\", "/", ":", "*", "?", "<", ">", "|", "\"" };
-                string NameOrganization_save = dataKKT.NameOrganization;
-                if (dataKKT.NameOrganization != "")
-                {
-                    for (int i = 0; i < zap_znak.Length; i++)
-                    {
-                        NameOrganization_save = NameOrganization_save.Replace(zap_znak[i], "");
-                    }
-                }
-
                 string Manufacturer_FN = "";
                 if (dataKKT.ModelFN != null)
                 {
@@ -45,50 +39,17 @@ namespace Kassa
                         Manufacturer_FN = dataKKT.ModelFN.Substring(0, dataKKT.ModelFN.Length - 4);
                     }
                 }
-                if (NameOrganization_save == "")
-                {
-                    NameOrganization_save = "Пустой файл";
-                }
-                string saveID = dataKKT.ID;
                 if (dataKKT.ID == "")
                 {
-                    saveID = "ID";
+                    dataKKT.ID = "ID";
                 }
-                string file = settings.AdressFile;
-                FolderBrowserDialog Browserdialog = new FolderBrowserDialog(); //открытие проводника и выбор папки сохраннения
-                Browserdialog.RootFolder = Environment.SpecialFolder.Desktop;
-                Browserdialog.SelectedPath = settings.AdressFile;
-                DialogResult result = Browserdialog.ShowDialog();
-
-                if (result == DialogResult.OK)
+                if (dataKKT.NameOrganization == "")
                 {
-                    file = Browserdialog.SelectedPath;
+                    dataKKT.NameOrganization = "Пустое название";
                 }
-                else if (result == DialogResult.Cancel)
-                {
-                    new MaterialSnackBar("Отмена сохранения").Show(form);
-                    return;
-                }
-                if (settings.CreateFolder == true)
-    {
-        //Создание папки
-        string[] arrayFilePath = file.Split('\\'); // Делим полный путь на участки через \
-        bool is_down = false;
-        for (int i = 0; i < arrayFilePath.Length; i++)  // Если в пути файла встречается папка с названием орагнизации, то заново она не создается
-        {
-            if (arrayFilePath[i] == saveID + " " + NameOrganization_save)
-            {
-                is_down = true;
-                break;
-            }
-        }
-        if (!is_down)
-        {
-            file += "\\" + saveID + " " + NameOrganization_save;
-            Directory.CreateDirectory(file);
-        }
-    }
-                StreamWriter sw = new StreamWriter(file + "\\" + saveID + " " + NameOrganization_save + ".txt");
+                string fileAdress = Folder.CreateDirectoryNameBase(settings.AdressFile, dataKKT.ID, dataKKT.NameOrganization);
+                string fileName = Folder.CreateFileName(dataKKT.ID, dataKKT.NameOrganization);
+                StreamWriter sw = new StreamWriter(fileAdress + "\\" + fileName + ".txt");
                 
                 sw.WriteLine("ЗН ККТ #" + dataKKT.ZN_KKT + " #");
                 sw.WriteLine("Модель ККТ #" + dataKKT.ModelKKT + " #");
@@ -139,15 +100,9 @@ namespace Kassa
                 new MaterialSnackBar("Файл сохранен").Show(form);
                 return;
             }
-            catch (Exception ex)
+            catch
             {
-                MaterialMessageBox.Show(
-        "Ошибка при формировании файла TXT: " + ex,
-        "Ошибка");
-            }
-            finally
-            {
-
+                errorSnackbar.ShowErrorSnackbar(form, "Не удалось сохранить файл");
             }
         }        
     }

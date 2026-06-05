@@ -1,5 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit.4.6.1\build\NUnit.props" Condition="Exists('..\packages\NUnit.4.6.1\build\NUnit.props')" />
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -56,7 +57,12 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <UseRfc2898DeriveBytes>true</UseRfc2898DeriveBytes>
+    <GenerateResourceNeverLockType>true</GenerateResourceNeverLockType>
+  </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="xunit" Version="2.4.2" Condition="'$(Configuration)' == 'Debug'" />
     <Reference Include="Aspose.Words, Version=24.1.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <HintPath>..\packages\Aspose.Words.24.1.0\lib\net461\Aspose.Words.dll</HintPath>
     </Reference>
@@ -121,6 +127,12 @@
     <Reference Include="Microsoft.Office.Tools.Word, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="nunit.framework, Version=4.6.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.4.6.1\lib\net462\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework.legacy, Version=4.6.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.4.6.1\lib\net462\nunit.framework.legacy.dll</HintPath>
+    </Reference>
     <Reference Include="SQLitePCLRaw.batteries_v2, Version=2.1.6.2060, Culture=neutral, PublicKeyToken=8226ea5df37bcae9, processorArchitecture=MSIL">
       <HintPath>..\packages\SQLitePCLRaw.bundle_e_sqlite3.2.1.6\lib\net461\SQLitePCLRaw.batteries_v2.dll</HintPath>
     </Reference>
@@ -134,6 +146,9 @@
     <Reference Include="System.AddIn" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.CodeDom, Version=10.0.0.5, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.CodeDom.10.0.5\lib\net462\System.CodeDom.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -164,6 +179,7 @@
     <Reference Include="System.IO.FileSystem.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.FileSystem.AccessControl.5.0.0\lib\net461\System.IO.FileSystem.AccessControl.dll</HintPath>
     </Reference>
+    <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -220,6 +236,15 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
+    <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.abstractions.2.0.3\lib\net35\xunit.abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.assert, Version=2.9.3.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.assert.2.9.3\lib\netstandard1.1\xunit.assert.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.core, Version=2.9.3.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.extensibility.core.2.9.3\lib\net452\xunit.core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="models\DocumentParsed.cs" />
@@ -229,9 +254,13 @@
     <Compile Include="models\SettingsProgram.cs" />
     <Compile Include="repo\OFDandFN.cs" />
     <Compile Include="repo\SettingsProgram.cs" />
-    <Compile Include="services\common\Delay.cs" />
-    <Compile Include="services\common\CheckingFilledFields.cs" />
-    <Compile Include="services\common\OfdNameExtractor.cs" />
+    <Compile Include="services\utils\Delay.cs" />
+    <Compile Include="services\utils\CheckingFilledFields.cs" />
+    <Compile Include="services\utils\Folder.cs" />
+    <Compile Include="services\utils\OfdNameExtractor.cs" />
+    <Compile Include="services\documentsCreate\CreateAkt.cs" />
+    <Compile Include="services\utils\Result.cs" />
+    <Compile Include="MaskPhoneFormater.cs" />
     <Compile Include="ui\components\ErrorSnackbar.cs" />
     <Compile Include="ui\components\LoadingSpinner.cs">
       <SubType>Component</SubType>
@@ -273,8 +302,7 @@
     <Compile Include="services\kkt\ActivationCode.cs" />
     <Compile Include="services\kkt\NetworkSetting.cs" />
     <Compile Include="services\kkt\Shift.cs" />
-    <Compile Include="services\common\Mask.cs" />
-    <Compile Include="services\documentsCreate\CreateAkt.cs" />
+    <Compile Include="services\utils\Mask.cs" />
     <Compile Include="ui\Forms\OperationsPanel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -295,7 +323,7 @@
     <Compile Include="ui\components\VerticalProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="services\common\OFDParametersManager.cs" />
+    <Compile Include="services\utils\OFDParametersManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -355,6 +383,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="tests\Registrator.Tests.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -391,6 +420,7 @@
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
     <Error Condition="!Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\NUnit.4.6.1\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.4.6.1\build\NUnit.props'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />

@@ -8,16 +8,16 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
+
 namespace Registrator
 {
     public partial class OperationsPanel : MaterialForm
     {
         string VERSION_FFD = "1.2";
         bool statusConnection = false;
-        TerminalFA CashRegistor = new TerminalFA();
         Shift Shift = new Shift();
         ActivationCode ActivationCode = new ActivationCode();
-        TerminalFA CashRegister = new TerminalFA();
+        FNStatusParsed FNStatusParsed = new FNStatusParsed();
 
         private readonly KktResponseParser responseParser;
         private SettingsProgram settings;
@@ -38,6 +38,14 @@ namespace Registrator
 
         private void OperationsPanel_Load(object sender, EventArgs e)
         {
+            KktResponseParser responseParser = new KktResponseParser(statusConnection, settings);
+            FNStatusParsed = responseParser.ParseResponseStatusFN();
+
+            materialLabel5.Text = FNStatusParsed.Phase;
+            materialLabel6.Text = FNStatusParsed.Document;
+            materialLabel7.Text = FNStatusParsed.StatusShift;
+            materialLabel8.Text = FNStatusParsed.NumberLastDocument.ToString();
+
             if (Shift.CheckStatus(statusConnection, settings.PortName) == true)
             {
                 buttonOpenShift.Enabled = false;
@@ -56,7 +64,9 @@ namespace Registrator
             {
                 buttonOpenShift.Enabled = false;
                 buttonCloseShift.Enabled = true;
-                MaterialMessageBox.Show("Смена открыта", "Уведомление");
+                new MaterialSnackBar("Смена открыта").Show(this);
+
+                materialLabel7.Text = "открыта";
             }
         }
 
@@ -66,7 +76,9 @@ namespace Registrator
             {
                 buttonOpenShift.Enabled = true;
                 buttonCloseShift.Enabled = false;
-                MaterialMessageBox.Show("Смена закрыта", "Уведомление");
+                new MaterialSnackBar("Смена закрыта").Show(this);
+
+                materialLabel7.Text = "закрыта";
             }
         }
 
@@ -91,46 +103,57 @@ namespace Registrator
 
         private void buttonDocumentByNumber_Click(object sender, EventArgs e)
         {
-            if (!int.TryParse(textBoxDocumentNumber.Text, out int documentNumber))
+            try
             {
-                MaterialMessageBox.Show("Некорректный номер документа", "Ошибка");
-                return;
-            }
+                if (!int.TryParse(textBoxDocumentNumber.Text, out int documentNumber))
+                {
+                    MaterialMessageBox.Show("Некорректный номер документа", "Ошибка");
+                    return;
+                }
 
-            (bool success, DocumentByNumber document) = responseParser.ParseResponseDocumentByNumber(documentNumber);
-            string documentMessenge =   $"- Тип документа:  {document.Type}\n" +
-                                        $"- Ответ ОФД:      {document.AnswerOFD}\n" +
-                                        $"- Дата/время:     {document.DateTime:dd.MM.yyyy HH:mm}\n" +
-                                        $"- Номер ФД:      {document.Number}\n" +
-                                        $"- Фискальный признак: {document.FiscalSign}";
-            if (!success)
+                (bool success, DocumentByNumber document) = responseParser.ParseResponseDocumentByNumber(documentNumber);
+                string documentMessenge = $"- Тип документа:  {document.Type}\n" +
+                                            $"- Ответ ОФД:      {document.AnswerOFD}\n" +
+                                            $"- Дата/время:     {document.DateTime:dd.MM.yyyy HH:mm}\n" +
+                                            $"- Номер ФД:      {document.Number}\n" +
+                                            $"- Фискальный признак: {document.FiscalSign}";
+                if (!success)
+                {
+                    MaterialMessageBox.Show(documentMessenge, "Ошибка");
+                    return;
+                }
+
+                MaterialMessageBox.Show(documentMessenge, "Информация о документе");
+            }
+            catch (Exception ex) 
             {
-                MaterialMessageBox.Show(documentMessenge, "Ошибка");
-                return;
+                MaterialMessageBox.Show(ex.Message, "Ошибка");
             }
-
-            MaterialMessageBox.Show(documentMessenge, "Информация о документе");
+            
         }
         private void buttonGetRegistrationReportTLV_Click(object sender, EventArgs e)
         {
-            if (textBoxRegistrationReportTLVNumber.Text != "" && Convert.ToInt32(textBoxRegistrationReportTLVNumber.Text) < 100 && Convert.ToInt32(textBoxRegistrationReportTLVNumber.Text) > 0)
+            try
             {
-                int numberRegistrationReport = Convert.ToInt32(textBoxRegistrationReportTLVNumber.Text);
-
-                TerminalFA CashRegister = new TerminalFA();
-                statusConnection = CashRegister.OpenConnection(statusConnection, settings.PortName);
-                if (statusConnection == true)
+                if (textBoxRegistrationReportTLVNumber.Text != "" && Convert.ToInt32(textBoxRegistrationReportTLVNumber.Text) < 100 && Convert.ToInt32(textBoxRegistrationReportTLVNumber.Text) > 0)
                 {
-                    string[,] data = new string[26, 3];
-                    data = CashRegister.GetRegistrationReportTLVNumber(numberRegistrationReport);
-                    if (data != null) { 
-                    string report = "";
+                    int numberRegistrationReport = Convert.ToInt32(textBoxRegistrationReportTLVNumber.Text);
 
-                    for (int i = 0; i < data.GetLength(0); i++)
+                    TerminalFA CashRegister = new TerminalFA();
+                    statusConnection = CashRegister.OpenConnection(statusConnection, settings.PortName);
+                    if (statusConnection == true)
                     {
-                        if (data[i, 0] == "1290")
+                        string[,] data = new string[26, 3];
+                        data = CashRegister.GetRegistrationReportTLVNumber(numberRegistrationReport);
+                        if (data != null)
                         {
-                            var bitDescriptions = new Dictionary<int, string>
+                            string report = "";
+
+                            for (int i = 0; i < data.GetLength(0); i++)
+                            {
+                                if (data[i, 0] == "1290")
+                                {
+                                    var bitDescriptions = new Dictionary<int, string>
                             {
                                 {5, "Интернет"},
                                 {6, "Подакциз"},
@@ -139,37 +162,43 @@ namespace Registrator
                                 {10, "Азартные игры"},
                                 {11, "Лотерея"}
                             };
-                            string cellValue = data[i, 2].ToString();
-                            List<string> signs = new List<string>();
+                                    string cellValue = data[i, 2].ToString();
+                                    List<string> signs = new List<string>();
 
-                            foreach (var pair in bitDescriptions)
-                            {
-                                // Вычисляем позицию с конца: (общая длина - 1 - смещение)
-                                int positionFromEnd = cellValue.Length - 1 - pair.Key;
+                                    foreach (var pair in bitDescriptions)
+                                    {
+                                        // Вычисляем позицию с конца: (общая длина - 1 - смещение)
+                                        int positionFromEnd = cellValue.Length - 1 - pair.Key;
 
-                                // Проверяем, что позиция существует и символ равен '1'
-                                if (positionFromEnd >= 0 && cellValue[positionFromEnd] == '1')
-                                {
-                                    signs.Add(pair.Value);
+                                        // Проверяем, что позиция существует и символ равен '1'
+                                        if (positionFromEnd >= 0 && cellValue[positionFromEnd] == '1')
+                                        {
+                                            signs.Add(pair.Value);
+                                        }
+                                    }
+
+                                    string result = string.Join(", ", signs);
+                                    data[i, 2] = result;
                                 }
-                            }
+                                report += $"{data[i, 0]} | {data[i, 1]} {data[i, 2]}\n";
 
-                            string result = string.Join(", ", signs);
-                            data[i, 2] = result;
+                            }
+                            MaterialMessageBox.Show(report, "Отчет о регистрации номер - " + numberRegistrationReport);
+
                         }
-                        report += $"{data[i, 0]} | {data[i, 1]} {data[i, 2]}\n";  
-                        
                     }
-                    MaterialMessageBox.Show(report, "Отчет о регистрации номер - " + numberRegistrationReport);
-                    
-                    }
+                    statusConnection = CashRegister.CloseConnection(statusConnection);
                 }
-                statusConnection = CashRegister.CloseConnection(statusConnection);
+                else
+                {
+                    MaterialMessageBox.Show("Указан некорректный номер ФД", "Ошибка");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MaterialMessageBox.Show("Указан некорректный номер ФД", "Ошибка");
+                MaterialMessageBox.Show(ex.Message, "Ошибка");
             }
+            
         }
         private void buttonInputTimeKKT_Click(object sender, EventArgs e)
         {
@@ -217,5 +246,6 @@ namespace Registrator
                 }
             }
         }
+
     }
 }

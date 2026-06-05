@@ -39,6 +39,14 @@
             this.textBoxRegistrationReportTLVNumber = new MaterialSkin.Controls.MaterialTextBox2();
             this.buttonGetRegistrationReportTLVNumber = new MaterialSkin.Controls.MaterialButton();
             this.buttonAutoOpenCloseShift = new MaterialSkin.Controls.MaterialButton();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
             this.SuspendLayout();
             // 
             // buttonOpenShift
@@ -317,11 +325,111 @@
             this.buttonAutoOpenCloseShift.UseVisualStyleBackColor = true;
             this.buttonAutoOpenCloseShift.Click += new System.EventHandler(this.buttonAutoOpenCloseShift_Click);
             // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel1.Location = new System.Drawing.Point(285, 271);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(79, 19);
+            this.materialLabel1.TabIndex = 130;
+            this.materialLabel1.Text = "Статус ФН";
+            // 
+            // materialLabel2
+            // 
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel2.Location = new System.Drawing.Point(285, 301);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(138, 19);
+            this.materialLabel2.TabIndex = 131;
+            this.materialLabel2.Text = "Статус документа";
+            // 
+            // materialLabel3
+            // 
+            this.materialLabel3.AutoSize = true;
+            this.materialLabel3.Depth = 0;
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel3.Location = new System.Drawing.Point(285, 332);
+            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel3.Name = "materialLabel3";
+            this.materialLabel3.Size = new System.Drawing.Size(105, 19);
+            this.materialLabel3.TabIndex = 132;
+            this.materialLabel3.Text = "Статус смены";
+            // 
+            // materialLabel4
+            // 
+            this.materialLabel4.AutoSize = true;
+            this.materialLabel4.Depth = 0;
+            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel4.Location = new System.Drawing.Point(285, 365);
+            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel4.Name = "materialLabel4";
+            this.materialLabel4.Size = new System.Drawing.Size(226, 19);
+            this.materialLabel4.TabIndex = 133;
+            this.materialLabel4.Text = "Номер последнего документа";
+            // 
+            // materialLabel5
+            // 
+            this.materialLabel5.AutoSize = true;
+            this.materialLabel5.Depth = 0;
+            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel5.Location = new System.Drawing.Point(526, 269);
+            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel5.Name = "materialLabel5";
+            this.materialLabel5.Size = new System.Drawing.Size(1, 0);
+            this.materialLabel5.TabIndex = 134;
+            // 
+            // materialLabel6
+            // 
+            this.materialLabel6.AutoSize = true;
+            this.materialLabel6.Depth = 0;
+            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel6.Location = new System.Drawing.Point(526, 301);
+            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel6.Name = "materialLabel6";
+            this.materialLabel6.Size = new System.Drawing.Size(1, 0);
+            this.materialLabel6.TabIndex = 135;
+            // 
+            // materialLabel7
+            // 
+            this.materialLabel7.AutoSize = true;
+            this.materialLabel7.Depth = 0;
+            this.materialLabel7.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel7.Location = new System.Drawing.Point(526, 332);
+            this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel7.Name = "materialLabel7";
+            this.materialLabel7.Size = new System.Drawing.Size(1, 0);
+            this.materialLabel7.TabIndex = 136;
+            // 
+            // materialLabel8
+            // 
+            this.materialLabel8.AutoSize = true;
+            this.materialLabel8.Depth = 0;
+            this.materialLabel8.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel8.Location = new System.Drawing.Point(526, 365);
+            this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel8.Name = "materialLabel8";
+            this.materialLabel8.Size = new System.Drawing.Size(1, 0);
+            this.materialLabel8.TabIndex = 137;
+            // 
             // OperationsPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.materialLabel8);
+            this.Controls.Add(this.materialLabel7);
+            this.Controls.Add(this.materialLabel6);
+            this.Controls.Add(this.materialLabel5);
+            this.Controls.Add(this.materialLabel4);
+            this.Controls.Add(this.materialLabel3);
+            this.Controls.Add(this.materialLabel2);
+            this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.buttonAutoOpenCloseShift);
             this.Controls.Add(this.textBoxRegistrationReportTLVNumber);
             this.Controls.Add(this.buttonGetRegistrationReportTLVNumber);
@@ -337,6 +445,7 @@
             this.Text = "Другие операции";
             this.Load += new System.EventHandler(this.OperationsPanel_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -352,5 +461,13 @@
         private MaterialSkin.Controls.MaterialTextBox2 textBoxRegistrationReportTLVNumber;
         private MaterialSkin.Controls.MaterialButton buttonGetRegistrationReportTLVNumber;
         private MaterialSkin.Controls.MaterialButton buttonAutoOpenCloseShift;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private MaterialSkin.Controls.MaterialLabel materialLabel4;
+        private MaterialSkin.Controls.MaterialLabel materialLabel5;
+        private MaterialSkin.Controls.MaterialLabel materialLabel6;
+        private MaterialSkin.Controls.MaterialLabel materialLabel7;
+        private MaterialSkin.Controls.MaterialLabel materialLabel8;
     }
 }
