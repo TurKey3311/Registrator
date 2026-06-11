@@ -838,12 +838,16 @@ namespace KitCashProtocol
                                 break;
                             case 1062:
                                 string binarySNO = "";
-                                int i = 0;
+                                int bitPosition = 0;
                                 foreach (byte b in message)
                                 {
-                                    if (Convert.ToString(b, 2) == "1")
+                                    for (int bit = 0; bit < 8; bit++) // проход по каждому биту байта
                                     {
-                                        binarySNO += Convert.ToString(i);
+                                        if ((b & (1 << bit)) != 0) // проверка установлен ли бит
+                                        {
+                                            binarySNO += Convert.ToString(bitPosition);
+                                        }
+                                        bitPosition++;
                                     }
                                 }
                                 data[9, 0] = Convert.ToString(tag);

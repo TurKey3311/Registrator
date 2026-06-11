@@ -143,7 +143,7 @@ namespace Registrator.services
             }
             finally
             {
-                statusConnectionKKT = CashRegistor.CloseConnection(statusConnectionKKT);
+               
             }
             
             return statusFN;
