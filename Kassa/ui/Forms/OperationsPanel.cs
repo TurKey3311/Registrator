@@ -18,6 +18,8 @@ namespace Registrator
         Shift Shift = new Shift();
         ActivationCode ActivationCode = new ActivationCode();
         FNStatusParsed FNStatusParsed = new FNStatusParsed();
+        TerminalFA CashRegister = new TerminalFA();
+        TerminalFAStatus status_KKT = new TerminalFAStatus();
 
         private readonly KktResponseParser responseParser;
         private SettingsProgram settings;
@@ -38,23 +40,47 @@ namespace Registrator
 
         private void OperationsPanel_Load(object sender, EventArgs e)
         {
-            KktResponseParser responseParser = new KktResponseParser(statusConnection, settings);
-            FNStatusParsed = responseParser.ParseResponseStatusFN();
+            statusConnection = CashRegister.OpenConnection(statusConnection, settings.PortName);
+            status_KKT = CashRegister.GetStatusKKT(); // запрос статуса ККТ
+            statusConnection = CashRegister.CloseConnection(statusConnection);
 
-            materialLabel5.Text = FNStatusParsed.Phase;
-            materialLabel6.Text = FNStatusParsed.Document;
-            materialLabel7.Text = FNStatusParsed.StatusShift;
-            materialLabel8.Text = FNStatusParsed.NumberLastDocument.ToString();
-
-            if (Shift.CheckStatus(statusConnection, settings.PortName) == true)
+            if (status_KKT.FNThereis == 1) // если ФН подключен
             {
-                buttonOpenShift.Enabled = false;
-                buttonCloseShift.Enabled = true;
+                KktResponseParser responseParser = new KktResponseParser(statusConnection, settings);
+                FNStatusParsed = responseParser.ParseResponseStatusFN();
+                materialLabel5.Text = FNStatusParsed.Phase;
+                materialLabel6.Text = FNStatusParsed.Document;
+                materialLabel7.Text = FNStatusParsed.StatusShift;
+                materialLabel8.Text = FNStatusParsed.NumberLastDocument.ToString();
+
+                if (Shift.CheckStatus(statusConnection, settings.PortName) == true)
+                {
+                    buttonOpenShift.Enabled = false;
+                    buttonCloseShift.Enabled = true;
+                    buttonAutoOpenCloseShift.Enabled = true;
+                }
+                else
+                {
+                    buttonOpenShift.Enabled = true;
+                    buttonCloseShift.Enabled = false;
+                    buttonAutoOpenCloseShift.Enabled = false;
+                }
+                buttonDocumentByNumber.Enabled = true;
+                textBoxDocumentNumber.Enabled = true;
+                buttonGetRegistrationReportTLVNumber.Enabled = true;
+                textBoxRegistrationReportTLVNumber.Enabled = true;
             }
             else
             {
-                buttonOpenShift.Enabled = true;
+                materialLabel5.Text = "ФН не подключен";
+                buttonOpenShift.Enabled = false;
                 buttonCloseShift.Enabled = false;
+                buttonAutoOpenCloseShift.Enabled = false;
+                buttonСheckActivationCode.Enabled = false;
+                buttonDocumentByNumber.Enabled = false;
+                textBoxDocumentNumber.Enabled = false;
+                buttonGetRegistrationReportTLVNumber.Enabled = false;
+                textBoxRegistrationReportTLVNumber.Enabled = false;
             }
         }
 

@@ -30,5 +30,6 @@ namespace Registrator.repo.models
         public string AdrMU_building_body_type { get; set; }
         public string AdrMU_building_body_number { get; set; }
         public string Adress_registration { get; set; }
+        public string ConfigKKTCurrentVersion { get; set; }
     }
 }

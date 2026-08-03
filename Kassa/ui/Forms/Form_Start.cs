@@ -24,6 +24,7 @@ using System.Management;
 using Registrator.services.common;
 using Registrator.services.utils;
 using System.Net.Sockets;
+using Microsoft.Office.Interop.Access;
 
 
 
@@ -379,12 +380,12 @@ namespace Kassa
         {
             string[] n = TextBox_Name_organization.Text.Split(' ');
             string NOrganization = n[0];
-            if (NOrganization != "ИП" && NOrganization.Length > 2)
+            if (NOrganization != "ИП" && NOrganization != "ГКФХ" && NOrganization.Length > 2)
             {
                 TextBox_KPP_organization.Visible = true; // открытие поля КПП
                 buttonCopy10.Visible = true;
             }
-            else if (NOrganization == "ИП" && TextBox_Name_organization.Text.Length > 2)
+            else if (NOrganization != "ИП" && NOrganization != "ГКФХ" && TextBox_Name_organization.Text.Length > 2)
             {
                 TextBox_KPP_organization.Visible = false;
                 buttonCopy10.Visible = false;
@@ -1274,6 +1275,10 @@ namespace Kassa
 
             VERSION_CONFIG = kktParameters.VersionConfig;
             label_vers_config.Text = VERSION_CONFIG;
+            if (VERSION_CONFIG != settings.ConfigKKTCurrentVersion)
+            {
+                MaterialMessageBox.Show("Версия конфигурации ККТ отличается от актуальной версии", "Внимание!");
+            }
 
             switch_DHCP_KKT1.Checked = kktParameters.StatusNetworkSetting;
 
@@ -1325,9 +1330,12 @@ namespace Kassa
                     TextBox_adressSale.Text = dataKKT.AddressPayment;
                     TextBox_PlaceSale.Text = dataKKT.PlacePayment;
                     TextBox_Cashier.Text = dataKKT.NameCashier;
-                    ComboBox_Name_OFD1.SelectedItem = dataKKT.NameOFD;
+                    OptionsOFD optionsOFD = new OptionsOFD();
+                    var repo = new OFDandFN();
+                    optionsOFD = repo.GetOptionsOFDByINN(dataKKT.INNOFD.Trim());
+                    ComboBox_Name_OFD1.SelectedItem = optionsOFD.Name;
                     ComboBox_Name_OFD1.Refresh();
-                    TextBox_Email_OFD1.Text = dataKKT.EmailOFD;
+                    // ИНН и email подтянутся при изменении название ОФД
                 }
 
                 if (statusFN.Phase == "ФН зарегистрирован")
@@ -1375,8 +1383,9 @@ namespace Kassa
             }
             TextBox_ZN_KKT.Text = dataKKT.ZN_KKT;
             TextBox_ZN_FN.Text = dataKKT.NumberFN;
+            CashRegister.RebooteKKT(statusConnectionKKT, settings.PortName);
         }
-        private void Clean_Click(object sender, EventArgs e) // Книпка Очистить поля
+        private void Clean_Click(object sender, EventArgs e) // Кнопка Очистить поля
         {
             DialogResult result = MaterialMessageBox.Show("Уверены что хотите очистить поля?", "Уведомление", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
@@ -1388,522 +1397,53 @@ namespace Kassa
         }
         private void buttonXML_Click(object sender, EventArgs e) // кнопка Файл регистрации
         {
-            string dataTime = TextBox_Datetime_FD.Text;
-            if (dataTime[2] == '.' && dataTime[5] == '.' && dataTime[10] == ' ' && dataTime[13] == ':')
-            {
-                string ZN_KKT = TextBox_ZN_KKT.Text;
-                string M_KKT = TextBox_Model_KKT.Text;
-                string N_FN = TextBox_ZN_FN.Text;
-                string M_FN = ComboBox_Model_FN1.Text.Replace(" ", "");
-                string NameOrganization = TextBox_Name_organization.Text;
-                string IDclient = TextBox_ID_client.Text;  
+            dataKKT.ID = TextBox_ID_client.Text;
+            dataKKT.RNM = TextBox_RNM1.Text;
+            dataKKT.ZN_KKT = TextBox_ZN_KKT.Text;
+            dataKKT.NumberAvtomate = TextBox_Number_automatic.Text;
+            dataKKT.NumberFN = TextBox_ZN_FN.Text;
+            dataKKT.ModelFN = ComboBox_Model_FN1.Text;
+            dataKKT.NameOrganization = TextBox_Name_organization.Text;
+            dataKKT.DirectorOrganization = TextBox_Director_org.Text;
+            dataKKT.NameCashier = TextBox_Cashier.Text;
+            dataKKT.INNOrganization = TextBox_INN_organization.Text;
+            dataKKT.KPPOrganization = TextBox_KPP_organization.Text;
 
-                string[] n = NameOrganization.Split(' ');
-                string NOrganization = n[0];
-                if (NOrganization == "ООО")
+            dataKKT.SNO_OSN = Checkbox_OSN.Checked;
+            dataKKT.SNO_USN_D = Checkbox_USN_Dohod.Checked;
+            dataKKT.SNO_USN_D_R = Checkbox_USN_Dohod_rashod.Checked;
+            dataKKT.SNO_PATENT = Checkbox_Patent.Checked;
+            dataKKT.SNO_ESHN = Checkbox_ESHN.Checked;
+
+            dataKKT.Telephone = TextBox_Telephon_number.Text;
+            dataKKT.EmailOrganization = TextBox_Email_organization.Text;
+
+            dataKKT.AddressPayment = TextBox_adressSale.Text;
+            dataKKT.PlacePayment = TextBox_PlaceSale.Text;
+
+            dataKKT.NameOFD = ComboBox_Name_OFD1.Text;
+            dataKKT.INNOFD = TextBox_INN_OFD1.Text;
+
+            dataKKT.DataTimeFD = TextBox_Datetime_FD.Text;
+            dataKKT.NumberFD = TextBox_Number_FD.Text;
+            dataKKT.FP = TextBox_FP_FD.Text;
+
+            dataKKT.ModelKKT = TextBox_Model_KKT.Text;
+
+            dataKKT.PrLotereya = CheckBox_Lotereya.Checked;
+            dataKKT.PrAzart = CheckBox_Azart_play.Checked;
+            dataKKT.PrPlatAgent = CheckBox_Plat_agent.Checked;
+            dataKKT.PrInternet = CheckBox_Internet.Checked;
+            dataKKT.PrDelivery = CheckBox_Delivery.Checked;
+            dataKKT.PrAkxiz = CheckBox_Podakziz.Checked;
+            dataKKT.PrMark = CheckBox_Mark.Checked;
+
+            CreatorStatementsRegistrationKKT statementsRegistrationKKT = new CreatorStatementsRegistrationKKT();
+            if (statementsRegistrationKKT.CreateXmlDocument(dataKKT, settings))
                 {
-                    NameOrganization = "ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ " + NameOrganization.Substring(4);
-                }
-                if (NOrganization == "АО")
-                {
-                    NameOrganization = "АКЦИОНЕРНОЕ ОБЩЕСТВО " + NameOrganization.Substring(3);
-                }
-                string Director_org = TextBox_Director_org.Text.ToUpper(); //Конвертация в заглавные буквы ФИО директора
-                string INN_Organization = TextBox_INN_organization.Text;
-                string Place_ras = TextBox_PlaceSale.Text;
-                string OFD = ComboBox_Name_OFD1.Text;
-                string INN_OFD = TextBox_INN_OFD1.Text;
-                string KPP_Organization = TextBox_KPP_organization.Text;
-
-                string PrAvtonomS = "2"; // сведения регистрации ККТ
-                string PrLotereyaS = "2";
-                string PrAzartS = "2";
-                string PrBankPlatS = "2";
-                string PrPlatAgentS = "2";
-                string PrAvtomatUstrS = "2";
-                string PrInternetS = "2";
-                string PrRazvozS = "2";
-                string PrAkxizTovarS = "2";
-                string PrMarkS = "2";
-
-                if (CheckBox_Azart_play.Checked == true) { PrAzartS = "1"; }
-                if (CheckBox_Mark.Checked == true) { PrMarkS = "1"; }
-                if (CheckBox_Plat_agent.Checked == true) { PrPlatAgentS = "1"; }
-                if (CheckBox_Lotereya.Checked == true) { PrLotereyaS = "1"; }
-                if (CheckBox_Internet.Checked == true) { PrInternetS = "1"; }
-                if (CheckBox_Delivery.Checked == true) { PrRazvozS = "1"; }
-                if (CheckBox_Podakziz.Checked == true) { PrAkxizTovarS = "1"; }
-
-                XmlDocument xmlDocument = new XmlDocument();
-
-                xmlDocument.Load("XML_FNS.xml");
-                XmlElement Fail = xmlDocument.DocumentElement;
-
-
-                //XmlElement Fail = xmlDocument.CreateElement("Файл");
-                XmlAttribute VersProg = xmlDocument.CreateAttribute("ВерсПрог");
-                XmlAttribute VersForm = xmlDocument.CreateAttribute("ВерсФорм");
-                XmlAttribute IdFail = xmlDocument.CreateAttribute("ИдФайл");
-
-                XmlElement Document = xmlDocument.CreateElement("Документ");
-
-                XmlAttribute DataDoc = xmlDocument.CreateAttribute("ДатаДок");
-                XmlAttribute KND = xmlDocument.CreateAttribute("КНД");
-                XmlAttribute KodNO = xmlDocument.CreateAttribute("КодНО");
-
-                XmlElement SvNP = xmlDocument.CreateElement("СвНП");
-
-                //if (NOrganization == "ИП")
-                //{
-
-                XmlElement NPFL = xmlDocument.CreateElement("НПФЛ");
-
-                XmlAttribute INNFL = xmlDocument.CreateAttribute("ИННФЛ");
-
-                XmlElement FIO = xmlDocument.CreateElement("ФИО");
-
-                XmlAttribute Imy = xmlDocument.CreateAttribute("Имя");
-                XmlAttribute Otcestvo = xmlDocument.CreateAttribute("Отчество");
-                XmlAttribute Familiya = xmlDocument.CreateAttribute("Фамилия");
-                //}
-                //else
-                //{
-                XmlElement NPYUL = xmlDocument.CreateElement("НПЮЛ");
-                XmlAttribute INNYUL = xmlDocument.CreateAttribute("ИННЮЛ");
-                XmlAttribute KPP = xmlDocument.CreateAttribute("КПП");
-                XmlAttribute NaimOrg = xmlDocument.CreateAttribute("НаимОрг");
-                //}
-                //</НПФЛ>
-                //</СвНП>
-                XmlElement Podpisant = xmlDocument.CreateElement("Подписант");
-
-                XmlAttribute PrPodp = xmlDocument.CreateAttribute("ПрПодп");
-
-                XmlElement FIO2 = xmlDocument.CreateElement("ФИО");
-
-                XmlAttribute Imy2 = xmlDocument.CreateAttribute("Имя");
-                XmlAttribute Otcestvo2 = xmlDocument.CreateAttribute("Отчество");
-                XmlAttribute Familiya2 = xmlDocument.CreateAttribute("Фамилия");
-
-                //XmlElement SvPred = xmlDocument.CreateElement("СвПред");
-
-                //XmlAttribute NaimDoc = xmlDocument.CreateAttribute("НаимДок");
-
-                //</Подписант>
-
-                XmlElement ZayavRegKKT = xmlDocument.CreateElement("ЗаявРегККТ");
-
-                //XmlAttribute RegNomerKKT = xmlDocument.CreateAttribute("РегНомерККТ");
-                XmlAttribute VidDoc = xmlDocument.CreateAttribute("ВидДок");
-                XmlAttribute KodNOMUst = xmlDocument.CreateAttribute("КодНОМУст");
-                //XmlAttribute PrAvtonomRezim = xmlDocument.CreateAttribute("ПрАвтономРежим");
-                //XmlAttribute PrZamFN = xmlDocument.CreateAttribute("ПрЗамФН");
-                //XmlAttribute PrIzmAvtUstr = xmlDocument.CreateAttribute("ПрИзмАвтУстр");
-                //XmlAttribute PrIzmAdrMU = xmlDocument.CreateAttribute("ПрИзмАдрМУ");
-                //XmlAttribute PrIzmNaimNP = xmlDocument.CreateAttribute("ПрИзмНаимНП");
-                //XmlAttribute PrIniePricini = xmlDocument.CreateAttribute("ПрИныеПричины");
-                //XmlAttribute PrSmenOFD = xmlDocument.CreateAttribute("ПрСменОФД");
-                //XmlAttribute PrElectrRezim = xmlDocument.CreateAttribute("ПрЭлектрРежим");
-
-                XmlElement SvedRegKKT = xmlDocument.CreateElement("СведРегККТ");
-
-                XmlAttribute ZavodNomerKKT = xmlDocument.CreateAttribute("ЗаводНомерККТ");
-                XmlAttribute ZavodNomerFN = xmlDocument.CreateAttribute("ЗаводНомерФН");
-                XmlAttribute ModelKKT = xmlDocument.CreateAttribute("МоделККТ");
-                XmlAttribute ModelFN = xmlDocument.CreateAttribute("МоделФН");
-                XmlAttribute PrAvtomatUstr = xmlDocument.CreateAttribute("ПрАвтоматУстр");
-                XmlAttribute PrAvtonom = xmlDocument.CreateAttribute("ПрАвтоном");
-                XmlAttribute PrAzart = xmlDocument.CreateAttribute("ПрАзарт");
-                XmlAttribute PrAkxizTovar = xmlDocument.CreateAttribute("ПрАкцизТовар");
-                XmlAttribute PrBankPlat = xmlDocument.CreateAttribute("ПрБанкПлат");
-                XmlAttribute PrBlank = xmlDocument.CreateAttribute("ПрБланк");
-                XmlAttribute PrIgorZaved = xmlDocument.CreateAttribute("ПрИгорнЗавед");
-                XmlAttribute PrInternet = xmlDocument.CreateAttribute("ПрИнтернет");
-                XmlAttribute PrLotereya = xmlDocument.CreateAttribute("ПрЛотерея");
-                XmlAttribute PrPlatAgent = xmlDocument.CreateAttribute("ПрПлатАгент");
-                XmlAttribute PrRazvozRaznos = xmlDocument.CreateAttribute("ПрРазвозРазнос");
-                XmlAttribute PrRascMark = xmlDocument.CreateAttribute("ПрРасчМарк");
-
-                XmlElement SvedOFD = xmlDocument.CreateElement("СведОФД");
-
-                XmlAttribute INNUYL = xmlDocument.CreateAttribute("ИННЮЛ");
-                XmlAttribute NaimOrgOFD = xmlDocument.CreateAttribute("НаимОрг");
-
-                XmlElement SvedAdrMUst = xmlDocument.CreateElement("СведАдрМУст");
-
-                XmlAttribute NaimMUst = xmlDocument.CreateAttribute("НаимМУст");
-
-                XmlElement AdrMUstKKT = xmlDocument.CreateElement("АдрМУстККТ");
-
-                XmlElement AdrFIAS = xmlDocument.CreateElement("АдрФИАС");
-
-                XmlAttribute IdNom = xmlDocument.CreateAttribute("ИдНом");
-                XmlAttribute Index = xmlDocument.CreateAttribute("Индекс");
-
-                XmlElement Region = xmlDocument.CreateElement("Регион");
-                XmlElement MunixipRayon = xmlDocument.CreateElement("МуниципРайон");
-
-                XmlAttribute VidKod = xmlDocument.CreateAttribute("ВидКод");
-                XmlAttribute Naim = xmlDocument.CreateAttribute("Наим");
-
-                XmlElement NaselenPunkt = xmlDocument.CreateElement("НаселенПункт");
-
-                XmlAttribute Vid = xmlDocument.CreateAttribute("Вид");
-                XmlAttribute Naim2 = xmlDocument.CreateAttribute("Наим");
-
-                XmlElement ElUlDorSeti = xmlDocument.CreateElement("ЭлУлДорСети");
-
-                XmlAttribute Naim3 = xmlDocument.CreateAttribute("Наим");
-                XmlAttribute Tip = xmlDocument.CreateAttribute("Тип");
-
-                XmlElement Zdanie = xmlDocument.CreateElement("Здание");
-                XmlElement Body = xmlDocument.CreateElement("Здание");
-
-                XmlAttribute Nomer = xmlDocument.CreateAttribute("Номер");
-                XmlAttribute Tip2 = xmlDocument.CreateAttribute("Тип");
-
-                XmlAttribute NomerBody = xmlDocument.CreateAttribute("Номер");
-                XmlAttribute TypeBody = xmlDocument.CreateAttribute("Тип");
-
-                XmlElement userElem = xmlDocument.CreateElement("Здание");
-                XmlAttribute Name = xmlDocument.CreateAttribute("Тип");
-                //</АдрФИАС>
-                //</АдрМУстККТ>
-                //</СведАдрМУст>
-                //</СведРегККТ>
-                //<ЗаявРегККТ>
-                //</Документ>
-                //</Файл>
-
-                DateTime data = DateTime.Today; //получение даты ПК
-                string d = Convert.ToString(data);
-                d = d.Substring(0, d.Length - 8);
-                string[] fio = Director_org.Split(' ');// Получение ФИО
-
-
-                string[] dd = d.Split('.');
-                Random rnd = new Random();
-                int a = rnd.Next();
-                string rand = Convert.ToString(a);
-
-                XmlText Imy2T = null;
-                XmlText Familiya2T = null;
-                XmlText Otcestvo2T = null;
-
-                if (KPP_Organization == "Заполняется только для ЮЛ")
-                {
-                    KPP_Organization = "";
-                }
-                string ID_file = "KO_ZVLREGKKT_5018_5018_" + INN_Organization + KPP_Organization + "_" + dd[2] + dd[1] + dd[0] + "_" + rand;
-
-                if (fio.Length == 2 || fio.Length == 3)
-                {
-
-                    XmlText VersProgT = xmlDocument.CreateTextNode("1.0");
-                    //  XmlText  = xmlDocument.CreateTextNode("");
-                    XmlText VersFormT = xmlDocument.CreateTextNode("5.06");
-                    XmlText IdFailT = xmlDocument.CreateTextNode(ID_file);
-                    XmlText DataDokT = xmlDocument.CreateTextNode(d);
-                    XmlText KNDT = xmlDocument.CreateTextNode("1110061");
-                    XmlText KodNOT = xmlDocument.CreateTextNode("9965"); //«Система обозначений налоговых органов» 
-
-
-                    XmlText INNFLT = xmlDocument.CreateTextNode(INN_Organization); //поправить 
-                    XmlText ImyT = xmlDocument.CreateTextNode(fio[1]);
-                    XmlText FamiliyaT = xmlDocument.CreateTextNode(fio[0]);
-                    XmlText OtcestvoT = xmlDocument.CreateTextNode(fio[2]);
-
-
-                    XmlText KPPT = xmlDocument.CreateTextNode(KPP_Organization);
-                    XmlText NaimOrgT = xmlDocument.CreateTextNode(NameOrganization.Replace("\"", "&quot;"));
-
-
-                    XmlText PrPodpT = xmlDocument.CreateTextNode("1"); //Подписант 
-                    
-                    Imy2T = xmlDocument.CreateTextNode(fio[1]);
-                    Familiya2T = xmlDocument.CreateTextNode(fio[0]);
-                    Otcestvo2T = xmlDocument.CreateTextNode(fio[2]);
-                    
-
-                    //XmlText NaimDocT = xmlDocument.CreateTextNode("Свидетельство");
-
-                    //XmlText RegNomerKKTT = xmlDocument.CreateTextNode(RNM);//ЗаявРегККТ 
-                    XmlText VidDocT = xmlDocument.CreateTextNode("1"); // 1-регистрация / 2-перерегистрация
-                    XmlText KodNOMUstT = xmlDocument.CreateTextNode("5800");
-                    //XmlText PrAvtonomRezimT = xmlDocument.CreateTextNode("2"); //обязателен при <ВидДок>=2           
-                    //XmlText PrZamFNT = xmlDocument.CreateTextNode("2");        //обязателен при <ВидДок>=2  
-                    //XmlText PrIzmAvtUstrT = xmlDocument.CreateTextNode("2");   //обязателен при <ВидДок>=2  
-                    //XmlText PrIzmAdrMUT = xmlDocument.CreateTextNode("2");     //обязателен при <ВидДок>=2 
-                    //XmlText PrIzmNaimNPT = xmlDocument.CreateTextNode("2");    //обязателен при <ВидДок>=2 
-                    //XmlText PrIniePriciniT = xmlDocument.CreateTextNode("2");  //обязателен при <ВидДок>=2
-                    //XmlText PrSmenOFDT = xmlDocument.CreateTextNode("2");      //обязателен при <ВидДок>=2 
-                    //XmlText PrElektrRezimT = xmlDocument.CreateTextNode("2");  // не заполняется при <ВидДок>=1  < ПрЭлектрРежим >≠< ПрАвтономРежим > при < ПрЭлектрРежим >= 1
-
-
-                    XmlText ZavodNomerKKTT = xmlDocument.CreateTextNode(ZN_KKT); //СведРегККТ 
-                    XmlText ZavodNomerFNT = xmlDocument.CreateTextNode(N_FN);
-                    XmlText ModelKKTT = xmlDocument.CreateTextNode(M_KKT);
-                    string mfn = "Шифровальное (криптографическое) средство защиты фискальных данных фискальный накопитель «ФН-1.2 исполнение " + M_FN + "»";
-                    XmlText ModelFNT = xmlDocument.CreateTextNode(mfn);
-                    XmlText PrAvtomatUstrT = xmlDocument.CreateTextNode(PrAvtomatUstrS);
-                    XmlText PrAvtonomT = xmlDocument.CreateTextNode(PrAvtonomS);
-                    XmlText PrAzartT = xmlDocument.CreateTextNode(PrAzartS);
-                    XmlText PrAkxizTovarT = xmlDocument.CreateTextNode(PrAkxizTovarS);
-                    XmlText PrBankPlatT = xmlDocument.CreateTextNode(PrBankPlatS);
-                    XmlText PrIgorZavedT = xmlDocument.CreateTextNode("2"); //нет данных
-                    XmlText PrInternetT = xmlDocument.CreateTextNode(PrInternetS);
-                    XmlText PrLotereyaT = xmlDocument.CreateTextNode(PrLotereyaS);
-                    XmlText PrPlatAgentT = xmlDocument.CreateTextNode(PrPlatAgentS);
-                    XmlText PrRazvozRaznosT = xmlDocument.CreateTextNode(PrRazvozS);
-                    XmlText PrRascMarkT = xmlDocument.CreateTextNode(PrMarkS);
-
-                    XmlText INNYLT = xmlDocument.CreateTextNode(INN_OFD); //СведОФД
-                    XmlText NaimOrgOFDT = xmlDocument.CreateTextNode(OFD);
-                    XmlText NaimMUstT = xmlDocument.CreateTextNode(Place_ras);
-
-                    XmlText IdNomT = xmlDocument.CreateTextNode(settings.AdrMU_ID); //АдрФИАС 
-                    XmlText IndexT = xmlDocument.CreateTextNode(settings.AdrMU_Index);
-                    XmlText RegionT = xmlDocument.CreateTextNode(settings.AdrMU_Region);
-                    XmlText VidKodT = xmlDocument.CreateTextNode(settings.AdrMU_MunRay_Code);
-                    XmlText NaimT = xmlDocument.CreateTextNode(settings.AdrMU_MunRay_Name);
-                    XmlText VidT = xmlDocument.CreateTextNode(settings.AdrMU_NasPunkt_type);
-                    XmlText Naim2T = xmlDocument.CreateTextNode(settings.AdrMU_NasPunkt_Name);
-                    XmlText TipT = xmlDocument.CreateTextNode(settings.AdrMU_Street_type);
-                    XmlText Naim3T = xmlDocument.CreateTextNode(settings.AdrMU_Street_name);
-                    XmlText Tip2T = xmlDocument.CreateTextNode(settings.AdrMU_Building_type);
-                    XmlText NomerT = xmlDocument.CreateTextNode(settings.AdrMU_Building_number);
-                    XmlText TypeBodyT = xmlDocument.CreateTextNode(settings.AdrMU_building_body_type);
-                    XmlText NomerBodyT = xmlDocument.CreateTextNode(settings.AdrMU_building_body_number);
-
-                    Imy.AppendChild(ImyT);
-                    Otcestvo.AppendChild(OtcestvoT);
-                    Familiya.AppendChild(FamiliyaT);
-                    
-                    Imy2.AppendChild(Imy2T);
-                    Otcestvo2.AppendChild(Otcestvo2T);
-                    Familiya2.AppendChild(Familiya2T);
-                    
-                    //NaimDoc.AppendChild(NaimDocT);
-
-                    ZavodNomerKKT.AppendChild(ZavodNomerKKTT); //Атрибуты <СведРегККТ>
-                    ZavodNomerFN.AppendChild(ZavodNomerFNT);
-                    ModelKKT.AppendChild(ModelKKTT);
-                    ModelFN.AppendChild(ModelFNT);
-                    PrAvtomatUstr.AppendChild(PrAvtomatUstrT);
-                    PrAvtonom.AppendChild(PrAvtonomT);
-                    PrAzart.AppendChild(PrAzartT);
-                    PrAkxizTovar.AppendChild(PrAkxizTovarT);
-                    PrBankPlat.AppendChild(PrBankPlatT);
-                    PrIgorZaved.AppendChild(PrIgorZavedT);
-                    PrInternet.AppendChild(PrInternetT);
-                    PrLotereya.AppendChild(PrLotereyaT);
-                    PrPlatAgent.AppendChild(PrPlatAgentT);
-                    PrRazvozRaznos.AppendChild(PrRazvozRaznosT);
-                    PrRascMark.AppendChild(PrRascMarkT);
-
-                    INNUYL.AppendChild(INNYLT);
-                    NaimOrg.AppendChild(NaimOrgT);
-
-                    NaimMUst.AppendChild(NaimMUstT);
-
-                    IdNom.AppendChild(IdNomT);
-                    Index.AppendChild(IndexT);
-                    VidKod.AppendChild(VidKodT);
-                    Naim.AppendChild(NaimT);
-                    Vid.AppendChild(VidT);
-                    Naim2.AppendChild(Naim2T);
-                    Naim3.AppendChild(Naim3T);
-                    Tip.AppendChild(TipT);
-                    Nomer.AppendChild(NomerT);
-                    Tip2.AppendChild(Tip2T);
-                    NomerBody.AppendChild(NomerBodyT);
-                    TypeBody.AppendChild(TypeBodyT);
-                        
-                    //-----------------------------------------------------
-                    Region.AppendChild(RegionT);
-                    MunixipRayon.Attributes.Append(VidKod);
-                    MunixipRayon.Attributes.Append(Naim);
-                    NaselenPunkt.Attributes.Append(Vid);
-                    NaselenPunkt.Attributes.Append(Naim2);
-                    ElUlDorSeti.Attributes.Append(Naim3);
-                    ElUlDorSeti.Attributes.Append(Tip);
-                    Zdanie.Attributes.Append(Nomer);
-                    Zdanie.Attributes.Append(Tip2);
-                    Body.Attributes.Append(NomerBody);
-                    Body.Attributes.Append(TypeBody);
-                    //-----------------------------------------------------
-                    AdrFIAS.Attributes.Append(IdNom);
-                    AdrFIAS.Attributes.Append(Index);
-                    AdrFIAS.AppendChild(Region);
-                    AdrFIAS.AppendChild(MunixipRayon);
-                    AdrFIAS.AppendChild(NaselenPunkt);
-                    AdrFIAS.AppendChild(ElUlDorSeti);
-                    AdrFIAS.AppendChild(Zdanie);
-                    if (settings.AdrMU_building_body_type != null)
-                    {
-                        AdrFIAS.AppendChild(Body);
-                    }
-
-                    AdrMUstKKT.AppendChild(AdrFIAS);
-                    NaimOrgOFD.AppendChild(NaimOrgOFDT);
-                    //-----------------------------------------------------
-                    if (NOrganization == "ИП")
-                    {
-                        FIO.Attributes.Append(Imy);
-                        FIO.Attributes.Append(Otcestvo);
-                        FIO.Attributes.Append(Familiya);
-                    }
-                    else
-                    {
-                        NaimOrg.AppendChild(NaimOrgT);
-                        KPP.AppendChild(KPPT);
-                        INNYUL.AppendChild(INNFLT);
-                    }
-
-                    SvedOFD.Attributes.Append(INNUYL);
-                    SvedOFD.Attributes.Append(NaimOrgOFD);
-                    SvedAdrMUst.Attributes.Append(NaimMUst);
-                    SvedAdrMUst.AppendChild(AdrMUstKKT);
-                    //-----------------------------------------------------
-                    if (NOrganization == "ИП")
-                    {
-                        NPFL.AppendChild(FIO);
-                        INNFL.AppendChild(INNFLT);
-                        NPFL.Attributes.Append(INNFL);
-                    }
-                    else
-                    {
-                        NPYUL.Attributes.Append(NaimOrg);
-                        NPYUL.Attributes.Append(INNYUL);
-                        NPYUL.Attributes.Append(KPP);
-                    }
-
-                    FIO2.Attributes.Append(Imy2);
-                    FIO2.Attributes.Append(Otcestvo2);
-                    FIO2.Attributes.Append(Familiya2);
-                    //NaimDoc.AppendChild(NaimDocT);
-                    //SvPred.Attributes.Append(NaimDoc);
-                    SvedRegKKT.AppendChild(SvedOFD);
-                    SvedRegKKT.AppendChild(SvedAdrMUst);
-
-                    SvedRegKKT.Attributes.Append(ZavodNomerKKT); //Атрибуты <СведРегККТ>
-                    SvedRegKKT.Attributes.Append(ZavodNomerFN);
-                    SvedRegKKT.Attributes.Append(ModelKKT);
-                    SvedRegKKT.Attributes.Append(ModelFN);
-                    SvedRegKKT.Attributes.Append(PrAvtomatUstr);
-                    SvedRegKKT.Attributes.Append(PrAvtonom);
-                    SvedRegKKT.Attributes.Append(PrAzart);
-                    SvedRegKKT.Attributes.Append(PrAkxizTovar);
-                    SvedRegKKT.Attributes.Append(PrBankPlat);
-                    SvedRegKKT.Attributes.Append(PrIgorZaved);
-                    SvedRegKKT.Attributes.Append(PrInternet);
-                    SvedRegKKT.Attributes.Append(PrLotereya);
-                    SvedRegKKT.Attributes.Append(PrPlatAgent);
-                    SvedRegKKT.Attributes.Append(PrRazvozRaznos);
-                    SvedRegKKT.Attributes.Append(PrRascMark);
-
-                    VidDoc.AppendChild(VidDocT); //Атрибуты <ЗаявРегККТ>
-                    KodNOMUst.AppendChild(KodNOMUstT);
-                    //RegNomerKKT.AppendChild(RegNomerKKTT); //включается только при регистрации!!!
-
-                    //PrAvtonomRezim.AppendChild(PrAvtonomRezimT);
-                    //PrZamFN.AppendChild(PrZamFNT);
-                    //PrIzmAvtUstr.AppendChild(PrIzmAvtUstrT);
-                    //PrIzmAdrMU.AppendChild(PrIzmAdrMUT);
-                    //PrIzmNaimNP.AppendChild(PrIzmNaimNPT);
-                    //PrIniePricini.AppendChild(PrIniePriciniT);
-                    //PrSmenOFD.AppendChild(PrSmenOFDT);
-                    //PrElectrRezim.AppendChild(PrElektrRezimT);
-
-                    //-----------------------------------------------------
-                    if (NOrganization == "ИП")
-                    {
-                        SvNP.AppendChild(NPFL);
-                    }
-                    else
-                    {
-                        SvNP.AppendChild(NPYUL);
-                    }
-                    PrPodp.AppendChild(PrPodpT);
-                    Podpisant.Attributes.Append(PrPodp);
-                    Podpisant.AppendChild(FIO2);
-                    //Podpisant.AppendChild(SvPred);
-                    ZayavRegKKT.AppendChild(SvedRegKKT);
-                    //ZayavRegKKT.Attributes.Append(RegNomerKKT);
-                    ZayavRegKKT.Attributes.Append(VidDoc);
-                    ZayavRegKKT.Attributes.Append(KodNOMUst);
-                    //ZayavRegKKT.Attributes.Append(PrAvtonomRezim);
-                    //ZayavRegKKT.Attributes.Append(PrZamFN);
-                    //ZayavRegKKT.Attributes.Append(PrIzmAvtUstr);
-                    //ZayavRegKKT.Attributes.Append(PrIzmAdrMU);
-                    //ZayavRegKKT.Attributes.Append(PrIzmNaimNP);
-                    //ZayavRegKKT.Attributes.Append(PrIniePricini);
-                    //ZayavRegKKT.Attributes.Append(PrSmenOFD);
-                    //ZayavRegKKT.Attributes.Append(PrElectrRezim);
-
-                    DataDoc.AppendChild(DataDokT);
-                    KND.AppendChild(KNDT);
-                    KodNO.AppendChild(KodNOT);
-                    Document.Attributes.Append(DataDoc);
-                    Document.Attributes.Append(KND);
-                    Document.Attributes.Append(KodNO);
-                    //-----------------------------------------------------
-
-
-                    Document.AppendChild(SvNP);
-                    Document.AppendChild(Podpisant);
-                    Document.AppendChild(ZayavRegKKT);
-
-                    VersProg.AppendChild(VersProgT);
-                    VersForm.AppendChild(VersFormT);
-                    IdFail.AppendChild(IdFailT);
-                    Fail.Attributes.Append(VersProg);
-                    Fail.Attributes.Append(VersForm);
-                    Fail.Attributes.Append(IdFail);
-                    Fail.AppendChild(Document);
-                    
-                    string adr_file_save = null;
-                    string[] zap_znak = { "\"", "\\", "/", ":", "*", "?", "<", ">", "|", "\"" };
-                    string NameOrganization_save = TextBox_Name_organization.Text;
-                    if (NameOrganization != "")
-                    {
-                        for (int i = 0; i < zap_znak.Length; i++)
-                        {
-                            NameOrganization_save = NameOrganization_save.Replace(zap_znak[i], "");
-                        }
-                    }
-                    if (NameOrganization_save == "")
-                    {
-                        errorSnackbar.ShowErrorSnackbar(this, "Файл не был сохранен. Пустое значение наименования организации.");
-                    }
-                    adr_file_save = settings.AdressFile + "\\" + IDclient + " " + NameOrganization_save;
-                    Directory.CreateDirectory(adr_file_save + "\\" + ID_file);
-                    xmlDocument.Save(adr_file_save + "\\" + ID_file + "\\" + ID_file + ".xml"); //сохранение файла xml
-
-                    string zipPath = adr_file_save + "\\" + NameOrganization_save + ".zip";
-                    // Удаляем существующий файл, если он есть
-                    if (File.Exists(zipPath))
-                    {
-                        File.Delete(zipPath);
-                    }
-                    ZipFile.CreateFromDirectory(adr_file_save + "\\" + ID_file, zipPath); //сохранение zip (что упаковываем, куда)
-                    if (settings.DeleteXML == true)
-                    {
-                        Directory.Delete(adr_file_save + "\\" + ID_file, true);
-                    }
-
-
-                    new MaterialSnackBar($"Файл XML создан и сохранен по пути: {adr_file_save}").Show(this);
-                }
-                else
-                {
-                    MaterialMessageBox.Show("Неверно введены ФИО руководителя. Программа принимает фамилию, имя или полное ФИО","Ошибка");
-                }
+                new MaterialSnackBar("Файл сохранен").Show(this);
             }
-            else
-            {
-                MaterialMessageBox.Show("Ошибка в вводе даты и времени. Введите по формату (дд.мм.гггг чч:мм)","Ошибка");
-            }
+
         }
         private void buttonAkt_Click(object sender, EventArgs e) //кнопка Акт ввода в эксплуатацию
         {
@@ -2677,6 +2217,7 @@ namespace Kassa
             textBox_AdrMU_building_body_type.Text = settings.AdrMU_building_body_type;
             textBox_AdrMU_building_body_number.Text = settings.AdrMU_building_body_number;
             textBox_AdrMU.Text = settings.Adress_registration;
+            textBoxConfigKKTCurrentVersion.Text = settings.ConfigKKTCurrentVersion;
         }
         private void ButtonSave4_Click(object sender, EventArgs e) // Кнопка сохранение
         {
@@ -2726,6 +2267,7 @@ namespace Kassa
                 success &= repo.UpdateParameter("building_body_type", textBox_AdrMU_building_body_type.Text);
                 success &= repo.UpdateParameter("building_body_number", textBox_AdrMU_building_body_number.Text);
                 success &= repo.UpdateParameter("adress_registration", textBox_AdrMU.Text);
+                success &= repo.UpdateParameter("config_kkt_current_version", textBoxConfigKKTCurrentVersion.Text);
 
                 // Проверка результата
                 if (!success)

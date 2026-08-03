@@ -21,27 +21,6 @@ namespace Registrator.services
                 statusConnectionKKT = CashRegister.OpenConnection(statusConnectionKKT, settings.PortName);
                 if (statusConnectionKKT == true)
                 {
-                    string dataTime_KKT = "01.01.2000 00:00";
-                    dataTime_KKT = CashRegister.GetDATETIME(); // запрос времени в ККТ
-                    kktParameters.DateTimeKKTSetting = dataTime_KKT;
-                    DateTime dateTime;
-                    DateTime.TryParseExact(dataTime_KKT, "dd.MM.yyyy HH:mm", null, System.Globalization.DateTimeStyles.None, out dateTime);
-                    DateTime dateTime_PK = DateTime.Now; // Получаем текущее время на ПК
-                    TimeSpan difference = dateTime_PK - dateTime;// Сравниваем разницу во времени      
-                    if (Math.Abs(difference.TotalMinutes) > 5)
-                    {
-                        DialogResult result = MaterialMessageBox.Show("Разница во времени на ККТ и в ПК более 5 минут. Синхронизировать время с ПК?", "Уведомление", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                        if (result == DialogResult.Yes)
-                        {
-                            try
-                            {
-                                DateTime now = DateTime.Now;
-                                CashRegister.InputDATETIME(now);
-                            }
-                            catch { MaterialMessageBox.Show("Не удалось синхронизировать время в ККТ"); }
-                        }
-                    }
-
                     kktParameters.VersionConfig = CashRegister.GetVersConfig().Replace("rw", "");// запрос версии конфигурации
 
                     NetworkSetting networkSetting = new NetworkSetting(); // проверка сетевых настроек
@@ -219,6 +198,28 @@ namespace Registrator.services
                     }
                     dataKKT.ZN_KKT = zn_kkt;
                     dataKKT.NumberFN = zn_fn;
+                }
+
+                string dataTime_KKT = "01.01.2000 00:00";
+                dataTime_KKT = CashRegister.GetDATETIME(); // запрос времени в ККТ
+                kktParameters.DateTimeKKTSetting = dataTime_KKT;
+                DateTime dateTime;
+                DateTime.TryParseExact(dataTime_KKT, "dd.MM.yyyy HH:mm", null, System.Globalization.DateTimeStyles.None, out dateTime);
+                DateTime dateTime_PK = DateTime.Now; // Получаем текущее время на ПК
+                TimeSpan difference = dateTime_PK - dateTime;// Сравниваем разницу во времени      
+                if (Math.Abs(difference.TotalMinutes) > 5)
+                {
+                    DialogResult result = MaterialMessageBox.Show("Разница во времени на ККТ и в ПК более 5 минут. Синхронизировать время с ПК?", "Уведомление", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            DateTime now = DateTime.Now;
+                            CashRegister.InputDATETIME(now);
+                            kktParameters.DateTimeKKTSetting = Convert.ToString(dateTime_PK);
+                        }
+                        catch { MaterialMessageBox.Show("Не удалось синхронизировать время в ККТ"); }
+                    }
                 }
             }
             catch

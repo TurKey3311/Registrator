@@ -1233,6 +1233,7 @@ namespace KitCashProtocol
         }
         public string GetVersConfig()
         {
+            try { 
             byte[] command = CommandGenerator.GetCommand(Command.GET_VERS_CONFIG);
             Port.Write(command, 0, command.Length);
             byte[] response = ReadResponse();
@@ -1245,8 +1246,11 @@ namespace KitCashProtocol
 
                 return string.Empty;
             }
+            }
+            catch (ArgumentOutOfRangeException ex) { MaterialMessageBox.Show("Не удалось ввести время. Ошибка:" + ex.Message); }
 
             return string.Empty;
+            
         }
         public byte[] GetNetworkSettings()
         {
@@ -1448,7 +1452,7 @@ namespace KitCashProtocol
                 }
                 else
                 {
-                    MaterialMessageBox.Show(Convert.ToString((ErrorCode)response[0]));
+                    MaterialMessageBox.Show("Не удалось считать статус смены, ошибка:" + Convert.ToString((ErrorCode)response[0]));
                     return false;
                 }
             }
@@ -1617,6 +1621,21 @@ namespace KitCashProtocol
             {
                 MaterialMessageBox.Show("Ошибка отправки команды: " + ex.Message);
                 return false;
+            }
+        }
+
+        public void RebooteKKT (bool statusConnectionKKT, string portName)
+        {
+            try
+            {
+                statusConnectionKKT = OpenConnection(statusConnectionKKT, portName);
+                byte[] command = CommandGenerator.GetCommand(Command.REBOOT_KKT);
+                Port.Write(command, 0, command.Length);
+                CloseConnection(statusConnectionKKT);
+            }
+            catch (Exception ex)
+            {
+                MaterialMessageBox.Show("Ошибка отправки команды: " + ex.Message);
             }
         }
 

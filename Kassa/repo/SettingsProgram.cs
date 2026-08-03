@@ -63,6 +63,7 @@ namespace Registrator.repo
             settings.AdrMU_building_body_type = GetParameterValue("building_body_type");
             settings.AdrMU_building_body_number = GetParameterValue("building_body_number");
             settings.Adress_registration = GetParameterValue("adress_registration");
+            settings.ConfigKKTCurrentVersion = GetParameterValue("config_kkt_current_version");
 
             // Обработка булевых значений
             string delXmlStr = GetParameterValue("del_xml");

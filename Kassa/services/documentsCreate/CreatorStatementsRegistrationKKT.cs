@@ -48,6 +48,15 @@ namespace Registrator.services
 
             string[] splitNameOrganization = dataRegistrationKKT.NameOrganization.Split(' ');
             string statusNameOrganization = splitNameOrganization[0];
+            string nameOrganizationStatement = dataRegistrationKKT.NameOrganization;
+            if (statusNameOrganization == "ООО")
+            {
+                nameOrganizationStatement = "ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ " + dataRegistrationKKT.NameOrganization.Substring(4);
+            }
+            if (statusNameOrganization == "АО")
+            {
+                nameOrganizationStatement = "АКЦИОНЕРНОЕ ОБЩЕСТВО " + dataRegistrationKKT.NameOrganization.Substring(3);
+            }
 
             DateTime dateNow = DateTime.Today;
             string datestring = Convert.ToString(dateNow);
@@ -242,7 +251,7 @@ namespace Registrator.services
 
 
             XmlText KPPT = xmlDocument.CreateTextNode(dataRegistrationKKT.KPPOrganization);
-            XmlText NaimOrgT = xmlDocument.CreateTextNode(dataRegistrationKKT.NameOrganization.Replace("\"", "&quot;"));
+            XmlText NaimOrgT = xmlDocument.CreateTextNode(nameOrganizationStatement.Replace("\"", "&quot;"));
 
 
             XmlText PrPodpT = xmlDocument.CreateTextNode("1"); //Подписант 
@@ -366,7 +375,7 @@ namespace Registrator.services
             AdrMUstKKT.AppendChild(AdrFIAS);
             NaimOrgOFD.AppendChild(NaimOrgOFDT);
             //-----------------------------------------------------
-            if (statusNameOrganization == "ИП")
+            if (statusNameOrganization == "ИП" || statusNameOrganization == "ГКФХ")
             {
                 FIO.Attributes.Append(Imy);
                 FIO.Attributes.Append(Otcestvo);
@@ -384,7 +393,7 @@ namespace Registrator.services
             SvedAdrMUst.Attributes.Append(NaimMUst);
             SvedAdrMUst.AppendChild(AdrMUstKKT);
             //-----------------------------------------------------
-            if (statusNameOrganization == "ИП")
+            if (statusNameOrganization == "ИП" || statusNameOrganization == "ГКФХ")
             {
                 NPFL.AppendChild(FIO);
                 INNFL.AppendChild(INNFLT);
@@ -435,7 +444,7 @@ namespace Registrator.services
             //PrElectrRezim.AppendChild(PrElektrRezimT);
 
             //-----------------------------------------------------
-            if (statusNameOrganization == "ИП")
+            if (statusNameOrganization == "ИП" || statusNameOrganization == "ГКФХ")
             {
                 SvNP.AppendChild(NPFL);
             }
@@ -510,8 +519,6 @@ namespace Registrator.services
             {
                 Directory.Delete(fileAdress + "\\" + ID_file, true);
             }
-
-            MaterialMessageBox.Show("Файл XML создан и сохранен", "Сообщение");
             return true;
         }
     }

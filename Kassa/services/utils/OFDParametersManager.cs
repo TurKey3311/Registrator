@@ -86,7 +86,6 @@ namespace Registrator.services
                         CashRegister.InputOISM(optionsOFD.URL_OISM, optionsOFD.TCP_OISM, optionsOFD.Timeout);
                         CashRegister.InputKeyKM(optionsFN.URL, optionsFN.TCP);
                     }
-                    MaterialMessageBox.Show("Параметры ОФД успешно введены. Перезагрузите кассу.", "Уведомление");
                 }
             }
             catch

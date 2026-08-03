@@ -216,6 +216,7 @@
             this.textBoxNameOperator = new MaterialSkin.Controls.MaterialTextBox2();
             this.textBoxAdressFile = new MaterialSkin.Controls.MaterialTextBox2();
             this.materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
+            this.textBoxConfigKKTCurrentVersion = new MaterialSkin.Controls.MaterialTextBox2();
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -3566,6 +3567,7 @@
             // 
             // tabPage8
             // 
+            this.tabPage8.Controls.Add(this.textBoxConfigKKTCurrentVersion);
             this.tabPage8.Controls.Add(this.textBox_AdrMU);
             this.tabPage8.Controls.Add(this.materialLabel29);
             this.tabPage8.Controls.Add(this.materialLabel28);
@@ -4353,6 +4355,35 @@
             this.materialLabel13.TabIndex = 171;
             this.materialLabel13.Text = "Настройки программы";
             // 
+            // textBoxConfigKKTCurrentVersion
+            // 
+            this.textBoxConfigKKTCurrentVersion.AnimateReadOnly = false;
+            this.textBoxConfigKKTCurrentVersion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.textBoxConfigKKTCurrentVersion.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.textBoxConfigKKTCurrentVersion.Depth = 0;
+            this.textBoxConfigKKTCurrentVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxConfigKKTCurrentVersion.HideSelection = true;
+            this.textBoxConfigKKTCurrentVersion.Hint = "Актуальная версия конфигурации";
+            this.textBoxConfigKKTCurrentVersion.LeadingIcon = null;
+            this.textBoxConfigKKTCurrentVersion.Location = new System.Drawing.Point(793, 257);
+            this.textBoxConfigKKTCurrentVersion.MaxLength = 32767;
+            this.textBoxConfigKKTCurrentVersion.MouseState = MaterialSkin.MouseState.OUT;
+            this.textBoxConfigKKTCurrentVersion.Name = "textBoxConfigKKTCurrentVersion";
+            this.textBoxConfigKKTCurrentVersion.PasswordChar = '\0';
+            this.textBoxConfigKKTCurrentVersion.PrefixSuffixText = null;
+            this.textBoxConfigKKTCurrentVersion.ReadOnly = false;
+            this.textBoxConfigKKTCurrentVersion.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textBoxConfigKKTCurrentVersion.SelectedText = "";
+            this.textBoxConfigKKTCurrentVersion.SelectionLength = 0;
+            this.textBoxConfigKKTCurrentVersion.SelectionStart = 0;
+            this.textBoxConfigKKTCurrentVersion.ShortcutsEnabled = true;
+            this.textBoxConfigKKTCurrentVersion.Size = new System.Drawing.Size(626, 48);
+            this.textBoxConfigKKTCurrentVersion.TabIndex = 203;
+            this.textBoxConfigKKTCurrentVersion.TabStop = false;
+            this.textBoxConfigKKTCurrentVersion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.textBoxConfigKKTCurrentVersion.TrailingIcon = null;
+            this.textBoxConfigKKTCurrentVersion.UseSystemPasswordChar = false;
+            // 
             // Form_Start
             // 
             this.ClientSize = new System.Drawing.Size(1829, 1100);
@@ -4565,6 +4596,7 @@
         private MaterialSkin.Controls.MaterialTextBox2 textBoxNameOperator;
         private MaterialSkin.Controls.MaterialTextBox2 textBoxAdressFile;
         private MaterialSkin.Controls.MaterialLabel materialLabel13;
+        private MaterialSkin.Controls.MaterialTextBox2 textBoxConfigKKTCurrentVersion;
     }
 }
 

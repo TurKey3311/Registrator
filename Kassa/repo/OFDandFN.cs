@@ -67,6 +67,50 @@ namespace Registrator.repo
             return null;
         }
 
+        // Получение настроек OFD по ИНН
+        public OptionsOFD GetOptionsOFDByINN(string inn_OFD)
+        {
+            using (var conn = GetConnection())
+            {
+                string query = @"
+                SELECT 
+                    name_OFD, 
+                    email_OFD, 
+                    adress_OFD, 
+                    IP_OFD, 
+                    TCP_OFD, 
+                    DNS_OFD, 
+                    adress_OISM_OFD,
+                    port_OFD 
+                FROM options_OFD 
+                WHERE inn_OFD = @inn_OFD";
+
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@inn_OFD", inn_OFD);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new OptionsOFD
+                            {
+                                Name = reader["name_OFD"].ToString(),
+                                INN = inn_OFD,
+                                Email = reader["email_OFD"].ToString(),
+                                URL = reader["adress_OFD"].ToString(),
+                                IP = reader["IP_OFD"].ToString(),
+                                TCP = reader["TCP_OFD"].ToString(),
+                                DNS = reader["DNS_OFD"].ToString(),
+                                URL_OISM = reader["adress_OISM_OFD"].ToString(),
+                                TCP_OISM = reader["port_OFD"].ToString()
+                            };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
         // Получение настроек FN по имени
         public OptionsFN GetOptionsFNByName(string nameFN)
         {

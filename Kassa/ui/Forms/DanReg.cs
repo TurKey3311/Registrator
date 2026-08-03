@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Registrator.services;
 using Registrator.repo;
 using Registrator.models;
+using Registrator.Properties;
 
 
 namespace Kassa
@@ -64,6 +65,8 @@ namespace Kassa
             };
             OFDParametersManager parametersOFD = new OFDParametersManager();
             parametersOFD.InputParametersOFD(StatusСonnectionKKT, portName, VERSION_FFD, optionsOFD, optionsFN);
+            TerminalFA CashRegister = new TerminalFA();
+            CashRegister.RebooteKKT(StatusСonnectionKKT, portName);
         }
 
         private void butGetParametersOFD_Click(object sender, EventArgs e)

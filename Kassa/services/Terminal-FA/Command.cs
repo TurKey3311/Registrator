@@ -35,6 +35,8 @@
         CLOSE_FN_DATA = 0x17,
         CLOSE_FN_FINISH = 0x28,
 
+        REBOOT_KKT = 0xEF,
+
         GET_VERS_CONFIG = 0x0B,
         GET_FISCAL_STORAGE_STATUS = 0x08,
         BEGIN_OPEN_SESSION = 0x21,

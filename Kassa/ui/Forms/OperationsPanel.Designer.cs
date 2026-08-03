@@ -110,7 +110,7 @@
             this.buttonСheckActivationCode.HighEmphasis = true;
             this.buttonСheckActivationCode.Icon = null;
             this.buttonСheckActivationCode.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonСheckActivationCode.Location = new System.Drawing.Point(41, 199);
+            this.buttonСheckActivationCode.Location = new System.Drawing.Point(41, 256);
             this.buttonСheckActivationCode.Margin = new System.Windows.Forms.Padding(14, 4, 4, 4);
             this.buttonСheckActivationCode.MouseState = MaterialSkin.MouseState.HOVER;
             this.buttonСheckActivationCode.Name = "buttonСheckActivationCode";
@@ -311,7 +311,7 @@
             this.buttonAutoOpenCloseShift.HighEmphasis = true;
             this.buttonAutoOpenCloseShift.Icon = null;
             this.buttonAutoOpenCloseShift.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonAutoOpenCloseShift.Location = new System.Drawing.Point(41, 254);
+            this.buttonAutoOpenCloseShift.Location = new System.Drawing.Point(41, 200);
             this.buttonAutoOpenCloseShift.Margin = new System.Windows.Forms.Padding(14, 4, 4, 4);
             this.buttonAutoOpenCloseShift.MouseState = MaterialSkin.MouseState.HOVER;
             this.buttonAutoOpenCloseShift.Name = "buttonAutoOpenCloseShift";
