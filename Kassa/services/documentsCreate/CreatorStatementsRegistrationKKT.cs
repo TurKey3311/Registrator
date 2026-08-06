@@ -223,8 +223,10 @@ namespace Registrator.services
             XmlAttribute Nomer = xmlDocument.CreateAttribute("Номер");
             XmlAttribute Tip2 = xmlDocument.CreateAttribute("Тип");
 
-            XmlElement userElem = xmlDocument.CreateElement("Здание");
-            XmlAttribute Name = xmlDocument.CreateAttribute("Тип");
+            XmlElement Corp = xmlDocument.CreateElement("Здание");
+
+            XmlAttribute NomerBody = xmlDocument.CreateAttribute("Номер");
+            XmlAttribute TypeBody = xmlDocument.CreateAttribute("Тип");
             //</АдрФИАС>
             //</АдрМУстККТ>
             //</СведАдрМУст>
@@ -353,6 +355,8 @@ namespace Registrator.services
             Tip.AppendChild(TipT);
             Nomer.AppendChild(NomerT);
             Tip2.AppendChild(Tip2T);
+            TypeBody.AppendChild(TypeBodyT);
+            NomerBody.AppendChild(NomerBodyT);
             //-----------------------------------------------------
             Region.AppendChild(RegionT);
             MunixipRayon.Attributes.Append(VidKod);
@@ -363,6 +367,8 @@ namespace Registrator.services
             ElUlDorSeti.Attributes.Append(Tip);
             Zdanie.Attributes.Append(Nomer);
             Zdanie.Attributes.Append(Tip2);
+            Corp.Attributes.Append(NomerBody);
+            Corp.Attributes.Append(TypeBody);
             //-----------------------------------------------------
             AdrFIAS.Attributes.Append(IdNom);
             AdrFIAS.Attributes.Append(Index);
@@ -371,6 +377,7 @@ namespace Registrator.services
             AdrFIAS.AppendChild(NaselenPunkt);
             AdrFIAS.AppendChild(ElUlDorSeti);
             AdrFIAS.AppendChild(Zdanie);
+            AdrFIAS.AppendChild(Corp);
 
             AdrMUstKKT.AppendChild(AdrFIAS);
             NaimOrgOFD.AppendChild(NaimOrgOFDT);
