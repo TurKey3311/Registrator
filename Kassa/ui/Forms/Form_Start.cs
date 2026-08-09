@@ -1263,9 +1263,13 @@ namespace Kassa
         }
         private void butReaddata_Click(object sender, EventArgs e) //кнопка Считать данные
         {
-            RegistrationReportKKT dataKKTService = new RegistrationReportKKT();
+                    RegistrationReportKKT dataKKTService = new RegistrationReportKKT();
             var result = dataKKTService.ReadingRegistrationReportKKT(statusConnectionKKT, settings, switch_DHCP_KKT1.Checked);
-
+            if (result.Item1 == null)
+            {
+                // Прерываем метод, чтобы не получаеть кучу уведомлений об ошибке
+                return;
+            }
             DataKKT dataKKT = result.Item1;
             KKTParameters kktParameters = result.Item2;
             FNStatusParsed statusFN = result.Item3;
@@ -1931,6 +1935,11 @@ namespace Kassa
             RegistrationReportKKT dataKKTService = new RegistrationReportKKT();
             var result = dataKKTService.ReadingRegistrationReportKKT(statusConnectionKKT, settings, switch_DHCP_KKT1.Checked);
 
+            if (result.Item1 == null)
+            {
+                // Прерываем метод, чтобы не получаеть кучу уведомлений об ошибке
+                return;
+            }
             DataKKT dataKKTresult = result.Item1;
             FNStatusParsed statusFN = result.Item3;
             TerminalFAStatus status_KKT = result.Item4;

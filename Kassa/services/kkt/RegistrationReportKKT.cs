@@ -19,6 +19,13 @@ namespace Registrator.services
             try
             {
                 statusConnectionKKT = CashRegister.OpenConnection(statusConnectionKKT, settings.PortName);
+
+                // Если не подключились к кассе, прерываем метод
+                if (statusConnectionKKT == false)
+                {
+                    return (null, null, null, null);
+                }
+
                 if (statusConnectionKKT == true)
                 {
                     kktParameters.VersionConfig = CashRegister.GetVersConfig().Replace("rw", "");// запрос версии конфигурации
