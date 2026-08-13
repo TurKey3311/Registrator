@@ -1626,6 +1626,10 @@ namespace KitCashProtocol
 
         public void RebooteKKT (bool statusConnectionKKT, string portName)
         {
+            if (statusConnectionKKT == false)
+            {
+                return; // Если не подключились к кассе, прерываем метод
+            }
             try
             {
                 statusConnectionKKT = OpenConnection(statusConnectionKKT, portName);

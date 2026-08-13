@@ -1,13 +1,9 @@
 ﻿using KitCashProtocol;
 using MaterialSkin.Controls;
 using System;
-using System.Configuration;
-using System.Data.SQLite;
 using System.Windows.Forms;
 using Registrator.services;
-using Registrator.repo;
 using Registrator.models;
-using Registrator.Properties;
 
 
 namespace Kassa
@@ -67,6 +63,7 @@ namespace Kassa
             parametersOFD.InputParametersOFD(StatusСonnectionKKT, portName, VERSION_FFD, optionsOFD, optionsFN);
             TerminalFA CashRegister = new TerminalFA();
             CashRegister.RebooteKKT(StatusСonnectionKKT, portName);
+            new MaterialSnackBar("Данные введены").Show(this);
         }
 
         private void butGetParametersOFD_Click(object sender, EventArgs e)
