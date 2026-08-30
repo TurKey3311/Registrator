@@ -183,7 +183,7 @@ namespace Kassa
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
 
-            if (TextBox_Model_KKT.Text !="")
+            if (TextBox_Model_KKT.Text != "")
             {
                 arrayCheckingFilledFields[0] = true;
             }
@@ -191,22 +191,20 @@ namespace Kassa
             {
                 arrayCheckingFilledFields[0] = false;
             }
+            ValidateButtons();
+        }
+            private void ValidateButtons() //логика проверки доступности кнопок buttonXML, buttonRegistrationKKT и buttonAkt
+        {
+             CheckingFilledFields Checked = new CheckingFilledFields();
 
-            CheckingFilledFields Checked = new CheckingFilledFields();
-            buttonXML.Enabled = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
-            buttonAkt.Enabled = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
-            buttonRegistrationKKT.Enabled = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
+              bool fieldsForXmlValid = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
+              bool fieldsForAktValid = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
+              bool fieldsForRegValid = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
+              bool isTerminalFA = (TextBox_Model_KKT.Text == "Терминал-ФА");
 
-            if (TextBox_Model_KKT.Text != "Терминал-ФА")
-            {
-                buttonXML.Enabled = false;
-                buttonRegistrationKKT.Enabled = false;
-            }
-            else
-            {
-                buttonXML.Enabled = true;
-                buttonRegistrationKKT.Enabled = true;
-            }
+              buttonXML.Enabled = fieldsForXmlValid && isTerminalFA;
+              buttonRegistrationKKT.Enabled = fieldsForRegValid && isTerminalFA;
+              buttonAkt.Enabled = fieldsForAktValid; 
         }
         private void ZN_KKT_TextChanged(object sender, EventArgs e) // Проверка ЗН ККТ, заполнение номера автомата
         {
@@ -226,10 +224,7 @@ namespace Kassa
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
 
-            CheckingFilledFields Checked = new CheckingFilledFields();
-            buttonXML.Enabled = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
-            buttonAkt.Enabled = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
-            buttonRegistrationKKT.Enabled = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
+            ValidateButtons();
         }
         private void ZN_KKT_Leave(object sender, EventArgs e) // проверки ЗН ККТ
         {
@@ -256,10 +251,7 @@ namespace Kassa
                 arrayCheckingFilledFields[2] = false;
             }
 
-            CheckingFilledFields Checked = new CheckingFilledFields();
-            buttonXML.Enabled = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
-            buttonAkt.Enabled = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
-            buttonRegistrationKKT.Enabled = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
+            ValidateButtons();
 
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -288,10 +280,7 @@ namespace Kassa
                 arrayCheckingFilledFields[3] = false;
             }
 
-            CheckingFilledFields Checked = new CheckingFilledFields();
-            buttonXML.Enabled = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
-            buttonAkt.Enabled = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
-            buttonRegistrationKKT.Enabled = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
+            ValidateButtons();
 
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -326,10 +315,7 @@ namespace Kassa
                 arrayCheckingFilledFields[4] = false;
             }
 
-            CheckingFilledFields Checked = new CheckingFilledFields();
-            buttonXML.Enabled = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
-            buttonAkt.Enabled = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
-            buttonRegistrationKKT.Enabled = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
+            ValidateButtons();
 
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -360,10 +346,7 @@ namespace Kassa
                 arrayCheckingFilledFields[5] = false;
             }
 
-            CheckingFilledFields Checked = new CheckingFilledFields();
-            buttonXML.Enabled = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
-            buttonAkt.Enabled = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
-            buttonRegistrationKKT.Enabled = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
+            ValidateButtons();
 
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -380,7 +363,7 @@ namespace Kassa
         {
             string[] n = TextBox_Name_organization.Text.Split(' ');
             string NOrganization = n[0];
-            if (NOrganization != "ИП" && NOrganization != "ГКФХ" && NOrganization.Length > 2)
+            if (NOrganization == "АО" || NOrganization != "ИП" && NOrganization != "ГКФХ" && NOrganization.Length > 2)
             {
                 TextBox_KPP_organization.Visible = true; // открытие поля КПП
                 buttonCopy10.Visible = true;
@@ -407,10 +390,7 @@ namespace Kassa
                 arrayCheckingFilledFields[6] = false;
             }
 
-            CheckingFilledFields Checked = new CheckingFilledFields();
-            buttonXML.Enabled = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
-            buttonAkt.Enabled = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
-            buttonRegistrationKKT.Enabled = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
+            ValidateButtons();
 
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -429,10 +409,7 @@ namespace Kassa
                 arrayCheckingFilledFields[7] = false;
             }
 
-            CheckingFilledFields Checked = new CheckingFilledFields();
-            buttonXML.Enabled = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
-            buttonAkt.Enabled = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
-            buttonRegistrationKKT.Enabled = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
+            ValidateButtons();
 
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -465,10 +442,7 @@ namespace Kassa
                 arrayCheckingFilledFields[8] = false;
             }
 
-            CheckingFilledFields Checked = new CheckingFilledFields();
-            buttonXML.Enabled = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
-            buttonAkt.Enabled = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
-            buttonRegistrationKKT.Enabled = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
+            ValidateButtons();
 
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -503,10 +477,7 @@ namespace Kassa
                 }
             }
 
-            CheckingFilledFields Checked = new CheckingFilledFields();
-            buttonXML.Enabled = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
-            buttonAkt.Enabled = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
-            buttonRegistrationKKT.Enabled = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
+            ValidateButtons();
 
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -577,10 +548,7 @@ namespace Kassa
                 arrayCheckingFilledFields[12] = false;
             }
 
-            CheckingFilledFields Checked = new CheckingFilledFields();
-            buttonXML.Enabled = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
-            buttonAkt.Enabled = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
-            buttonRegistrationKKT.Enabled = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
+            ValidateButtons();
 
             notificationToolTip.SetToolTip(TextBox_adressSale, TextBox_adressSale.Text);
 
@@ -608,10 +576,7 @@ namespace Kassa
                 buttonInsertValue.Visible = true;
             }
 
-            CheckingFilledFields Checked = new CheckingFilledFields();
-            buttonXML.Enabled = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
-            buttonAkt.Enabled = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
-            buttonRegistrationKKT.Enabled = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
+            ValidateButtons();
 
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -648,10 +613,7 @@ namespace Kassa
                 arrayCheckingFilledFields[14] = false;
             }
 
-            CheckingFilledFields Checked = new CheckingFilledFields();
-            buttonXML.Enabled = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
-            buttonAkt.Enabled = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
-            buttonRegistrationKKT.Enabled = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
+            ValidateButtons();
 
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -687,10 +649,7 @@ namespace Kassa
                 arrayCheckingFilledFields[15] = false;
             }
 
-            CheckingFilledFields Checked = new CheckingFilledFields();
-            buttonXML.Enabled = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
-            buttonAkt.Enabled = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
-            buttonRegistrationKKT.Enabled = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
+            ValidateButtons();
 
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -708,10 +667,7 @@ namespace Kassa
                 arrayCheckingFilledFields[16] = false;
             }
 
-            CheckingFilledFields Checked = new CheckingFilledFields();
-            buttonXML.Enabled = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
-            buttonAkt.Enabled = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
-            buttonRegistrationKKT.Enabled = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
+            ValidateButtons();
 
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -736,10 +692,7 @@ namespace Kassa
                 TextBox_FP_FD.Enabled = true;
             }
 
-            CheckingFilledFields Checked = new CheckingFilledFields();
-            buttonXML.Enabled = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
-            buttonAkt.Enabled = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
-            buttonRegistrationKKT.Enabled = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
+            ValidateButtons();
 
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -774,10 +727,7 @@ namespace Kassa
                 arrayCheckingFilledFields[18] = false;
             }
 
-            CheckingFilledFields Checked = new CheckingFilledFields();
-            buttonXML.Enabled = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
-            buttonAkt.Enabled = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
-            buttonRegistrationKKT.Enabled = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
+            ValidateButtons();
 
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -796,10 +746,7 @@ namespace Kassa
                 arrayCheckingFilledFields[19] = false;
             }
 
-            CheckingFilledFields Checked = new CheckingFilledFields();
-            buttonXML.Enabled = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
-            buttonAkt.Enabled = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
-            buttonRegistrationKKT.Enabled = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
+            ValidateButtons();
 
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -832,10 +779,7 @@ namespace Kassa
                 arrayCheckingFilledFields[20] = false;
             }
 
-            CheckingFilledFields Checked = new CheckingFilledFields();
-            buttonXML.Enabled = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
-            buttonAkt.Enabled = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
-            buttonRegistrationKKT.Enabled = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
+            ValidateButtons();
 
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -870,10 +814,7 @@ namespace Kassa
                 arrayCheckingFilledFields[21] = false;
             }
 
-            CheckingFilledFields Checked = new CheckingFilledFields();
-            buttonXML.Enabled = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
-            buttonAkt.Enabled = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
-            buttonRegistrationKKT.Enabled = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
+            ValidateButtons();
 
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -895,10 +836,7 @@ namespace Kassa
                 arrayCheckingFilledFields[22] = false;
             }
 
-            CheckingFilledFields Checked = new CheckingFilledFields();
-            buttonXML.Enabled = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
-            buttonAkt.Enabled = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
-            buttonRegistrationKKT.Enabled = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
+            ValidateButtons();
 
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -920,10 +858,7 @@ namespace Kassa
                 arrayCheckingFilledFields[23] = false;
             }
 
-            CheckingFilledFields Checked = new CheckingFilledFields();
-            buttonXML.Enabled = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
-            buttonAkt.Enabled = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
-            buttonRegistrationKKT.Enabled = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
+            ValidateButtons();
 
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -945,10 +880,7 @@ namespace Kassa
                 arrayCheckingFilledFields[24] = false;
             }
 
-            CheckingFilledFields Checked = new CheckingFilledFields();
-            buttonXML.Enabled = Checked.CheckingFilledFields_FileRegistration(arrayCheckingFilledFields);
-            buttonAkt.Enabled = Checked.CheckingFilledFields_CreationAkt(arrayCheckingFilledFields);
-            buttonRegistrationKKT.Enabled = Checked.CheckingFilledFields_RegistrationKKT(arrayCheckingFilledFields);
+            ValidateButtons();
 
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -1059,7 +991,7 @@ namespace Kassa
             }
             if (local_close == 0)
             {
-                DialogResult result = MaterialMessageBox.Show("Уверены что хотите открыть файл? Несохраненные данный на форме исчезнут", "Уведомление", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                DialogResult result = MaterialMessageBox.Show("Уверены что хотите открыть файл? Несохраненные данные на форме исчезнут", "Уведомление", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -1079,6 +1011,8 @@ namespace Kassa
                     ofd.FilterIndex = 1; // По умолчанию выбран фильтр txt файлов
                     if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
+                        Clear_form();
+                        dataKKT = new DataKKT();
                         if (Path.GetExtension(ofd.FileName).ToUpper().ToLower().Equals(".txt", StringComparison.CurrentCultureIgnoreCase))
                         {
                             FileLine = System.IO.File.ReadAllText(ofd.FileName);
@@ -2391,6 +2325,19 @@ namespace Kassa
             CheckBox_Internet.Checked = false;
             CheckBox_Delivery.Checked = false;
             CheckBox_Podakziz.Checked = false;
+
+            for (int i = 0; i < arrayCheckingFilledFields.Length; i++) //возвращаем массив к исходным значениям, чтобы кнопки не отваливались
+            {
+                arrayCheckingFilledFields[i] = false;
+            }
+            arrayCheckingFilledFields[0] = true; 
+            arrayCheckingFilledFields[9] = true;
+            arrayCheckingFilledFields[12] = true;
+            arrayCheckingFilledFields[14] = true;
+            arrayCheckingFilledFields[15] = true;
+            arrayCheckingFilledFields[16] = true;
+            arrayCheckingFilledFields[17] = true;
+            arrayCheckingFilledFields[18] = true;
         }
 
         private void buttonCopyModel_KKT_Click(object sender, EventArgs e)

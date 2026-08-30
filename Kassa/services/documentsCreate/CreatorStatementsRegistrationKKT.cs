@@ -385,7 +385,10 @@ namespace Registrator.services
             if (statusNameOrganization == "ИП" || statusNameOrganization == "ГКФХ")
             {
                 FIO.Attributes.Append(Imy);
-                FIO.Attributes.Append(Otcestvo);
+                if (!string.IsNullOrEmpty(directorOrganization_array[2])) // не создаем атрибут, если отчество отсутствует
+                {
+                    FIO.Attributes.Append(Otcestvo);
+                }
                 FIO.Attributes.Append(Familiya);
             }
             else
@@ -414,7 +417,10 @@ namespace Registrator.services
             }
 
             FIO2.Attributes.Append(Imy2);
-            FIO2.Attributes.Append(Otcestvo2);
+            if (!string.IsNullOrEmpty(directorOrganization_array[2])) // не создаем атрибут, если отчество отсутствует
+            {
+                FIO2.Attributes.Append(Otcestvo2);
+            }
             FIO2.Attributes.Append(Familiya2);
             //NaimDoc.AppendChild(NaimDocT);
             //SvPred.Attributes.Append(NaimDoc);
