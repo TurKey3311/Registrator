@@ -681,10 +681,6 @@ namespace Kassa
             {
                 arrayCheckingFilledFields[17] = true;
             }
-            else
-            {
-                arrayCheckingFilledFields[17] = false;
-            }
             if (TextBox_RNM1.Text.Length == 16)
             {
                 TextBox_Number_FD.Enabled = true;
@@ -887,7 +883,20 @@ namespace Kassa
         }
         private void SNO_ESHN_Checked(object sender, EventArgs e)
         {
+            Save_parametrs[25] = false;
+            if (Checkbox_ESHN.Checked == true)
+            {
+                arrayCheckingFilledFields[25] = true;
+            }
+            else
+            {
+                arrayCheckingFilledFields[25] = false;
+            }
 
+            ValidateButtons();
+
+            label_save_status.Text = "Требуется сохранение";
+            label_image_save_status.Text = "×";
         }
         // _________________________________________________________ Перечень режимов работы
         private void Podakziz_Checked(object sender, EventArgs e)
