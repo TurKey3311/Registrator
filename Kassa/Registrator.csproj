@@ -370,9 +370,15 @@
       <DependentUpon>RegistrationTerminalFA.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
-    <None Include="File\Akt.docx">
+    <Content Include="File\Akt.docx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
+    <Content Include="File\Akt_small.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="File\Data\Registrator_DB_SQLite.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -404,10 +410,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="File\Logo.ico" />
-    <Content Include="Resources\circle.png" />
-    <Content Include="Resources\no.png" />
-    <Content Include="Resources\yes.png" />
+    <None Include="File\Logo.ico" />
+    <Content Include="File\XML_FNS.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\circle.png" />
+    <None Include="Resources\no.png" />
+    <None Include="Resources\yes.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

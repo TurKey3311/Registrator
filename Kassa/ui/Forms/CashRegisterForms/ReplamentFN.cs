@@ -1,22 +1,23 @@
-﻿using KitCashProtocol;
+﻿using Kassa;
+using KitCashProtocol;
 using MaterialSkin.Controls;
-using Registrator.repo.models;
+using Registrator.Properties;
 using Registrator.repo;
+using Registrator.repo.models;
 using Registrator.services;
+using Registrator.services.kkt;
+using Registrator.ui.components;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Registrator.services.kkt;
-using Registrator.ui.components;
-using System.Runtime.CompilerServices;
-using Kassa;
-using Registrator.Properties;
 
 namespace Registrator.ui.Forms.CashRegisterForms
 {
@@ -164,7 +165,9 @@ namespace Registrator.ui.Forms.CashRegisterForms
 
         private void buttonCreateAkt_Click(object sender, EventArgs e)
         {
-            var newakt = new CreateAkt("Akt_small.docx");
+            string exeDir = AppDomain.CurrentDomain.BaseDirectory;
+            string wordPath2 = Path.Combine(exeDir, "File", "Akt_small.docx");
+            var newakt = new CreateAkt(wordPath2);
 
             var items = new Dictionary<string, string>
                 {

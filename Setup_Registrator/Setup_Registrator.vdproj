@@ -99,12 +99,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_0F7C2C7BD5E24968A2AD895294B5BC28"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_0F9CD956CCBC4063377C18D1333D5C5B"
         "OwnerKey" = "8:_89D25F39517F406F9836E8E7D6E652B3"
         "MsmSig" = "8:_UNDEFINED"
@@ -149,12 +143,6 @@
         {
         "MsmKey" = "8:_15A37856A9312B83B791ED189272EAA7"
         "OwnerKey" = "8:_89D25F39517F406F9836E8E7D6E652B3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_16EE8F5FF71B4C849BB842D3A7F0EA14"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -273,6 +261,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_249D19ECFC01117958A51F76900421AE"
+        "OwnerKey" = "8:_3EB0A291E62C667A68E8FD9CEE672E4E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2592DA7649DC17A5AAD6CB6631EACB91"
         "OwnerKey" = "8:_89D25F39517F406F9836E8E7D6E652B3"
         "MsmSig" = "8:_UNDEFINED"
@@ -371,12 +365,6 @@
         {
         "MsmKey" = "8:_3C5DDE876E2E1FF9F7C67F9FD6C0819F"
         "OwnerKey" = "8:_89D25F39517F406F9836E8E7D6E652B3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3EA76CC7FB6C42A187EA876992B4854C"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1179,12 +1167,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_9A3FB05DB6DE4578B9A41D5A8FC00729"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_9AD3FDF4C97C959A6D39A1EC37323F82"
         "OwnerKey" = "8:_89D25F39517F406F9836E8E7D6E652B3"
         "MsmSig" = "8:_UNDEFINED"
@@ -1385,6 +1367,12 @@
         {
         "MsmKey" = "8:_BB4F07B8D396DBC72AB6D0ACF17A1839"
         "OwnerKey" = "8:_89D25F39517F406F9836E8E7D6E652B3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BC4F1278B6E34CEA946E49AF0B75B1E6"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1677,12 +1665,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_DFF1B1A34DB64C4D8B637E566A9E8517"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_DFF79FBAAE1BA0D94ED83D029E382CF5"
         "OwnerKey" = "8:_89D25F39517F406F9836E8E7D6E652B3"
         "MsmSig" = "8:_UNDEFINED"
@@ -1697,12 +1679,6 @@
         {
         "MsmKey" = "8:_E0520EA10394219C74F0FBE232ABFD40"
         "OwnerKey" = "8:_89D25F39517F406F9836E8E7D6E652B3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E11FBF008F8842369F00CAC408F73C0E"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -3314,26 +3290,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0F7C2C7BD5E24968A2AD895294B5BC28"
-            {
-            "SourcePath" = "8:..\\Kassa\\File\\XML_FNS.xml"
-            "TargetName" = "8:XML_FNS.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_C1E911DA59F14CA291202F8952B03B60"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0F9CD956CCBC4063377C18D1333D5C5B"
             {
             "AssemblyRegister" = "3:1"
@@ -3518,26 +3474,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_16EE8F5FF71B4C849BB842D3A7F0EA14"
-            {
-            "SourcePath" = "8:..\\Kassa\\bin\\Debug\\Akt.docx"
-            "TargetName" = "8:Akt.docx"
-            "Tag" = "8:"
-            "Folder" = "8:_C1E911DA59F14CA291202F8952B03B60"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_18D2A60DE99C4CEC8A9BC9CE828BAD67"
@@ -4322,26 +4258,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3EA76CC7FB6C42A187EA876992B4854C"
-            {
-            "SourcePath" = "8:..\\Kassa\\bin\\Debug\\Registrator_DB_SQLite.db"
-            "TargetName" = "8:Registrator_DB_SQLite.db"
-            "Tag" = "8:"
-            "Folder" = "8:_C1E911DA59F14CA291202F8952B03B60"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:TRUE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3EB0A291E62C667A68E8FD9CEE672E4E"
@@ -6656,26 +6572,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9A3FB05DB6DE4578B9A41D5A8FC00729"
-            {
-            "SourcePath" = "8:..\\Kassa\\File\\Akt_small.docx"
-            "TargetName" = "8:Akt_small.docx"
-            "Tag" = "8:"
-            "Folder" = "8:_C1E911DA59F14CA291202F8952B03B60"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9AD3FDF4C97C959A6D39A1EC37323F82"
             {
             "AssemblyRegister" = "3:1"
@@ -7469,6 +7365,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BC4F1278B6E34CEA946E49AF0B75B1E6"
+            {
+            "SourcePath" = "8:..\\kassa\\Logo.ico"
+            "TargetName" = "8:Logo.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_C1E911DA59F14CA291202F8952B03B60"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BFF565D9EF953442C8605EBF9A14DDEA"
@@ -8297,26 +8213,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DFF1B1A34DB64C4D8B637E566A9E8517"
-            {
-            "SourcePath" = "8:..\\Kassa\\Logo.ico"
-            "TargetName" = "8:Logo.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_C1E911DA59F14CA291202F8952B03B60"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DFF79FBAAE1BA0D94ED83D029E382CF5"
             {
             "AssemblyRegister" = "3:1"
@@ -8377,26 +8273,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E11FBF008F8842369F00CAC408F73C0E"
-            {
-            "SourcePath" = "8:..\\Kassa\\bin\\Debug\\Akt — копия.docx"
-            "TargetName" = "8:Akt — копия.docx"
-            "Tag" = "8:"
-            "Folder" = "8:_C1E911DA59F14CA291202F8952B03B60"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E172520C15A85B8F4624798DAAC28AE9"
@@ -9144,22 +9020,22 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Регистратор 2.4.15"
-        "ProductCode" = "8:{3C71255A-2F0E-4BB7-84A3-288FC368A666}"
-        "PackageCode" = "8:{DF5E88BD-DEE5-4CAC-9B9C-CC18B53C52E1}"
+        "ProductName" = "8:Регистратор 2.4.16"
+        "ProductCode" = "8:{410C9984-F4B2-431C-87F6-58AB7BD1D45E}"
+        "PackageCode" = "8:{EDE7A428-6C90-41A3-8EFF-A1D1AC97BD8C}"
         "UpgradeCode" = "8:{2398A38B-27D3-4F1B-BA97-265E14CA8EC0}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.4.15"
+        "ProductVersion" = "8:2.4.16"
         "Manufacturer" = "8:I.Sol Studio"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:Setup_Registrator_2.4.14"
+        "Title" = "8:Setup_Registrator_2.4.16"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:I_Sol"
+        "ARPCONTACT" = "8:TurKey"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -9277,7 +9153,7 @@
             "Target" = "8:_89D25F39517F406F9836E8E7D6E652B3"
             "Folder" = "8:_0DFAFC032B95472E8F07842E360A214A"
             "WorkingFolder" = "8:_C1E911DA59F14CA291202F8952B03B60"
-            "Icon" = "8:_DFF1B1A34DB64C4D8B637E566A9E8517"
+            "Icon" = "8:_BC4F1278B6E34CEA946E49AF0B75B1E6"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D0CFCD6826CE43EFA42FFB78C1AE4B2D"
@@ -9291,7 +9167,7 @@
             "Target" = "8:_89D25F39517F406F9836E8E7D6E652B3"
             "Folder" = "8:_0CF0778129EA42F9960380F0C97B83B3"
             "WorkingFolder" = "8:_C1E911DA59F14CA291202F8952B03B60"
-            "Icon" = "8:_DFF1B1A34DB64C4D8B637E566A9E8517"
+            "Icon" = "8:_BC4F1278B6E34CEA946E49AF0B75B1E6"
             "Feature" = "8:"
             }
         }
@@ -9693,6 +9569,34 @@
         }
         "ProjectOutput"
         {
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_5A6CCA80E60F4B5DB0EA3C961260DBD9"
+            {
+            "SourcePath" = "8:"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_C1E911DA59F14CA291202F8952B03B60"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:ContentFiles"
+            "OutputProjectGuid" = "8:{DE2CE6A8-4BB5-4128-9B76-1D361E759D4C}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_89D25F39517F406F9836E8E7D6E652B3"
             {
             "SourcePath" = "8:..\\Kassa\\obj\\Debug\\Registrator.exe"

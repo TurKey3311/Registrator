@@ -1400,10 +1400,13 @@ namespace Kassa
                 string dataTime = DanaT_FD.Substring(0,10);
                 string T_FD = DanaT_FD.Substring(Math.Max(0, DanaT_FD.Length - 5));
 
-                var newakt = new CreateAkt("Akt.docx");
+                string exeDir = AppDomain.CurrentDomain.BaseDirectory;
+                string wordPath = Path.Combine(exeDir, "File", "Akt.docx");
+                string wordPath2 = Path.Combine(exeDir, "File", "Akt_small.docx");
+                var newakt = new CreateAkt(wordPath);
                 if (TextBox_ID_client.Text == "")
                 {
-                    newakt = new CreateAkt("Akt_small.docx");
+                    newakt = new CreateAkt(wordPath2);
                 }
 
                 var items = new Dictionary<string, string>
@@ -1688,10 +1691,13 @@ namespace Kassa
         }
         private void buttonAkt2_Click(object sender, EventArgs e) // Кнопка Акт ввода на второй странице
         {
-            var file = new CreateAkt("Akt.docx");
+            string exeDir = AppDomain.CurrentDomain.BaseDirectory;
+            string wordPath = Path.Combine(exeDir, "File", "Akt.docx");
+            string wordPath2 = Path.Combine(exeDir, "File", "Akt_small.docx");
+            var file = new CreateAkt(wordPath);
             if (TextBox_ID_client2.Text == "")
             {
-                file = new CreateAkt("Akt_small.docx");
+                file = new CreateAkt(wordPath2);
             }
 
             string ID_Сlient = TextBox_ID_client2.Text;

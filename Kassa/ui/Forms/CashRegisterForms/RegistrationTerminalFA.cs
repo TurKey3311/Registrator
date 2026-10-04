@@ -10,6 +10,7 @@ using Registrator.ui.components;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -182,7 +183,9 @@ namespace Registrator
 
         private void buttonCreateAkt_Click(object sender, EventArgs e)
         {
-            var newakt = new CreateAkt("Akt.docx");
+            string exeDir = AppDomain.CurrentDomain.BaseDirectory;
+            string wordPath = Path.Combine(exeDir, "File", "Akt.docx");
+            var newakt = new CreateAkt(wordPath);
 
             var items = new Dictionary<string, string>
             {

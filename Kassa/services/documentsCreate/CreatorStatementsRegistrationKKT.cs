@@ -1,19 +1,20 @@
-﻿using MaterialSkin.Controls;
+﻿using Kassa;
+using MaterialSkin.Controls;
 using Registrator.repo;
+using Registrator.repo.models;
+using Registrator.services.common;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IdentityModel.Metadata;
-using System.IO.Compression;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
-using Registrator.repo.models;
-using Registrator.services.common;
-using System.Data;
 
 namespace Registrator.services
 {
@@ -99,7 +100,9 @@ namespace Registrator.services
             
             XmlDocument xmlDocument = new XmlDocument();
 
-            xmlDocument.Load("XML_FNS.xml");
+            string exeDir = AppDomain.CurrentDomain.BaseDirectory;
+            string xmlPath = Path.Combine(exeDir, "File", "XML_FNS.xml");
+            xmlDocument.Load(xmlPath);
             XmlElement Fail = xmlDocument.DocumentElement;
 
             //XmlElement Fail = xmlDocument.CreateElement("Файл");
