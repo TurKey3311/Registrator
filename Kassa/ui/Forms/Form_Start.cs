@@ -2550,7 +2550,6 @@ namespace Kassa
 
         private void buttonCopyAdressSale_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(TextBox_adressSale.Text);
             if (TextBox_adressSale.Text != "")
             {
                 Clipboard.SetText(TextBox_adressSale.Text);
