@@ -261,12 +261,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_249D19ECFC01117958A51F76900421AE"
-        "OwnerKey" = "8:_3EB0A291E62C667A68E8FD9CEE672E4E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_2592DA7649DC17A5AAD6CB6631EACB91"
         "OwnerKey" = "8:_89D25F39517F406F9836E8E7D6E652B3"
         "MsmSig" = "8:_UNDEFINED"
@@ -9020,20 +9014,20 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Регистратор 2.4.16"
-        "ProductCode" = "8:{410C9984-F4B2-431C-87F6-58AB7BD1D45E}"
-        "PackageCode" = "8:{EDE7A428-6C90-41A3-8EFF-A1D1AC97BD8C}"
+        "ProductName" = "8:Регистратор 2.4.17"
+        "ProductCode" = "8:{07A71745-484F-4F8E-ACC1-2AF88A6F9ACB}"
+        "PackageCode" = "8:{AF9303A8-83ED-4D17-B8CA-0A92A82FB1B4}"
         "UpgradeCode" = "8:{2398A38B-27D3-4F1B-BA97-265E14CA8EC0}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.4.16"
+        "ProductVersion" = "8:2.4.17"
         "Manufacturer" = "8:I.Sol Studio"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:Setup_Registrator_2.4.16"
+        "Title" = "8:Setup_Registrator_2.4.17"
         "Subject" = "8:"
         "ARPCONTACT" = "8:TurKey"
         "Keywords" = "8:"

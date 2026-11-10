@@ -40,6 +40,7 @@
             this.materialCheckbox7 = new MaterialSkin.Controls.MaterialCheckbox();
             this.materialTabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.ButtonDFU_Mode = new MaterialSkin.Controls.MaterialButton();
             this.materialButton1 = new MaterialSkin.Controls.MaterialButton();
             this.buttonRe_registrationKKT = new MaterialSkin.Controls.MaterialButton();
             this.buttonInsertValue = new System.Windows.Forms.Button();
@@ -185,6 +186,7 @@
             this.TextBox_INN_OFD3 = new MaterialSkin.Controls.MaterialTextBox2();
             this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.textBoxConfigKKTCurrentVersion = new MaterialSkin.Controls.MaterialTextBox2();
             this.textBox_AdrMU = new MaterialSkin.Controls.MaterialTextBox2();
             this.materialLabel29 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel28 = new MaterialSkin.Controls.MaterialLabel();
@@ -216,7 +218,6 @@
             this.textBoxNameOperator = new MaterialSkin.Controls.MaterialTextBox2();
             this.textBoxAdressFile = new MaterialSkin.Controls.MaterialTextBox2();
             this.materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
-            this.textBoxConfigKKTCurrentVersion = new MaterialSkin.Controls.MaterialTextBox2();
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -362,6 +363,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.ButtonDFU_Mode);
             this.tabPage1.Controls.Add(this.materialButton1);
             this.tabPage1.Controls.Add(this.buttonRe_registrationKKT);
             this.tabPage1.Controls.Add(this.buttonInsertValue);
@@ -469,6 +471,30 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.ToolTipText = "Регистрация";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // ButtonDFU_Mode
+            // 
+            this.ButtonDFU_Mode.AutoSize = false;
+            this.ButtonDFU_Mode.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ButtonDFU_Mode.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonDFU_Mode.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.ButtonDFU_Mode.Depth = 0;
+            this.ButtonDFU_Mode.HighEmphasis = true;
+            this.ButtonDFU_Mode.Icon = ((System.Drawing.Image)(resources.GetObject("ButtonDFU_Mode.Icon")));
+            this.ButtonDFU_Mode.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ButtonDFU_Mode.Location = new System.Drawing.Point(9, 662);
+            this.ButtonDFU_Mode.Margin = new System.Windows.Forms.Padding(14, 4, 4, 4);
+            this.ButtonDFU_Mode.MouseState = MaterialSkin.MouseState.HOVER;
+            this.ButtonDFU_Mode.Name = "ButtonDFU_Mode";
+            this.ButtonDFU_Mode.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.ButtonDFU_Mode.Padding = new System.Windows.Forms.Padding(2);
+            this.ButtonDFU_Mode.Size = new System.Drawing.Size(180, 47);
+            this.ButtonDFU_Mode.TabIndex = 280;
+            this.ButtonDFU_Mode.Text = "Режим DFU";
+            this.ButtonDFU_Mode.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
+            this.ButtonDFU_Mode.UseAccentColor = false;
+            this.ButtonDFU_Mode.UseVisualStyleBackColor = true;
+            this.ButtonDFU_Mode.Click += new System.EventHandler(this.buttonDFU_Mode);
             // 
             // materialButton1
             // 
@@ -751,6 +777,7 @@
             // 
             this.butInputTimeKKT.AutoSize = false;
             this.butInputTimeKKT.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.butInputTimeKKT.Cursor = System.Windows.Forms.Cursors.Hand;
             this.butInputTimeKKT.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.butInputTimeKKT.Depth = 0;
             this.butInputTimeKKT.HighEmphasis = true;
@@ -1985,6 +2012,7 @@
             this.TextBox_adressSale.AnimateReadOnly = false;
             this.TextBox_adressSale.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.TextBox_adressSale.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextBox_adressSale.Cursor = System.Windows.Forms.Cursors.Default;
             this.TextBox_adressSale.Depth = 0;
             this.TextBox_adressSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TextBox_adressSale.HideSelection = true;
@@ -3609,6 +3637,35 @@
             this.tabPage8.ToolTipText = "Настройки";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
+            // textBoxConfigKKTCurrentVersion
+            // 
+            this.textBoxConfigKKTCurrentVersion.AnimateReadOnly = false;
+            this.textBoxConfigKKTCurrentVersion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.textBoxConfigKKTCurrentVersion.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.textBoxConfigKKTCurrentVersion.Depth = 0;
+            this.textBoxConfigKKTCurrentVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxConfigKKTCurrentVersion.HideSelection = true;
+            this.textBoxConfigKKTCurrentVersion.Hint = "Актуальная версия конфигурации";
+            this.textBoxConfigKKTCurrentVersion.LeadingIcon = null;
+            this.textBoxConfigKKTCurrentVersion.Location = new System.Drawing.Point(793, 257);
+            this.textBoxConfigKKTCurrentVersion.MaxLength = 32767;
+            this.textBoxConfigKKTCurrentVersion.MouseState = MaterialSkin.MouseState.OUT;
+            this.textBoxConfigKKTCurrentVersion.Name = "textBoxConfigKKTCurrentVersion";
+            this.textBoxConfigKKTCurrentVersion.PasswordChar = '\0';
+            this.textBoxConfigKKTCurrentVersion.PrefixSuffixText = null;
+            this.textBoxConfigKKTCurrentVersion.ReadOnly = false;
+            this.textBoxConfigKKTCurrentVersion.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textBoxConfigKKTCurrentVersion.SelectedText = "";
+            this.textBoxConfigKKTCurrentVersion.SelectionLength = 0;
+            this.textBoxConfigKKTCurrentVersion.SelectionStart = 0;
+            this.textBoxConfigKKTCurrentVersion.ShortcutsEnabled = true;
+            this.textBoxConfigKKTCurrentVersion.Size = new System.Drawing.Size(626, 48);
+            this.textBoxConfigKKTCurrentVersion.TabIndex = 203;
+            this.textBoxConfigKKTCurrentVersion.TabStop = false;
+            this.textBoxConfigKKTCurrentVersion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.textBoxConfigKKTCurrentVersion.TrailingIcon = null;
+            this.textBoxConfigKKTCurrentVersion.UseSystemPasswordChar = false;
+            // 
             // textBox_AdrMU
             // 
             this.textBox_AdrMU.AnimateReadOnly = false;
@@ -4355,35 +4412,6 @@
             this.materialLabel13.TabIndex = 171;
             this.materialLabel13.Text = "Настройки программы";
             // 
-            // textBoxConfigKKTCurrentVersion
-            // 
-            this.textBoxConfigKKTCurrentVersion.AnimateReadOnly = false;
-            this.textBoxConfigKKTCurrentVersion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.textBoxConfigKKTCurrentVersion.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.textBoxConfigKKTCurrentVersion.Depth = 0;
-            this.textBoxConfigKKTCurrentVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxConfigKKTCurrentVersion.HideSelection = true;
-            this.textBoxConfigKKTCurrentVersion.Hint = "Актуальная версия конфигурации";
-            this.textBoxConfigKKTCurrentVersion.LeadingIcon = null;
-            this.textBoxConfigKKTCurrentVersion.Location = new System.Drawing.Point(793, 257);
-            this.textBoxConfigKKTCurrentVersion.MaxLength = 32767;
-            this.textBoxConfigKKTCurrentVersion.MouseState = MaterialSkin.MouseState.OUT;
-            this.textBoxConfigKKTCurrentVersion.Name = "textBoxConfigKKTCurrentVersion";
-            this.textBoxConfigKKTCurrentVersion.PasswordChar = '\0';
-            this.textBoxConfigKKTCurrentVersion.PrefixSuffixText = null;
-            this.textBoxConfigKKTCurrentVersion.ReadOnly = false;
-            this.textBoxConfigKKTCurrentVersion.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBoxConfigKKTCurrentVersion.SelectedText = "";
-            this.textBoxConfigKKTCurrentVersion.SelectionLength = 0;
-            this.textBoxConfigKKTCurrentVersion.SelectionStart = 0;
-            this.textBoxConfigKKTCurrentVersion.ShortcutsEnabled = true;
-            this.textBoxConfigKKTCurrentVersion.Size = new System.Drawing.Size(626, 48);
-            this.textBoxConfigKKTCurrentVersion.TabIndex = 203;
-            this.textBoxConfigKKTCurrentVersion.TabStop = false;
-            this.textBoxConfigKKTCurrentVersion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBoxConfigKKTCurrentVersion.TrailingIcon = null;
-            this.textBoxConfigKKTCurrentVersion.UseSystemPasswordChar = false;
-            // 
             // Form_Start
             // 
             this.ClientSize = new System.Drawing.Size(1829, 1100);
@@ -4597,6 +4625,7 @@
         private MaterialSkin.Controls.MaterialTextBox2 textBoxAdressFile;
         private MaterialSkin.Controls.MaterialLabel materialLabel13;
         private MaterialSkin.Controls.MaterialTextBox2 textBoxConfigKKTCurrentVersion;
+        private MaterialSkin.Controls.MaterialButton ButtonDFU_Mode;
     }
 }
 

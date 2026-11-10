@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialSkin.Controls;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
@@ -22,12 +23,22 @@ namespace Registrator.services.common
         }
         public static string CreateDirectoryNameBase(string folderBase, string id, string nameOrganization)
         {
-            string adressFile = CreateAdress(folderBase, id, nameOrganization);
-            Directory.CreateDirectory(adressFile);
-            return adressFile;
+            try
+            {
+                string adressFile = CreateAdress(folderBase, id, nameOrganization);
+                Directory.CreateDirectory(adressFile);
+                return adressFile;
+            }
+            catch (Exception)
+            {
+                MaterialMessageBox.Show(
+                    $"Произошла ошибка при работе с файлом. Проверьте корректность пути сохранения файлов в настройках.",
+                    "Ошибка!");
+                return string.Empty;
+            };
         }
 
-        public static string RemoveInvalidChars (string nameOrganization)
+public static string RemoveInvalidChars (string nameOrganization)
         {
             string[] zap_znak = { "\\", "/", ":", "*", "?", "<", ">", "|", "\"" };
             if (nameOrganization != "")

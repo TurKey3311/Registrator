@@ -36,6 +36,7 @@
         CLOSE_FN_FINISH = 0x28,
 
         REBOOT_KKT = 0xEF,
+        DFU_MODE = 0xF3,
 
         GET_VERS_CONFIG = 0x0B,
         GET_FISCAL_STORAGE_STATUS = 0x08,

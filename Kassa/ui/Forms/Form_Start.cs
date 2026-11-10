@@ -1,30 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using System.Windows.Forms;
-using System.Xml;
+﻿using Azure;
 using KitCashProtocol;
 using MaterialSkin;
 using MaterialSkin.Controls;
-using System.IO.Compression;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.Office.Interop.Access;
+using Registrator;
+using Registrator.models;
+using Registrator.Properties;
+using Registrator.repo;
+using Registrator.repo.models;
+using Registrator.services;
+using Registrator.services.common;
+using Registrator.services.kkt;
+using Registrator.services.utils;
+using Registrator.ui.components;
+using Registrator.ui.Forms.CashRegisterForms;
+using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SQLite;
-using Registrator;
-using Registrator.repo;
-using Registrator.services;
-using Registrator.repo.models;
-using Registrator.services.kkt;
-using Registrator.ui.Forms.CashRegisterForms;
-using Registrator.ui.components;
-using Registrator.models;
-using System.Linq;
 using System.Diagnostics;
+using System.IO;
+using System.IO.Compression;
+using System.Linq;
 using System.Management;
-using Registrator.services.common;
-using Registrator.services.utils;
 using System.Net.Sockets;
-using Microsoft.Office.Interop.Access;
+using System.Reflection;
+using System.Runtime;
+using System.Windows.Forms;
+using System.Xml;
 
 
 
@@ -158,8 +162,18 @@ namespace Kassa
             labelVers3.Text = program_version;
             labelVers4.Text = program_version;
 
+            if (string.IsNullOrWhiteSpace(settings.AdressFile) || string.IsNullOrWhiteSpace(settings.NameOperator))
+            {
+                // Предупреждаем пользователя
+                MessageBox.Show(
+                    "Не заполнены обязательные настройки: Путь для сохраниния файлов и/или ФИО оператора. Заполните их перед началом работы и перезапустите приложение.",
+                    "Внимание!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+            }
 
-            for (int i = 0; i < Save_parametrs.Length; i++) // Массив проверки сохранения
+                for (int i = 0; i < Save_parametrs.Length; i++) // Массив проверки сохранения
             {
                 Save_parametrs[i] = true;
             }
@@ -397,8 +411,11 @@ namespace Kassa
         }
         private void Director_org_Changet(object sender, EventArgs e) // ФИО Руководителя
         {
-            TextBox_Cashier.Text = TextBox_Director_org.Text;
-            Save_parametrs[7] = false;
+            if (string.IsNullOrEmpty(TextBox_Cashier.Text))
+            {
+                TextBox_Cashier.Text = TextBox_Director_org.Text;
+            }
+                Save_parametrs[7] = false;
 
             if (TextBox_Director_org.Text != "")
             {
@@ -577,6 +594,8 @@ namespace Kassa
             }
 
             ValidateButtons();
+
+            notificationToolTip.SetToolTip(TextBox_PlaceSale, TextBox_PlaceSale.Text);
 
             label_save_status.Text = "Требуется сохранение";
             label_image_save_status.Text = "×";
@@ -1594,6 +1613,23 @@ namespace Kassa
                 }
             }
         }
+
+        private void buttonDFU_Mode(object sender, EventArgs e) // кнопка DFU
+        { 
+            DialogResult result = MaterialMessageBox.Show("Уверены что хотите перевести кассу в режим Прошивки?", "Уведомление", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+
+                statusConnectionKKT = CashRegister.OpenConnection(statusConnectionKKT, settings.PortName);
+                if (statusConnectionKKT == true)
+                {
+                    CashRegister.DFU_MODE();
+                    statusConnectionKKT = CashRegister.CloseConnection(statusConnectionKKT);
+                }
+            }
+        }
+
         private void buttonOpenOperationsPanel_Click(object sender, EventArgs e) // кнопка Другие операции
         {
             statusConnectionKKT = CashRegister.OpenConnection(statusConnectionKKT, settings.PortName);

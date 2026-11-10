@@ -75,32 +75,29 @@ namespace KitCashProtocol
                 {
                     if (Port != null)
                     {
-                        if (Port.IsOpen)
-                        {
-                            Port.Close();
-                            Port.Dispose();
-                            Port = null; // Обнуление для дальнейшего предотвращения ошибок
-                            return false;
-                        }
-                        else
-                        {
-                            return false;
-                        }
+                            try
+                            {
+                                if (Port.IsOpen)
+                                {
+                                    Port.Close();
+                                }
+                            }
+                            catch { }
+                            finally
+                            {
+                                try { Port.Dispose(); } catch { }
+                                Port = null; // Обнуление для дальнейшего предотвращения ошибок
+                            }
+                            return false; // Возвращаем false, так как связь успешно закрыта/разорвана
                     }
-                    else
-                    {
                         return false;
-                    }
                 }
-                else
-                {
                     return false;
-                }
-
             }
             catch
             {
-                return true;
+                Port = null;
+                return false;
             }
         }
 
@@ -123,6 +120,28 @@ namespace KitCashProtocol
             catch
             {
                 return ErrorCode.UnknownError;
+            }
+        }
+
+        public void DFU_MODE()
+        {
+
+            if (Port == null || !Port.IsOpen)
+            {
+                MaterialMessageBox.Show("Что-то пошло не так.");
+                return;
+            }
+
+            try
+            {
+                byte[] command = CommandGenerator.GetCommand(Command.DFU_MODE);
+                Port.Write(command, 0, command.Length);
+                System.Threading.Thread.Sleep(100);
+                MaterialMessageBox.Show("Касса переведена в режим DFU!");
+            }
+            catch (Exception ex)
+            {
+                MaterialMessageBox.Show("Ошибка при отправке команды: " + ex.Message);
             }
         }
 
